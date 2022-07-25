@@ -1,6 +1,6 @@
 {
   "name": "@bbki.ng/components",
-  "version": "2.1.4",
+  "version": "2.1.5",
   "type": "module",
   "scripts": {
     "dev": "vite",
@@ -14,11 +14,11 @@
   "main": "./dist/components.cjs",
   "module": "./dist/components.js",
   "exports": {
-    "@bbki.ng/components": {
+    ".": {
       "import": "./dist/components.js",
       "require": "./dist/components.umd.cjs"
     },
-    "@bbki.ng/components/style": {
+    "./style": {
       "import": "./dist/style.css",
       "require": "./dist/style.css"
     }
