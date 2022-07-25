@@ -28,5 +28,9 @@ module.exports = {
     },
   },
   safelist: ["md:basis-1/2", "md:basis-full", "md:ml-64", "md:mr-64"],
-  plugins: [require("./plugin"), require("@tailwindcss/typography")],
+  plugins: [
+    require('./plugin'),
+    require("@tailwindcss/typography"),
+    require('@tailwindcss/aspect-ratio'),
+  ],
 }

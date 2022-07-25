@@ -1,11 +1,14 @@
 {
   "name": "@bbki.ng/stylebase",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "",
-  "main": "index.cjs",
-  "files": ["index.cjs", "plugin.cjs"],
+  "main": "dist/index.js",
+  "files": [
+    "dist"
+  ],
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "vite build",
+    "prepare": "vite build"
   },
   "type": "commonjs",
   "keywords": [],
@@ -13,5 +16,12 @@
   "license": "ISC",
   "publishConfig": {
     "access": "public"
+  },
+  "dependencies": {
+    "@tailwindcss/typography": "0.5.4",
+    "vite": "^3.0.0"
+  },
+  "devDependencies": {
+    "tailwindcss": "3.1.6"
   }
 }
