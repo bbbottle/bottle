@@ -3,8 +3,7 @@ module.exports = {
   content: [
     './lib/**/*.{vue,js,ts,jsx,tsx}'
   ],
-  theme: {
-    extend: {},
-  },
-  plugins: [],
+  presets: [
+    require('@bbki.ng/stylebase')
+  ],
 }

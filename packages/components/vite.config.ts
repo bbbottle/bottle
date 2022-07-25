@@ -15,7 +15,7 @@ export default defineConfig({
       external: [
         'react',
         'classnames',
-        'react-route-dom'
+        'react-router-dom'
       ]
     }
   }
