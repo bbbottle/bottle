@@ -8,8 +8,7 @@
     "test:cov": "jest --coverage",
     "dev": "vite",
     "build": "tsc && vite build",
-    "serve": "vite preview",
-    "prepare": "husky install"
+    "serve": "vite preview"
   },
   "type": "module",
   "repository": {
@@ -17,7 +16,7 @@
     "url": "git+https://github.com/bbbottle/bbki.ng.git"
   },
   "dependencies": {
-    "@bbki.ng/components": "2.0.0",
+    "@bbki.ng/components": "workspace:2.1.6",
     "@supabase/supabase-js": "^1.30.6",
     "classnames": "2.3.1",
     "react": "^18.0.0",
@@ -28,7 +27,7 @@
     "swr": "^1.2.1"
   },
   "devDependencies": {
-    "@bbki.ng/stylebase": "0.0.3",
+    "@bbki.ng/stylebase": "workspace:0.0.4",
     "@mdx-js/mdx": "2.0.0-next.9",
     "@mdx-js/react": "^1.6.22",
     "@tailwindcss/typography": "^0.5.0",
