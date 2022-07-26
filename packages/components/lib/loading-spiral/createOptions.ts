@@ -46,7 +46,15 @@ export const createOptions = (opt: IOpt = DEFAULT_OPT) => {
     },
   ];
 
+  const uniforms = {
+    uProgress: {
+      type: "float",
+      value: [0.0],
+    },
+  }
+
   return {
+    uniforms,
     attributes,
     multiplier,
     vertex: VERTEX_SHADER,

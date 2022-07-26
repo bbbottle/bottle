@@ -5,7 +5,7 @@ import React, {
   useEffect,
   useCallback,
   Ref,
-  ReactNode,
+  ReactNode, CSSProperties,
 } from "react";
 import { useState } from "react";
 import { noop, wait } from "./utils";
@@ -29,7 +29,7 @@ export interface ImageDropProps<T> {
   waitTimeAfterFinish?: number;
   defaultBgColor?: string;
   dragOverBgColor?: string;
-  dropAreaStyle?: CSSStyleDeclaration;
+  dropAreaStyle?: CSSProperties;
   placeholder?: any;
   className?: string;
   ghost?: boolean;
