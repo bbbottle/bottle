@@ -16,10 +16,9 @@ interface WrapperProps extends ImgProps {
 }
 
 const ImgWrapper = (props: WrapperProps) => {
-  const { aspectRatio, ...rest } = props;
   return (
     <DemoBox>
-      <Img {...rest} />
+      <Img {...props} />
     </DemoBox>
   );
 };
@@ -36,7 +35,6 @@ export const ImgDemo = () => {
       <ImgWrapper
         {...PHOTOS_FOR_DEMO[count % PHOTOS_FOR_DEMO.length]}
         key={count}
-        aspectRatio="1"
       />
       <Button onClick={refresh} className="mx-32 my-16">
         刷新
