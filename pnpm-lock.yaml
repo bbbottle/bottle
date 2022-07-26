@@ -8,33 +8,6 @@ importers:
     devDependencies:
       '@changesets/cli': 2.24.1
 
-  manual:
-    specifiers:
-      '@docusaurus/core': 2.0.0-rc.1
-      '@docusaurus/module-type-aliases': 2.0.0-rc.1
-      '@docusaurus/preset-classic': 2.0.0-rc.1
-      '@mdx-js/react': ^1.6.22
-      '@tsconfig/docusaurus': ^1.0.5
-      clsx: ^1.2.1
-      docusaurus: 1.14.7
-      prism-react-renderer: ^1.3.5
-      react: ^17.0.2
-      react-dom: ^17.0.2
-      typescript: ^4.7.4
-    dependencies:
-      '@docusaurus/core': 2.0.0-rc.1_7edel32iknup7qxgfrlqtj3nii
-      '@docusaurus/preset-classic': 2.0.0-rc.1_y4nsom22qvqk7jubr4375a7vau
-      '@mdx-js/react': 1.6.22_react@17.0.2
-      clsx: 1.2.1
-      prism-react-renderer: 1.3.5_react@17.0.2
-      react: 17.0.2
-      react-dom: 17.0.2_react@17.0.2
-    devDependencies:
-      '@docusaurus/module-type-aliases': 2.0.0-rc.1_sfoxds7t5ydpegc3knd667wn6m
-      '@tsconfig/docusaurus': 1.0.6
-      docusaurus: 1.14.7_xnp4kzegbjokq62cajex2ovgkm
-      typescript: 4.7.4
-
   packages/components:
     specifiers:
       '@babel/core': ^7.18.9
@@ -70,6 +43,47 @@ importers:
       react-router-dom: 6.3.0_biqbaboplfbrettd7655fr4n2y
       tailwindcss: 3.1.6
       tsup: 6.2.0_m3gf5jmpd2aiwepqhoxxcqgnwi
+      typescript: 4.7.4
+
+  packages/manual:
+    specifiers:
+      '@bbki.ng/components': workspace:2.1.7
+      '@bbki.ng/stylebase': workspace:0.0.5
+      '@docusaurus/core': 2.0.0-rc.1
+      '@docusaurus/module-type-aliases': 2.0.0-rc.1
+      '@docusaurus/preset-classic': 2.0.0-rc.1
+      '@docusaurus/types': 2.0.0-rc.1
+      '@mdx-js/react': ^1.6.22
+      '@tsconfig/docusaurus': ^1.0.5
+      autoprefixer: 10.4.7
+      classnames: 2.3.1
+      clsx: ^1.2.1
+      docusaurus: 1.14.7
+      postcss: 8.4.14
+      prism-react-renderer: ^1.3.5
+      react: ^17.0.2
+      react-dom: ^17.0.2
+      tailwindcss: 3.1.6
+      typescript: ^4.7.4
+    dependencies:
+      '@bbki.ng/components': link:../components
+      '@bbki.ng/stylebase': link:../stylebase
+      '@docusaurus/core': 2.0.0-rc.1_7edel32iknup7qxgfrlqtj3nii
+      '@docusaurus/preset-classic': 2.0.0-rc.1_y4nsom22qvqk7jubr4375a7vau
+      '@mdx-js/react': 1.6.22_react@17.0.2
+      autoprefixer: 10.4.7_postcss@8.4.14
+      classnames: 2.3.1
+      clsx: 1.2.1
+      postcss: 8.4.14
+      prism-react-renderer: 1.3.5_react@17.0.2
+      react: 17.0.2
+      react-dom: 17.0.2_react@17.0.2
+      tailwindcss: 3.1.6
+    devDependencies:
+      '@docusaurus/module-type-aliases': 2.0.0-rc.1_sfoxds7t5ydpegc3knd667wn6m
+      '@docusaurus/types': 2.0.0-rc.1_sfoxds7t5ydpegc3knd667wn6m
+      '@tsconfig/docusaurus': 1.0.6
+      docusaurus: 1.14.7_xnp4kzegbjokq62cajex2ovgkm
       typescript: 4.7.4
 
   packages/site:
@@ -3950,11 +3964,11 @@ packages:
   /address/1.1.2:
     resolution: {integrity: sha512-aT6camzM4xEA54YVJYSqxz1kv4IHnQZRtThJJHhUMRExaU5spC7jX5ugSwTaTgJliIgs4VhZOk7htClvQ/LmRA==}
     engines: {node: '>= 0.12.0'}
+    dev: true
 
   /address/1.2.0:
     resolution: {integrity: sha512-tNEZYz5G/zYunxFm7sfhAxkXEuLj3K6BKwv6ZURlsF6yiUQ65z0Q2wZW9L5cPUl9ocofGvXOdFYbFHp0+6MOig==}
     engines: {node: '>= 10.0.0'}
-    dev: false
 
   /agent-base/6.0.2:
     resolution: {integrity: sha512-RZNwNclF7+MS/8bDg70amg32dyeZGZxiDuQmZxKLAlQjr3jGyLx+4Kkk58UO7D2QdgFIQCovuSuZESne6RG6XQ==}
@@ -6285,7 +6299,7 @@ packages:
     engines: {node: '>= 4.2.1'}
     hasBin: true
     dependencies:
-      address: 1.1.2
+      address: 1.2.0
       debug: 2.6.9
     transitivePeerDependencies:
       - supports-color
@@ -6491,7 +6505,7 @@ packages:
   /domutils/1.5.1:
     resolution: {integrity: sha512-gSu5Oi/I+3wDENBsOWBiRK1eoGxcywYSqg3rR960/+EfY0CF4EX1VPkgHOZ3WiS/Jg2DtliF6BhWcHlfpYUcGw==}
     dependencies:
-      dom-serializer: 0.1.1
+      dom-serializer: 0.2.2
       domelementtype: 1.3.1
     dev: true
 
