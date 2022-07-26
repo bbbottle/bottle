@@ -4,18 +4,7 @@ import { PHOTOS_FOR_DEMO } from "@/constants/photos";
 import { DemoBox } from "@/demo/DemoBox";
 import { Photo } from "@/types/photo";
 
-interface WrapperProps extends ImgProps {
-  aspectRatio?:
-    | "-moz-initial"
-    | "inherit"
-    | "initial"
-    | "revert"
-    | "unset"
-    | "auto"
-    | string;
-}
-
-const ImgWrapper = (props: WrapperProps) => {
+const ImgWrapper = (props: ImgProps) => {
   return (
     <DemoBox>
       <Img {...props} />
