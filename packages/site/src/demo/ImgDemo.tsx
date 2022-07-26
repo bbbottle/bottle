@@ -19,10 +19,11 @@ export const ImgDemo = () => {
   };
 
   const images: Photo[] = PHOTOS_FOR_DEMO;
+
   return (
     <div>
       <ImgWrapper
-        {...PHOTOS_FOR_DEMO[count % PHOTOS_FOR_DEMO.length]}
+        {...images[count % images.length]}
         key={count}
       />
       <Button onClick={refresh} className="mx-32 my-16">
