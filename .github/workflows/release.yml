@@ -36,3 +36,7 @@ jobs:
         if: steps.changesets.outputs.published != 'true'
         # You can do something when a publish happens.
         run: exit 0
+  call-workflow-passing-data:
+    uses: ./.github/workflows/deploy.yml
+    with:
+      target: foobar
