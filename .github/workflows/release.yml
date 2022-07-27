@@ -38,7 +38,3 @@ jobs:
         - name: Send a Slack notification if a publish happens
           if: steps.changesets.outputs.published != 'true'
           run: exit 0
-  call-workflow-passing-data:
-    uses: ./.github/workflows/deploy.yml
-    with:
-      target: foobar
