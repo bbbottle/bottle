@@ -1,6 +1,6 @@
 {
   "name": "@bbki.ng/components",
-  "version": "2.1.12",
+  "version": "2.1.13",
   "type": "module",
   "scripts": {
     "build": "tsup",
@@ -23,7 +23,7 @@
     }
   },
   "dependencies": {
-    "@bbki.ng/stylebase": "workspace:0.0.10",
+    "@bbki.ng/stylebase": "workspace:0.0.11",
     "phenomenon": "^1.6.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
