@@ -32,11 +32,17 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
 
-      - name: Send a Slack notification if a publish happens
+      - name: Exit if without packages published.
         if: steps.changesets.outputs.published != 'true'
-        # You can do something when a publish happens.
         run: exit 0
-  call-workflow-passing-data:
-    uses: ./.github/workflows/deploy.yml
-    with:
-      target: foobar
+      - name: Build Packages
+        run: pnpm turbo run build
+      - name: Deploy bbki.ng to Server
+        uses: easingthemes/ssh-deploy@main
+        env:
+          SSH_PRIVATE_KEY: ${{ secrets.SERVER_SSH_KEY }}
+          SOURCE: "dist/"
+          REMOTE_HOST: ${{ secrets.REMOTE_HOST }}
+          REMOTE_USER: ${{ secrets.REMOTE_USER }}
+          TARGET: ${{ secrets.REMOTE_SITE_TARGET }}
+          EXCLUDE: "/dist/, /node_modules/"
