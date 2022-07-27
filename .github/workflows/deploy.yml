@@ -1,16 +1,14 @@
 name: Deploy
 on:
-  workflow_run:
-    workflows:
-      - "Release"
-    branches:
-      - main
-    types:
-      - completed
+  workflow_call:
+    inputs:
+      target:
+        required: true
+        type: string
+
 jobs:
   builds:
     runs-on: ubuntu-latest
-    if: "contains(github.event.head_commit.message, 'changeset-release')"
     steps:
       - name: Checkout Repo
         uses: actions/checkout@v2
