@@ -31,13 +31,11 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
-
-      - name: Exit if without packages published.
-        if: steps.changesets.outputs.published != 'true'
-        run: exit 0
       - name: Build Packages
+        if: steps.changesets.outputs.published == 'true'
         run: pnpm turbo run build
       - name: Deploy bbki.ng to Server
+        if: steps.changesets.outputs.published == 'true'
         uses: easingthemes/ssh-deploy@main
         env:
           SSH_PRIVATE_KEY: ${{ secrets.SERVER_SSH_KEY }}
