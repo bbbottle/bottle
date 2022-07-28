@@ -6,7 +6,7 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
-  title: '说明书',
+  title: 'BBKi.ng Docs',
   tagline: 'everything behind bbki.ng',
   url: 'https://bbki.ng',
   baseUrl: '/',
@@ -34,20 +34,16 @@ const config = {
       ({
         docs: {
           sidebarPath: require.resolve('./sidebars.js'),
-          // Please change this to your repo.
-          // Remove this to remove the "edit this page" links.
-          editUrl:
-            'https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/',
         },
         blog: {
-          showReadingTime: true,
-          // Please change this to your repo.
-          // Remove this to remove the "edit this page" links.
-          editUrl:
-            'https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/',
+          showReadingTime: false,
+          blogTitle: 'Log'
         },
         theme: {
-          customCss: require.resolve('./src/css/custom.css'),
+          customCss: [
+            require.resolve('./src/css/custom.css'),
+            require.resolve('@bbki.ng/components/style')
+          ],
         },
       }),
     ],
@@ -81,9 +77,9 @@ const config = {
             type: 'doc',
             docId: 'intro',
             position: 'left',
-            label: 'Tutorial',
+            label: 'Intro',
           },
-          {to: '/blog', label: 'Blog', position: 'left'},
+          {to: '/blog', label: 'Log', position: 'left'},
           {
             href: 'https://github.com/bbbottle/bottle',
             label: 'GitHub',
@@ -92,7 +88,19 @@ const config = {
         ],
       },
 
-      footer: {},
+      footer: {
+        style: 'light',
+        links: [{
+          title: 'Links',
+          items: [{
+            label: 'Site',
+            to: 'https://bbki.ng'
+          }, {
+            label: 'GitHub',
+            to: 'https://github.com/bbbottle/bottle',
+          }]
+        }]
+      },
       // footer: {
       //   style: 'light',
       //   links: [
