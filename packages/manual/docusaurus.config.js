@@ -67,7 +67,7 @@ const config = {
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
       navbar: {
-        title: '说明书',
+        title: 'BBKi.ng  Docs',
         logo: {
           alt: 'My Site Logo',
           src: 'img/logo.svg',
@@ -75,11 +75,11 @@ const config = {
         items: [
           {
             type: 'doc',
-            docId: 'intro',
+            docId: 'Article',
             position: 'left',
-            label: 'Intro',
+            label: '零件',
           },
-          {to: '/blog', label: 'Log', position: 'left'},
+          {to: '/blog', label: '日志', position: 'left'},
           {
             href: 'https://github.com/bbbottle/bottle',
             label: 'GitHub',
