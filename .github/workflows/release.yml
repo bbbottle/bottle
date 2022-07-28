@@ -44,3 +44,13 @@ jobs:
           REMOTE_USER: ${{ secrets.REMOTE_USER }}
           TARGET: ${{ secrets.REMOTE_SITE_TARGET }}
           EXCLUDE: "/dist/, /node_modules/"
+      - name: Deploy manual to Server
+        if: steps.changesets.outputs.published == 'true'
+        uses: easingthemes/ssh-deploy@main
+        env:
+          SSH_PRIVATE_KEY: ${{ secrets.SERVER_SSH_KEY }}
+          SOURCE: "packages/manual/build/"
+          REMOTE_HOST: ${{ secrets.REMOTE_HOST }}
+          REMOTE_USER: ${{ secrets.REMOTE_USER }}
+          TARGET: ${{ secrets.REMOTE_MANUAL_TARGET }}
+          EXCLUDE: "/dist/, /node_modules/"
