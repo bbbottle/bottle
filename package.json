@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "pnpm turbo run build",
     "release": "pnpm changeset version && pnpm changeset publish"
   },
   "keywords": [],
