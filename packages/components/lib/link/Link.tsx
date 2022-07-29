@@ -25,9 +25,9 @@ const COLOR_MAPPING = {
 };
 
 const HOVER_COLOR_MAPPING = {
-  [LinkColor.BLUE]: "hover:bg-blue-100",
-  [LinkColor.RED]: "hover:bg-red-100",
-  [LinkColor.GRAY]: "hover:bg-gray-100",
+  [LinkColor.BLUE]: "[&:not(:focus)]:hover:bg-blue-100 [&:not(:focus)]:hover:text-blue-600",
+  [LinkColor.RED]: "[&:not(:focus)]:hover:bg-red-100 [&:not(:focus)]:hover:text-blue-500",
+  [LinkColor.GRAY]: "[&:not(:focus)]:hover:bg-gray-100 [&:not(:focus)]:hover:text-blue-400",
 };
 
 const FOCUS_BG_COLOR_MAPPING = {
@@ -48,7 +48,7 @@ export const Link = (props: LinkProps) => {
   const linkCls = classNames(
     className,
     "rounded",
-    "no-underline",
+    "!no-underline",
     "transition-colors",
     "focus:text-white",
     COLOR_MAPPING[color],
