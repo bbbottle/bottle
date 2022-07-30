@@ -8,6 +8,7 @@
   ],
   "scripts": {
     "build": "vite build",
+    "dev": "vite dev",
     "prepare": "vite build"
   },
   "type": "commonjs",
