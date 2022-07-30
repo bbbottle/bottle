@@ -48,7 +48,7 @@ module.exports = {
   .hljs-quote,
   .hljs-selector-tag,
   .hljs-selector-pseudo,
-  .hljs-addition,
+  .hljs-addition
   `,
   bgWhiteKey: `
   .hljs-deletion,

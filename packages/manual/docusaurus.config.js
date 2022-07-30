@@ -4,6 +4,8 @@
 const lightCodeTheme = require('prism-react-renderer/themes/github');
 const darkCodeTheme = require('prism-react-renderer/themes/dracula');
 
+const t = (node) => html`<div class="prose">${node}</div>`
+
 /** @type {import('@docusaurus/types').Config} */
 const config = {
   title: 'BBKi.ng Docs',
@@ -37,12 +39,13 @@ const config = {
         },
         blog: {
           showReadingTime: false,
-          blogTitle: 'Log'
+          blogTitle: 'Log',
+          blogPostComponent: '@theme/BlogPostPage',
         },
         theme: {
           customCss: [
+            require.resolve('@bbki.ng/components/style'),
             require.resolve('./src/css/custom.css'),
-            require.resolve('@bbki.ng/components/style')
           ],
         },
       }),
