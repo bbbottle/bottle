@@ -20,12 +20,12 @@ export const List: FunctionComponent<listProps> = (props) => {
     <ul
       className={cls(className, "list-style-none", {
         flex: horizontal,
-        "align-center": horizontal,
+        "items-center": horizontal,
       })}
     >
       {items.map((item, index) => {
         return (
-          <li key={item.id || index} className={cls(spaceCls, "flex-shrink-0")}>
+          <li key={item.id || index} className={cls(spaceCls, "flex-shrink-0", { "!my-0": horizontal })}>
             {itemRenderer(item, index)}
           </li>
         );

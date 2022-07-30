@@ -7,7 +7,7 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
 /** @type {import('@docusaurus/types').Config} */
 const config = {
   title: 'BBKi.ng Docs',
-  tagline: 'everything behind bbki.ng',
+  tagline: 'something behind bbki.ng',
   url: 'https://bbki.ng',
   baseUrl: '/',
   onBrokenLinks: 'throw',
