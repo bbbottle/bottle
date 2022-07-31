@@ -31,6 +31,14 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+      - name: send telegram message
+        if: steps.changesets.outputs.published != 'true'
+        uses: appleboy/telegram-action@master
+        with:
+          to: ${{ secrets.TELEGRAM_CHANNEL_ID }}
+          token: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          message: |
+            - Pull Request Created By Changeset Action.
       - name: Build Packages
         if: steps.changesets.outputs.published == 'true'
         run: pnpm turbo run build
