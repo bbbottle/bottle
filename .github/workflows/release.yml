@@ -38,7 +38,8 @@ jobs:
           to: ${{ secrets.TELEGRAM_CHANNEL_ID }}
           token: ${{ secrets.TELEGRAM_BOT_TOKEN }}
           message: |
-            - Pull Request Created By Changeset Action.
+            Pull Request Created By Changeset Action.
+            See changes: https://github.com/bbbottle/bottle/pulls
       - name: Build Packages
         if: steps.changesets.outputs.published == 'true'
         run: pnpm turbo run build
