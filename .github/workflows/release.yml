@@ -45,6 +45,7 @@ jobs:
           TARGET: ${{ secrets.REMOTE_SITE_TARGET }}
           EXCLUDE: "/dist/, /node_modules/"
       - name: send telegram message
+        if: steps.changesets.outputs.published == 'true'
         uses: appleboy/telegram-action@master
         with:
           to: ${{ secrets.TELEGRAM_CHANNEL_ID }}
@@ -63,6 +64,7 @@ jobs:
           TARGET: ${{ secrets.REMOTE_MANUAL_TARGET }}
           EXCLUDE: "/dist/, /node_modules/"
       - name: send telegram message
+        if: steps.changesets.outputs.published == 'true'
         uses: appleboy/telegram-action@master
         with:
           to: ${{ secrets.TELEGRAM_CHANNEL_ID }}
