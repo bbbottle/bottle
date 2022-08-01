@@ -1,6 +1,6 @@
 import React, { ReactElement, ReactNode, Suspense } from "react";
-import { Spinner } from "./Spinner";
 import { ErrorBoundary } from "@bbki.ng/components";
+import { Spinner } from "./Spinner";
 
 export const MySuspense = (props: {
   children: ReactNode;

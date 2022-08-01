@@ -1,16 +1,10 @@
 export enum ATTR {
-  LENGTH = "aLength",
-  COLOR = "aColor",
-  OFFSET_Y = "aOffsetY",
   PERCENT = "aPercent",
-  POINT_SIZE = "aPointSize",
+  POINT_SIZE = 'aPointSize'
 }
 
 export const VERTEX_SHADER = `
-  attribute vec3 ${ATTR.COLOR};
-  attribute float ${ATTR.OFFSET_Y};
   attribute float ${ATTR.PERCENT};
-  attribute float ${ATTR.LENGTH};
   attribute float ${ATTR.POINT_SIZE};
 
   uniform mat4 uProjectionMatrix;
@@ -48,33 +42,21 @@ export const VERTEX_SHADER = `
     );
   }
 
-  mat4 translateY(float _offset){
-    return mat4(
-      1.0, 0.0, 0.0, 0.0,
-      0.0, 1.0, 0.0, -1.0 * _offset,
-      0.0, 0.0, 1.0, 0.0,
-      0.0, 0.0, 0.0, 1.0
-    );
-  }
-  
   void main(){
     gl_Position = uProjectionMatrix
      * uModelMatrix
      * uViewMatrix
      * rotateX(uProgress)
-     * vec4(curve(${ATTR.PERCENT}, ${ATTR.LENGTH}), 1.0)
-     * translateY(${ATTR.OFFSET_Y});
+     * vec4(curve(${ATTR.PERCENT}, 0.8), 1.0);
 
     gl_PointSize = ${ATTR.POINT_SIZE};
-    vColor = ${ATTR.COLOR};
   }
 `;
 
 export const FRAGMENT_SHADER = `
   precision mediump float;
   uniform float uProgress;
-  varying vec3 vColor;
   void main(){
-    gl_FragColor = vec4(vColor, 1.0);
+    gl_FragColor = vec4(0.81, 0.83, 0.85, 1.0);
   }
 `;
