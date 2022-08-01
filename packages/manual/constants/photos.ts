@@ -15,6 +15,26 @@ export const OSS_PHOTOS = {
     width: 1746,
     height: 1746,
   },
+  logoRatio: {
+    src: "https://zjh-im-res.oss-cn-shenzhen.aliyuncs.com/image/illustration/illustration/gold%20ratio.png",
+    width: 4800,
+    height: 7800,
+  },
+  guidelines: {
+    src: "https://zjh-im-res.oss-cn-shenzhen.aliyuncs.com/image/illustration/illustration/guidelines.jpg?x-oss-process=style/700px",
+    width: 19574,
+    height: 10200,
+  },
+  logoAndGuidelines: {
+    src: "https://zjh-im-res.oss-cn-shenzhen.aliyuncs.com/image/illustration/illustration/guidelines%20%26%20logo.jpg?x-oss-process=style/700px",
+    width: 10800,
+    height: 10200,
+  },
+  logoSketch: {
+    src: "https://zjh-im-res.oss-cn-shenzhen.aliyuncs.com/image/illustration/illustration/sketch.jpg",
+    width: 2000,
+    height: 2002,
+  },
   quyuan: {
     src: "https://zjh-im-res.oss-cn-shenzhen.aliyuncs.com/image/from-the-past/quyuan.webp",
     avgColor: BgColors.LIGHT_GRAY,
