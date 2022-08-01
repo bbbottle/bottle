@@ -4,18 +4,15 @@ import Phenomenon from "phenomenon";
 import classNames from "classnames";
 import React, { useEffect, useRef } from "react";
 import { createSettings, ISettings } from "./createSettings";
-import { createOptions, DEFAULT_OPT, IOpt } from "./createOptions";
-import { useResizedCanvasRef } from "./useCanvasRef";
+import { createOptions } from "./createOptions";
 
-export interface LoadingSpiralProps extends IOpt, ISettings {
+export interface LoadingSpiralProps extends ISettings {
   className?: string;
-  maxWidth?: number;
-  offset?: number;
 }
 
 export const LoadingSpiral = (props?: LoadingSpiralProps) => {
-  const { className, canvas, step, maxWidth = 1000, ...rest } = props || {};
-  const { canvasRef, containerRef } = useResizedCanvasRef(maxWidth);
+  const { className, step } = props || {};
+  const canvasRef = useRef<HTMLCanvasElement>(null)
 
   useEffect(() => {
     if (!canvasRef.current) {
@@ -31,15 +28,22 @@ export const LoadingSpiral = (props?: LoadingSpiralProps) => {
 
     phenomenon.add(
       "spiral",
-      createOptions(Object.assign({}, DEFAULT_OPT, rest))
+      createOptions()
     );
   }, []);
 
   return (
     <canvas
+      width={200}
+      height={200}
+      style={{
+        width: 200,
+        height: 200,
+        imageRendering: 'pixelated',
+      }}
       ref={canvasRef}
       className={classNames(
-        "h-full w-full overflow-hidden flex justify-center items-center",
+        "h-full w-full overflow-hidden flex justify-center items-center aspect-1",
         className
       )}
     />
