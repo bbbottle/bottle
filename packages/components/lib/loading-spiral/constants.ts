@@ -14,10 +14,10 @@ export const VERTEX_SHADER = `
 
   varying vec3 vColor;
   
-  vec3 curve(float _percent, float _length) {
+  vec3 curve(float _percent) {
     const float PI2 = 3.141592653589793 * 2.0;
-    float radius = 0.028 / 0.15 * _length;
-
+    const float _length = 0.3;
+    const float radius = 0.056;
     float t = mod(_percent, 0.25) / 0.25;
     t = mod(_percent, 0.25) - (2.0 * (1.0 - t) * t * -0.0185 + t * t * 0.25);
     float x = _length * sin(PI2 * _percent);
@@ -47,7 +47,7 @@ export const VERTEX_SHADER = `
      * uModelMatrix
      * uViewMatrix
      * rotateX(uProgress)
-     * vec4(curve(${ATTR.PERCENT}, 0.8), 1.0);
+     * vec4(curve(${ATTR.PERCENT}), 1.0);
 
     gl_PointSize = ${ATTR.POINT_SIZE};
   }

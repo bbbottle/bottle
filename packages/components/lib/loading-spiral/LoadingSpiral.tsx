@@ -23,6 +23,7 @@ export const LoadingSpiral = (props?: LoadingSpiralProps) => {
       settings: createSettings({ canvas: canvasRef.current, step }),
       context: {
         antialias: true,
+        alpha: true,
       },
     });
 
@@ -34,11 +35,9 @@ export const LoadingSpiral = (props?: LoadingSpiralProps) => {
 
   return (
     <canvas
-      width={200}
-      height={200}
       style={{
-        width: 200,
-        height: 200,
+        maxWidth: 500,
+        maxHeight: 500,
         imageRendering: 'pixelated',
       }}
       ref={canvasRef}
