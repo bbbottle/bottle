@@ -47,7 +47,7 @@ jobs:
     needs: [release]
     if: |
       needs.release.outputs.published == 'true' &&
-      (contains(needs.release.outputs.publishedPackages, '@bbki.ng/manual'))
+      (contains(fromJson(needs.release.outputs.publishedPackages).*.name, '@bbki.ng/site'))
     uses: ./.github/workflows/deploy.yml
     with:
       source: 'packages/site/dist/'
@@ -67,7 +67,7 @@ jobs:
     needs: [release]
     if: |
       needs.release.outputs.published == 'true' &&
-      (contains(needs.release.outputs.publishedPackages, '@bbki.ng/manual'))
+      (contains(fromJson(needs.release.outputs.publishedPackages).*.name, '@bbki.ng/manual'))
     uses: ./.github/workflows/deploy.yml
     with:
       source: 'packages/manual/build/'
