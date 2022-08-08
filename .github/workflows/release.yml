@@ -69,7 +69,7 @@ jobs:
     needs: [release]
     if: |
       needs.release.outputs.published == 'true' &&
-      contains(needs.release.outputs.publishedPackages, '@bbki.ng/manual')
+      (contains(needs.release.outputs.publishedPackages, '@bbki.ng/manual'))
     uses: ./.github/workflows/deploy.yml
     with:
       source: 'packages/site/dist/'

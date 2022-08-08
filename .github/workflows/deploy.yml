@@ -2,7 +2,7 @@ name: Deploy dist to server
 on:
   workflow_call:
     inputs:
-      srouce:
+      source:
         type: string
         required: true
       package:
