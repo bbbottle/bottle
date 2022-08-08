@@ -42,28 +42,26 @@ jobs:
           message: |
             Pull Request Created By Changeset Action.
             See changes: https://github.com/bbbottle/bottle/pulls
-      - name: Build Packages
-        if: steps.changesets.outputs.published == 'true'
-        run: pnpm turbo run build
-      - name: Deploy bbki.ng to Server
-        if: steps.changesets.outputs.published == 'true'
-        uses: easingthemes/ssh-deploy@main
-        env:
-          SSH_PRIVATE_KEY: ${{ secrets.SERVER_SSH_KEY }}
-          SOURCE: "packages/site/dist/"
-          REMOTE_HOST: ${{ secrets.REMOTE_HOST }}
-          REMOTE_USER: ${{ secrets.REMOTE_USER }}
-          TARGET: ${{ secrets.REMOTE_SITE_TARGET }}
-          EXCLUDE: "/dist/, /node_modules/"
-      - name: send telegram message
-        if: steps.changesets.outputs.published == 'true'
-        uses: appleboy/telegram-action@master
-        with:
-          to: ${{ secrets.TELEGRAM_CHANNEL_ID }}
-          token: ${{ secrets.TELEGRAM_BOT_TOKEN }}
-          message: |
-            BBKi.ng Deployed to server.
-            See changes: http://bbki.ng
+
+  deploy-site:
+    needs: [release]
+    if: |
+      needs.release.outputs.published == 'true' &&
+      (contains(needs.release.outputs.publishedPackages, '@bbki.ng/manual'))
+    uses: ./.github/workflows/deploy.yml
+    with:
+      source: 'packages/site/dist/'
+      package: '@bbki.ng/site'
+      msg: |
+        Site Deployed to server successfully.
+        See changes: https://bbki.ng
+    secrets:
+      SERVER_SSH_KEY: ${{ secrets.SERVER_SSH_KEY }}
+      TELEGRAM_CHANNEL_ID: ${{ secrets.TELEGRAM_CHANNEL_ID }}
+      TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+      REMOTE_HOST: ${{ secrets.REMOTE_HOST }}
+      REMOTE_USER: ${{ secrets.REMOTE_USER }}
+      REMOTE_TARGET: ${{ secrets.REMOTE_SITE_TARGET }}
 
   deploy-manual:
     needs: [release]
@@ -72,11 +70,11 @@ jobs:
       (contains(needs.release.outputs.publishedPackages, '@bbki.ng/manual'))
     uses: ./.github/workflows/deploy.yml
     with:
-      source: 'packages/site/dist/'
+      source: 'packages/manual/build/'
       package: '@bbki.ng/manual'
       msg: |
         Manual Deployed to server successfully.
-        See changes: http://docs.bbki.ng
+        See changes: https://docs.bbki.ng
     secrets:
       SERVER_SSH_KEY: ${{ secrets.SERVER_SSH_KEY }}
       TELEGRAM_CHANNEL_ID: ${{ secrets.TELEGRAM_CHANNEL_ID }}
