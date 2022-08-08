@@ -2,6 +2,9 @@ name: Deploy dist to server
 on:
   workflow_call:
     inputs:
+      srouce:
+        type: string
+        required: true
       package:
         type: string
         required: true
@@ -47,7 +50,7 @@ jobs:
         uses: easingthemes/ssh-deploy@main
         env:
           SSH_PRIVATE_KEY: ${{ secrets.SERVER_SSH_KEY }}
-          SOURCE: "packages/site/dist/"
+          SOURCE: ${{ inputs.source }}
           REMOTE_HOST: ${{ secrets.REMOTE_HOST }}
           REMOTE_USER: ${{ secrets.REMOTE_USER }}
           TARGET: ${{ secrets.REMOTE_TARGET }}
