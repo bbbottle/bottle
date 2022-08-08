@@ -9,17 +9,22 @@ concurrency: ${{ github.workflow }}-${{ github.ref }}
 
 jobs:
   release:
-    name: Release
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Repo
         uses: actions/checkout@v2
+      - name: Setup Node.js 17.x
+        uses: actions/setup-node@v2
+        with:
+          node-version: 17.x
+      - name: Install pnpm
+        run: npm install -g pnpm
       - name: Create Release Pull Request or Publish to npm
         id: changesets
         uses: changesets/action@v1
         with:
           # This expects you to have a script called release which does a build for your packages and calls changeset publish
-          publish: yarn release
+          publish: pnpm release
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
@@ -55,17 +60,13 @@ jobs:
             BBKi.ng Deployed to server.
             See changes: http://bbki.ng
   deploy-manual:
+    needs: [release]
     # if: steps.changesets.outputs.published == 'true'
     uses: ./.github/workflows/deploy.yml
     with:
+      target: ${{ secrets.REMOTE_MANUAL_TARGET }}
       package: '@bbki.ng/manual'
       msg: |
         Manual Deployed to server successfully.
         See changes: http://docs.bbki.ng
-    secrets:
-      serverPrivateKey: ${{ secrets.SERVER_SSH_KEY }}
-      remoteHost: ${{ secrets.REMOTE_HOST }}
-      remoteUser: ${{ secrets.REMOTE_USER }}
-      target: ${{ secrets.REMOTE_MANUAL_TARGET }}
-      msgChannelId: ${{ secrets.TELEGRAM_CHANNEL_ID }}
-      botToken: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+    secrets: inherit
