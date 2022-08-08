@@ -24,11 +24,7 @@ jobs:
     name: deploy content to server
     runs-on: ubuntu-latest
     steps:
-      - uses: ./.github/workflows/my-action
-        with:
-          username: ${{ inputs.username }}
-          token: ${{ secrets.token }}
-      - name: Deploy bbki.ng to Server
+      - name: send files to server
         uses: easingthemes/ssh-deploy@main
         env:
           SSH_PRIVATE_KEY: ${{ secrets.serverPrivateKey }}
