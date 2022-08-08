@@ -42,4 +42,4 @@ jobs:
         with:
           to: ${{ secrets.msgChannelId}}
           token: ${{ secrets.TELEGRAM_BOT_TOKEN }}
-          message: ${{ msg }}
+          message: ${{ inputs.msg }}
