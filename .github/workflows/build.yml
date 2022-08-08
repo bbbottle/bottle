@@ -1,0 +1,22 @@
+name: Build repo packages
+
+on:
+  workflow_call:
+
+jobs:
+  build_repo:
+    name: build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repo
+        uses: actions/checkout@v2
+      - name: Setup Node.js 17.x
+        uses: actions/setup-node@v2
+        with:
+          node-version: 17.x
+      - name: Install pnpm
+        run: npm install -g pnpm
+      - name: Install Dependencies
+        run: pnpm install --no-frozen-lockfile
+      - name: Build Packages
+        run: pnpm turbo run build
