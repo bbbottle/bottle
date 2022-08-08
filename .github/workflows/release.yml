@@ -66,9 +66,7 @@ jobs:
     # if: steps.changesets.outputs.published == 'true'
     uses: ./.github/workflows/deploy.yml
     with:
-      msg: |
-        Manual Deployed to server successfully.
-        See changes: http://docs.bbki.ng
+      msg: "Manual Deployed to server successfully.See changes: http://docs.bbki.ng"
     secrets:
       serverPrivateKey: ${{ secrets.SERVER_SSH_KEY }}
       remoteHost: ${{ secrets.REMOTE_HOST }}
