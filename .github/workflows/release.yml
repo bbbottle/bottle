@@ -64,9 +64,12 @@ jobs:
           message: |
             BBKi.ng Deployed to server.
             See changes: http://bbki.ng
+
   deploy-manual:
     needs: [release]
-    if: jobs.release.outputs.published == 'true' && contains(jobs.release.outputs.publishedPackages, '@bbki.ng/manual')
+    if: |
+      needs.release.outputs.published == 'true' &&
+      contains(needs.release.outputs.publishedPackages, '@bbki.ng/manual')
     uses: ./.github/workflows/deploy.yml
     with:
       source: 'packages/site/dist/'
