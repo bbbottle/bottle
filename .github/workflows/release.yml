@@ -10,6 +10,8 @@ concurrency: ${{ github.workflow }}-${{ github.ref }}
 jobs:
   release:
     runs-on: ubuntu-latest
+    outputs:
+      packages: ${{ steps.changesets.outputs }}
     steps:
       - name: Checkout Repo
         uses: actions/checkout@v2
@@ -64,7 +66,7 @@ jobs:
     # if: steps.changesets.outputs.published == 'true'
     uses: ./.github/workflows/deploy.yml
     with:
-      target: ${{ secrets.REMOTE_MANUAL_TARGET }}
+      target: "${{ secrets.REMOTE_MANUAL_TARGET }}"
       package: '@bbki.ng/manual'
       msg: |
         Manual Deployed to server successfully.
