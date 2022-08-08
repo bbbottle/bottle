@@ -39,6 +39,7 @@ jobs:
       - name: Build Packages
         run: pnpm turbo run build --filter ${{ inputs.package }}
   deploy:
+    needs: [build]
     runs-on: ubuntu-latest
     steps:
       - name: send files to server
