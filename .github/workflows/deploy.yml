@@ -1,0 +1,48 @@
+name: Deploy dist to server
+on:
+  workflow_call:
+    inputs:
+      msg:
+        type: string
+        required: false
+    secrets:
+      serverPrivateKey:
+        required: true
+      remoteHost:
+        required: true
+      remoteUser:
+        required: true
+      target:
+        required: true
+      msgChannelId:
+        required: true
+      botToken:
+        required: true
+
+jobs:
+  deploy:
+    name: deploy content to server
+    runs-on: ubuntu-latest
+    steps:
+      - uses: ./.github/workflows/my-action
+        with:
+          username: ${{ inputs.username }}
+          token: ${{ secrets.token }}
+      - name: Deploy bbki.ng to Server
+        uses: easingthemes/ssh-deploy@main
+        env:
+          SSH_PRIVATE_KEY: ${{ secrets.serverPrivateKey }}
+          SOURCE: "packages/site/dist/"
+          REMOTE_HOST: ${{ secrets.remoteHost }}
+          REMOTE_USER: ${{ secrets.remoteUser }}
+          TARGET: ${{ secrets.target }}
+          EXCLUDE: "/dist/, /node_modules/"
+      - name: send telegram message
+        uses: appleboy/telegram-action@master
+        with:
+          to: ${{ secrets.msgChannelId}}
+          token: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          message: |
+            ${{ msg }}
+
+
