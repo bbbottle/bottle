@@ -71,7 +71,7 @@ jobs:
         Manual Deployed to server successfully.
         See changes: http://docs.bbki.ng
     secrets:
-      SSH_PRIVATE_KEY: ${{ secrets.SERVER_SSH_KEY }}
+      SERVER_SSH_KEY: ${{ secrets.SERVER_SSH_KEY }}
       TELEGRAM_CHANNEL_ID: ${{ secrets.TELEGRAM_CHANNEL_ID }}
       TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
       REMOTE_HOST: ${{ secrets.REMOTE_HOST }}
