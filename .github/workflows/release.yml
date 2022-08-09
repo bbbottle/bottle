@@ -36,7 +36,7 @@ jobs:
       - name: send result to telegram channel
         if: |
           steps.changesets.outputs.published != 'true' &&
-          steps.changesets.outputs.hasChangesets == 'true' &&
+          steps.changesets.outputs.hasChangesets == 'true'
         uses: appleboy/telegram-action@master
         with:
           to: ${{ secrets.TELEGRAM_CHANNEL_ID }}
