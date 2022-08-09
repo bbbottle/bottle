@@ -33,10 +33,10 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
-      - name: echo outputs
-        run: echo ${{ toJson(steps.changesets.outputs) }}
-      - name: send telegram message
-        if: steps.changesets.outputs.published != 'true'
+      - name: send result to telegram channel
+        if: |
+        steps.changesets.outputs.published != 'true' &&
+        steps.changesets.outputs.hasChangesets == 'true' &&
         uses: appleboy/telegram-action@master
         with:
           to: ${{ secrets.TELEGRAM_CHANNEL_ID }}
