@@ -41,7 +41,7 @@ jobs:
           steps.changesets.outputs.hasChangesets == 'true'
         uses: ./.github/actions/merge-version-pr
         with:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GH_PAT }}
 
       # deploy manual
       - name: deploy manual artifact
@@ -61,14 +61,6 @@ jobs:
           REMOTE_HOST: ${{ secrets.REMOTE_HOST }}
           REMOTE_USER: ${{ secrets.REMOTE_USER }}
           REMOTE_TARGET: ${{ secrets.REMOTE_SITE_TARGET }}
-
-  rerun:
-    needs: [release]
-    if: |
-      needs.release.outputs.published == 'false' &&
-      needs.release.outputs.hasChangesets == 'true'
-    uses: ./.github/workflows/release.yml
-    secrets: inherit
 #  deploy-site:
 #    needs: [release]
 #    if: |
