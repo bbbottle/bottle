@@ -5,9 +5,8 @@ runs:
   using: 'composite'
   steps:
     # setup pnpm and install dependencies
-    - name: Checkout Repo
-      uses: actions/checkout@v2
-    - uses: pnpm/action-setup@v2.2.2
+    - name: setup pnpm
+      uses: pnpm/action-setup@v2.2.2
       with:
         version: 7
     - name: Setup Node.js 17.x
