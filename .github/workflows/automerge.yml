@@ -27,11 +27,11 @@ jobs:
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           script: |
-            const [{ number }] = await octokit.rest.pulls.list({
+            const [{ number }] = await github.rest.pulls.list({
               owner: 'bbbottle',
               repo: 'bottle',
             });
-            octokit.rest.pulls.merge({
+            github.rest.pulls.merge({
               owner: 'bbbottle',
               repo: 'bottle',
               pull_number: number,
