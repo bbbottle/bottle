@@ -34,7 +34,6 @@ jobs:
       - name: Install Dependencies
         run: pnpm install --no-frozen-lockfile
 
-
       # version or publish packages
       - name: Create Release Pull Request or Publish to npm
         id: changesets
@@ -45,40 +44,15 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
 
-      # build and upload artifacts
-      # 1. build site packages
-      - name: Build Site Packages
-        if: |
-          steps.changesets.outputs.published == 'true' &&
-          (contains(fromJson(steps.changesets.outputs.publishedPackages).*.name, '@bbki.ng/site'))
-        run: pnpm turbo run build --filter '@bbki.ng/site'
-      - name: Upload Site Artifact
-        uses: actions/upload-artifact@v3
-        with:
-          name: site-artifact
-          path: packages/site/dist/
-
-      # 2. build manual packages
-      - name: Build Manual Packages
+      # deploy manual
+      - name: deploy manual artifact
         if: |
           steps.changesets.outputs.published == 'true' &&
           (contains(fromJson(steps.changesets.outputs.publishedPackages).*.name, '@bbki.ng/manual'))
-        run: pnpm turbo run build --filter '@bbki.ng/manual'
-      - name: Upload Manual Artifact
-        uses: actions/upload-artifact@v3
-        with:
-          name: site-artifact
-          path: packages/manual/build/
-
-      # deploy site
-      - name: deploy site artifact
-        if: |
-          steps.changesets.outputs.published == 'true' &&
-          (contains(fromJson(steps.changesets.outputs.publishedPackages).*.name, '@bbki.ng/site'))
         uses: ./.github/actions/deploy
         with:
-          source: 'packages/site/dist/'
-          package: '@bbki.ng/site'
+          source: 'packages/manual/build/'
+          package: '@bbki.ng/manual'
           msg: |
             Site Deployed to server successfully.
             See changes: https://bbki.ng
