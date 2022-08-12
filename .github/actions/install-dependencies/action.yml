@@ -1,0 +1,23 @@
+name: install-dependencies
+description: install dependencies
+
+runs:
+  using: 'composite'
+  steps:
+    # setup pnpm and install dependencies
+    - name: Checkout Repo
+      uses: actions/checkout@v2
+    - uses: pnpm/action-setup@v2.2.2
+      with:
+        version: 7
+    - name: Setup Node.js 17.x
+      uses: actions/setup-node@v2
+      with:
+        node-version: 17.x
+        cache: 'pnpm'
+    - name: Install pnpm
+      shell: bash
+      run: npm install -g pnpm
+    - name: Install Dependencies
+      run: pnpm install --no-frozen-lockfile
+      shell: bash
