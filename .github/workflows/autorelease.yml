@@ -1,36 +1,27 @@
-name: automerge
+name: Auto Release
+
 on:
-  pull_request:
-    types:
-      - labeled
-      - unlabeled
-      - synchronize
-      - opened
-      - edited
-      - ready_for_review
-      - reopened
-      - unlocked
-  pull_request_review:
-    types:
-      - submitted
-  check_suite:
-    types:
-      - completed
-  status: {}
+  push:
+    branches:
+      - release
+
 jobs:
-  merge:
+  merge-pr:
     runs-on: ubuntu-latest
     steps:
-      - id: automerge
-        name: automerge
+      - id: merge-changes
+        name: merge changes
         uses: actions/github-script@v6
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           script: |
-            const res = await github.rest.pulls.list({
+            const res = await github.rest.pulls.create({
               owner: 'bbbottle',
               repo: 'bottle',
+              head: 'bbbottle:release',
+              base: 'main',
             });
+
             const [{ number }] = res.data;
             github.rest.pulls.merge({
               owner: 'bbbottle',
@@ -39,5 +30,7 @@ jobs:
             });
 
   release:
+    needs:
+      - merge-pr
     uses: ./.github/workflows/release.yml
     secrets: inherit

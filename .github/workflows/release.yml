@@ -70,42 +70,62 @@ jobs:
           name: site-artifact
           path: packages/manual/build/
 
-  deploy-site:
-    needs: [release]
-    if: |
-      needs.release.outputs.published == 'true' &&
-      (contains(fromJson(needs.release.outputs.publishedPackages).*.name, '@bbki.ng/site'))
-    uses: ./.github/workflows/deploy.yml
-    with:
-      source: 'packages/site/dist/'
-      package: '@bbki.ng/site'
-      msg: |
-        Site Deployed to server successfully.
-        See changes: https://bbki.ng
-    secrets:
-      SERVER_SSH_KEY: ${{ secrets.SERVER_SSH_KEY }}
-      TELEGRAM_CHANNEL_ID: ${{ secrets.TELEGRAM_CHANNEL_ID }}
-      TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
-      REMOTE_HOST: ${{ secrets.REMOTE_HOST }}
-      REMOTE_USER: ${{ secrets.REMOTE_USER }}
-      REMOTE_TARGET: ${{ secrets.REMOTE_SITE_TARGET }}
+      # deploy site
+      - name: deploy site artifact
+        if: |
+          steps.changesets.outputs.published == 'true' &&
+          (contains(fromJson(steps.changesets.outputs.publishedPackages).*.name, '@bbki.ng/site'))
+        uses: ./.github/actions/deploy
+        with:
+          source: 'packages/site/dist/'
+          package: '@bbki.ng/site'
+          msg: |
+            Site Deployed to server successfully.
+            See changes: https://bbki.ng
+          SERVER_SSH_KEY: ${{ secrets.SERVER_SSH_KEY }}
+          TELEGRAM_CHANNEL_ID: ${{ secrets.TELEGRAM_CHANNEL_ID }}
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          REMOTE_HOST: ${{ secrets.REMOTE_HOST }}
+          REMOTE_USER: ${{ secrets.REMOTE_USER }}
+          REMOTE_TARGET: ${{ secrets.REMOTE_SITE_TARGET }}
 
-  deploy-manual:
-    needs: [release]
-    if: |
-      needs.release.outputs.published == 'true' &&
-      (contains(fromJson(needs.release.outputs.publishedPackages).*.name, '@bbki.ng/manual'))
-    uses: ./.github/workflows/deploy.yml
-    with:
-      source: 'packages/manual/build/'
-      package: '@bbki.ng/manual'
-      msg: |
-        Manual Deployed to server successfully.
-        See changes: https://docs.bbki.ng
-    secrets:
-      SERVER_SSH_KEY: ${{ secrets.SERVER_SSH_KEY }}
-      TELEGRAM_CHANNEL_ID: ${{ secrets.TELEGRAM_CHANNEL_ID }}
-      TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
-      REMOTE_HOST: ${{ secrets.REMOTE_HOST }}
-      REMOTE_USER: ${{ secrets.REMOTE_USER }}
-      REMOTE_TARGET: ${{ secrets.REMOTE_MANUAL_TARGET }}
+
+#  deploy-site:
+#    needs: [release]
+#    if: |
+#      needs.release.outputs.published == 'true' &&
+#      (contains(fromJson(needs.release.outputs.publishedPackages).*.name, '@bbki.ng/site'))
+#    uses: ./.github/workflows/deploy.yml
+#    with:
+#      source: 'packages/site/dist/'
+#      package: '@bbki.ng/site'
+#      msg: |
+#        Site Deployed to server successfully.
+#        See changes: https://bbki.ng
+#    secrets:
+#      SERVER_SSH_KEY: ${{ secrets.SERVER_SSH_KEY }}
+#      TELEGRAM_CHANNEL_ID: ${{ secrets.TELEGRAM_CHANNEL_ID }}
+#      TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+#      REMOTE_HOST: ${{ secrets.REMOTE_HOST }}
+#      REMOTE_USER: ${{ secrets.REMOTE_USER }}
+#      REMOTE_TARGET: ${{ secrets.REMOTE_SITE_TARGET }}
+#
+#  deploy-manual:
+#    needs: [release]
+#    if: |
+#      needs.release.outputs.published == 'true' &&
+#      (contains(fromJson(needs.release.outputs.publishedPackages).*.name, '@bbki.ng/manual'))
+#    uses: ./.github/workflows/deploy.yml
+#    with:
+#      source: 'packages/manual/build/'
+#      package: '@bbki.ng/manual'
+#      msg: |
+#        Manual Deployed to server successfully.
+#        See changes: https://docs.bbki.ng
+#    secrets:
+#      SERVER_SSH_KEY: ${{ secrets.SERVER_SSH_KEY }}
+#      TELEGRAM_CHANNEL_ID: ${{ secrets.TELEGRAM_CHANNEL_ID }}
+#      TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+#      REMOTE_HOST: ${{ secrets.REMOTE_HOST }}
+#      REMOTE_USER: ${{ secrets.REMOTE_USER }}
+#      REMOTE_TARGET: ${{ secrets.REMOTE_MANUAL_TARGET }}
