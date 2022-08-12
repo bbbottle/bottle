@@ -34,11 +34,13 @@ jobs:
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
 
       # merge version pr
-      - name: deploy manual artifact
+      - name: merge version pr
         if: |
           steps.changesets.outputs.published == 'false' &&
           steps.changesets.outputs.hasChangesets == 'true'
         uses: ./.github/actions/merge-version-pr
+        with:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       # deploy manual
       - name: deploy manual artifact
