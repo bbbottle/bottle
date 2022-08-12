@@ -16,7 +16,7 @@ runs:
         github-token: ${{ inputs.GITHUB_TOKEN }}
         script: |
           const res = await github.rest.pulls.list({
-            owner: 'bbbottle,
+            owner: 'bbbottle',
             repo: 'bottle',
           });
 
