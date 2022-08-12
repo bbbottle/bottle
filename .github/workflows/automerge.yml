@@ -1,0 +1,39 @@
+name: automerge
+on:
+  pull_request:
+    types:
+      - labeled
+      - unlabeled
+      - synchronize
+      - opened
+      - edited
+      - ready_for_review
+      - reopened
+      - unlocked
+  pull_request_review:
+    types:
+      - submitted
+  check_suite:
+    types:
+      - completed
+  status: {}
+jobs:
+  automerge:
+    runs-on: ubuntu-latest
+    steps:
+      - id: automerge
+        name: automerge
+        uses: actions/github-script@v6
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            const res = await github.rest.pulls.list({
+              owner: 'bbbottle',
+              repo: 'bottle',
+            });
+            const [{ number }] = res.data;
+            github.rest.pulls.merge({
+              owner: 'bbbottle',
+              repo: 'bottle',
+              pull_number: number,
+            });
