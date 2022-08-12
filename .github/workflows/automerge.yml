@@ -18,7 +18,7 @@ on:
       - completed
   status: {}
 jobs:
-  automerge:
+  merge:
     runs-on: ubuntu-latest
     steps:
       - id: automerge
@@ -37,3 +37,7 @@ jobs:
               repo: 'bottle',
               pull_number: number,
             });
+
+  release:
+    uses: ./.github/workflows/release.yml
+    secrets: inherit
