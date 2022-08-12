@@ -1,0 +1,35 @@
+name: Auto Release
+
+on:
+  push:
+    branches:
+      - changeset-release/release
+
+jobs:
+  merge-pr:
+    runs-on: ubuntu-latest
+    steps:
+      - id: merge-changes
+        name: merge changes
+        uses: actions/github-script@v6
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            const res = octokit.rest.pulls.list({
+              owner,
+              repo,
+            });
+
+            const { number } = res.data.find(({ title }) => title === 'Version Packages');
+
+            github.rest.pulls.merge({
+              owner: 'bbbottle',
+              repo: 'bottle',
+              pull_number: number,
+            });
+
+  release:
+    needs:
+      - merge-pr
+    uses: ./.github/workflows/release.yml
+    secrets: inherit
