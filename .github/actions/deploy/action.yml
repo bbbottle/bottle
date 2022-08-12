@@ -1,0 +1,64 @@
+name: Deploy dist to server
+description: deploy dist to server
+inputs:
+  source:
+    description: source path
+    required: true
+  package:
+    description: package name
+    required: true
+  msg:
+    description: messages send to channel
+    required: false
+  SERVER_SSH_KEY:
+    description: ssh key
+    required: true
+  REMOTE_HOST:
+    description: remote host
+    required: true
+  REMOTE_USER:
+    description: remote user
+    required: true
+  REMOTE_TARGET:
+    description: remote deploy path
+    required: true
+  TELEGRAM_CHANNEL_ID:
+    description: telegram channel id
+    required: true
+  TELEGRAM_BOT_TOKEN:
+    description: telegram bot token
+    required: true
+
+runs:
+  using: "composite"
+  steps:
+    - name: Checkout Repo
+      uses: actions/checkout@v2
+    - name: Setup Node.js 17.x
+      uses: actions/setup-node@v2
+      with:
+        node-version: 17.x
+    - name: Install pnpm
+      run: npm install -g pnpm
+      shell: bash
+    - name: Install Dependencies
+      run: pnpm install --no-frozen-lockfile
+      shell: bash
+    - name: Build Packages
+      run: pnpm turbo run build --filter ${{ inputs.package }}
+      shell: bash
+    - name: send files to server
+      uses: easingthemes/ssh-deploy@main
+      env:
+        SSH_PRIVATE_KEY: ${{ secrets.SERVER_SSH_KEY }}
+        SOURCE: ${{ inputs.source }}
+        REMOTE_HOST: ${{ secrets.REMOTE_HOST }}
+        REMOTE_USER: ${{ secrets.REMOTE_USER }}
+        TARGET: ${{ secrets.REMOTE_TARGET }}
+        EXCLUDE: "/dist/, /node_modules/"
+    - name: send telegram message
+      uses: appleboy/telegram-action@master
+      with:
+        to: ${{ secrets.TELEGRAM_CHANNEL_ID }}
+        token: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+        message: ${{ inputs.msg }}
