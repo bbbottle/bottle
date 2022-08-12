@@ -18,7 +18,7 @@ jobs:
             const res = await github.rest.pulls.create({
               owner: 'bbbottle',
               repo: 'bottle',
-              head: 'bbbottle:release',
+              head: 'bbbottle:autorelease',
               base: 'main',
               title: 'new release content',
             });
