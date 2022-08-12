@@ -15,7 +15,7 @@ runs:
       with:
         github-token: ${{ inputs.GITHUB_TOKEN }}
         script: |
-          const res = octokit.rest.pulls.list({
+          const res = github.rest.pulls.list({
             owner,
             repo,
           });
