@@ -20,6 +20,7 @@ jobs:
               repo: 'bottle',
               head: 'bbbottle:release',
               base: 'main',
+              title: 'new release content',
             });
 
             const [{ number }] = res.data;
