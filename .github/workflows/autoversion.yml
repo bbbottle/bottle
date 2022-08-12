@@ -1,7 +1,9 @@
 name: Auto Release
 
 on:
-  push:
+  pull_request:
+    types:
+      - opened
     branches:
       - changeset-release/release
 
