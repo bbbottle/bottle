@@ -2,7 +2,10 @@ name: Deploy dist to server
 description: deploy dist to server
 inputs:
   source:
-    description: source path
+    description: local source path
+    required: true
+  target:
+    description: remote target path
     required: true
   package:
     description: package name
@@ -24,7 +27,7 @@ runs:
         SOURCE: ${{ inputs.source }}
         REMOTE_HOST: ${{ env.REMOTE_HOST }}
         REMOTE_USER: ${{ env.REMOTE_USER }}
-        TARGET: ${{ env.REMOTE_TARGET }}
+        TARGET: ${{ input.target }}
         EXCLUDE: "/dist/, /node_modules/"
     - name: send telegram message
       uses: appleboy/telegram-action@master
