@@ -16,8 +16,8 @@ runs:
         github-token: ${{ inputs.GITHUB_TOKEN }}
         script: |
           const res = github.rest.pulls.list({
-            owner,
-            repo,
+            owner: 'bbbottle,
+            repo: 'bottle',
           });
 
           const { number } = res.data.find(({ title }) => title === 'Version Packages');
