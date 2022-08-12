@@ -7,13 +7,14 @@ on:
 
 jobs:
   merge-pr:
+    name: Merge Release Pr
     runs-on: ubuntu-latest
     steps:
       - id: merge-changes
         name: merge changes
         uses: actions/github-script@v6
         with:
-          github-token: ${{ secrets.GITHUB_TOKEN }}
+          github-token: ${{ secrets.GH_PAT }}
           script: |
             const res = await github.rest.pulls.create({
               owner: 'bbbottle',
@@ -30,9 +31,3 @@ jobs:
               repo: 'bottle',
               pull_number: number,
             });
-
-  release:
-    needs:
-      - merge-pr
-    uses: ./.github/workflows/release.yml
-    secrets: inherit
