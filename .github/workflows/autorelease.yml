@@ -23,7 +23,7 @@ jobs:
               title: 'new release content',
             });
 
-            const [{ number }] = res.data;
+            const { number } = res.data;
             github.rest.pulls.merge({
               owner: 'bbbottle',
               repo: 'bottle',
