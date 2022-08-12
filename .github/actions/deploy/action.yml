@@ -10,24 +10,6 @@ inputs:
   msg:
     description: messages send to channel
     required: false
-  SERVER_SSH_KEY:
-    description: ssh key
-    required: true
-  REMOTE_HOST:
-    description: remote host
-    required: true
-  REMOTE_USER:
-    description: remote user
-    required: true
-  REMOTE_TARGET:
-    description: remote deploy path
-    required: true
-  TELEGRAM_CHANNEL_ID:
-    description: telegram channel id
-    required: true
-  TELEGRAM_BOT_TOKEN:
-    description: telegram bot token
-    required: true
 
 runs:
   using: "composite"
@@ -38,15 +20,15 @@ runs:
     - name: send files to server
       uses: easingthemes/ssh-deploy@main
       env:
-        SSH_PRIVATE_KEY: ${{ secrets.SERVER_SSH_KEY }}
+        SSH_PRIVATE_KEY: ${{ env.SERVER_SSH_KEY }}
         SOURCE: ${{ inputs.source }}
-        REMOTE_HOST: ${{ secrets.REMOTE_HOST }}
-        REMOTE_USER: ${{ secrets.REMOTE_USER }}
-        TARGET: ${{ secrets.REMOTE_TARGET }}
+        REMOTE_HOST: ${{ env.REMOTE_HOST }}
+        REMOTE_USER: ${{ env.REMOTE_USER }}
+        TARGET: ${{ env.REMOTE_TARGET }}
         EXCLUDE: "/dist/, /node_modules/"
     - name: send telegram message
       uses: appleboy/telegram-action@master
       with:
-        to: ${{ secrets.TELEGRAM_CHANNEL_ID }}
-        token: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+        to: ${{ env.TELEGRAM_CHANNEL_ID }}
+        token: ${{ env.TELEGRAM_BOT_TOKEN }}
         message: ${{ inputs.msg }}

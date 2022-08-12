@@ -3,7 +3,7 @@ name: Auto Release
 on:
   push:
     branches:
-      - release
+      - autorelease
 
 jobs:
   merge-pr:
