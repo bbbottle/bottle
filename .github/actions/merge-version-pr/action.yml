@@ -15,14 +15,14 @@ runs:
       with:
         github-token: ${{ inputs.GITHUB_TOKEN }}
         script: |
-          const res = github.rest.pulls.list({
+          const res = await github.rest.pulls.list({
             owner: 'bbbottle,
             repo: 'bottle',
           });
 
           const { number } = res.data.find(({ title }) => title === 'Version Packages');
 
-          github.rest.pulls.merge({
+          await github.rest.pulls.merge({
             owner: 'bbbottle',
             repo: 'bottle',
             pull_number: number,
