@@ -1,0 +1,29 @@
+name: merge-version-pr
+description: merge version pr created by changesets.
+
+inputs:
+  GITHUB_TOKEN:
+    description: github token
+    required: true
+
+runs:
+  using: "composite"
+  steps:
+    - id: merge-changes
+      name: merge changes
+      uses: actions/github-script@v6
+      with:
+        github-token: ${{ secrets.GITHUB_TOKEN }}
+        script: |
+          const res = octokit.rest.pulls.list({
+            owner,
+            repo,
+          });
+
+          const { number } = res.data.find(({ title }) => title === 'Version Packages');
+
+          github.rest.pulls.merge({
+            owner: 'bbbottle',
+            repo: 'bottle',
+            pull_number: number,
+          });
