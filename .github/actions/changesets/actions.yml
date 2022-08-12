@@ -1,0 +1,38 @@
+name: changesets handler
+description: A wrapper action with friendly outputs based on changesets/action@v1
+outputs:
+  createPrOnly:
+    description: "changesets/action create pr only without packages published"
+    value: |
+      ${{
+        steps.changesets.outputs.published == 'false' &&
+        steps.changesets.outputs.hasChangesets == 'true'
+      }}
+
+  shouldDeploySite:
+    description: "changesets/action published packages and include @bbki.ng/site"
+    value: |
+      ${{ 
+        steps.changesets.outputs.published == 'true' &&
+        (contains(fromJson(steps.changesets.outputs.publishedPackages).*.name, '@bbki.ng/site'))
+      }}
+
+  shouldDeployManual:
+    description: "changesets/action published packages and include @bbki.ng/manual"
+    value: |
+      ${{ 
+        steps.changesets.outputs.published == 'true' &&
+        (contains(fromJson(steps.changesets.outputs.publishedPackages).*.name, '@bbki.ng/manual'))
+      }}
+
+runs:
+  using: "composite"
+  steps:
+    - name: Create Release Pull Request or Publish to npm
+      id: changesets
+      uses: changesets/action@v1
+      with:
+        publish: pnpm release
+      env:
+        GITHUB_TOKEN: ${{ env.GITHUB_TOKEN }}
+        NPM_TOKEN: ${{ env.NPM_TOKEN }}

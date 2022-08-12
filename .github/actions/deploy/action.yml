@@ -27,7 +27,7 @@ runs:
         SOURCE: ${{ inputs.source }}
         REMOTE_HOST: ${{ env.REMOTE_HOST }}
         REMOTE_USER: ${{ env.REMOTE_USER }}
-        TARGET: ${{ input.target }}
+        TARGET: ${{ inputs.target }}
         EXCLUDE: "/dist/, /node_modules/"
     - name: send telegram message
       uses: appleboy/telegram-action@master

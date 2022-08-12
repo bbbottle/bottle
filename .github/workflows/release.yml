@@ -12,19 +12,16 @@ env:
   TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
   REMOTE_HOST: ${{ secrets.REMOTE_HOST }}
   REMOTE_USER: ${{ secrets.REMOTE_USER }}
+  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+  NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+  TURBO_TOKEN: ${{ secrets.TURBO_TOKEN }}
+  TURBO_TEAM: ${{ secrets.TURBO_TEAM }}
 
 concurrency: ${{ github.workflow }}-${{ github.ref }}
 
 jobs:
   release:
     runs-on: ubuntu-latest
-    env:
-      TURBO_TOKEN: ${{ secrets.TURBO_TOKEN }}
-      TURBO_TEAM: ${{ secrets.TURBO_TEAM }}
-    outputs:
-      published: ${{ steps.changesets.outputs.published }}
-      publishedPackages: ${{ steps.changesets.outputs.publishedPackages }}
-      hasChangesets: ${{ steps.changesets.outputs.hasChangesets }}
     steps:
       - name: Checkout Repo
         uses: actions/checkout@v2
@@ -34,27 +31,18 @@ jobs:
       # version or publish packages
       - name: Create Release Pull Request or Publish to npm
         id: changesets
-        uses: changesets/action@v1
-        with:
-          publish: pnpm release
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+        uses: ./.github/actions/changesets
 
       # merge version pr
       - name: merge version pr
-        if: |
-          steps.changesets.outputs.published == 'false' &&
-          steps.changesets.outputs.hasChangesets == 'true'
+        if: steps.changesets.outputs.createPrOnly
         uses: ./.github/actions/merge-version-pr
         with:
           GITHUB_TOKEN: ${{ secrets.GH_PAT }}
 
       # deploy manual
       - name: deploy manual artifact
-        if: |
-          steps.changesets.outputs.published == 'true' &&
-          (contains(fromJson(steps.changesets.outputs.publishedPackages).*.name, '@bbki.ng/manual'))
+        if: steps.changesets.outputs.shouldDeployManual
         uses: ./.github/actions/deploy
         with:
           source: 'packages/manual/build/'
@@ -66,9 +54,7 @@ jobs:
 
       # deploy site
       - name: deploy site artifact
-        if: |
-          steps.changesets.outputs.published == 'true' &&
-          (contains(fromJson(steps.changesets.outputs.publishedPackages).*.name, '@bbki.ng/site'))
+        if: steps.changesets.outputs.shouldDeploySite
         uses: ./.github/actions/deploy
         with:
           source: 'packages/site/dist/'
