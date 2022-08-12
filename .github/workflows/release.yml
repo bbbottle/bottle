@@ -17,6 +17,7 @@ jobs:
     outputs:
       published: ${{ steps.changesets.outputs.published }}
       publishedPackages: ${{ steps.changesets.outputs.publishedPackages }}
+      hasChangesets: ${{ steps.changesets.outputs.hasChangesets }}
     steps:
       - name: Checkout Repo
         uses: actions/checkout@v2
@@ -40,7 +41,7 @@ jobs:
           steps.changesets.outputs.hasChangesets == 'true'
         uses: ./.github/actions/merge-version-pr
         with:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GH_PAT }}
 
       # deploy manual
       - name: deploy manual artifact
@@ -60,8 +61,6 @@ jobs:
           REMOTE_HOST: ${{ secrets.REMOTE_HOST }}
           REMOTE_USER: ${{ secrets.REMOTE_USER }}
           REMOTE_TARGET: ${{ secrets.REMOTE_SITE_TARGET }}
-
-
 #  deploy-site:
 #    needs: [release]
 #    if: |
