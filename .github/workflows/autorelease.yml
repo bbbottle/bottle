@@ -24,6 +24,7 @@ jobs:
             });
 
             const { number } = res.data;
+
             github.rest.pulls.merge({
               owner: 'bbbottle',
               repo: 'bottle',
