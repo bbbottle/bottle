@@ -33,6 +33,8 @@ jobs:
         id: changesets
         uses: ./.github/actions/changesets
 
+      - name: debug action
+        run: echo ${{ steps.changesets.outputs }}
       # merge version pr
       - name: merge version pr
         if: ${{ steps.changesets.outputs.createPrOnly == 'true' }}
