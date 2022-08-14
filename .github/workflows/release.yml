@@ -34,7 +34,7 @@ jobs:
         uses: ./.github/actions/changesets
 
       - name: debug
-        run: echo ${{ toJson(steps.changesets.outputs.createPrOnly) }}
+        run: echo ${{ toJson(steps.changesets.outputs) }}
       # merge version pr
       - name: merge version pr
         if: ${{ steps.changesets.outputs.createPrOnly }}
