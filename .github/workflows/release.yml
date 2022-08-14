@@ -33,20 +33,16 @@ jobs:
         id: changesets
         uses: ./.github/actions/changesets
 
-      - name: debug action
-        run: |
-          echo ${{ steps.changesets.outputs.shouldDeploySite }}
-          echo ${{ steps.changesets.outputs.shouldDeploySite == 'true' }}
       # merge version pr
       - name: merge version pr
-        if: ${{ steps.changesets.outputs.createPrOnly == 'true' }}
+        if: ${{ steps.changesets.outputs.createPrOnly }}
         uses: ./.github/actions/merge-version-pr
         with:
           GITHUB_TOKEN: ${{ secrets.GH_PAT }}
 
       # deploy manual
       - name: deploy manual artifact
-        if: ${{ steps.changesets.outputs.shouldDeployManual == 'true' }}
+        if: ${{ steps.changesets.outputs.shouldDeployManual }}
         uses: ./.github/actions/deploy
         with:
           source: 'packages/manual/build/'
@@ -58,7 +54,7 @@ jobs:
 
       # deploy site
       - name: deploy site artifact
-        if: ${{ steps.changesets.outputs.shouldDeploySite == 'true' }}
+        if: ${{ steps.changesets.outputs.shouldDeploySite }}
         uses: ./.github/actions/deploy
         with:
           source: 'packages/site/dist/'
