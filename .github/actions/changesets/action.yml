@@ -4,21 +4,24 @@ outputs:
   createPrOnly:
     description: "changesets/action create pr only without packages published"
     value: |
-      ${{ steps.changesets.outputs.published == 'false' &&
-        steps.changesets.outputs.hasChangesets == 'true' }}
-
+      ${{
+        steps.changesets.outputs.published == 'false' &&
+        steps.changesets.outputs.hasChangesets == 'true'
+      }}
   shouldDeploySite:
     description: "changesets/action published packages and include @bbki.ng/site"
     value: |
-      ${{ steps.changesets.outputs.published == 'true' &&
-        (contains(fromJson(steps.changesets.outputs.publishedPackages).*.name, '@bbki.ng/site')) }}
-
+      ${{ 
+        steps.changesets.outputs.published == 'true' &&
+        (contains(fromJson(steps.changesets.outputs.publishedPackages).*.name, '@bbki.ng/site'))
+      }}
   shouldDeployManual:
     description: "changesets/action published packages and include @bbki.ng/manual"
     value: |
-      ${{ steps.changesets.outputs.published == 'true' &&
-        (contains(fromJson(steps.changesets.outputs.publishedPackages).*.name, '@bbki.ng/manual')) }}
-
+      ${{ 
+        steps.changesets.outputs.published == 'true' &&
+        (contains(fromJson(steps.changesets.outputs.publishedPackages).*.name, '@bbki.ng/manual'))
+      }}
 runs:
   using: "composite"
   steps:
