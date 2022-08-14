@@ -34,7 +34,9 @@ jobs:
         uses: ./.github/actions/changesets
 
       - name: debug action
-        run: echo ${{ steps.changesets.outputs }}
+        run: |
+          echo ${{ steps.changesets.outputs.shouldDeploySite }}
+          echo ${{ steps.changesets.outputs.shouldDeploySite == 'true' }}
       # merge version pr
       - name: merge version pr
         if: ${{ steps.changesets.outputs.createPrOnly == 'true' }}
