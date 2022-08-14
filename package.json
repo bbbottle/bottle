@@ -6,7 +6,6 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "pnpm turbo run build",
-    "push": "pnpm changeset && git push",
     "release": "pnpm changeset version && pnpm changeset publish"
   },
   "keywords": [],
