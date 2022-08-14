@@ -1,6 +1,6 @@
 {
   "name": "@bbki.ng/site",
-  "version": "0.0.48",
+  "version": "0.0.49",
   "description": "code behind bbki.ng",
   "main": "index.js",
   "scripts": {
