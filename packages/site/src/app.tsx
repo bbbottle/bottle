@@ -1,13 +1,8 @@
 import React, { useContext } from "react";
 import { Routes, Route, Outlet } from "react-router-dom";
-import {
-  Nav,
-  Page,
-  ThreeColLayout,
-  NotFound,
-  ErrorBoundary,
-} from "@bbki.ng/components";
+import { Nav, Page, NotFound } from "@bbki.ng/components";
 import { HotKeyNav, Stickers } from "./components";
+import { threeColWrapper } from "@/components/with_wrapper";
 import { Cover } from "./pages";
 
 import Png from "@/pages/extensions/png";
@@ -25,7 +20,7 @@ import {
   GlobalLoadingContext,
   GlobalLoadingStateProvider,
 } from "@/global_loading_state_provider";
-import { useScrollToTop } from "@/hooks/useScrollToTop";
+import { UploadPage } from "@/pages/upload";
 
 const Layout = () => {
   const { isLoading } = useContext(GlobalLoadingContext);
@@ -41,20 +36,6 @@ const Layout = () => {
     </>
   );
 };
-
-const threeColWrapper =
-  <T extends object>(Component: any) =>
-  (props: T) => {
-    return (
-      <ThreeColLayout
-        middleRenderer={() => (
-          <ErrorBoundary>
-            <Component {...props} />
-          </ErrorBoundary>
-        )}
-      />
-    );
-  };
 
 const NowInMidCol = threeColWrapper(NowPage);
 const ContentInMidCol = threeColWrapper(Txt);
@@ -73,18 +54,19 @@ export const App = () => {
           <Routes>
             <Route path="/" element={<Layout />}>
               <Route index element={<CoverInMidCol />} />
+
               <Route path="/projects" element={<Png />} />
               <Route path="/projects/:id" element={<PhotoProjects />} />
-
-              <Route path="now" element={<NowInMidCol />} />
-              <Route path="tags" element={<TagsInMidCol />} />
-              <Route path="tags/:tag" element={<TagsResultInMidCol />} />
 
               <Route path="blog" element={<ContentInMidCol />} />
               <Route path="blog/:title" element={<ArticleInMidCol />} />
               <Route path="blog/:title/:id" element={<PhotoProjects />} />
+              <Route path="tags" element={<TagsInMidCol />} />
+              <Route path="tags/:tag" element={<TagsResultInMidCol />} />
 
+              <Route path="now" element={<NowInMidCol />} />
               <Route path="login" element={<LoginInMidCol />} />
+              <Route path="upload" element={<UploadPage />} />
             </Route>
             <Route path="*" element={<NotFound />} />
           </Routes>
