@@ -6,13 +6,17 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "pnpm turbo run build",
-    "release": "pnpm changeset version && pnpm changeset publish"
+    "build:components": "pnpm turbo run build --filter=@bbki.ng/components",
+    "release": "pnpm changeset version && pnpm changeset publish",
+    "start:site": "pnpm turbo run dev --filter=@bbki.ng/site --parallel",
+    "start:doc": "pnpm turbo run dev --filter=@bbki.ng/manual --parallel"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
     "@changesets/cli": "2.24.1",
+    "husky": "^7.0.0",
     "turbo": "1.3.4"
   }
 }
