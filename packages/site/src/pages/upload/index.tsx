@@ -26,9 +26,11 @@ const Upload = () => {
           }}
         />
         {source && <pre>{source}</pre>}
-        <Button className="m-16" onClick={() => copyToClipboard(source)}>
-          复制代码
-        </Button>
+        {source && (
+          <Button className="m-16" onClick={() => copyToClipboard(source)}>
+            复制代码
+          </Button>
+        )}
       </>
     </ArticlePage>
   );
