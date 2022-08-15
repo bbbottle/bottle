@@ -10,8 +10,9 @@
   "files": [
     "dist"
   ],
-  "main": "./dist/index.js",
   "module": "./dist/index.js",
+  "main": "./dist/index",
+  "typings": "./dist/index.d.ts",
   "exports": {
     ".": {
       "import": "./dist/index.js",
