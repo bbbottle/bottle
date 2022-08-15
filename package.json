@@ -9,7 +9,8 @@
     "build:components": "pnpm turbo run build --filter=@bbki.ng/components",
     "release": "pnpm changeset version && pnpm changeset publish",
     "start:site": "pnpm turbo run dev --filter=@bbki.ng/site --parallel",
-    "start:doc": "pnpm turbo run dev --filter=@bbki.ng/manual --parallel"
+    "start:doc": "pnpm turbo run dev --filter=@bbki.ng/manual --parallel",
+    "postinstall": "husky install"
   },
   "keywords": [],
   "author": "",
