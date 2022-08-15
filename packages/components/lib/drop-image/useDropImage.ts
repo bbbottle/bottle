@@ -1,15 +1,21 @@
-import { useState, useCallback, useRef } from "react";
+import {
+  useState,
+  useCallback,
+  useRef,
+  DragEvent,
+  DragEventHandler,
+} from "react";
 
 export const useDropImage = (params?: {
   portraitImageWidth?: number;
   landscapeImageWidth?: number;
-  onDrop?: (e: Event, file: File) => void;
+  onDrop?: (e: DragEvent<Element>, file: File) => void;
   onImageLoad?: (img: HTMLImageElement, file: File) => void;
 }) => {
   const [isDragOver, setIsDragOver] = useState(false);
   const [imageSrc, setImageSrc] = useState("");
   const [imageSize, setImageSize] = useState({ width: 0, height: 0 });
-  const imageFile = useRef(null);
+  const imageFile = useRef<File | null>();
 
   const {
     portraitImageWidth = 384,
@@ -50,9 +56,12 @@ export const useDropImage = (params?: {
     }
   };
 
-  const handleDragOver = useCallback((ev) => {
+  const handleDragOver: DragEventHandler = useCallback((ev) => {
     ev.preventDefault();
     setIsDragOver(true);
+    if (!ev.dataTransfer) {
+      return;
+    }
     ev.dataTransfer.dropEffect = "move";
   }, []);
 
@@ -60,11 +69,11 @@ export const useDropImage = (params?: {
     setIsDragOver(false);
   }, []);
 
-  const handleDrop = useCallback((ev) => {
+  const handleDrop: DragEventHandler = useCallback((ev) => {
     ev.preventDefault();
     setIsDragOver(false);
-    const file = ev.dataTransfer.files[0];
-    if (!file || !file.type.startsWith("image")) {
+    const file = ev.dataTransfer ? ev.dataTransfer.files[0] : undefined;
+    if (!file || !file.type.startsWith("image") || !imageFile.current) {
       return;
     }
     imageFile.current = file;
@@ -98,7 +107,7 @@ export const useDropImage = (params?: {
     img.onload = updateFunc;
   };
 
-  const imageRef = useCallback((input) => {
+  const imageRef = useCallback((input: HTMLImageElement) => {
     if (!input) {
       return;
     }

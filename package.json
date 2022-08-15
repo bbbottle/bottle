@@ -7,6 +7,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "pnpm turbo run build",
     "build:components": "pnpm turbo run build --filter=@bbki.ng/components",
+    "build:site": "pnpm turbo run build --filter=@bbki.ng/site",
     "changeset": "changeset",
     "release": "pnpm changeset version && pnpm changeset publish",
     "start:site": "pnpm turbo run dev --filter=@bbki.ng/site --parallel",
