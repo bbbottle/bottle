@@ -5,10 +5,11 @@ import React, {
   useEffect,
   useCallback,
   Ref,
-  ReactNode, CSSProperties,
+  ReactNode,
+  CSSProperties,
 } from "react";
 import { useState } from "react";
-import { noop, wait } from "./utils";
+import { wait } from "./utils";
 import { useDropImage } from "./useDropImage";
 
 export interface ImagePreviewerProps {
@@ -24,7 +25,7 @@ export interface ImagePreviewerProps {
 
 export interface ImageDropProps<T> {
   uploader: (file: File, img?: HTMLImageElement) => Promise<T>;
-  onDrop?: (events: Event, file: File) => void;
+  onDrop?: (events: React.DragEvent<Element>, file: File) => void;
   onUploadFinish?: (result: T) => void;
   waitTimeAfterFinish?: number;
   defaultBgColor?: string;
@@ -69,8 +70,8 @@ const ImagePreviewer = (props: ImagePreviewerProps) => {
 
 const GhostDropImage: FunctionComponent<ImageDropProps<any>> = (props) => {
   const {
-    onDrop = noop,
-    onUploadFinish = noop,
+    onDrop = () => {},
+    onUploadFinish = () => {},
     uploader,
     waitTimeAfterFinish = 2000,
     className = "",
@@ -164,7 +165,7 @@ export const DropImage: FunctionComponent<ImageDropProps<any>> = (props) => {
     waitTimeAfterFinish = 2000,
     placeholder = "",
     className = "",
-    onUploadFinish = noop,
+    onUploadFinish = () => {},
     ghost,
     children,
     dropAreaStyle = {
