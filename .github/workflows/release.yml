@@ -35,31 +35,31 @@ jobs:
 
       # merge version pr
       - name: merge version pr
-        if: steps.changesets.outputs.createPrOnly
+        if: ${{ steps.changesets.outputs.createPrOnly == 'true' }}
         uses: ./.github/actions/merge-version-pr
         with:
           GITHUB_TOKEN: ${{ secrets.GH_PAT }}
 
       # deploy manual
       - name: deploy manual artifact
-        if: steps.changesets.outputs.shouldDeployManual
+        if: ${{ steps.changesets.outputs.shouldDeployManual == 'true' }}
         uses: ./.github/actions/deploy
         with:
-          source: "packages/manual/build/"
+          source: 'packages/manual/build/'
           target: ${{ secrets.REMOTE_MANUAL_TARGET }}
-          package: "@bbki.ng/manual"
+          package: '@bbki.ng/manual'
           msg: |
             Docs Deployed to server successfully.
             See changes: https://docs.bbki.ng
 
       # deploy site
       - name: deploy site artifact
-        if: steps.changesets.outputs.shouldDeploySite
+        if: ${{ steps.changesets.outputs.shouldDeploySite == 'true' }}
         uses: ./.github/actions/deploy
         with:
-          source: "packages/site/dist/"
+          source: 'packages/site/dist/'
           target: ${{ secrets.REMOTE_SITE_TARGET }}
-          package: "@bbki.ng/site"
+          package: '@bbki.ng/site'
           msg: |
             Site Deployed to server successfully.
             See changes: https://bbki.ng
