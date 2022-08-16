@@ -1,6 +1,6 @@
 {
   "name": "@bbki.ng/manual",
-  "version": "0.1.28",
+  "version": "0.1.29",
   "scripts": {
     "docusaurus": "docusaurus",
     "start": "docusaurus start",
