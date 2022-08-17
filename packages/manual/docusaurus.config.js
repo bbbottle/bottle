@@ -1,51 +1,51 @@
 // @ts-nocheck
 // Note: type annotations allow type checking and IDEs autocompletion
 
-const lightCodeTheme = require('prism-react-renderer/themes/github');
-const darkCodeTheme = require('prism-react-renderer/themes/dracula');
+const lightCodeTheme = require("prism-react-renderer/themes/github");
+const darkCodeTheme = require("prism-react-renderer/themes/dracula");
 
-const t = (node) => html`<div class="prose">${node}</div>`
+const t = (node) => html`<div class="prose">${node}</div>`;
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
-  title: 'BBKi.ng Docs',
-  tagline: 'something behind bbki.ng',
-  url: 'https://bbki.ng',
-  baseUrl: '/',
-  onBrokenLinks: 'throw',
-  onBrokenMarkdownLinks: 'warn',
-  favicon: 'img/favicon.ico',
+  title: "BBKi.ng Docs",
+  tagline: "something behind bbki.ng",
+  url: "https://bbki.ng",
+  baseUrl: "/",
+  onBrokenLinks: "throw",
+  onBrokenMarkdownLinks: "warn",
+  favicon: "img/favicon.svg",
 
   // GitHub pages deployment config.
   // If you aren't using GitHub pages, you don't need these.
-  organizationName: 'bbbottle', // Usually your GitHub org/user name.
-  projectName: 'manual', // Usually your repo name.
+  organizationName: "bbbottle", // Usually your GitHub org/user name.
+  projectName: "manual", // Usually your repo name.
 
   // Even if you don't use internalization, you can use this field to set useful
   // metadata like html lang. For example, if your site is Chinese, you may want
   // to replace "en" with "zh-Hans".
   i18n: {
-    defaultLocale: 'en',
-    locales: ['en'],
+    defaultLocale: "en",
+    locales: ["en"],
   },
 
   presets: [
     [
-      'classic',
+      "classic",
       /** @type {import('@docusaurus/preset-classic').Options} */
       ({
         docs: {
-          sidebarPath: require.resolve('./sidebars.js'),
+          sidebarPath: require.resolve("./sidebars.js"),
         },
         blog: {
           showReadingTime: false,
-          blogTitle: 'Log',
-          blogPostComponent: '@theme/BlogPostPage',
+          blogTitle: "Log",
+          blogPostComponent: "@theme/BlogPostPage",
         },
         theme: {
           customCss: [
-            require.resolve('@bbki.ng/components/style'),
-            require.resolve('./src/css/custom.css'),
+            require.resolve("@bbki.ng/components/style"),
+            require.resolve("./src/css/custom.css"),
           ],
         },
       }),
@@ -70,39 +70,44 @@ const config = {
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
       navbar: {
-        title: 'BBKi.ng  Docs',
+        title: "BBKi.ng  Docs",
         logo: {
-          alt: 'My Site Logo',
-          src: 'img/logo.svg',
+          alt: "My Site Logo",
+          src: "img/logo.svg",
         },
         items: [
           {
-            type: 'doc',
-            docId: 'Article',
-            position: 'left',
-            label: '零件',
+            type: "doc",
+            docId: "Article",
+            position: "left",
+            label: "零件",
           },
-          {to: '/blog', label: '日志', position: 'left'},
+          { to: "/blog", label: "日志", position: "left" },
           {
-            href: 'https://github.com/bbbottle/bottle',
-            label: 'GitHub',
-            position: 'right',
+            href: "https://github.com/bbbottle/bottle",
+            label: "GitHub",
+            position: "right",
           },
         ],
       },
 
       footer: {
-        style: 'light',
-        links: [{
-          title: 'Links',
-          items: [{
-            label: 'Site',
-            to: 'https://bbki.ng'
-          }, {
-            label: 'GitHub',
-            to: 'https://github.com/bbbottle/bottle',
-          }]
-        }]
+        style: "light",
+        links: [
+          {
+            title: "Links",
+            items: [
+              {
+                label: "Site",
+                to: "https://bbki.ng",
+              },
+              {
+                label: "GitHub",
+                to: "https://github.com/bbbottle/bottle",
+              },
+            ],
+          },
+        ],
       },
       // footer: {
       //   style: 'light',
