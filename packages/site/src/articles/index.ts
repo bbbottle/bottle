@@ -17,6 +17,7 @@ import * as 六月 from "./black-river.mdx";
 import * as 立秋 from "./liqiu.mdx";
 import * as 春风模拟 from "./pseudo-spring.mdx";
 import * as 庆典 from "./celebration.mdx";
+import * as 爱情 from "./love.mdx";
 
 export const MdxArticleList = [
   说明书,
@@ -37,5 +38,6 @@ export const MdxArticleList = [
   六月,
   立秋,
   春风模拟,
-  庆典
+  庆典,
+  爱情,
 ];
