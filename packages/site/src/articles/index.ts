@@ -19,6 +19,7 @@ import * as 春风模拟 from "./pseudo-spring.mdx";
 import * as 庆典 from "./celebration.mdx";
 import * as 爱情 from "./love.mdx";
 import * as 照片 from "./photos.mdx";
+import * as 小乌鸦 from "./xwy.mdx";
 
 export const MdxArticleList = [
   说明书,
@@ -42,4 +43,5 @@ export const MdxArticleList = [
   庆典,
   爱情,
   照片,
+  小乌鸦,
 ];

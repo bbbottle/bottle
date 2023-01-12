@@ -107,6 +107,13 @@ export const OSS_PHOTOS = {
     height: 720,
     avgColor: BgColors.LIGHT_GRAY,
   },
+  xwy: {
+    src: "https://zjh-im-res.oss-cn-shenzhen.aliyuncs.com/image/illustration/illustration/xwy.jpg",
+    renderedWidth: 400,
+    width: 1125,
+    height: 750,
+    avgColor: BgColors.LIGHT_GRAY,
+  },
   quilt: {
     src: "https://zjh-im-res.oss-cn-shenzhen.aliyuncs.com/image/xiang-jiang-river/x2710816755.jpg",
     thumbnailSrc:
