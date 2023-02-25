@@ -21,6 +21,7 @@ import * as 小乌鸦 from "./xwy.mdx";
 import * as 我要看雪 from "./xwy-and-snowing.mdx";
 import * as 做饭 from "./cooking.mdx";
 import * as 堂兄 from "./cousin.mdx";
+import * as 红色的枪 from "./red-gun.mdx";
 
 export const MdxArticleList = [
   说明书,
@@ -45,5 +46,6 @@ export const MdxArticleList = [
   小乌鸦,
   我要看雪,
   做饭,
-  堂兄
+  堂兄,
+  红色的枪
 ];
