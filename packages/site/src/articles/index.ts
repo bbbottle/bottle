@@ -23,6 +23,7 @@ import * as 做饭 from "./cooking.mdx";
 import * as 堂兄 from "./cousin.mdx";
 import * as 红色的枪 from "./red-gun.mdx";
 import * as 圆粉 from "./rice-noodle.mdx";
+import * as 树叶 from "./leaves.mdx";
 
 export const MdxArticleList = [
   说明书,
@@ -49,5 +50,6 @@ export const MdxArticleList = [
   做饭,
   堂兄,
   红色的枪,
-  圆粉
+  圆粉,
+  树叶
 ];
