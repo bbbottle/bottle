@@ -24,6 +24,7 @@ import * as 堂兄 from "./cousin.mdx";
 import * as 红色的枪 from "./red-gun.mdx";
 import * as 圆粉 from "./rice-noodle.mdx";
 import * as 树叶 from "./leaves.mdx";
+import * as 惊醒 from "./woke-up.mdx"
 
 export const MdxArticleList = [
   说明书,
@@ -51,5 +52,6 @@ export const MdxArticleList = [
   堂兄,
   红色的枪,
   圆粉,
-  树叶
+  树叶,
+  惊醒
 ];
