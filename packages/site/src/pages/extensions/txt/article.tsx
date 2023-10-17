@@ -38,6 +38,5 @@ export default () => {
   if (isLoading) {
     return null;
   }
-
   return <ArticlePage title={title}>{posts.content}</ArticlePage>;
 };
