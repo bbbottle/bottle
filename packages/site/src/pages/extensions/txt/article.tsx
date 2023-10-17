@@ -4,6 +4,8 @@ import { withArticleWrapper } from "@/components";
 import { MdxArticle } from "@/types/articles";
 import { Article, NotFound } from "@bbki.ng/components";
 import { useParams } from "react-router-dom";
+import { usePosts } from "@/hooks/use_posts";
+import { ArticlePage } from "@/components/article";
 
 type TArticleMap = {
   [key: string]: ReactElement;
@@ -19,8 +21,23 @@ MdxArticleList.forEach((article: unknown) => {
 
 export default () => {
   const { title } = useParams();
-  if (!title || !ArticleMap[title]) {
+  const { posts, isError, isLoading } = usePosts(title);
+
+  if (!title) {
     return <NotFound />;
   }
-  return ArticleMap[title];
+
+  if (ArticleMap[title]) {
+    return ArticleMap[title];
+  }
+
+  if (isError) {
+    return <NotFound />;
+  }
+
+  if (isLoading) {
+    return null;
+  }
+
+  return <ArticlePage title={title}>{posts.content}</ArticlePage>;
 };
