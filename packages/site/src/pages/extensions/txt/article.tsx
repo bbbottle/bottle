@@ -2,7 +2,7 @@ import React, { ReactElement } from "react";
 import { MdxArticleList } from "@/articles";
 import { withArticleWrapper } from "@/components";
 import { MdxArticle } from "@/types/articles";
-import { Article, NotFound } from "@bbki.ng/components";
+import { NotFound, Link } from "@bbki.ng/components";
 import { useParams } from "react-router-dom";
 import { usePosts } from "@/hooks/use_posts";
 import { ArticlePage } from "@/components/article";

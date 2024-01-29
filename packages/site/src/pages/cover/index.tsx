@@ -7,11 +7,11 @@ export const Cover = (props: { className: string }) => {
       links={[
         {
           to: "/projects",
-          name: "cd /projects",
+          name: "ls *.png",
         },
         {
           to: "/blog",
-          name: "cd /posts",
+          name: "ls *.md",
         },
       ]}
       title="history"

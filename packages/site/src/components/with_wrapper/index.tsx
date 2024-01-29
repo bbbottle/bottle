@@ -1,15 +1,17 @@
 import React from "react";
 import { FunctionComponent } from "react";
 import { ArticlePage } from "@/components/article";
-import { ThreeColLayout, ErrorBoundary } from "@bbki.ng/components";
+import { ThreeColLayout, ErrorBoundary, Link } from "@bbki.ng/components";
 
 export const withArticleWrapper =
   (Component: FunctionComponent<any>): FunctionComponent<any> =>
   (props: any) => {
     return (
-      <ArticlePage {...props}>
-        <Component />
-      </ArticlePage>
+      <>
+        <ArticlePage {...props}>
+          <Component />
+        </ArticlePage>
+      </>
     );
   };
 
