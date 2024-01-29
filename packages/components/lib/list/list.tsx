@@ -15,7 +15,7 @@ export interface listProps {
 export const List: FunctionComponent<listProps> = (props) => {
   const { items, itemRenderer, className, horizontal, compact } = props;
 
-  const spaceCls = compact ? "" : horizontal ? "mr-3" : "mb-4";
+  const spaceCls = compact ? "" : horizontal ? "mr-3" : "mb-8";
   return (
     <ul
       className={cls(className, "list-style-none", {
@@ -25,7 +25,10 @@ export const List: FunctionComponent<listProps> = (props) => {
     >
       {items.map((item, index) => {
         return (
-          <li key={item.id || index} className={cls(spaceCls, "flex-shrink-0", { "!my-0": horizontal })}>
+          <li
+            key={item.id || index}
+            className={cls(spaceCls, "flex-shrink-0", { "!my-0": horizontal })}
+          >
             {itemRenderer(item, index)}
           </li>
         );

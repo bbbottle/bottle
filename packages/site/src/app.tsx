@@ -49,7 +49,7 @@ export const App = () => {
   return (
     <SWR>
       <HotKeyNav>
-        <Stickers />
+        {/*<Stickers />*/}
         <GlobalLoadingStateProvider>
           <Routes>
             <Route path="/" element={<Layout />}>
