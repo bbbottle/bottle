@@ -39,6 +39,7 @@ const Layout = () => {
 
 const NowInMidCol = threeColWrapper(NowPage);
 const ContentInMidCol = threeColWrapper(Txt);
+const ProjectsInMidCol = threeColWrapper(Png);
 const ArticleInMidCol = threeColWrapper(ArticlePage);
 const TagsInMidCol = threeColWrapper(Tags);
 const LoginInMidCol = threeColWrapper(Login);
@@ -55,7 +56,7 @@ export const App = () => {
             <Route path="/" element={<Layout />}>
               <Route index element={<CoverInMidCol />} />
 
-              <Route path="/projects" element={<Png />} />
+              <Route path="/projects" element={<ProjectsInMidCol />} />
               <Route path="/projects/:id" element={<PhotoProjects />} />
 
               <Route path="blog" element={<ContentInMidCol />} />
