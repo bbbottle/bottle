@@ -1,10 +1,20 @@
 import React from "react";
-import { Article } from "@bbki.ng/components";
+import { LinkList } from "@bbki.ng/components";
 
 export const Cover = (props: { className: string }) => {
   return (
-    <Article title="">
-      <div className="bg-white">This page intentionally left blank</div>
-    </Article>
+    <LinkList
+      links={[
+        {
+          to: "/projects",
+          name: "cd /projects",
+        },
+        {
+          to: "/blog",
+          name: "cd /posts",
+        },
+      ]}
+      title="history"
+    />
   );
 };
