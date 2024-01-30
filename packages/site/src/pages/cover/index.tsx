@@ -11,7 +11,7 @@ export const Cover = (props: { className: string }) => {
         },
         {
           to: "/blog",
-          name: "ls *.md",
+          name: "cd ./blog",
         },
       ]}
       title=" "

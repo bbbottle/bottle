@@ -11,19 +11,22 @@ export const usePosts = (name: string = "", suspense?: boolean) => {
 
   let isLoading = !data && !error;
   const { setIsLoading } = useContext(GlobalLoadingContext);
-  const titleList = isLoading
-    ? []
-    : data.map((p: any) => ({
-        name: p.title,
-        to: p.title,
-      }));
+  const titleList =
+    isLoading || error
+      ? []
+      : data.map((p: any) => ({
+          name: p.title,
+          to: p.title,
+        }));
 
   useEffect(() => {
     setIsLoading(isLoading);
   }, [isLoading]);
 
   const posts =
-    isLoading || name == "" ? data : data.find((p: any) => p.title == name);
+    isLoading || name == "" || error
+      ? data
+      : data.find((p: any) => p.title == name);
 
   return {
     posts: posts,

@@ -4,7 +4,9 @@ import React, {
   useState,
   Dispatch,
   SetStateAction,
+  useEffect,
 } from "react";
+import { useLocation, useRoutes } from "react-router-dom";
 
 type LoadingContext = {
   isLoading: boolean;
@@ -18,6 +20,11 @@ export const GlobalLoadingContext = createContext<LoadingContext>({
 
 export const GlobalLoadingStateProvider = (props: { children: ReactNode }) => {
   const [isLoading, setIsLoading] = useState(false);
+  const location = useLocation();
+
+  useEffect(() => {
+    setIsLoading(false);
+  }, [location.pathname]);
 
   return (
     <GlobalLoadingContext.Provider value={{ isLoading, setIsLoading }}>

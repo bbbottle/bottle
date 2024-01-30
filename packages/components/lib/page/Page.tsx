@@ -1,5 +1,6 @@
 import React, { ReactElement, ReactNode } from "react";
 import { NoiseCover } from "../noise-cover/NoiseCover";
+import { Article } from "../article/Article";
 
 type PageProps = {
   nav: ReactElement;
@@ -62,7 +63,13 @@ export class ErrorBoundary extends React.Component<
 
   render() {
     if (this.state.error && this.state.hasError) {
-      return <Error error={this.state.error} />;
+      return (
+        <Article title="出错">
+          <div className="relative h-256">
+            <Error error={this.state.error} />;
+          </div>
+        </Article>
+      );
     }
 
     return this.props.children;

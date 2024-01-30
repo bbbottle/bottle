@@ -1,4 +1,4 @@
-import React, { ReactElement } from "react";
+import React, { ReactElement, useContext } from "react";
 import { MdxArticleList } from "@/articles";
 import { withArticleWrapper } from "@/components";
 import { MdxArticle } from "@/types/articles";
@@ -6,6 +6,7 @@ import { NotFound, Link } from "@bbki.ng/components";
 import { useParams } from "react-router-dom";
 import { usePosts } from "@/hooks/use_posts";
 import { ArticlePage } from "@/components/article";
+import { GlobalLoadingContext } from "@/global_loading_state_provider";
 
 type TArticleMap = {
   [key: string]: ReactElement;
@@ -22,12 +23,14 @@ MdxArticleList.forEach((article: unknown) => {
 export default () => {
   const { title } = useParams();
   const { posts, isError, isLoading } = usePosts(title);
+  const { setIsLoading } = useContext(GlobalLoadingContext);
 
   if (!title) {
     return <NotFound />;
   }
 
   if (ArticleMap[title]) {
+    setIsLoading(false);
     return ArticleMap[title];
   }
 
