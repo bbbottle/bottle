@@ -67,7 +67,13 @@ export const getEnv = () => {
 };
 
 export const baseFetcher = (resource: string, init: RequestInit = {}) =>
-  fetch(resource, init).then((res) => res.json());
+  fetch(resource, init).then((res) => {
+    if (!res.ok) {
+      throw new Error("An error occurred while fetching the data.");
+    }
+
+    return res.json();
+  });
 
 export const withToken =
   (fetcher: Fetcher) =>
