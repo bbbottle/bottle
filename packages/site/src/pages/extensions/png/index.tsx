@@ -11,7 +11,7 @@ const Projects = () => {
     name: p.name,
   }));
 
-  return <LinkList links={links} title="图片" />;
+  return <LinkList links={links} title="照片" />;
 };
 
 export default () => {
