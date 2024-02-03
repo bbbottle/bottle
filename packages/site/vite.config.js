@@ -1,11 +1,11 @@
 import path from "path";
 import { defineConfig } from "vite";
 import { VitePWA } from "vite-plugin-pwa";
-import mdx from "vite-plugin-mdx";
+import mdx from "@mdx-js/rollup";
 import remarkGfm from "remark-gfm";
 import remarkParse from "remark-parse";
 import remarkToc from "remark-toc";
-import remarkFrontmatter from "remark-frontmatter";
+import remarkFrontMatter from "remark-frontmatter";
 import { remarkMdxFrontmatter } from "remark-mdx-frontmatter";
 import rehypeSlug from "rehype-slug";
 import rehypeHighlight from "rehype-highlight";
@@ -13,11 +13,10 @@ import rehypeAutolinkHeadings from "rehype-autolink-headings";
 import react from "@vitejs/plugin-react";
 
 const options = {
-  // See https://mdxjs.com/advanced/plugins
   remarkPlugins: [
     remarkParse,
     [remarkToc, { maxDepth: 3, heading: "目录", tight: true }],
-    [remarkFrontmatter, { type: "yaml", marker: "-" }],
+    [remarkFrontMatter, { type: "yaml", marker: "-" }],
     [remarkMdxFrontmatter, { name: "meta" }],
     remarkGfm,
   ],
@@ -47,11 +46,11 @@ export default defineConfig({
     GLOBAL_BBKING_VERSION: JSON.stringify(process.env.npm_package_version),
   },
   esbuild: {
-    logOverride: { 'this-is-undefined-in-esm': 'silent' }
+    logOverride: { "this-is-undefined-in-esm": "silent" },
   },
   plugins: [
     react(),
-    (mdx as any).default(options),
+    mdx(options),
     VitePWA({
       includeAssets: [
         "favicon.svg",
