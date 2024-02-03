@@ -24,6 +24,7 @@
     "react-dom": "^18.0.0",
     "react-hotkeys-hook": "^3.4.3",
     "react-router-dom": "6",
+    "sonner": "1.4.0",
     "swr": "^1.2.1"
   },
   "devDependencies": {

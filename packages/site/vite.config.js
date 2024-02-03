@@ -79,9 +79,9 @@ export default defineConfig({
         ],
       },
       manifest: {
-        name: "BBKi.ng",
-        short_name: "BBKi.ng",
-        description: "A Personal Site.",
+        name: "bbki.ng",
+        short_name: "bbki.ng",
+        description: "words, pictures",
         theme_color: "#ffffff",
         icons: [
           {

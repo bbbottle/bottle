@@ -1,5 +1,6 @@
 import React from "react";
 import { createRoot } from "react-dom/client";
+import { Toaster } from "sonner";
 import { BrowserRouter as Router } from "react-router-dom";
 import { ReloadPrompt } from "@/components";
 import "@bbki.ng/components/style";
@@ -14,6 +15,7 @@ root.render(
     <Router>
       <ReloadPrompt />
       <App />
+      <Toaster />
     </Router>
   </React.StrictMode>
 );

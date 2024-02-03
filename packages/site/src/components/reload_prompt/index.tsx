@@ -1,8 +1,8 @@
-import React from "react";
+import React, { useEffect } from "react";
+import { toast } from "sonner";
 
 // @ts-ignore
 import { useRegisterSW } from "virtual:pwa-register/react";
-import { CornerPromptBox } from "@/components";
 
 export const ReloadPrompt = () => {
   const {
@@ -21,16 +21,31 @@ export const ReloadPrompt = () => {
 
   // @ts-ignore
   const appVer = GLOBAL_BBKING_VERSION;
-  console.log("appVer: ", appVer);
 
-  return (
-    <CornerPromptBox
-      className="z-[1010]"
-      content={`🚀 发现新版本（当前 v${appVer}）。获取更新？`}
-      showBox={needRefresh}
-      onCancel={close}
-      cancelLabel="关闭"
-      onOk={needRefresh ? () => updateServiceWorker(true) : close}
-    />
-  );
+  useEffect(() => {
+    if (!needRefresh) {
+      return;
+    }
+
+    toast("", {
+      description: "检测到更新，当前 v" + appVer + "。是否更新？",
+      position: "bottom-center",
+      actionButtonStyle: {
+        backgroundColor: "#fff",
+        color: "rgb(37,99,235)",
+      },
+      action: {
+        label: "是",
+        onClick: () => {
+          if (!needRefresh) {
+            setNeedRefresh(false);
+            return;
+          }
+          updateServiceWorker(true);
+        },
+      },
+    });
+  }, []);
+
+  return null;
 };
