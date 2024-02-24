@@ -17,10 +17,10 @@ export const ReloadPrompt = () => {
     },
   });
 
-  // if (!needRefresh) {
-  //   console.log("无需更新");
-  //   return null;
-  // }
+  if (!needRefresh) {
+    console.log("无需更新");
+    return null;
+  }
 
   toast("", {
     description: "发现新版本，是否更新？",
