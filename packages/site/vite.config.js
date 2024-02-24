@@ -59,8 +59,12 @@ export default defineConfig({
         "apple-touch-icon.png",
         "Logo.svg",
       ],
+      devOptions: {
+        enabled: true,
+        /* other options */
+      },
       workbox: {
-        cleanupOutdatedCaches: false,
+        cleanupOutdatedCaches: true,
         runtimeCaching: [
           {
             urlPattern:

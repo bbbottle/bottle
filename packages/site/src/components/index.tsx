@@ -29,7 +29,7 @@ export { MySuspense } from "./my_suspense";
 
 export const CenterLinkList = (props: any) => {
   return (
-    <div className="flex justify-center pr-32">
+    <div className="flex justify-center">
       <LinkList {...props} />
     </div>
   );
