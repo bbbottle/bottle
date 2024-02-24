@@ -12,7 +12,7 @@ type TxtProps = {
 
 const Posts = (props: TxtProps) => {
   const name = useRouteName();
-  const { titleList, isLoading, isError } = usePosts("", true);
+  const { titleList, isLoading, isError } = usePosts();
 
   if (isLoading) {
     return null;

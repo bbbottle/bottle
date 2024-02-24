@@ -4,14 +4,18 @@ import React from "react";
 import { Link, LinkColor, LinkProps } from "../link/Link";
 
 export interface TagProps
-  extends Pick<LinkProps, "to" | "children" | "className"> {
+  extends Pick<LinkProps, "to" | "children" | "className" | "external"> {
+  prefix?: string;
   name?: string;
 }
 
 export const Tag = (props: TagProps) => {
   return (
     <Link {...props} color={LinkColor.GRAY}>
-      <small>#{props.children}</small>
+      <small>
+        {props.prefix || "#"}
+        {props.children}
+      </small>
     </Link>
   );
 };
