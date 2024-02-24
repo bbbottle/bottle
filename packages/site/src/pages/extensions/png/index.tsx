@@ -1,7 +1,7 @@
 import React from "react";
 import { useProjects } from "@/hooks/use_projects";
 import { Link, Gallery, ImageRenderer, LinkList } from "@bbki.ng/components";
-import { MySuspense } from "@/components";
+import { CenterLinkList, MySuspense } from "@/components";
 
 const Projects = () => {
   const { projects } = useProjects("", true);
@@ -11,7 +11,7 @@ const Projects = () => {
     name: p.name,
   }));
 
-  return <LinkList links={links} title="照片" />;
+  return <CenterLinkList links={links} title=" " />;
 };
 
 export default () => {

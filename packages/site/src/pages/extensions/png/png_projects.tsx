@@ -30,11 +30,6 @@ const ProjectDetail = () => {
       <Gallery images={projects.images.map(imageFormatter)}>
         {renderUploader()}
       </Gallery>
-      <div className="w-full flex justify-center">
-        <Link to="/projects" className="w-full py-32 md:hidden text-center">
-          cd ..
-        </Link>
-      </div>
     </>
   );
 };
