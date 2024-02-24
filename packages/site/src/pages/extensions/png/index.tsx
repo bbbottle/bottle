@@ -15,8 +15,8 @@ const Projects = () => {
 
 export default () => {
   return (
-    <MySuspense>
-      <Projects />
-    </MySuspense>
+    // <MySuspense>
+    <Projects />
+    // </MySuspense>
   );
 };

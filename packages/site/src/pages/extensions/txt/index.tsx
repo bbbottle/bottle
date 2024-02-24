@@ -31,8 +31,8 @@ const Posts = (props: TxtProps) => {
 
 export default (props: TxtProps) => {
   return (
-    <MySuspense>
-      <Posts {...props} />
-    </MySuspense>
+    // <MySuspense>
+    <Posts {...props} />
+    // </MySuspense>
   );
 };
