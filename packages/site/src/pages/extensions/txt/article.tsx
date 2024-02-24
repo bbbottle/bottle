@@ -42,5 +42,8 @@ export default () => {
     return null;
   }
 
+  // scroll to top
+  window.scrollTo(0, 0);
+
   return <ArticlePage title={title}>{posts.content}</ArticlePage>;
 };

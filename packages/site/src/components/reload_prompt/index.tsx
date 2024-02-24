@@ -14,33 +14,25 @@ export const ReloadPrompt = () => {
     },
     onOfflineReady() {
       console.log("App is offline-ready");
-      toast("", {
-        description: "已支持离线访问",
-        position: "bottom-center",
-      });
     },
   });
 
-  useEffect(() => {
-    if (!needRefresh) {
-      console.log("无需更新");
-      return;
-    }
+  if (!needRefresh) {
+    console.log("无需更新");
+    return;
+  }
 
-    updateServiceWorker(false).then(() => {
-      // @ts-ignore
-      const appVer = GLOBAL_BBKING_VERSION;
+  updateServiceWorker(false).then(() => {
+    // @ts-ignore
+    const appVer = GLOBAL_BBKING_VERSION;
 
-      toast("", {
-        description: "已自动更新到 v" + appVer + "。",
-        position: "bottom-center",
-      });
-
-      if (!needRefresh) {
-        setNeedRefresh(false);
-      }
+    toast("", {
+      description: "已自动更新到 v" + appVer + "。",
+      position: "bottom-center",
     });
-  }, [needRefresh]);
+
+    setNeedRefresh(false);
+  });
 
   return null;
 };
