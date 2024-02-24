@@ -27,7 +27,7 @@ export const ReloadPrompt = () => {
       return;
     }
 
-    updateServiceWorker(true).then(() => {
+    updateServiceWorker(false).then(() => {
       // @ts-ignore
       const appVer = GLOBAL_BBKING_VERSION;
 

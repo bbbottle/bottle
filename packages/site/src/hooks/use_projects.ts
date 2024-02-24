@@ -1,7 +1,8 @@
 import useSWR, { useSWRConfig } from "swr";
 import { API } from "@/constants/routes";
-import { useCallback } from "react";
+import { useCallback, useContext, useEffect } from "react";
 import { Photo } from "@/types/photo";
+import { GlobalLoadingContext } from "@/global_loading_state_provider";
 
 export const useProjects = (name: string = "", suspense?: boolean) => {
   const URL = `${API.PROJECTS}${name ? "/" : ""}${name}`;
@@ -10,6 +11,14 @@ export const useProjects = (name: string = "", suspense?: boolean) => {
     revalidateOnFocus: false,
     suspense,
   });
+
+  let isLoading = !data && !error;
+
+  const { setIsLoading } = useContext(GlobalLoadingContext);
+
+  useEffect(() => {
+    setIsLoading(isLoading);
+  }, [isLoading]);
 
   const { mutate, cache } = useSWRConfig();
 

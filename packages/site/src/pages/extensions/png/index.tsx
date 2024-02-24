@@ -3,7 +3,11 @@ import { useProjects } from "@/hooks/use_projects";
 import { CenterLinkList } from "@/components";
 
 const Projects = () => {
-  const { projects } = useProjects("");
+  const { projects, isLoading } = useProjects("");
+
+  if (isLoading) {
+    return null;
+  }
 
   const links = projects.map((p: any) => ({
     to: `/projects/${p.name}`,
