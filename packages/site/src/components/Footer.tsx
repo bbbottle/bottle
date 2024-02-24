@@ -9,10 +9,9 @@ export const Footer = () => {
   const isRoot = location.pathname === "/";
   const { isLoading } = useContext(GlobalLoadingContext);
 
-  if (isRoot || isLoading) {
+  if (isRoot) {
     // @ts-ignore
     const appVer = GLOBAL_BBKING_VERSION;
-
     const tagUrl = `https://github.com/bbbottle/bottle/releases/tag/@bbki.ng/site@${appVer}`;
     return (
       <div className="w-full flex justify-center">
@@ -21,6 +20,10 @@ export const Footer = () => {
         </Tag>
       </div>
     );
+  }
+
+  if (isLoading) {
+    return null;
   }
 
   const paths = usePaths();
