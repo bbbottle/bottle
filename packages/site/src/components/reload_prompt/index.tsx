@@ -12,6 +12,17 @@ export const ReloadPrompt = () => {
     onRegisterError(error: any) {
       console.log("SW registration error", error);
     },
+    onOfflineReady() {
+      console.log("App is offline-ready");
+      toast("", {
+        description: "已支持离线访问。",
+        position: "bottom-center",
+        actionButtonStyle: {
+          backgroundColor: "#fff",
+          color: "rgb(37,99,235)",
+        },
+      });
+    },
   });
 
   // @ts-ignore
@@ -24,7 +35,8 @@ export const ReloadPrompt = () => {
     }
 
     toast("", {
-      description: "检测到更新，当前 v" + appVer + "。是否更新？",
+      description: "检测到更新，当前版本 v" + appVer + "。是否更新？",
+      dismissible: false,
       position: "bottom-center",
       actionButtonStyle: {
         backgroundColor: "#fff",
@@ -41,7 +53,7 @@ export const ReloadPrompt = () => {
         },
       },
     });
-  }, []);
+  }, [needRefresh]);
 
   return null;
 };
