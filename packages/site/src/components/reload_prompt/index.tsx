@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { toast } from "sonner";
+import { toast, Toaster } from "sonner";
 
 // @ts-ignore
 import { useRegisterSW } from "virtual:pwa-register/react";
@@ -22,16 +22,28 @@ export const ReloadPrompt = () => {
     return null;
   }
 
-  updateServiceWorker(false).then(() => {
-    // @ts-ignore
-    const appVer = GLOBAL_BBKING_VERSION;
-
-    toast("", {
-      description: "已自动更新到 v" + appVer + "。",
-      position: "bottom-center",
-    });
-
-    setNeedRefresh(false);
+  toast("", {
+    description: "发现新版本，是否更新？",
+    duration: 10000,
+    position: "bottom-center",
+    actionButtonStyle: {
+      backgroundColor: "#fff",
+      color: "rgb(37,99,235)",
+    },
+    action: {
+      label: "是",
+      onClick: () => {
+        updateServiceWorker(false).then(() => {
+          // @ts-ignore
+          const appVer = GLOBAL_BBKING_VERSION;
+          toast("", {
+            description: `已更新到 v${appVer}`,
+            position: "bottom-center",
+          });
+          setNeedRefresh(false);
+        });
+      },
+    },
   });
 
   return null;
