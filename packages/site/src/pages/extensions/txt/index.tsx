@@ -29,10 +29,10 @@ const Posts = (props: TxtProps) => {
   return <CenterLinkList links={props.articleList || links} title=" " />;
 };
 
-export default () => {
+export default (props: TxtProps) => {
   return (
     <MySuspense>
-      <Posts />
+      <Posts {...props} />
     </MySuspense>
   );
 };
