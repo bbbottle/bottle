@@ -52,6 +52,7 @@ export default defineConfig({
     react(),
     mdx(options),
     VitePWA({
+      injectRegister: "auto",
       includeAssets: [
         "favicon.svg",
         "robots.txt",
