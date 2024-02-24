@@ -85,8 +85,7 @@ export default defineConfig({
       },
       manifest: {
         name: "bbki.ng",
-        short_name: "bbki.ng",
-        description: "words, pictures",
+        description: "words, pictures.",
         theme_color: "#ffffff",
         icons: [
           {
