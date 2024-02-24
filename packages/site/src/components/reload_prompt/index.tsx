@@ -14,16 +14,12 @@ export const ReloadPrompt = () => {
     },
   });
 
-  const close = () => {
-    // setOfflineReady(false);
-    setNeedRefresh(false);
-  };
-
   // @ts-ignore
   const appVer = GLOBAL_BBKING_VERSION;
 
   useEffect(() => {
     if (!needRefresh) {
+      console.log("版本 v" + appVer + "，无需更新。");
       return;
     }
 
