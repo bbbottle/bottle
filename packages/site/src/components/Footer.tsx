@@ -10,7 +10,7 @@ export const Footer = () => {
   const { isLoading } = useContext(GlobalLoadingContext);
 
   if (isRoot || isLoading) {
-    return;
+    return null;
   }
 
   const paths = usePaths();
