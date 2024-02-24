@@ -1,9 +1,9 @@
 import React from "react";
 import { useProjects } from "@/hooks/use_projects";
-import { CenterLinkList, MySuspense } from "@/components";
+import { CenterLinkList } from "@/components";
 
 const Projects = () => {
-  const { projects } = useProjects();
+  const { projects } = useProjects("");
 
   const links = projects.map((p: any) => ({
     to: `/projects/${p.name}`,
