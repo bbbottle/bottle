@@ -49,7 +49,7 @@ export const TitledList: FunctionComponent<TitledListProps> = (props) => {
   }
 
   return (
-    <Article title={title} description={description}>
+    <Article title={title} description={description} className="w-fit">
       <List {...rest} />
     </Article>
   );

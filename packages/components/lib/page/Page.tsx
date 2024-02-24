@@ -5,7 +5,7 @@ import { Article } from "../article/Article";
 type PageProps = {
   nav: ReactElement;
   main: ReactElement;
-  footer: ReactNode;
+  footer: ReactElement;
 };
 
 export const Page = (props: PageProps) => {
@@ -15,7 +15,7 @@ export const Page = (props: PageProps) => {
       <div className={`flx-grow-0 w-full sticky top-0 z-50`}>{nav}</div>
       <section className="flex-grow flex-shrink-0 px-6">{main}</section>
       {footer && (
-        <footer className="flex-grow-0 flex-shrink-0 flex items-center justify-center h-64">
+        <footer className="flex-grow-0 flex-shrink-0 flex items-center justify-center h-128">
           {footer}
         </footer>
       )}

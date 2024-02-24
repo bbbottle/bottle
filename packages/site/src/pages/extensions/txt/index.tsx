@@ -3,6 +3,7 @@ import { ArticleList } from "./consts";
 import { LinkList, LinkProps } from "@bbki.ng/components";
 import { useRouteName } from "@/hooks";
 import { usePosts } from "@/hooks/use_posts";
+import { CenterLinkList } from "@/components";
 
 type TxtProps = {
   title?: string;
@@ -13,10 +14,17 @@ export default (props: TxtProps) => {
   const name = useRouteName();
   const { titleList, isLoading, isError } = usePosts();
 
-  const links =
-    isError || isLoading ? ArticleList : [...ArticleList, ...titleList];
+  if (isLoading) {
+    return null;
+  }
 
-  return (
-    <LinkList links={props.articleList || links} title={props.title || name} />
-  );
+  if (isError) {
+    return (
+      <CenterLinkList links={props.articleList || ArticleList} title=" " />
+    );
+  }
+
+  const links = [...ArticleList, ...titleList];
+
+  return <CenterLinkList links={props.articleList || links} title=" " />;
 };

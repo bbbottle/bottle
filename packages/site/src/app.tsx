@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import { Routes, Route, Outlet } from "react-router-dom";
-import { Nav, Page, NotFound } from "@bbki.ng/components";
+import { Nav, Page, NotFound, Link } from "@bbki.ng/components";
 import { HotKeyNav, Stickers } from "./components";
 import { threeColWrapper } from "@/components/with_wrapper";
 import { Cover } from "./pages";
@@ -21,6 +21,7 @@ import {
   GlobalLoadingStateProvider,
 } from "@/global_loading_state_provider";
 import { UploadPage } from "@/pages/upload";
+import { Footer } from "@/components/Footer";
 
 const Layout = () => {
   const { isLoading } = useContext(GlobalLoadingContext);
@@ -31,7 +32,7 @@ const Layout = () => {
           <Nav paths={usePaths()} className="blur-cover" loading={isLoading} />
         }
         main={<Outlet />}
-        footer={null}
+        footer={<Footer />}
       />
     </>
   );

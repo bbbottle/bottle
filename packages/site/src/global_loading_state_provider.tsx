@@ -20,11 +20,6 @@ export const GlobalLoadingContext = createContext<LoadingContext>({
 
 export const GlobalLoadingStateProvider = (props: { children: ReactNode }) => {
   const [isLoading, setIsLoading] = useState(false);
-  const location = useLocation();
-
-  useEffect(() => {
-    setIsLoading(false);
-  }, [location.pathname]);
 
   return (
     <GlobalLoadingContext.Provider value={{ isLoading, setIsLoading }}>

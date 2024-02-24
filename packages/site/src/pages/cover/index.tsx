@@ -1,9 +1,10 @@
 import React from "react";
 import { LinkList } from "@bbki.ng/components";
+import { CenterLinkList } from "@/components";
 
 export const Cover = (props: { className: string }) => {
   return (
-    <LinkList
+    <CenterLinkList
       links={[
         {
           to: "/projects",

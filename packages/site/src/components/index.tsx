@@ -1,4 +1,5 @@
-export { Footer } from "./footer";
+import React from "react";
+import { LinkList } from "@bbki.ng/components";
 
 export { DisabledText, SmallDisabledText } from "./disabled_text";
 
@@ -25,3 +26,11 @@ export { Tags } from "./tags";
 export { Comment } from "./comment";
 
 export { MySuspense } from "./my_suspense";
+
+export const CenterLinkList = (props: any) => {
+  return (
+    <div className="flex justify-center pr-32">
+      <LinkList {...props} />
+    </div>
+  );
+};
