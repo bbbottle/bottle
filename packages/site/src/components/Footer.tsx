@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { Link } from "@bbki.ng/components";
+import { Link, Tag } from "@bbki.ng/components";
 import { useLocation } from "react-router-dom";
 import { usePaths } from "@/hooks";
 import { GlobalLoadingContext } from "@/global_loading_state_provider";
@@ -10,7 +10,17 @@ export const Footer = () => {
   const { isLoading } = useContext(GlobalLoadingContext);
 
   if (isRoot || isLoading) {
-    return null;
+    // @ts-ignore
+    const appVer = GLOBAL_BBKING_VERSION;
+
+    const tagUrl = `https://github.com/bbbottle/bottle/releases/tag/@bbki.ng/site@${appVer}`;
+    return (
+      <div className="w-full flex justify-center">
+        <Tag to={tagUrl} prefix="v" external>
+          {appVer}
+        </Tag>
+      </div>
+    );
   }
 
   const paths = usePaths();
