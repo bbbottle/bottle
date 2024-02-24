@@ -19,7 +19,7 @@ export const ReloadPrompt = () => {
 
   if (!needRefresh) {
     console.log("无需更新");
-    return;
+    return null;
   }
 
   updateServiceWorker(false).then(() => {
