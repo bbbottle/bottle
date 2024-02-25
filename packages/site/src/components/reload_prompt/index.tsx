@@ -34,9 +34,8 @@ export const ReloadPrompt = () => {
       onClick: () => {
         updateServiceWorker(false).then(() => {
           // @ts-ignore
-          const appVer = GLOBAL_BBKING_VERSION;
-          toast("", {
-            description: `已更新到 v${appVer}`,
+          toast.success("", {
+            description: `已更新`,
             position: "bottom-center",
           });
           setNeedRefresh(false);
