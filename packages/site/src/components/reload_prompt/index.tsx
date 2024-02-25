@@ -1,5 +1,4 @@
-import React, { useEffect } from "react";
-import { toast, Toaster } from "sonner";
+import { toast } from "sonner";
 
 // @ts-ignore
 import { useRegisterSW } from "virtual:pwa-register/react";
