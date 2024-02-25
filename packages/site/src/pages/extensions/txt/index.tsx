@@ -24,7 +24,7 @@ const Posts = (props: TxtProps) => {
     );
   }
 
-  const links = [...ArticleList, ...titleList];
+  const links = [...titleList, ...ArticleList];
 
   return <CenterLinkList links={props.articleList || links} title=" " />;
 };
