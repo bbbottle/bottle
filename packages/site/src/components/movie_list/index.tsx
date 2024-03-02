@@ -10,6 +10,7 @@ const CELL_STYLE = {
 
 export const MovieList = () => {
   const { movies, isLoading, isError } = useMovies();
+
   if (isError) {
     return <Error error={isError} />;
   }
@@ -17,6 +18,8 @@ export const MovieList = () => {
   if (isLoading) {
     return <TableSkeleton />;
   }
+
+  const filteredMovies = movies.filter((m: any) => m.visible == 1);
 
   const renderHeader = () => {
     return (
@@ -28,7 +31,7 @@ export const MovieList = () => {
   };
 
   const renderRow = (index: number) => {
-    const { name, link, status } = movies[index];
+    const { name, link, status } = filteredMovies[index];
     return (
       <>
         <Table.Cell style={CELL_STYLE}>
@@ -42,7 +45,7 @@ export const MovieList = () => {
   };
   return (
     <Table
-      rowCount={movies.length}
+      rowCount={filteredMovies.length}
       rowRenderer={renderRow}
       headerRenderer={renderHeader}
     />
