@@ -27,8 +27,10 @@ export const BookList = () => {
     );
   };
 
+  const filteredBooks = books.filter((m: any) => m.visible == 1);
+
   const renderRow = (index: number) => {
-    const { name: title, link, status } = books[index];
+    const { name: title, link, status } = filteredBooks[index];
     return (
       <>
         <Table.Cell style={CELL_STYLE}>
@@ -42,7 +44,7 @@ export const BookList = () => {
   };
   return (
     <Table
-      rowCount={books.length}
+      rowCount={filteredBooks.length}
       rowRenderer={renderRow}
       headerRenderer={renderHeader}
     />
