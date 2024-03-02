@@ -11,13 +11,13 @@ export enum LinkColor {
 }
 
 export interface LinkProps extends BaseLinkProps {
+  to: string;
   color?: LinkColor;
   className?: string;
   external?: boolean;
   name?: any;
   children?: any;
-  to: string;
-  readonly: boolean;
+  readonly?: boolean;
   status?: "blink" | "still" | "hidden";
 }
 
