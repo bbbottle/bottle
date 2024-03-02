@@ -6,6 +6,7 @@ import { ReloadPrompt } from "@/components";
 import "@bbki.ng/components/style";
 import App from "./app";
 import "./main.css";
+import Logger from "@/components/Logger";
 
 const container = document.getElementById("root") as Element;
 const root = createRoot(container);
@@ -15,6 +16,7 @@ root.render(
     <Router>
       <App />
       <Toaster />
+      <Logger />
       <ReloadPrompt />
     </Router>
   </React.StrictMode>
