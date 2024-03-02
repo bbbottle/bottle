@@ -66,7 +66,13 @@ export const Link = (props: LinkProps) => {
 
   if (external) {
     return (
-      <a href={props.to} className={linkCls} target="_blank" rel="noreferrer">
+      <a
+        href={props.to}
+        className={linkCls}
+        target="_blank"
+        rel="noreferrer"
+        style={{ padding: 4 }}
+      >
         {children}
       </a>
     );
