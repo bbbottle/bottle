@@ -1,4 +1,3 @@
-import React from "react";
 import { useNavigate } from "react-router-dom";
 import { useHotkeys } from "react-hotkeys-hook";
 import { GITHUB_REPO_ADDRESS, ROUTES } from "@/constants";
@@ -14,6 +13,7 @@ enum HotKeys {
   b = "b",
   h = "h",
   s = "s",
+  l = "l",
   T = "shift+t",
 }
 
@@ -22,6 +22,7 @@ const KEY_ROUTES = [
   { key: HotKeys.c, route: ROUTES.CONTENT },
   { key: HotKeys.h, route: ROUTES.HELP },
   { key: HotKeys.t, route: ROUTES.TAGS },
+  { key: HotKeys.l, route: ROUTES.LOGIN },
 ];
 
 export const HotKeyNav = (props: any) => {

@@ -2,6 +2,7 @@ import { toast } from "sonner";
 
 // @ts-ignore
 import { useRegisterSW } from "virtual:pwa-register/react";
+import { useEffect, useState } from "react";
 
 export const ReloadPrompt = () => {
   const {
@@ -16,8 +17,17 @@ export const ReloadPrompt = () => {
     },
   });
 
+  const [time, setTime] = useState(new Date());
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setTime(new Date());
+    }, 1000);
+
+    return () => clearInterval(interval);
+  }, []);
+
   if (!needRefresh) {
-    console.log("无需更新");
     return null;
   }
 
