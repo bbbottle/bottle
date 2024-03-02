@@ -24,7 +24,7 @@ export const ReloadPrompt = () => {
   toast("", {
     description: "发现新版本，是否更新？",
     duration: 10000,
-    position: "bottom-center",
+    position: "top-center",
     actionButtonStyle: {
       backgroundColor: "#fff",
       color: "rgb(37,99,235)",
@@ -34,9 +34,9 @@ export const ReloadPrompt = () => {
       onClick: () => {
         updateServiceWorker(false).then(() => {
           // @ts-ignore
-          toast.success("", {
+          toast("", {
             description: `已更新`,
-            position: "bottom-center",
+            position: "top-center",
           });
           setNeedRefresh(false);
         });
