@@ -15,7 +15,14 @@ module.exports = {
     },
     extend: {
       animation: {
-        "ping-fast": "ping .1s linear infinite",
+        "ping-fast": "blink .1s linear infinite",
+      },
+      keyframes: {
+        blink: {
+          "0%": { opacity: 1 },
+          "75%": { opacity: 0 },
+          "100%": { opacity: 1 },
+        },
       },
       fontSize: {
         h1: "2.25rem",
@@ -136,8 +143,8 @@ module.exports = {
   },
   safelist: ["md:basis-1/2", "md:basis-full", "md:ml-64", "md:mr-64"],
   plugins: [
-    require('./plugin'),
+    require("./plugin"),
     require("@tailwindcss/typography"),
-    require('@tailwindcss/aspect-ratio'),
+    require("@tailwindcss/aspect-ratio"),
   ],
-}
+};

@@ -30,8 +30,7 @@ export const Nav = (props: NavProps) => {
           nav("/");
         }}
       />
-      <Breadcrumb paths={props.paths} />
-      {props.loading && <BlinkDot className="-top-2 left-1" />}
+      <Breadcrumb paths={props.paths} loading={props.loading} />
     </div>
   );
 };
