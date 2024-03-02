@@ -21,7 +21,7 @@ const KEY_ROUTES = [
   { key: HotKeys.i, route: ROUTES.INDEX },
   { key: HotKeys.c, route: ROUTES.CONTENT },
   { key: HotKeys.h, route: ROUTES.HELP },
-  { key: HotKeys.T, route: ROUTES.TAGS },
+  { key: HotKeys.t, route: ROUTES.TAGS },
 ];
 
 export const HotKeyNav = (props: any) => {
