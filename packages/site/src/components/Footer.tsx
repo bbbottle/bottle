@@ -14,7 +14,7 @@ export const Footer = () => {
     const appVer = GLOBAL_BBKING_VERSION;
     const tagUrl = `https://github.com/bbbottle/bottle/releases/tag/@bbki.ng/site@${appVer}`;
     return (
-      <div className="w-full flex justify-center">
+      <div className="mt-32">
         <Tag to={tagUrl} prefix="v" external>
           {appVer}
         </Tag>

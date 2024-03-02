@@ -64,9 +64,9 @@ export interface LinkListProps
 
 export const LinkList = (props: LinkListProps) => {
   const { title, description, links, ...rest } = props;
-  const renderLink = ({ name, to }: any) => {
+  const renderLink = ({ name, to, external }: any) => {
     return (
-      <Link to={to} key={name}>
+      <Link to={to} key={name} external={external}>
         {name}
       </Link>
     );
