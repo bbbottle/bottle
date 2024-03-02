@@ -2,6 +2,7 @@ import * as React from "react";
 
 export type LogoProps = {
   className?: string;
+  onClick?: () => void;
 };
 
 export const Logo = React.memo(
@@ -12,6 +13,7 @@ export const Logo = React.memo(
       height="48"
       viewBox="0 0 48 48"
       fill="none"
+      onClick={props.onClick}
       className={props.className}
     >
       <path
