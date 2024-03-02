@@ -2,7 +2,6 @@ import { toast } from "sonner";
 
 // @ts-ignore
 import { useRegisterSW } from "virtual:pwa-register/react";
-import { useEffect, useState } from "react";
 
 export const ReloadPrompt = () => {
   const {
@@ -16,16 +15,6 @@ export const ReloadPrompt = () => {
       console.log("App is offline-ready");
     },
   });
-
-  const [time, setTime] = useState(new Date());
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setTime(new Date());
-    }, 1000);
-
-    return () => clearInterval(interval);
-  }, []);
 
   if (!needRefresh) {
     return null;
