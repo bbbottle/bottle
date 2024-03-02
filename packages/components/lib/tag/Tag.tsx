@@ -4,7 +4,10 @@ import React from "react";
 import { Link, LinkColor, LinkProps } from "../link/Link";
 
 export interface TagProps
-  extends Pick<LinkProps, "to" | "children" | "className" | "external"> {
+  extends Pick<
+    LinkProps,
+    "to" | "children" | "className" | "external" | "status" | "readonly"
+  > {
   prefix?: string;
   name?: string;
 }

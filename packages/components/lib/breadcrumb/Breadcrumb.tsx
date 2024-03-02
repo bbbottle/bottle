@@ -10,31 +10,28 @@ export type PathObj = {
 
 export type BreadcrumbProps = {
   paths: PathObj[];
+  loading?: boolean;
 };
 
 export const Breadcrumb = (props: BreadcrumbProps) => {
-  const { paths } = props;
+  const { paths, loading } = props;
   const PathElements = paths.map(({ path, name }, index) => {
     const slash = index === 0 ? null : <span className="text-gray-400">/</span>;
     const isNonEnName = !/^[a-zA-Z~]+$/.test(name);
     const offsetCls = classNames({ "relative top-[2px]": isNonEnName });
-    const link = path ? (
-      <Link to={path} className={offsetCls} style={{ padding: 4 }}>
-        {name}
-      </Link>
-    ) : (
-      <span
-        className={classNames("text-gray-400", offsetCls)}
-        style={{ padding: 4 }}
-      >
-        {name}
-      </span>
-    );
-
+    const isLast = index === paths.length - 1;
+    const status = loading && isLast ? "blink" : "hidden";
     return (
       <span key={path || name}>
         {slash}
-        {link}
+        <Link
+          to={path ?? ""}
+          className={offsetCls}
+          readonly={!path}
+          status={status}
+        >
+          {name}
+        </Link>
       </span>
     );
   });

@@ -2,6 +2,7 @@
 import classNames from "classnames";
 import { Link as BaseLink, LinkProps as BaseLinkProps } from "react-router-dom";
 import React from "react";
+import { BlinkDot } from "../blink-dot/BlinkDot";
 
 export enum LinkColor {
   BLUE = "blue",
@@ -16,6 +17,8 @@ export interface LinkProps extends BaseLinkProps {
   name?: any;
   children?: any;
   to: string;
+  readonly: boolean;
+  status?: "blink" | "still" | "hidden";
 }
 
 const COLOR_MAPPING = {
@@ -25,9 +28,12 @@ const COLOR_MAPPING = {
 };
 
 const HOVER_COLOR_MAPPING = {
-  [LinkColor.BLUE]: "[&:not(:focus)]:hover:bg-blue-100 [&:not(:focus)]:hover:text-blue-600",
-  [LinkColor.RED]: "[&:not(:focus)]:hover:bg-red-100 [&:not(:focus)]:hover:text-red-500",
-  [LinkColor.GRAY]: "[&:not(:focus)]:hover:bg-gray-100 [&:not(:focus)]:hover:text-gray-400",
+  [LinkColor.BLUE]:
+    "[&:not(:focus)]:hover:bg-blue-100 [&:not(:focus)]:hover:text-blue-600",
+  [LinkColor.RED]:
+    "[&:not(:focus)]:hover:bg-red-100 [&:not(:focus)]:hover:text-red-500",
+  [LinkColor.GRAY]:
+    "[&:not(:focus)]:hover:bg-gray-100 [&:not(:focus)]:hover:text-gray-400",
 };
 
 const FOCUS_BG_COLOR_MAPPING = {
@@ -42,6 +48,8 @@ export const Link = (props: LinkProps) => {
     external,
     className,
     children,
+    status,
+    readonly,
     ...rest
   } = props;
 
@@ -64,9 +72,28 @@ export const Link = (props: LinkProps) => {
     );
   }
 
+  if (readonly) {
+    const isNonEnName = !/^[a-zA-Z~]+$/.test(children);
+    const offsetCls = classNames({ "relative top-[2px]": isNonEnName });
+    return (
+      <>
+        <span
+          className={classNames("text-gray-400", offsetCls)}
+          style={{ padding: 4 }}
+        >
+          {children}
+        </span>
+        <BlinkDot status={status} />
+      </>
+    );
+  }
+
   return (
-    <BaseLink {...rest} className={linkCls}>
-      {children}
-    </BaseLink>
+    <>
+      <BaseLink {...rest} className={linkCls} style={{ padding: 4 }}>
+        {children}
+      </BaseLink>
+      <BlinkDot className="-top-3 left-1" status={status} />
+    </>
   );
 };
