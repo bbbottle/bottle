@@ -3,14 +3,14 @@ import { useContext, useEffect } from "react";
 import { usePost } from "@/hooks/use_post";
 import { GlobalLoadingContext } from "@/global_loading_state_provider";
 import { useAuthedFetcher } from "@/hooks/use_authed_fetcher";
-import { preload } from "swr";
+import { preload, useSWRConfig } from "swr";
 import { API } from "@/constants/routes";
 
 export type fileReader = (f: File) => void;
 export const useFile2Post = (): fileReader => {
   const { content, title, reader } = useTextPlainFile();
 
-  const fetcher = useAuthedFetcher();
+  const { mutate } = useSWRConfig();
 
   const { setIsLoading } = useContext(GlobalLoadingContext);
 
@@ -25,7 +25,7 @@ export const useFile2Post = (): fileReader => {
 
     post(title, content)
       .then((r) => {
-        preload(API.POSTS, fetcher).then();
+        mutate(API.POSTS).then();
       })
       .finally(() => {
         setIsLoading(false);
