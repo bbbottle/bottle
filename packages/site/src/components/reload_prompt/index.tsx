@@ -3,6 +3,8 @@ import { toast } from "sonner";
 // @ts-ignore
 import { useRegisterSW } from "virtual:pwa-register/react";
 
+const intervalMS = 60 * 60 * 1000;
+
 export const ReloadPrompt = () => {
   const {
     needRefresh: [needRefresh, setNeedRefresh],
@@ -11,11 +13,20 @@ export const ReloadPrompt = () => {
     onRegisterError(error: any) {
       console.log("SW registration error", error);
     },
+    onRegisteredSW(
+      swScriptUrl: string,
+      registration: ServiceWorkerRegistration
+    ) {
+      console.log("SW registered: ", swScriptUrl, registration);
+      registration &&
+        setInterval(() => {
+          registration.update().then(() => {});
+        }, intervalMS);
+    },
     onOfflineReady() {
       console.log("App is offline-ready");
     },
   });
-
   if (!needRefresh) {
     return null;
   }
