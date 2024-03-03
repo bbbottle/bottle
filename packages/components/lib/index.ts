@@ -1,4 +1,4 @@
-import './index.css';
+import "./index.css";
 
 export * from "./article/Article";
 export * from "./button/Button";
@@ -20,3 +20,4 @@ export * from "./noise-cover/NoiseCover";
 export * from "./img/Img";
 export * from "./img/Gallery";
 export * from "./loading-spiral/LoadingSpiral";
+export * from "./drop-zone/DropZone";

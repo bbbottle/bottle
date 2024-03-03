@@ -1,9 +1,11 @@
 import React from "react";
 import { ArticleList } from "./consts";
-import { LinkList, LinkProps } from "@bbki.ng/components";
+import { LinkProps, DropZone } from "@bbki.ng/components";
 import { useRouteName } from "@/hooks";
 import { usePosts } from "@/hooks/use_posts";
-import { CenterLinkList, MySuspense } from "@/components";
+import { CenterLinkList } from "@/components";
+import { useAuthed } from "@/hooks/use_authed";
+import { useFile2Post } from "@/hooks/use_file_to_post";
 
 type TxtProps = {
   title?: string;
@@ -30,9 +32,12 @@ const Posts = (props: TxtProps) => {
 };
 
 export default (props: TxtProps) => {
+  const reader = useFile2Post();
+  const isKing = useAuthed();
+
   return (
-    // <MySuspense>
-    <Posts {...props} />
-    // </MySuspense>
+    <DropZone onDrop={reader} disabled={!isKing}>
+      <Posts {...props} />
+    </DropZone>
   );
 };

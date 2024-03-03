@@ -832,7 +832,7 @@ define(["exports"], function (exports) {
     }
     /**
      * @return {Map<string, Array<workbox-routing.Route>>} routes A `Map` of HTTP
-     * method name ('GET', etc.) to an array of all the corresponding `Route`
+     * method title ('GET', etc.) to an array of all the corresponding `Route`
      * instances that are registered.
      */
 
@@ -1958,7 +1958,7 @@ define(["exports"], function (exports) {
         url,
         timestamp,
         cacheName: this._cacheName,
-        // Creating an ID from the URL and cache name won't be necessary once
+        // Creating an ID from the URL and cache title won't be necessary once
         // Edge switches to Chromium and all browsers we support work with
         // array keyPaths.
         id: this._getId(url),
@@ -2055,7 +2055,7 @@ define(["exports"], function (exports) {
      */
 
     _getId(url) {
-      // Creating an ID from the URL and cache name won't be necessary once
+      // Creating an ID from the URL and cache title won't be necessary once
       // Edge switches to Chromium and all browsers we support work with
       // array keyPaths.
       return this._cacheName + "|" + normalizeURL(url);
@@ -2276,7 +2276,7 @@ define(["exports"], function (exports) {
    * It can only be used with `workbox-strategy` instances that have a
    * [custom `cacheName` property set](/web/tools/workbox/guides/configure-workbox#custom_cache_names_in_strategies).
    * In other words, it can't be used to expire entries in strategy that uses the
-   * default runtime cache name.
+   * default runtime cache title.
    *
    * Whenever a cached response is used or updated, this plugin will look
    * at the associated cache and remove any old or extra responses.
@@ -2435,7 +2435,7 @@ define(["exports"], function (exports) {
     }
     /**
      * A simple helper method to return a CacheExpiration instance for a given
-     * cache name.
+     * cache title.
      *
      * @param {string} cacheName
      * @return {CacheExpiration}
@@ -2523,7 +2523,7 @@ define(["exports"], function (exports) {
      * metadata is also cleanly removed and open IndexedDB instances are deleted.
      *
      * Note that if you're *not* using cache expiration for a given cache, calling
-     * `caches.delete()` and passing in the cache's name should be sufficient.
+     * `caches.delete()` and passing in the cache's title should be sufficient.
      * There is no Workbox-specific method needed for cleanup in that case.
      */
 
@@ -2911,7 +2911,7 @@ define(["exports"], function (exports) {
       /**
        * The request the strategy is performing (passed to the strategy's
        * `handle()` or `handleAll()` method).
-       * @name request
+       * @title request
        * @instance
        * @type {Request}
        * @memberof workbox-strategies.StrategyHandler
@@ -2919,7 +2919,7 @@ define(["exports"], function (exports) {
 
       /**
        * The event associated with this request.
-       * @name event
+       * @title event
        * @instance
        * @type {ExtendableEvent}
        * @memberof workbox-strategies.StrategyHandler
@@ -2930,7 +2930,7 @@ define(["exports"], function (exports) {
        * `handle()` or `handleAll()` method).
        * Note: the `url` param will be present if the strategy was invoked
        * from a workbox `Route` object.
-       * @name url
+       * @title url
        * @instance
        * @type {URL|undefined}
        * @memberof workbox-strategies.StrategyHandler
@@ -2943,7 +2943,7 @@ define(["exports"], function (exports) {
        * from a workbox `Route` object and the
        * {@link workbox-routing~matchCallback} returned
        * a truthy value (it will be that value).
-       * @name params
+       * @title params
        * @instance
        * @type {*|undefined}
        * @memberof workbox-strategies.StrategyHandler
@@ -3305,7 +3305,7 @@ define(["exports"], function (exports) {
      * Returns true if the strategy has at least one plugin with the given
      * callback.
      *
-     * @param {string} name The name of the callback to check for.
+     * @param {string} name The title of the callback to check for.
      * @return {boolean}
      */
 
@@ -3319,7 +3319,7 @@ define(["exports"], function (exports) {
       return false;
     }
     /**
-     * Runs all plugin callbacks matching the given name, in order, passing the
+     * Runs all plugin callbacks matching the given title, in order, passing the
      * given param object (merged ith the current plugin state) as the only
      * argument.
      *
@@ -3329,7 +3329,7 @@ define(["exports"], function (exports) {
      * {@link workbox-strategies.StrategyHandler#iterateCallbacks}
      * below for how to handle that case.
      *
-     * @param {string} name The name of the callback to run within each plugin.
+     * @param {string} name The title of the callback to run within each plugin.
      * @param {Object} param The object to pass as the first (and only) param
      *     when executing each callback. This object will be merged with the
      *     current plugin state prior to callback execution.
@@ -3348,7 +3348,7 @@ define(["exports"], function (exports) {
      * you call each callback, whatever object parameter you pass it will
      * be merged with the plugin's current state).
      *
-     * @param {string} name The name fo the callback to run
+     * @param {string} name The title fo the callback to run
      * @return {Array<Function>}
      */
 
@@ -3497,7 +3497,7 @@ define(["exports"], function (exports) {
      * constructor.
      *
      * @param {Object} [options]
-     * @param {string} [options.cacheName] Cache name to store and retrieve
+     * @param {string} [options.cacheName] Cache title to store and retrieve
      * requests. Defaults to the cache names provided by
      * {@link workbox-core.cacheNames}.
      * @param {Array<Object>} [options.plugins] [Plugins]{@link https://developers.google.com/web/tools/workbox/guides/using-plugins}
@@ -3512,7 +3512,7 @@ define(["exports"], function (exports) {
      */
     constructor(options = {}) {
       /**
-       * Cache name to store and retrieve
+       * Cache title to store and retrieve
        * requests. Defaults to the cache names provided by
        * {@link workbox-core.cacheNames}.
        *
@@ -3728,7 +3728,7 @@ define(["exports"], function (exports) {
    * cache, cache options, fetch options and plugins are used (per the current
    * strategy instance).
    *
-   * @name _handle
+   * @title _handle
    * @instance
    * @abstract
    * @function
@@ -4263,7 +4263,7 @@ define(["exports"], function (exports) {
     /**
      *
      * @param {Object} [options]
-     * @param {string} [options.cacheName] Cache name to store and retrieve
+     * @param {string} [options.cacheName] Cache title to store and retrieve
      * requests. Defaults to the cache names provided by
      * {@link workbox-core.cacheNames}.
      * @param {Array<Object>} [options.plugins] {@link https://developers.google.com/web/tools/workbox/guides/using-plugins|Plugins}
@@ -4777,7 +4777,7 @@ define(["exports"], function (exports) {
      * [`cache.match()`](https://developer.mozilla.org/en-US/docs/Web/API/Cache/match)
      * with the following differences:
      *
-     * - It knows what the name of the precache is, and only checks in that cache.
+     * - It knows what the title of the precache is, and only checks in that cache.
      * - It allows you to pass in an "original" URL without versioning parameters,
      * and it will automatically look up the correct cache key for the currently
      * active revision of that URL.
@@ -4866,7 +4866,7 @@ define(["exports"], function (exports) {
    *
    * @param {URL} urlObject The original URL.
    * @param {Array<RegExp>} ignoreURLParametersMatching RegExps to test against
-   * each search parameter name. Matches mean that the search parameter should be
+   * each search parameter title. Matches mean that the search parameter should be
    * ignored.
    * @return {URL} The URL with any ignored search parameters removed.
    *
@@ -5118,7 +5118,7 @@ define(["exports"], function (exports) {
    * This should be safe to use as long as you don't include `substringToFind`
    * (defaulting to `-precache-`) in your non-precache cache names.
    *
-   * @param {string} currentPrecacheName The cache name currently in use for
+   * @param {string} currentPrecacheName The cache title currently in use for
    * precaching. This cache won't be deleted.
    * @param {string} [substringToFind='-precache-'] Cache names which include this
    * substring will be deleted (excluding `currentPrecacheName`).
