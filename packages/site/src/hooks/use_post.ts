@@ -20,7 +20,7 @@ export const usePost = () => {
 
   return useCallback(
     (title: string, content: string) =>
-      req(API.POSTS, { arg: { title, content } }),
+      req(API.POST, { arg: { title, content } }),
     [req]
   );
 };
