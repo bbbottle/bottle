@@ -2,7 +2,9 @@ import { Photo } from "@/types/photo";
 import { ossProcessType } from "@/types/oss";
 import { API_ENDPOINT, OSS_ADDRESS } from "@/constants/routes";
 import { DEFAULT_DELAY } from "@/constants";
-import useSWR, { Fetcher } from "swr";
+import useSWR from "swr";
+
+type Fetcher = (resource: string, init?: any) => Promise<any>;
 
 export const floatNumberToPercentageString = (num: number): string => {
   return `${num * 100}%`;
@@ -96,7 +98,7 @@ export const withToken =
   };
 
 export const withBBApi =
-  (fetcher: Fetcher<Promise<void>>) =>
+  (fetcher: Fetcher) =>
   (apiEndPoint = API_ENDPOINT): Fetcher =>
   async (resource: string, init: RequestInit = {}) =>
     fetcher(`${apiEndPoint}/${resource}`, { ...init, mode: "cors" });

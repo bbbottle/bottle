@@ -1,7 +1,6 @@
 import { useCallback } from "react";
 import { API } from "@/constants/routes";
 import { useAuthedFetcher } from "@/hooks/use_authed_fetcher";
-import useSWRMutation from "swr/mutation";
 
 export const usePost = () => {
   const authedFetcher = useAuthedFetcher();
@@ -19,7 +18,9 @@ export const usePost = () => {
     [authedFetcher]
   );
 
-  const { trigger } = useSWRMutation(API.POST, req);
-
-  return trigger;
+  return useCallback(
+    (title: string, content: string) =>
+      req(API.POSTS, { arg: { title, content } }),
+    [req]
+  );
 };
