@@ -3,7 +3,7 @@ import { toast } from "sonner";
 // @ts-ignore
 import { useRegisterSW } from "virtual:pwa-register/react";
 
-const intervalMS = 60 * 60 * 1000;
+const intervalMS = 3000;
 
 export const ReloadPrompt = () => {
   const {
@@ -31,7 +31,6 @@ export const ReloadPrompt = () => {
 
           if (resp?.status === 200) {
             await r.update();
-            setNeedRefresh(true);
           }
         }, intervalMS);
     },
