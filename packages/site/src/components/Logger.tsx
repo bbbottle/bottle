@@ -5,5 +5,7 @@ export default () => {
 
   console.log(appVer, tagUrl);
 
+  console.log("test update");
+
   return null;
 };
