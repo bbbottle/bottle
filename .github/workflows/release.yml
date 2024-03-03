@@ -42,7 +42,7 @@ jobs:
 
       # debug deploy site
       - name: debug deploy site
-        run: echo ${{ steps.changesets.outputs.published }}
+        run: echo ${{ steps.changesets.outputs.published == 'true' }}
 
       # deploy site
       - name: deploy site artifact
