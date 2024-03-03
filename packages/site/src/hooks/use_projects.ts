@@ -26,7 +26,9 @@ export const useProjects = (name: string = "", suspense?: boolean) => {
     if (!n) {
       return;
     }
-    return cache.get("projects")?.find((p: { name: string }) => p.name === n);
+    return cache
+      .get("projects")
+      ?.data.find((p: { name: string }) => p.name === n);
   };
 
   const refresh = useCallback(() => {

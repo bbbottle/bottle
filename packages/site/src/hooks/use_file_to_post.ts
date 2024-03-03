@@ -18,7 +18,7 @@ export const useFile2Post = (): fileReader => {
 
     setIsLoading(true);
 
-    post({ title, content })
+    post(title, content)
       .then((r) => {
         console.log(r);
       })
