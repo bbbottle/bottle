@@ -42,7 +42,8 @@ jobs:
 
       # deploy site
       - name: deploy site artifact
-        if: ${{ steps.changesets.outputs.shouldDeploySite == 'true' }}
+        # if: ${{ steps.changesets.outputs.shouldDeploySite == 'true' }}
+        if: ${{ steps.changesets.outputs.createPrOnly != 'true' }}
         uses: ./.github/actions/deploy
         with:
           source: "packages/site/dist/"
