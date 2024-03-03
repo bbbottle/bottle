@@ -40,6 +40,10 @@ jobs:
         with:
           GITHUB_TOKEN: ${{ secrets.GH_PAT }}
 
+      # debug deploy site
+      - name: debug deploy site
+        run: echo ${{ steps.changesets.outputs.published }}
+
       # deploy site
       - name: deploy site artifact
         if: ${{ steps.changesets.outputs.shouldDeploySite == 'true' }}
