@@ -13,20 +13,33 @@ export const ReloadPrompt = () => {
     onRegisterError(error: any) {
       console.log("SW registration error", error);
     },
-    onRegisteredSW(
-      swScriptUrl: string,
-      registration: ServiceWorkerRegistration
-    ) {
-      console.log("SW registered: ", swScriptUrl, registration);
-      registration &&
-        setInterval(() => {
-          registration.update().then(() => {});
+    onRegisteredSW(swScriptUrl: string, r: ServiceWorkerRegistration) {
+      console.log("SW registered: ", swScriptUrl, r);
+      r &&
+        setInterval(async () => {
+          if (!(!r.installing && navigator)) return;
+
+          if ("connection" in navigator && !navigator.onLine) return;
+
+          const resp = await fetch(swScriptUrl, {
+            cache: "no-store",
+            headers: {
+              cache: "no-store",
+              "cache-control": "no-cache",
+            },
+          });
+
+          if (resp?.status === 200) {
+            await r.update();
+            setNeedRefresh(true);
+          }
         }, intervalMS);
     },
     onOfflineReady() {
       console.log("App is offline-ready");
     },
   });
+
   if (!needRefresh) {
     return null;
   }
