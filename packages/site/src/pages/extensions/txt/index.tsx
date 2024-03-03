@@ -1,7 +1,6 @@
 import React from "react";
 import { ArticleList } from "./consts";
 import { LinkProps, DropZone } from "@bbki.ng/components";
-import { useRouteName } from "@/hooks";
 import { usePosts } from "@/hooks/use_posts";
 import { CenterLinkList } from "@/components";
 import { useAuthed } from "@/hooks/use_authed";
@@ -13,7 +12,6 @@ type TxtProps = {
 };
 
 const Posts = (props: TxtProps) => {
-  const name = useRouteName();
   const { titleList, isLoading, isError } = usePosts();
 
   if (isLoading) {

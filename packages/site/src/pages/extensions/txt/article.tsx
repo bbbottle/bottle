@@ -45,5 +45,9 @@ export default () => {
   // scroll to top
   window.scrollTo(0, 0);
 
-  return <ArticlePage title={title}>{posts.content}</ArticlePage>;
+  return (
+    <ArticlePage title={title}>
+      <div dangerouslySetInnerHTML={{ __html: posts.content }} />
+    </ArticlePage>
+  );
 };

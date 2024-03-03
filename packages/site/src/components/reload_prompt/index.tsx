@@ -3,7 +3,7 @@ import { toast } from "sonner";
 // @ts-ignore
 import { useRegisterSW } from "virtual:pwa-register/react";
 
-const intervalMS = 3000;
+const intervalMS = 1000 * 10;
 
 export const ReloadPrompt = () => {
   const {
