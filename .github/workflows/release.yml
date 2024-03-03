@@ -40,26 +40,18 @@ jobs:
         with:
           GITHUB_TOKEN: ${{ secrets.GH_PAT }}
 
-      # deploy manual
-      - name: deploy manual artifact
-        if: ${{ steps.changesets.outputs.shouldDeployManual == 'true' }}
-        uses: ./.github/actions/deploy
-        with:
-          source: 'packages/manual/build/'
-          target: ${{ secrets.REMOTE_MANUAL_TARGET }}
-          package: '@bbki.ng/manual'
-          msg: |
-            Docs Deployed to server successfully.
-            See changes: https://docs.bbki.ng
+      # debug shouldDeploySite
+      - name: debug shouldDeploySite
+        run: echo ${{ steps.changesets.outputs.shouldDeploySite }}
 
       # deploy site
       - name: deploy site artifact
         if: ${{ steps.changesets.outputs.shouldDeploySite == 'true' }}
         uses: ./.github/actions/deploy
         with:
-          source: 'packages/site/dist/'
+          source: "packages/site/dist/"
           target: ${{ secrets.REMOTE_SITE_TARGET }}
-          package: '@bbki.ng/site'
+          package: "@bbki.ng/site"
           msg: |
             Site Deployed to server successfully.
             See changes: https://bbki.ng
