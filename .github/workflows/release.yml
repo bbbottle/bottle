@@ -42,7 +42,7 @@ jobs:
 
       # debug shouldDeploySite
       - name: debug shouldDeploySite
-        run: echo ${{ steps.changesets.outputs }}
+        run: echo ${{ fromJson(steps.changesets.outputs) }}
 
       # deploy site
       - name: deploy site artifact
