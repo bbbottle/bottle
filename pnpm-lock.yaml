@@ -175,8 +175,8 @@ importers:
         specifier: 1.4.0
         version: 1.4.0(react-dom@18.2.0)(react@18.2.0)
       swr:
-        specifier: ^1.2.1
-        version: 1.3.0(react@18.2.0)
+        specifier: ^2.2.1
+        version: 2.2.5(react@18.2.0)
     devDependencies:
       "@bbki.ng/stylebase":
         specifier: workspace:0.0.19
@@ -7432,6 +7432,13 @@ packages:
       slice-ansi: 3.0.0
       string-width: 4.2.3
     dev: true
+
+  /client-only@0.0.1:
+    resolution:
+      {
+        integrity: sha512-IV3Ou0jSMzZrd3pZ48nLkT9DA7Ag1pnPzaiQhpW7c3RbcqqzvzzVu+L8gfqMp/8IM2MQtSiqaCxrrcfu8I8rMA==,
+      }
+    dev: false
 
   /cliui@6.0.0:
     resolution:
@@ -22557,15 +22564,17 @@ packages:
       stable: 0.1.8
     dev: false
 
-  /swr@1.3.0(react@18.2.0):
+  /swr@2.2.5(react@18.2.0):
     resolution:
       {
-        integrity: sha512-dkghQrOl2ORX9HYrMDtPa7LTVHJjCTeZoB1dqTbnnEDlSvN8JEKpYIYurDfvbQFUUS8Cg8PceFVZNkW0KNNYPw==,
+        integrity: sha512-QtxqyclFeAsxEUeZIYmsaQ0UjimSq1RZ9Un7I68/0ClKK/U3LoyQunwkQfJZr2fc22DfIXLNDc2wFyTEikCUpg==,
       }
     peerDependencies:
       react: ^16.11.0 || ^17.0.0 || ^18.0.0
     dependencies:
+      client-only: 0.0.1
       react: 18.2.0
+      use-sync-external-store: 1.2.0(react@18.2.0)
     dev: false
 
   /symbol-tree@3.2.4:
@@ -24161,6 +24170,17 @@ packages:
       "@types/react": 18.0.15
       react: 18.2.0
       use-isomorphic-layout-effect: 1.1.2(@types/react@18.0.15)(react@18.2.0)
+    dev: false
+
+  /use-sync-external-store@1.2.0(react@18.2.0):
+    resolution:
+      {
+        integrity: sha512-eEgnFxGQ1Ife9bzYs6VLi8/4X6CObHMw9Qr9tPY43iKwsPw8xE8+EFsf/2cFZ5S3esXgpWgtSCtLNS41F+sKPA==,
+      }
+    peerDependencies:
+      react: ^16.8.0 || ^17.0.0 || ^18.0.0
+    dependencies:
+      react: 18.2.0
     dev: false
 
   /use@3.1.1:

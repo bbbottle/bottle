@@ -20,6 +20,7 @@ export const API_ENDPOINT = "https://api.bbki.ng";
 export const API = {
   PROJECTS: "projects",
   UPLOAD_IMG: "upload",
+  POST: "post",
   MOVIES: "movies",
   IMAGES: "images",
   BOOKS: "books",

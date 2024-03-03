@@ -42,12 +42,12 @@ export const PHOTO_PROJECTS: PhotoProject[] = [
     ],
   },
   // {
-  //   name: "光前",
+  //   title: "光前",
   //   description: "城中村，个人深圳经历出入口。",
   //   images: [OSS_PHOTOS.oldMan, OSS_PHOTOS.oldWomen, OSS_PHOTOS.littleChild],
   // },
   // {
-  //   name: "三百零一",
+  //   title: "三百零一",
   //   description: "陋室光影",
   //   images: [OSS_PHOTOS.phone, OSS_PHOTOS.chair],
   // },
