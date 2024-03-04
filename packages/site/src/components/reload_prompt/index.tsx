@@ -21,17 +21,13 @@ export const ReloadPrompt = () => {
 
           if ("connection" in navigator && !navigator.onLine) return;
 
-          const resp = await fetch(swScriptUrl, {
+          await fetch(swScriptUrl, {
             cache: "no-store",
             headers: {
               cache: "no-store",
               "cache-control": "no-cache",
             },
           });
-
-          if (resp?.status === 200) {
-            await r.update();
-          }
         }, intervalMS);
     },
     onOfflineReady() {
