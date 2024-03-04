@@ -2,12 +2,11 @@ import React, { ReactElement, useContext, useEffect } from "react";
 import { MdxArticleList } from "@/articles";
 import { withArticleWrapper } from "@/components";
 import { MdxArticle } from "@/types/articles";
-import { NotFound, Link } from "@bbki.ng/components";
+import { NotFound, DropZone } from "@bbki.ng/components";
 import { useParams } from "react-router-dom";
 import { usePosts } from "@/hooks/use_posts";
 import { ArticlePage } from "@/components/article";
 import { GlobalLoadingContext } from "@/global_loading_state_provider";
-import { DropZone } from "@bbki.ng/components/lib";
 import { useFile2Post } from "@/hooks/use_file_to_post";
 import { useAuthed } from "@/hooks/use_authed";
 
