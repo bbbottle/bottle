@@ -1,4 +1,4 @@
-import React, { ReactElement, useContext } from "react";
+import React, { ReactElement, useContext, useEffect } from "react";
 import { MdxArticleList } from "@/articles";
 import { withArticleWrapper } from "@/components";
 import { MdxArticle } from "@/types/articles";
@@ -7,6 +7,9 @@ import { useParams } from "react-router-dom";
 import { usePosts } from "@/hooks/use_posts";
 import { ArticlePage } from "@/components/article";
 import { GlobalLoadingContext } from "@/global_loading_state_provider";
+import { DropZone } from "@bbki.ng/components/lib";
+import { useFile2Post } from "@/hooks/use_file_to_post";
+import { useAuthed } from "@/hooks/use_authed";
 
 type TArticleMap = {
   [key: string]: ReactElement;
@@ -25,6 +28,14 @@ export default () => {
   const { posts, isError, isLoading } = usePosts(title);
   const { setIsLoading } = useContext(GlobalLoadingContext);
 
+  useEffect(() => {
+    // scroll to top
+    window.scrollTo(0, 0);
+  }, []);
+
+  const reader = useFile2Post();
+  const isKing = useAuthed();
+
   if (!title) {
     return <NotFound />;
   }
@@ -42,12 +53,11 @@ export default () => {
     return null;
   }
 
-  // scroll to top
-  window.scrollTo(0, 0);
-
   return (
-    <ArticlePage title={title}>
-      <div dangerouslySetInnerHTML={{ __html: posts.content }} />
-    </ArticlePage>
+    <DropZone onDrop={reader} disabled={!isKing}>
+      <ArticlePage title={title}>
+        <div dangerouslySetInnerHTML={{ __html: posts.content }} />
+      </ArticlePage>
+    </DropZone>
   );
 };
