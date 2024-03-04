@@ -1,6 +1,6 @@
 {
   "name": "@bbki.ng/manual",
-  "version": "0.2.4",
+  "version": "0.2.5",
   "scripts": {
     "docusaurus": "docusaurus",
     "start": "docusaurus start",
@@ -15,7 +15,7 @@
     "typecheck": "tsc"
   },
   "dependencies": {
-    "@bbki.ng/components": "workspace:2.2.4",
+    "@bbki.ng/components": "workspace:2.2.5",
     "@bbki.ng/stylebase": "workspace:0.1.4",
     "@docusaurus/core": "2.0.0-rc.1",
     "@docusaurus/preset-classic": "2.0.0-rc.1",
