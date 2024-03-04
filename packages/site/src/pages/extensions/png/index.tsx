@@ -14,7 +14,7 @@ const Projects = () => {
     name: p.name,
   }));
 
-  return <CenterLinkList links={links} title=" " />;
+  return <CenterLinkList links={links} />;
 };
 
 export default () => {

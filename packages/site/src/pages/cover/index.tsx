@@ -18,7 +18,7 @@ export const Cover = (props: { className: string }) => {
           name: "cd ./now",
         },
       ]}
-      title=" "
+      title=""
     />
   );
 };
