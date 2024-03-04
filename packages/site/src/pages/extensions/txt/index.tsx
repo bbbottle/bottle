@@ -19,14 +19,12 @@ const Posts = (props: TxtProps) => {
   }
 
   if (isError) {
-    return (
-      <CenterLinkList links={props.articleList || ArticleList} title=" " />
-    );
+    return <CenterLinkList links={props.articleList || ArticleList} />;
   }
 
   const links = [...titleList, ...ArticleList];
 
-  return <CenterLinkList links={props.articleList || links} title=" " />;
+  return <CenterLinkList links={props.articleList || links} />;
 };
 
 export default (props: TxtProps) => {
