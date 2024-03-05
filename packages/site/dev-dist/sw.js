@@ -98,7 +98,7 @@ define(["./workbox-baccbcc1"], function (workbox) {
     [
       {
         url: "index.html",
-        revision: "0.tmo9mjvl31o",
+        revision: "0.clbi8di3vmg",
       },
     ],
     {}
