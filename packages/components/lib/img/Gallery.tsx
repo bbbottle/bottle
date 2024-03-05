@@ -26,7 +26,7 @@ export interface GalleryProps
 const defaultImageRenderer: ImageRenderer = (img, index, col) => {
   return (
     <div
-      className={classnames("mb-256", {
+      className={classnames("mb-128", {
         "md:mr-64": col === 0,
         "md:ml-64": col !== 0,
       })}
