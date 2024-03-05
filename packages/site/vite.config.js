@@ -60,7 +60,7 @@ export default defineConfig({
         "Logo.svg",
       ],
       devOptions: {
-        enabled: false,
+        enabled: true,
         /* other options */
       },
       workbox: {

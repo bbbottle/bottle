@@ -3,8 +3,6 @@ import { toast } from "sonner";
 // @ts-ignore
 import { useRegisterSW } from "virtual:pwa-register/react";
 
-const intervalMS = 1000 * 10;
-
 export const ReloadPrompt = () => {
   const {
     needRefresh: [needRefresh, setNeedRefresh],
@@ -15,20 +13,6 @@ export const ReloadPrompt = () => {
     },
     onRegisteredSW(swScriptUrl: string, r: ServiceWorkerRegistration) {
       console.log("SW registered: ", swScriptUrl, r);
-      r &&
-        setInterval(async () => {
-          if (!(!r.installing && navigator)) return;
-
-          if ("connection" in navigator && !navigator.onLine) return;
-
-          await fetch(swScriptUrl, {
-            cache: "no-store",
-            headers: {
-              cache: "no-store",
-              "cache-control": "no-cache",
-            },
-          });
-        }, intervalMS);
     },
     onOfflineReady() {
       console.log("App is offline-ready");
