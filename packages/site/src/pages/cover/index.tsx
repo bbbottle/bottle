@@ -1,5 +1,6 @@
 import React from "react";
 import { CenterLinkList } from "@/components";
+import { ContextMenuDemo } from "@/demo/DemoMenu";
 
 export const Cover = (props: { className: string }) => {
   return (
