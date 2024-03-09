@@ -1,6 +1,6 @@
 {
   "name": "@bbki.ng/components",
-  "version": "2.2.6",
+  "version": "2.3.0",
   "type": "module",
   "scripts": {
     "build": "tsup",
@@ -24,7 +24,7 @@
     }
   },
   "dependencies": {
-    "@bbki.ng/stylebase": "workspace:0.1.4",
+    "@bbki.ng/stylebase": "workspace:0.2.0",
     "@radix-ui/react-context-menu": "2.1.5",
     "@radix-ui/react-icons": "1.3.0",
     "classnames": "2.3.1",
