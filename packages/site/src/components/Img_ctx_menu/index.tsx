@@ -17,7 +17,9 @@ export const ImgCtxMenu = (props: { children: ReactElement }) => {
   const role = isImgOfQueen ? [Role.QUEEN, Role.KING] : [Role.KING];
   return (
     <ContextMenu>
-      <ContextMenuTrigger>{props.children}</ContextMenuTrigger>
+      <ContextMenuTrigger className="no-touch-callout">
+        {props.children}
+      </ContextMenuTrigger>
       <Auth role={role}>
         <ContextMenuContent>
           <ContextMenuItem
