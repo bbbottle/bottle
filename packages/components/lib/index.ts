@@ -21,3 +21,4 @@ export * from "./img/Img";
 export * from "./img/Gallery";
 export * from "./loading-spiral/LoadingSpiral";
 export * from "./drop-zone/DropZone";
+export * from "./context-menu";
