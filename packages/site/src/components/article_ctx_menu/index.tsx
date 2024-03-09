@@ -27,10 +27,12 @@ export const ArticleCtxMenu = (props: { children: ReactElement }) => {
   }
 
   const doDel = useCallback(() => {
-    del(title).then(() => {
-      toast.success("删除成功");
-      nav("/");
-    });
+    del(title)
+      .then(() => {
+        toast.success("删除成功");
+        nav("/blog");
+      })
+      .catch(console.log);
   }, [title]);
 
   return (
