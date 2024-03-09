@@ -104,9 +104,6 @@ module.exports = {
         "-ms-overflow-style": "none",
         "scrollbar-width": "none",
       },
-      ".no-touch-callout": {
-        "-webkit-touch-callout": "none",
-      },
       ".blur-cover": {
         "background-color": "rgba(255, 255, 255, 0.5)",
         "backdrop-filter": "blur(7px)",

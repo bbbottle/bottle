@@ -74,6 +74,7 @@ export const Img = (props: ImgProps) => {
         "align-bottom",
         "border-0"
       )}
+      draggable={false}
       style={Object.assign({}, baseWrapperStyle, dynamicWrapperStyle)}
     >
       <img
