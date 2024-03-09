@@ -1,6 +1,6 @@
 {
   "name": "@bbki.ng/site",
-  "version": "1.4.0",
+  "version": "1.5.3",
   "description": "code behind bbki.ng",
   "main": "index.js",
   "scripts": {
@@ -16,7 +16,7 @@
     "url": "git+https://github.com/bbbottle/bbki.ng.git"
   },
   "dependencies": {
-    "@bbki.ng/components": "workspace:2.4.0",
+    "@bbki.ng/components": "workspace:2.4.2",
     "@supabase/supabase-js": "^1.35.4",
     "classnames": "2.3.1",
     "react": "^18.0.0",
@@ -28,7 +28,7 @@
     "swr": "^2.2.5"
   },
   "devDependencies": {
-    "@bbki.ng/stylebase": "workspace:0.3.0",
+    "@bbki.ng/stylebase": "workspace:0.3.2",
     "@mdx-js/mdx": "2.0.0-next.9",
     "@mdx-js/react": "^1.6.22",
     "@mdx-js/rollup": "3.0.0",
