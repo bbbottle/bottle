@@ -36,11 +36,11 @@ export const Login = () => {
           onClick={async () => {
             setIsLoading(true);
             return supabase.auth.signIn({
-              provider: OauthProvider.Twitter,
+              provider: OauthProvider.Spotify,
             });
           }}
         >
-          Twitter
+          Spotify
         </Button>
       </>
     </ArticlePage>
