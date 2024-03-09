@@ -7,6 +7,7 @@ import "@bbki.ng/components/style";
 import App from "./app";
 import "./main.css";
 import Logger from "@/components/Logger";
+import { AppCtxMenu } from "@/components/app_ctx_menu";
 
 const container = document.getElementById("root") as Element;
 const root = createRoot(container);
@@ -14,7 +15,9 @@ const root = createRoot(container);
 root.render(
   <React.StrictMode>
     <Router>
-      <App />
+      <AppCtxMenu>
+        <App />
+      </AppCtxMenu>
       <Toaster />
       <Logger />
       <ReloadPrompt />
