@@ -162,6 +162,7 @@ export const confirm = (message: string, exec: () => void) => {
       backgroundColor: "#fff",
       color: "rgb(37,99,235)",
     },
+    position: "top-center",
     action: {
       label: "是",
       onClick: () => {
