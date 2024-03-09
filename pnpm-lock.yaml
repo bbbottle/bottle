@@ -23,7 +23,7 @@ importers:
   packages/components:
     dependencies:
       "@bbki.ng/stylebase":
-        specifier: workspace:0.1.3
+        specifier: workspace:0.1.4
         version: link:../stylebase
       "@radix-ui/react-context-menu":
         specifier: 2.1.5
@@ -84,10 +84,10 @@ importers:
   packages/manual:
     dependencies:
       "@bbki.ng/components":
-        specifier: workspace:2.2.3
+        specifier: workspace:2.2.6
         version: link:../components
       "@bbki.ng/stylebase":
-        specifier: workspace:0.1.3
+        specifier: workspace:0.1.4
         version: link:../stylebase
       "@docusaurus/core":
         specifier: 2.0.0-rc.1
@@ -154,10 +154,10 @@ importers:
   packages/site:
     dependencies:
       "@bbki.ng/components":
-        specifier: workspace:2.2.3
+        specifier: workspace:2.2.6
         version: link:../components
       "@supabase/supabase-js":
-        specifier: ^1.30.6
+        specifier: ^1.35.4
         version: 1.35.4
       classnames:
         specifier: 2.3.1
@@ -185,7 +185,7 @@ importers:
         version: 2.2.5(react@18.2.0)
     devDependencies:
       "@bbki.ng/stylebase":
-        specifier: workspace:0.1.3
+        specifier: workspace:0.1.4
         version: link:../stylebase
       "@mdx-js/mdx":
         specifier: 2.0.0-next.9
