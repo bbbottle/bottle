@@ -15,9 +15,7 @@ const root = createRoot(container);
 root.render(
   <React.StrictMode>
     <Router>
-      <AppCtxMenu>
-        <App />
-      </AppCtxMenu>
+      <App />
       <Toaster />
       <Logger />
       <ReloadPrompt />

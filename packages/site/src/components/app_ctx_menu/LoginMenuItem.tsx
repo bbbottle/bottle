@@ -10,11 +10,10 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 
 export const LoginMenuItem = () => {
-  const isKing = useAuthed();
   const sess = useSupabaseSession();
   const nav = useNavigate();
 
-  if (isKing) {
+  if (sess?.user != null) {
     return <ContextMenuLabel inset>{sess?.user?.email ?? ""}</ContextMenuLabel>;
   }
 
