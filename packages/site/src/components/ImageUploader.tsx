@@ -1,9 +1,11 @@
 import React, { useContext } from "react";
 import { DropImage } from "@bbki.ng/components";
-import { AuthRequired } from "@/auth_required";
 import { useUploader } from "@/hooks/use_uploader";
 import { ImageUploaderProps } from "@/types/upload";
 import { GlobalLoadingContext } from "@/global_loading_state_provider";
+import { Auth } from "@/components/Auth";
+import { Role } from "@/hooks/use_role";
+import { useParams } from "react-router-dom";
 
 export const ImageUploader = (props: ImageUploaderProps) => {
   const {
@@ -18,9 +20,11 @@ export const ImageUploader = (props: ImageUploaderProps) => {
 
   const { setIsLoading } = useContext(GlobalLoadingContext);
   const uploader = useUploader();
+  const isProjectOfQueen = projectName === "小乌鸦";
+  const role = isProjectOfQueen ? [Role.QUEEN, Role.KING] : [Role.KING];
 
   return (
-    <AuthRequired shouldBeKing>
+    <Auth role={role}>
       <DropImage
         {...rest}
         className="mb-256"
@@ -46,6 +50,6 @@ export const ImageUploader = (props: ImageUploaderProps) => {
       >
         {() => null}
       </DropImage>
-    </AuthRequired>
+    </Auth>
   );
 };

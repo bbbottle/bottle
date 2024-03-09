@@ -13,6 +13,7 @@ export const useSupabaseSession = (): BBKingSession | null => {
     return {
       ...sess,
       isKing: sess.user?.id === SUPABASE.BB_KING_ID,
+      isQueen: sess.user?.id === SUPABASE.BB_QUEEN_ID,
     };
   };
 
