@@ -8,13 +8,29 @@ import {
 } from "@bbki.ng/components";
 import React from "react";
 import { useNavigate } from "react-router-dom";
+import { supabase } from "@/constants";
+import { toast } from "sonner";
 
 export const LoginMenuItem = () => {
   const sess = useSupabaseSession();
   const nav = useNavigate();
 
   if (sess?.user != null) {
-    return <ContextMenuLabel inset>{sess?.user?.email ?? ""}</ContextMenuLabel>;
+    return (
+      <>
+        <ContextMenuLabel inset>{sess?.user?.email ?? ""}</ContextMenuLabel>
+        <ContextMenuItem
+          inset
+          onClick={() => {
+            supabase.auth.signOut().then(() => {
+              toast.success("已退出登录");
+            });
+          }}
+        >
+          Logout
+        </ContextMenuItem>
+      </>
+    );
   }
 
   return (

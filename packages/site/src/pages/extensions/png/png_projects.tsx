@@ -6,6 +6,9 @@ import { imageFormatter } from "@/utils";
 import { Gallery, Nav, Link } from "@bbki.ng/components";
 import { usePaths } from "@/hooks";
 import { ImageUploader } from "@/components/ImageUploader";
+import classnames from "classnames";
+import { ImageRenderer } from "@bbki.ng/components/lib";
+import { ImgCtxMenu } from "@/components/Img_ctx_menu";
 
 const ProjectDetail = () => {
   const { id } = useParams();
@@ -17,6 +20,21 @@ const ProjectDetail = () => {
     };
   }, []);
 
+  const renderImage: ImageRenderer = (img, index, col) => {
+    return (
+      <ImgCtxMenu>
+        <div
+          className={classnames("mb-128", {
+            "md:mr-64": col === 0,
+            "md:ml-64": col !== 0,
+          })}
+        >
+          {img}
+        </div>
+      </ImgCtxMenu>
+    );
+  };
+
   const renderUploader = () => (
     <ImageUploader
       onUploadFinish={refresh}
@@ -27,7 +45,10 @@ const ProjectDetail = () => {
 
   return (
     <>
-      <Gallery images={projects.images.map(imageFormatter)}>
+      <Gallery
+        images={projects.images.map(imageFormatter)}
+        imageRenderer={renderImage}
+      >
         {renderUploader()}
       </Gallery>
     </>
