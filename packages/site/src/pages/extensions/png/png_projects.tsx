@@ -24,7 +24,7 @@ const ProjectDetail = () => {
     return (
       <ImgCtxMenu>
         <div
-          className={classnames("mb-128", {
+          className={classnames("mb-128 select-none", {
             "md:mr-64": col === 0,
             "md:ml-64": col !== 0,
           })}
