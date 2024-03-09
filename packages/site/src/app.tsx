@@ -21,6 +21,7 @@ import {
   GlobalLoadingStateProvider,
 } from "@/global_loading_state_provider";
 import { UploadPage } from "@/pages/upload";
+import { AppCtxMenu } from "@/components/app_ctx_menu";
 
 const Layout = () => {
   const { isLoading } = useContext(GlobalLoadingContext);
@@ -28,7 +29,13 @@ const Layout = () => {
     <>
       <Page
         nav={
-          <Nav paths={usePaths()} className="blur-cover" loading={isLoading} />
+          <AppCtxMenu>
+            <Nav
+              paths={usePaths()}
+              className="blur-cover select-none"
+              loading={isLoading}
+            />
+          </AppCtxMenu>
         }
         main={<Outlet />}
       />

@@ -3,6 +3,7 @@ import { ossProcessType } from "@/types/oss";
 import { API_ENDPOINT, OSS_ADDRESS } from "@/constants/routes";
 import { DEFAULT_DELAY } from "@/constants";
 import useSWR from "swr";
+import { toast } from "sonner";
 
 type Fetcher = (resource: string, init?: any) => Promise<any>;
 
@@ -152,4 +153,20 @@ export const getRandomInt = (min: number, max: number) => {
 
 export const copyToClipboard = async (value: string) => {
   await navigator.clipboard.writeText(value);
+};
+
+export const confirm = (message: string, exec: () => void) => {
+  toast("", {
+    description: message,
+    actionButtonStyle: {
+      backgroundColor: "#fff",
+      color: "rgb(37,99,235)",
+    },
+    action: {
+      label: "是",
+      onClick: () => {
+        exec();
+      },
+    },
+  });
 };

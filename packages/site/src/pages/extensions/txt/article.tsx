@@ -9,6 +9,7 @@ import { ArticlePage } from "@/components/article";
 import { GlobalLoadingContext } from "@/global_loading_state_provider";
 import { useFile2Post } from "@/hooks/use_file_to_post";
 import { useAuthed } from "@/hooks/use_authed";
+import { ArticleCtxMenu } from "@/components/article_ctx_menu";
 
 type TArticleMap = {
   [key: string]: ReactElement;
@@ -55,7 +56,9 @@ export default () => {
   return (
     <DropZone onDrop={reader} disabled={!isKing}>
       <ArticlePage title={title}>
-        <div dangerouslySetInnerHTML={{ __html: posts.content }} />
+        <ArticleCtxMenu>
+          <div dangerouslySetInnerHTML={{ __html: posts.content }} />
+        </ArticleCtxMenu>
       </ArticlePage>
     </DropZone>
   );

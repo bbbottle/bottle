@@ -6,4 +6,5 @@ export interface BBKingSession extends Session {
 
 export enum OauthProvider {
   GITHUB = "github",
+  Spotify = "spotify",
 }
