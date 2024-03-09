@@ -22,6 +22,7 @@ export const API = {
   UPLOAD_IMG: "upload",
   POST: "post",
   REMOVE_POST: "remove_post",
+  REMOVE_IMG: "remove_image",
   MOVIES: "movies",
   IMAGES: "images",
   BOOKS: "books",
