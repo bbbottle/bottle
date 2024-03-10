@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
-import { Routes, Route, Outlet } from "react-router-dom";
-import { Nav, Page, NotFound } from "@bbki.ng/components";
-import { HotKeyNav, Stickers } from "./components";
+import { Outlet, Route, Routes } from "react-router-dom";
+import { Nav, NotFound, Page } from "@bbki.ng/components";
+import { HotKeyNav } from "./components";
 import { threeColWrapper } from "@/components/with_wrapper";
 import { Cover } from "./pages";
 
@@ -22,9 +22,13 @@ import {
 } from "@/global_loading_state_provider";
 import { UploadPage } from "@/pages/upload";
 import { AppCtxMenu } from "@/components/app_ctx_menu";
+import { Pochacco } from "@/components/Pochacco";
+import { Role, useRole } from "@/hooks/use_role";
 
 const Layout = () => {
   const { isLoading } = useContext(GlobalLoadingContext);
+  const role = useRole();
+  const isQueen = role === Role.QUEEN;
   return (
     <>
       <Page
@@ -34,6 +38,7 @@ const Layout = () => {
               paths={usePaths()}
               className="blur-cover select-none"
               loading={isLoading}
+              customLogo={isQueen ? <Pochacco /> : null}
             />
           </AppCtxMenu>
         }

@@ -9,6 +9,7 @@ export type NavProps = {
   loading?: boolean;
   mini?: boolean;
   className?: string;
+  customLogo?: React.ReactNode;
 };
 
 export const Nav = (props: NavProps) => {
@@ -24,12 +25,14 @@ export const Nav = (props: NavProps) => {
 
   return (
     <div className={`p-8 w-full flex items-center ${props.className}`}>
-      <Logo
-        className="mr-8"
-        onClick={() => {
-          nav("/");
-        }}
-      />
+      {props.customLogo || (
+        <Logo
+          className="mr-8"
+          onClick={() => {
+            nav("/");
+          }}
+        />
+      )}
       <Breadcrumb paths={props.paths} loading={props.loading} />
     </div>
   );
