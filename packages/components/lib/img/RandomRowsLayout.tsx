@@ -51,6 +51,14 @@ export interface RandomRowsLayoutProps {
   ) => React.ReactNode;
 }
 
+const sumColNumByIdx = (colNums: number[], idx: number): number => {
+  let sum = 0;
+  for (let i = 0; i < idx; i++) {
+    sum += colNums[i];
+  }
+  return sum;
+};
+
 export const RandomRowsLayout = React.memo(
   (props: RandomRowsLayoutProps) => {
     const {
@@ -60,11 +68,6 @@ export const RandomRowsLayout = React.memo(
       cellWrapperClsGenerator = defaultCellClsGenerator,
     } = props;
     const colNums = generateRandomColNum(cellsCount);
-
-    const indexRef = React.useRef(0);
-    React.useEffect(() => {
-      indexRef.current = 0;
-    }, []);
 
     return (
       <div className={classNames}>
@@ -76,11 +79,13 @@ export const RandomRowsLayout = React.memo(
           return (
             <div className="flex items-center flex-wrap" key={row}>
               {new Array(colNum).fill(null).map((_, col) => {
-                indexRef.current += 1;
                 const generatedCls = cellWrapperClsGenerator(
                   colNum,
                   generateRandomBoolean()
                 );
+
+                const currentIdx = sumColNumByIdx(colNums, row) + col;
+                console.log("当前下标" + currentIdx);
 
                 const cls = classnames(
                   "flex items-center justify-center flex-shrink-0 flex-grow-0",
@@ -89,7 +94,7 @@ export const RandomRowsLayout = React.memo(
                 );
                 return (
                   <div className={cls} key={col}>
-                    {cellRenderer(indexRef.current - 1, randBoolArr[col], col)}
+                    {cellRenderer(currentIdx, randBoolArr[col], col)}
                   </div>
                 );
               })}
