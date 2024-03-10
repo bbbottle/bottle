@@ -10,6 +10,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import { useDelPost } from "@/hooks/use_delete_post";
 import { toast } from "sonner";
 import { confirm } from "@/utils";
+import { useLoadingIndicator } from "@/hooks/useLoadingIndicator";
 
 export const ArticleCtxMenu = (props: { children: ReactElement }) => {
   const auth = useAuthed();
@@ -17,6 +18,7 @@ export const ArticleCtxMenu = (props: { children: ReactElement }) => {
   const routeParams = useParams();
   const nav = useNavigate();
   const title = routeParams.title;
+  const dot = useLoadingIndicator();
 
   if (!auth) {
     return props.children;
@@ -27,11 +29,13 @@ export const ArticleCtxMenu = (props: { children: ReactElement }) => {
   }
 
   const doDel = useCallback(() => {
+    dot.setVisibility(true);
     del(title)
       .then(() => {
         toast.success("删除成功", {
           position: "top-center",
         });
+        dot.setVisibility(false);
         nav("/blog");
       })
       .catch(console.log);
