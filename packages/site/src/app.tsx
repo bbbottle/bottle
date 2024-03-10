@@ -22,7 +22,7 @@ import {
 } from "@/global_loading_state_provider";
 import { UploadPage } from "@/pages/upload";
 import { AppCtxMenu } from "@/components/app_ctx_menu";
-import { Pochacco } from "@/components/Pochacco";
+import { Pochacco, PochaccoPose } from "@/components/Pochacco/Pochacco";
 import { Role, useRole } from "@/hooks/use_role";
 
 const Layout = () => {
@@ -38,7 +38,9 @@ const Layout = () => {
               paths={usePaths()}
               className="blur-cover select-none"
               loading={isLoading}
-              customLogo={isQueen ? <Pochacco /> : null}
+              customLogo={
+                isQueen ? <Pochacco pose={PochaccoPose.Watching} /> : null
+              }
             />
           </AppCtxMenu>
         }

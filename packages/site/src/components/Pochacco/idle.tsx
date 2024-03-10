@@ -1,12 +1,13 @@
 import React from "react";
+import { PochaccoProps } from "@/components/Pochacco/Pochacco";
 
-export const Pochacco = () => {
+export const Idle = (props: PochaccoProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
       version="1.0"
-      width="48"
-      height="48"
+      width={props.size || 48}
+      height={props.size || 48}
       viewBox="0 0 256.000000 256.000000"
       preserveAspectRatio="xMidYMid meet"
     >
