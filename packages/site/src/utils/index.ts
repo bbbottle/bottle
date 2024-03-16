@@ -4,6 +4,7 @@ import { API_ENDPOINT, OSS_ADDRESS } from "@/constants/routes";
 import { DEFAULT_DELAY } from "@/constants";
 import useSWR from "swr";
 import { toast } from "sonner";
+import { FontType } from "@/types/font";
 
 type Fetcher = (resource: string, init?: any) => Promise<any>;
 
@@ -170,4 +171,25 @@ export const confirm = (message: string, exec: () => void) => {
       },
     },
   });
+};
+
+export const changeFont = (type: FontType) => {
+  const rootDiv = document.getElementById("root");
+  if (rootDiv == null) {
+    return;
+  }
+
+  if (rootDiv.classList.contains(type)) {
+    return;
+  }
+
+  // remove all font type class
+  for (const fontType in FontType) {
+    rootDiv.classList.remove(fontType);
+  }
+
+  rootDiv.classList.add(type);
+
+  // save font type to local storage
+  localStorage.setItem("font", type);
 };

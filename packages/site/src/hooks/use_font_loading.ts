@@ -1,39 +1,37 @@
 import { useEffect, useState } from "react";
+import { changeFont } from "@/utils";
+import { FontType } from "@/types/font";
 
 export const useFontLoading = () => {
   const [isFontLoading, setIsFontLoading] = useState(false);
 
   const handleFontLoading = () => {
     setIsFontLoading(true);
+    document.fonts.ready.then(() => {
+      handleFontLoadingDone();
+    });
   };
 
   const handleFontLoadingDone = () => {
-    // delay 200ms
     setTimeout(() => {
       setIsFontLoading(false);
     }, 500);
   };
 
+  const handleFontLoadingError = () => {
+    setIsFontLoading(false);
+    changeFont(FontType.Mono);
+  };
+
   useEffect(() => {
-    document.fonts.onloadingdone = handleFontLoadingDone;
-    document.fonts.onloadingerror = handleFontLoadingDone;
-    document.fonts.ready.then(handleFontLoading);
+    document.fonts.onloadingerror = handleFontLoadingError;
     document.fonts.onloading = handleFontLoading;
 
-    // check font ready
-    if (document.fonts.status === "loaded") {
-      handleFontLoadingDone();
-    }
-
-    console.log(document.fonts.status);
-
     return () => {
-      document.fonts.onloadingdone = null;
       document.fonts.onloadingerror = null;
-      document.fonts.ready.then(() => {});
       document.fonts.onloading = null;
     };
-  }, [document.fonts.status]);
+  }, []);
 
   return isFontLoading;
 };
