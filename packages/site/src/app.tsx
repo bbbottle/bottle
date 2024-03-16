@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import { Outlet, Route, Routes } from "react-router-dom";
-import { Nav, NotFound, Page } from "@bbki.ng/components";
+import { Nav, NotFound, Page, BlurCover } from "@bbki.ng/components";
 import { HotKeyNav } from "./components";
 import { threeColWrapper } from "@/components/with_wrapper";
 import { Cover } from "./pages";
@@ -26,7 +26,7 @@ import { Pochacco, PochaccoPose } from "@/components/Pochacco/Pochacco";
 import { Role, useRole } from "@/hooks/use_role";
 
 const Layout = () => {
-  const { isLoading } = useContext(GlobalLoadingContext);
+  const { isLoading, isFontLoading } = useContext(GlobalLoadingContext);
   const role = useRole();
   const isQueen = role === Role.QUEEN;
   return (
@@ -46,6 +46,8 @@ const Layout = () => {
         }
         main={<Outlet />}
       />
+      <BlurCover status={isFontLoading ? "show" : "silent"} />
+      {/*<BlurCover status="show" />*/}
     </>
   );
 };

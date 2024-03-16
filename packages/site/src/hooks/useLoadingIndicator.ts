@@ -7,5 +7,6 @@ export const useLoadingIndicator = () => {
   return {
     setVisibility: globalCtx.setIsLoading,
     isVisible: globalCtx.isLoading,
+    isFontLoading: globalCtx.isFontLoading,
   };
 };

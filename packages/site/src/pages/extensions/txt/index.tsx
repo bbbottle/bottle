@@ -5,6 +5,7 @@ import { usePosts } from "@/hooks/use_posts";
 import { CenterLinkList } from "@/components";
 import { useAuthed } from "@/hooks/use_authed";
 import { useFile2Post } from "@/hooks/use_file_to_post";
+import { DelayFadeIn } from "@/components/DelayFadeIn/DelayFadeIn";
 
 type TxtProps = {
   title?: string;

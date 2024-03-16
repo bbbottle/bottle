@@ -112,7 +112,7 @@ module.exports = {
         backdropFilter: "blur(20px)",
       },
       ".text-blur": {
-        backdropFilter: "blur(3px)",
+        backdropFilter: "blur(7px)",
       },
     });
   },

@@ -1,5 +1,6 @@
 import React from "react";
 import { LinkList } from "@bbki.ng/components";
+import { DelayFadeIn } from "@/components/DelayFadeIn/DelayFadeIn";
 
 export { DisabledText, SmallDisabledText } from "./disabled_text";
 
@@ -30,7 +31,9 @@ export { MySuspense } from "./my_suspense";
 export const CenterLinkList = (props: any) => {
   return (
     <div className="flex justify-center">
-      <LinkList {...props} />
+      <DelayFadeIn delay={200}>
+        <LinkList {...props} />
+      </DelayFadeIn>
     </div>
   );
 };
