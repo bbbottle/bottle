@@ -16,7 +16,7 @@ export const Article: FunctionComponent<ArticleProps> = (props) => {
     <div className={classNames("article", className)}>
       <div className="text-[2.25rem] mb-128 leading-none">{title}</div>
       {description && <div className="mb-128">{description}</div>}
-      <div className="text-gray-700">{children || content}</div>
+      <div className="text-black">{children || content}</div>
     </div>
   );
 };

@@ -65,7 +65,7 @@ module.exports = {
       },
       colors: {
         white: "#FFFFFF",
-        black: "#111827",
+        black: "#000000",
         gray: {
           50: "#F9FAFB",
           100: "#F3F4F6",
@@ -178,9 +178,11 @@ module.exports = {
               marginTop: 0,
               marginBottom: 0,
             },
+            "--tw-prose-body": "#000",
             a: {
               color: "rgb(37,99,235)",
               textDecoration: "none",
+              padding: "4px",
               borderRadius: ".25rem",
               wordBreak: "break-all",
               "&:hover": {
