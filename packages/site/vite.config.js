@@ -61,7 +61,6 @@ export default defineConfig({
       ],
       devOptions: {
         enabled: false,
-        /* other options */
       },
       workbox: {
         cleanupOutdatedCaches: true,
@@ -72,6 +71,20 @@ export default defineConfig({
             handler: "CacheFirst",
             options: {
               cacheName: "oss-resource-cache",
+              expiration: {
+                maxEntries: 100,
+                maxAgeSeconds: 60 * 60 * 24 * 365, // <== 365 days
+              },
+              cacheableResponse: {
+                statuses: [0, 200],
+              },
+            },
+          },
+          {
+            urlPattern: /^https:\/\/fonts\.gstatic.com\.com\/.*/i,
+            handler: "CacheFirst",
+            options: {
+              cacheName: "fonts",
               expiration: {
                 maxEntries: 100,
                 maxAgeSeconds: 60 * 60 * 24 * 365, // <== 365 days

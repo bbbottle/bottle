@@ -4,4 +4,11 @@
 
 * {
   -webkit-user-drag: none;
+  font-weight: 400 !important;
+}
+
+.noto-serif {
+  font-family: "Menlo", "Consolas", "Noto Serif SC", monospace;
+  font-weight: 400;
+  font-style: normal;
 }
