@@ -29,11 +29,11 @@ const COLOR_MAPPING = {
 
 const HOVER_COLOR_MAPPING = {
   [LinkColor.BLUE]:
-    "[&:not(:focus)]:hover:bg-blue-100 [&:not(:focus)]:hover:text-blue-600",
+    "[&:not(:focus)]:hover:md:bg-blue-100 [&:not(:focus)]:hover:md:text-blue-600",
   [LinkColor.RED]:
-    "[&:not(:focus)]:hover:bg-red-100 [&:not(:focus)]:hover:text-red-500",
+    "[&:not(:focus)]:hover:md:bg-red-100 [&:not(:focus)]:hover:md:text-red-500",
   [LinkColor.GRAY]:
-    "[&:not(:focus)]:hover:bg-gray-100 [&:not(:focus)]:hover:text-gray-400",
+    "[&:not(:focus)]:hover:md:bg-gray-100 [&:not(:focus)]:hover:md:text-gray-400",
 };
 
 const FOCUS_BG_COLOR_MAPPING = {
