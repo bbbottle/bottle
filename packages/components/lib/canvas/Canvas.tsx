@@ -59,6 +59,15 @@ export const Canvas = (props: ICanvasProps) => {
       return acc;
     }, {});
 
+    const vertices: Array<object> = [
+      { x: -100, y: 100, z: 0 },
+      { x: -100, y: -100, z: 0 },
+      { x: 100, y: 100, z: 0 },
+      { x: 100, y: -100, z: 0 },
+      { x: -100, y: -100, z: 0 },
+      { x: 100, y: 100, z: 0 },
+    ];
+
     renderer.add(instName, {
       uniforms: {
         ...uCopy,
@@ -72,16 +81,7 @@ export const Canvas = (props: ICanvasProps) => {
       vertex,
       mode: 4,
       geometry: {
-        // @ts-ignore
-        vertices:
-          [
-            { x: -100, y: 100, z: 0 },
-            { x: -100, y: -100, z: 0 },
-            { x: 100, y: 100, z: 0 },
-            { x: 100, y: -100, z: 0 },
-            { x: -100, y: -100, z: 0 },
-            { x: 100, y: 100, z: 0 },
-          ],
+        vertices,
       },
       // @ts-ignore
       onRender: (inst: any) => {
