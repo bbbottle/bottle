@@ -72,14 +72,16 @@ export const Canvas = (props: ICanvasProps) => {
       vertex,
       mode: 4,
       geometry: {
-        vertices: [
-          { x: -100, y: 100, z: 0 },
-          { x: -100, y: -100, z: 0 },
-          { x: 100, y: 100, z: 0 },
-          { x: 100, y: -100, z: 0 },
-          { x: -100, y: -100, z: 0 },
-          { x: 100, y: 100, z: 0 },
-        ],
+        // @ts-ignore
+        vertices:
+          [
+            { x: -100, y: 100, z: 0 },
+            { x: -100, y: -100, z: 0 },
+            { x: 100, y: 100, z: 0 },
+            { x: 100, y: -100, z: 0 },
+            { x: -100, y: -100, z: 0 },
+            { x: 100, y: 100, z: 0 },
+          ],
       },
       // @ts-ignore
       onRender: (inst: any) => {
