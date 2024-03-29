@@ -65,7 +65,6 @@ export const App = () => {
   return (
     <SWR>
       <HotKeyNav>
-        {/*<Stickers />*/}
         <GlobalLoadingStateProvider>
           <Routes>
             <Route path="/" element={<Layout />}>
