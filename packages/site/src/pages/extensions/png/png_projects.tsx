@@ -8,6 +8,7 @@ import { ImageUploader } from "@/components/ImageUploader";
 import classnames from "classnames";
 import { ImageRenderer } from "@bbki.ng/components/lib";
 import { ImgCtxMenu } from "@/components/Img_ctx_menu";
+import {EffectLayer} from "@/components/effect-layer/EffectLayer";
 
 const ProjectDetail = () => {
   const { id } = useParams();

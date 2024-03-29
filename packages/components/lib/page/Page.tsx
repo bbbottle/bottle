@@ -1,5 +1,4 @@
 import React, { ReactElement, ReactNode } from "react";
-import { NoiseCover } from "../noise-cover/NoiseCover";
 import { Article } from "../article/Article";
 
 type PageProps = {
@@ -18,27 +17,19 @@ export const Page = (props: PageProps) => {
 };
 
 export const NotFound = (props: { children?: any }) => {
-  return (
-    <NoiseCover
-      color="#2563eb"
-      className="flex justify-center items-center text-white"
-    >
-      {props.children || 404}
-    </NoiseCover>
-  );
+  return <Error error={{ name: "404", message: "Not Found" }} />;
 };
 
 export const Error = (props: { error: Error }) => {
   const { error } = props;
   return (
-    <NoiseCover
-      color="#ef4444"
-      className="flex justify-center items-center text-white"
-    >
-      <code className="p-32">
-        {error.name}: {error.message}
-      </code>
-    </NoiseCover>
+    <div className="prose">
+      <pre>
+        <code className="javascript language-javascript">
+          {error.name}:{error.message}
+        </code>
+      </pre>
+    </div>
   );
 };
 
@@ -60,7 +51,7 @@ export class ErrorBoundary extends React.Component<
       return (
         <Article title="出错">
           <div className="relative h-256">
-            <Error error={this.state.error} />;
+            <Error error={this.state.error} />
           </div>
         </Article>
       );
