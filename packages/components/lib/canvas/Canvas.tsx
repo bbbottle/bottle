@@ -59,7 +59,7 @@ export const Canvas = (props: ICanvasProps) => {
       return acc;
     }, {});
 
-    const vertices: Array<object> = [
+    const vertices: Array<any> = [
       { x: -100, y: 100, z: 0 },
       { x: -100, y: -100, z: 0 },
       { x: 100, y: 100, z: 0 },
@@ -80,9 +80,8 @@ export const Canvas = (props: ICanvasProps) => {
       fragment,
       vertex,
       mode: 4,
-      geometry: {
-        vertices,
-      },
+      // @ts-ignore
+      geometry: { vertices },
       // @ts-ignore
       onRender: (inst: any) => {
         if (inst.uniforms.uProgress != undefined) {
