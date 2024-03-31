@@ -32,9 +32,11 @@ export const useRenderer = (uniform: uniformType) => {
     setRenderer(renderer);
 
     canvasRef.current.onresize = renderer?.resize;
+    window.addEventListener("resize", renderer?.resize);
 
     return () => {
       renderer?.destroy();
+      window.removeEventListener("resize", renderer?.resize);
     };
   }, [canvasRef.current]);
 
