@@ -35,7 +35,7 @@ vec4 randGrain(vec2 uv) {
 void drawGrainOnNav(vec2 uv) {
     float navHeight = 64. * uDevicePixelRatio / uResolution.y;
 
-    if (uv.y <= navHeight) {
+    if (1. * uDevicePixelRatio - uv.y < navHeight) {
         gl_FragColor = randGrain(uv);
     }
 }
