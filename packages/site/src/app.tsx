@@ -24,6 +24,7 @@ import { UploadPage } from "@/pages/upload";
 import { AppCtxMenu } from "@/components/app_ctx_menu";
 import { Pochacco, PochaccoPose } from "@/components/Pochacco/Pochacco";
 import { Role, useRole } from "@/hooks/use_role";
+import { EffectContextProvider } from "@/components/effect-layer/EffectContextProvider";
 
 const Layout = () => {
   const { isLoading, isFontLoading } = useContext(GlobalLoadingContext);
@@ -47,7 +48,6 @@ const Layout = () => {
         main={<Outlet />}
       />
       <BlurCover status={isFontLoading ? "show" : "silent"} />
-      {/*<BlurCover status="show" />*/}
     </>
   );
 };
@@ -64,29 +64,31 @@ const CoverInMidCol = threeColWrapper(Cover);
 export const App = () => {
   return (
     <SWR>
-      <HotKeyNav>
-        <GlobalLoadingStateProvider>
-          <Routes>
-            <Route path="/" element={<Layout />}>
-              <Route index element={<CoverInMidCol />} />
+      <EffectContextProvider>
+        <HotKeyNav>
+          <GlobalLoadingStateProvider>
+            <Routes>
+              <Route path="/" element={<Layout />}>
+                <Route index element={<CoverInMidCol />} />
 
-              <Route path="/projects" element={<ProjectsInMidCol />} />
-              <Route path="/projects/:id" element={<PhotoProjects />} />
+                <Route path="/projects" element={<ProjectsInMidCol />} />
+                <Route path="/projects/:id" element={<PhotoProjects />} />
 
-              <Route path="blog" element={<ContentInMidCol />} />
-              <Route path="blog/:title" element={<ArticleInMidCol />} />
-              <Route path="blog/:title/:id" element={<PhotoProjects />} />
-              <Route path="tags" element={<TagsInMidCol />} />
-              <Route path="tags/:tag" element={<TagsResultInMidCol />} />
+                <Route path="blog" element={<ContentInMidCol />} />
+                <Route path="blog/:title" element={<ArticleInMidCol />} />
+                <Route path="blog/:title/:id" element={<PhotoProjects />} />
+                <Route path="tags" element={<TagsInMidCol />} />
+                <Route path="tags/:tag" element={<TagsResultInMidCol />} />
 
-              <Route path="now" element={<NowInMidCol />} />
-              <Route path="login" element={<LoginInMidCol />} />
-              <Route path="upload" element={<UploadPage />} />
-            </Route>
-            <Route path="*" element={<NotFound />} />
-          </Routes>
-        </GlobalLoadingStateProvider>
-      </HotKeyNav>
+                <Route path="now" element={<NowInMidCol />} />
+                <Route path="login" element={<LoginInMidCol />} />
+                <Route path="upload" element={<UploadPage />} />
+              </Route>
+              <Route path="*" element={<NotFound />} />
+            </Routes>
+          </GlobalLoadingStateProvider>
+        </HotKeyNav>
+      </EffectContextProvider>
     </SWR>
   );
 };

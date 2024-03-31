@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect } from "react";
+import React from "react";
 import { Canvas } from "@bbki.ng/components";
 import frag from "./main.frag";
 import vert from "./shader.vert";
@@ -21,7 +21,9 @@ export const EffectLayer = () => {
 
   return (
     <Canvas
-      style={{ opacity: 0.1 }}
+      style={{
+        opacity: 0.1,
+      }}
       className={canvasDefaultCls}
       uniforms={uniforms}
       fragment={frag}

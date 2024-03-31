@@ -7,7 +7,6 @@ import "@bbki.ng/components/style";
 import App from "./app";
 import "./main.css";
 import Logger from "@/components/Logger";
-import {EffectLayer} from "@/components/effect-layer/EffectLayer";
 
 const container = document.getElementById("root") as Element;
 const root = createRoot(container);
@@ -19,7 +18,6 @@ root.render(
       <Toaster />
       <Logger />
       <ReloadPrompt />
-      <EffectLayer />
     </Router>
   </React.StrictMode>
 );
