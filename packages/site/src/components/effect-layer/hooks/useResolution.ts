@@ -9,8 +9,16 @@ export const useResolution = () => {
     const updateResolution = () => {
       resolution.current = [window.innerWidth, window.innerHeight];
     };
+
     window.addEventListener("resize", updateResolution);
-    return () => window.removeEventListener("resize", updateResolution);
+
+    // touch move
+    window.addEventListener("touchmove", updateResolution);
+
+    return () => {
+      window.removeEventListener("resize", updateResolution);
+      window.removeEventListener("touchmove", updateResolution);
+    };
   }, []);
 
   return resolution;
