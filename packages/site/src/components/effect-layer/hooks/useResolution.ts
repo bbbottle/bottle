@@ -15,9 +15,13 @@ export const useResolution = () => {
     // touch move
     window.addEventListener("touchmove", updateResolution);
 
+    // scroll
+    window.addEventListener("scroll", updateResolution);
+
     return () => {
       window.removeEventListener("resize", updateResolution);
       window.removeEventListener("touchmove", updateResolution);
+      window.removeEventListener("scroll", updateResolution);
     };
   }, []);
 
