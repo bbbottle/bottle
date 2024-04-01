@@ -7,7 +7,7 @@ export const EffectContextProvider = (props: { children: ReactNode }) => {
   return (
     <EffectContext.Provider value={{}}>
       <>
-        {/*<EffectLayer />*/}
+        <EffectLayer />
         {props.children}
       </>
     </EffectContext.Provider>

@@ -40,7 +40,7 @@ export const Canvas = (props: ICanvasProps) => {
   const instName = name ?? "default";
 
   useEffect(() => {
-    if (renderer == null) {
+    if (renderer == null || canvasRef.current == null) {
       return;
     }
 
