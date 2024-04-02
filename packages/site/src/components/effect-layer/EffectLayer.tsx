@@ -21,9 +21,6 @@ export const EffectLayer = () => {
 
   return (
     <Canvas
-      style={{
-        opacity: 0.1,
-      }}
       className={canvasDefaultCls}
       uniforms={uniforms}
       fragment={frag}

@@ -85,7 +85,6 @@ export const RandomRowsLayout = React.memo(
                 );
 
                 const currentIdx = sumColNumByIdx(colNums, row) + col;
-                console.log("当前下标" + currentIdx);
 
                 const cls = classnames(
                   "flex items-center justify-center flex-shrink-0 flex-grow-0",
