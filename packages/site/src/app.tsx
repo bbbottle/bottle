@@ -25,6 +25,7 @@ import { AppCtxMenu } from "@/components/app_ctx_menu";
 import { Pochacco, PochaccoPose } from "@/components/Pochacco/Pochacco";
 import { Role, useRole } from "@/hooks/use_role";
 import { EffectContextProvider } from "@/components/effect-layer/EffectContextProvider";
+import { BotRedirect } from "@/pages/bot";
 
 const Layout = () => {
   const { isLoading, isFontLoading } = useContext(GlobalLoadingContext);
@@ -80,6 +81,7 @@ export const App = () => {
                 <Route path="tags" element={<TagsInMidCol />} />
                 <Route path="tags/:tag" element={<TagsResultInMidCol />} />
 
+                <Route path="bot" element={<BotRedirect />} />
                 <Route path="now" element={<NowInMidCol />} />
                 <Route path="login" element={<LoginInMidCol />} />
                 <Route path="upload" element={<UploadPage />} />
