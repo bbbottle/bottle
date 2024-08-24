@@ -8,7 +8,7 @@ import App from "./app";
 import "./main.css";
 import Logger from "@/components/Logger";
 
-export const RenderBlog = (ele: Element) => {
+export const RenderBlogInto = (ele: Element) => {
   const root = createRoot(ele);
   root.render(
     <React.StrictMode>
@@ -20,4 +20,4 @@ export const RenderBlog = (ele: Element) => {
       </Router>
     </React.StrictMode>
   );
-}
+};
