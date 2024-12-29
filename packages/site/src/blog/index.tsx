@@ -8,16 +8,16 @@ import App from "./app";
 import "./main.css";
 import Logger from "@/components/Logger";
 
-const container = document.getElementById("root") as Element;
-const root = createRoot(container);
-
-root.render(
-  <React.StrictMode>
-    <Router>
-      <App />
-      <Toaster />
-      <Logger />
-      <ReloadPrompt />
-    </Router>
-  </React.StrictMode>
-);
+export const RenderBlogInto = (ele: Element) => {
+  const root = createRoot(ele);
+  root.render(
+    <React.StrictMode>
+      <Router>
+        <App />
+        <Toaster />
+        <Logger />
+        <ReloadPrompt />
+      </Router>
+    </React.StrictMode>
+  );
+};
