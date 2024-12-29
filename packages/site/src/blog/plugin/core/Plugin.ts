@@ -1,6 +1,6 @@
 import createPlugin, { Plugin as EPlugin } from "@extism/extism";
-import { Dependencies } from "@/plugin/Dependencies";
-import { hostFuncAdapter } from "@/plugin/HostFuncAdapter";
+import { Dependencies } from "@/plugin/core/Dependencies";
+import { hostFuncAdapter } from "@/plugin/core/HostFuncAdapter";
 
 export type PluginConfig = {
   name: string;

@@ -1,5 +1,5 @@
 import { Plugin, PluginConfig } from "./Plugin";
-import { Dependencies } from "@/plugin/Dependencies";
+import { Dependencies } from "@/plugin/core/Dependencies";
 
 export class PluginManager {
   private readonly dependencies: Dependencies;
@@ -9,12 +9,23 @@ export class PluginManager {
   }
 
   static instance: PluginManager;
+
   static init(dependencies: Dependencies) {
     PluginManager.instance = new PluginManager(dependencies);
   }
 
+  private configList: PluginConfig[] = [];
+
+  getConfigList() {
+    return this.configList;
+  }
+
   async fetchPluginConfig(): Promise<PluginConfig[]> {
-    return [
+    if (this.configList.length !== 0) {
+      return this.configList;
+    }
+
+    this.configList = [
       {
         name: "greet",
         id: 1,
@@ -23,9 +34,7 @@ export class PluginManager {
         url: "http://localhost:5173/demo.wasm",
       },
     ];
-  }
 
-  async installPlugin<T, T1>(plugin: Plugin<T, T1>) {
-    await plugin.install(this.dependencies);
+    return this.configList;
   }
 }

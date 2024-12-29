@@ -26,7 +26,7 @@ import { Pochacco, PochaccoPose } from "@/components/Pochacco/Pochacco";
 import { Role, useRole } from "@/hooks/use_role";
 import { EffectContextProvider } from "@/components/effect-layer/EffectContextProvider";
 import { BotRedirect } from "@/pages/bot";
-import { PluginConfig } from "@/plugin/PluginConfig";
+import { PluginConfig } from "@/plugin/components/PluginConfig";
 
 const Layout = () => {
   const { isLoading, isFontLoading } = useContext(GlobalLoadingContext);
