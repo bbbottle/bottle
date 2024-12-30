@@ -5,7 +5,7 @@ type HostFunctions = ExtismPluginOptions["functions"];
 
 export const hostFuncAdapter = (dep: Dependencies): HostFunctions => {
   return {
-    "extism:host/site": {
+    "extism:host/user": {
       toast: (cp: CurrentPlugin, offs: bigint) => {
         const content = cp.read(offs).text();
         dep.toast(content);

@@ -28,7 +28,11 @@ export class Plugin<T, T2> {
 
   async run(input: T): Promise<T2> {
     let out = await this.plugin.call(this.config.name, JSON.stringify(input));
-    return JSON.parse(out.text());
+    try {
+      return JSON.parse(out.text());
+    } catch (e) {
+      return out.text();
+    }
   }
 
   async uninstall() {
