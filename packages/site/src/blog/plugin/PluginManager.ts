@@ -1,4 +1,4 @@
-import { Plugin, PluginConfig } from "./Plugin";
+import { Plugin, PluginConfig, PluginInputFieldType } from "./Plugin";
 import { Dependencies } from "@/plugin/Dependencies";
 
 export class PluginManager {
@@ -61,19 +61,19 @@ export class PluginManager {
     return Array.from(this.pluginConfigMap.values());
   }
 
-  public async run<T1, T2>(id: number, input: T1) {
-    const plugin = this.plugins.get(id) as Plugin<T1, T2>;
+  public async run(id: number) {
+    const plugin = this.plugins.get(id);
     if (!plugin) {
       this.dependencies.toast("Plugin not found");
       return;
     }
 
-    return plugin.run(input);
+    return plugin.run();
   }
 
   private pluginConfigMap: Map<number, PluginConfig> = new Map();
 
-  private plugins: Map<number, Plugin<any, any>> = new Map();
+  private plugins: Map<number, Plugin> = new Map();
 
   async fetchPluginConfig(): Promise<Map<number, PluginConfig>> {
     if (this.pluginConfigMap.size > 0) {
@@ -87,6 +87,12 @@ export class PluginManager {
       description: "A greet plugin",
       url: "http://localhost:5173/demo.wasm",
       status: 0,
+      inputs: [
+        {
+          name: "content",
+          type: PluginInputFieldType.String,
+        },
+      ],
     });
 
     return this.pluginConfigMap;

@@ -16,29 +16,54 @@ export type PluginConfig = {
   description: string;
   url: string;
   status: PluginStatus;
+  inputs?: PluginInput;
 };
 
-export class Plugin<T, T2> {
+export enum PluginInputFieldType {
+  String = "string",
+  Number = "number",
+  Boolean = "boolean",
+}
+
+export type PluginInputField = {
+  name: string;
+  type: PluginInputFieldType;
+};
+
+export type PluginInput = PluginInputField[];
+
+export class Plugin {
   config: PluginConfig;
 
-  constructor(config: PluginConfig) {
+  constructor(config: PluginConfig, dependencies: Dependencies) {
     this.config = config;
+    this.dependencies = dependencies;
   }
 
   private plugin: EPlugin;
+  private dependencies: Dependencies;
 
-  async install(dependencies: Dependencies) {
+  async install() {
     this.plugin = await createPlugin(this.config.url, {
       useWasi: true,
-      functions: hostFuncAdapter(dependencies),
+      functions: hostFuncAdapter(this.dependencies),
     });
 
     this.config.status = PluginStatus.Installed;
   }
 
-  async run(input: T): Promise<T2> {
+  private async getUserInput() {
+    if (!this.config.inputs || this.config.inputs.length === 0) {
+      return;
+    }
+
+    return await this.dependencies.showForm(this.config.inputs);
+  }
+
+  async run() {
     this.config.status = PluginStatus.Running;
-    let out = await this.plugin.call(this.config.name, JSON.stringify(input));
+    let userInput = await this.getUserInput();
+    let out = await this.plugin.call(this.config.name, userInput);
     try {
       this.config.status = PluginStatus.Stopped;
       return JSON.parse(out.text());
