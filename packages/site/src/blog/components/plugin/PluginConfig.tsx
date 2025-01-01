@@ -1,7 +1,7 @@
 import React from "react";
 import { ReactNode, useContext, useEffect } from "react";
 import { GlobalLoadingContext } from "@/global_loading_state_provider";
-import { PluginManager } from "@/plugin/core/PluginManager";
+import { PluginManager } from "@/plugin/PluginManager";
 import { toast } from "sonner";
 
 export const PluginConfig = (props: { children: ReactNode }) => {

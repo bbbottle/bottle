@@ -1,5 +1,5 @@
 import { CurrentPlugin, ExtismPluginOptions } from "@extism/extism";
-import { Dependencies } from "@/plugin/core/Dependencies";
+import { Dependencies } from "@/plugin/Dependencies";
 
 type HostFunctions = ExtismPluginOptions["functions"];
 

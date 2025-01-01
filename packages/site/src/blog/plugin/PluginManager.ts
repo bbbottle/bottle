@@ -1,5 +1,5 @@
 import { Plugin, PluginConfig } from "./Plugin";
-import { Dependencies } from "@/plugin/core/Dependencies";
+import { Dependencies } from "@/plugin/Dependencies";
 
 export class PluginManager {
   private readonly dependencies: Dependencies;
@@ -40,6 +40,19 @@ export class PluginManager {
     this.dependencies.toast("Plugin installed");
   }
 
+  public async uninstall(plugin: PluginConfig) {
+    const id = plugin.id;
+    const installed = this.plugins.get(id);
+    if (!installed) {
+      this.dependencies.toast("Plugin not found");
+      return;
+    }
+
+    await installed.uninstall();
+    this.plugins.delete(id);
+    this.dependencies.toast("Plugin uninstalled");
+  }
+
   public getInstalled() {
     return this.plugins;
   }
@@ -73,6 +86,7 @@ export class PluginManager {
       version: "1.0.0",
       description: "A greet plugin",
       url: "http://localhost:5173/demo.wasm",
+      status: 0,
     });
 
     return this.pluginConfigMap;

@@ -1,6 +1,13 @@
 import createPlugin, { Plugin as EPlugin } from "@extism/extism";
-import { Dependencies } from "@/plugin/core/Dependencies";
-import { hostFuncAdapter } from "@/plugin/core/HostFuncAdapter";
+import { Dependencies } from "@/plugin/Dependencies";
+import { hostFuncAdapter } from "@/plugin/HostFuncAdapter";
+
+export enum PluginStatus {
+  Available,
+  Installed,
+  Running,
+  Stopped,
+}
 
 export type PluginConfig = {
   name: string;
@@ -8,6 +15,7 @@ export type PluginConfig = {
   version: string;
   description: string;
   url: string;
+  status: PluginStatus;
 };
 
 export class Plugin<T, T2> {
@@ -24,18 +32,23 @@ export class Plugin<T, T2> {
       useWasi: true,
       functions: hostFuncAdapter(dependencies),
     });
+
+    this.config.status = PluginStatus.Installed;
   }
 
   async run(input: T): Promise<T2> {
+    this.config.status = PluginStatus.Running;
     let out = await this.plugin.call(this.config.name, JSON.stringify(input));
     try {
+      this.config.status = PluginStatus.Stopped;
       return JSON.parse(out.text());
     } catch (e) {
+      this.config.status = PluginStatus.Stopped;
       return out.text();
     }
   }
 
   async uninstall() {
-    await this.plugin.close();
+    this.config.status = PluginStatus.Available;
   }
 }
