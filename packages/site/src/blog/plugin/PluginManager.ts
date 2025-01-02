@@ -34,8 +34,8 @@ export class PluginManager {
       return;
     }
 
-    const plugin = new Plugin(config);
-    await plugin.install(this.dependencies);
+    const plugin = new Plugin(config, this.dependencies);
+    await plugin.install();
     this.plugins.set(id, plugin);
     this.dependencies.toast("Plugin installed");
   }

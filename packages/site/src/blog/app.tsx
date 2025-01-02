@@ -26,7 +26,7 @@ import { Pochacco, PochaccoPose } from "@/components/Pochacco/Pochacco";
 import { Role, useRole } from "@/hooks/use_role";
 import { EffectContextProvider } from "@/components/effect-layer/EffectContextProvider";
 import { BotRedirect } from "@/pages/bot";
-import { PluginConfig } from "@/components/plugin/PluginConfig";
+import { PluginInit } from "@/components/plugin/PluginInit";
 
 const Layout = () => {
   const { isLoading, isFontLoading } = useContext(GlobalLoadingContext);
@@ -69,7 +69,7 @@ export const App = () => {
       {/*<EffectContextProvider>*/}
       <HotKeyNav>
         <GlobalLoadingStateProvider>
-          <PluginConfig>
+          <PluginInit>
             <Routes>
               <Route path="/" element={<Layout />}>
                 <Route index element={<CoverInMidCol />} />
@@ -90,7 +90,7 @@ export const App = () => {
               </Route>
               <Route path="*" element={<NotFound />} />
             </Routes>
-          </PluginConfig>
+          </PluginInit>
         </GlobalLoadingStateProvider>
       </HotKeyNav>
       {/*</EffectContextProvider>*/}

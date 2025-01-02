@@ -57,12 +57,20 @@ export class Plugin {
       return;
     }
 
-    return await this.dependencies.showForm(this.config.inputs);
+    let userInput = "";
+    try {
+      userInput = await this.dependencies.showForm(this.config.inputs);
+    } catch (e) {
+      console.error(e);
+    }
+
+    return userInput;
   }
 
   async run() {
     this.config.status = PluginStatus.Running;
     let userInput = await this.getUserInput();
+    console.log("userInput", userInput);
     let out = await this.plugin.call(this.config.name, userInput);
     try {
       this.config.status = PluginStatus.Stopped;

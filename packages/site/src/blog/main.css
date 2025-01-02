@@ -7,6 +7,10 @@
   font-weight: 400 !important;
 }
 
+body {
+  pointer-events: auto !important;
+}
+
 .noto-serif {
   font-family: "Menlo", "Consolas", "Noto Serif SC", monospace;
   font-weight: 400;
