@@ -71,6 +71,7 @@ export class Plugin {
     this.config.status = PluginStatus.Running;
     let userInput = await this.getUserInput();
     if (!userInput && this.config.inputs && this.config.inputs.length > 0) {
+      console.log("userInput is empty");
       this.config.status = PluginStatus.Stopped;
       return;
     }

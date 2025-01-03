@@ -21,10 +21,6 @@ export class PluginManager {
     await PluginManager.instance.fetchPluginConfig();
     dependencies.loading(false);
     dependencies.toast("Plugin manager initialized");
-
-    // Expose the plugin manager to the window object for debugging
-    // @ts-ignore
-    window.pm = PluginManager.instance;
   }
 
   public async install(id: number) {
