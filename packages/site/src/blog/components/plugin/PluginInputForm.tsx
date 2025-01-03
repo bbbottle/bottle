@@ -11,12 +11,16 @@ import {
   Input,
   Button,
   ButtonType,
+  FormControl,
 } from "@bbki.ng/components";
+import { PluginDrawer } from "@/components/plugin/PluginDrawer";
+import { DialogProps } from "vaul";
 
 type PluginInputFormProps = {
   input: PluginInput;
   onSubmit: (input: string) => void;
-};
+} & Pick<DialogProps, "open"> &
+  Pick<DialogProps, "onOpenChange">;
 
 const getPluginInputSchema = (input: PluginInput) => {
   const obj: any = {};
@@ -45,11 +49,10 @@ const getInputType = (type: PluginInputFieldType) => {
 };
 
 export const PluginInputForm = (props: PluginInputFormProps) => {
-  const { input, onSubmit } = props;
+  const { input, onSubmit, open, onOpenChange } = props;
   const schema = getPluginInputSchema(input);
   const form = useForm<z.infer<typeof schema>>({
     resolver: zodResolver(schema),
-    defaultValues: schema.parse({}),
   });
 
   const ok = (data: z.infer<typeof schema>) => {
@@ -57,35 +60,38 @@ export const PluginInputForm = (props: PluginInputFormProps) => {
   };
 
   return (
-    <Form {...form}>
-      <form onSubmit={form.handleSubmit(ok)}>
-        {input.map((item) => {
-          return (
-            <FormField
-              key={item.name}
-              control={form.control}
-              // @ts-ignore
-              render={({ field }) => {
-                return (
-                  <FormItem>
-                    <FormLabel>{item.name}</FormLabel>
-                    <Input type={getInputType(item.type)} {...field} />
-                  </FormItem>
-                );
-              }}
-              name={item.name}
-            />
-          );
-        })}
-        <Button
-          className="mt-16"
-          onClick={() => {}}
-          btnType="submit"
-          type={ButtonType.PRIMARY}
-        >
-          Ok
-        </Button>
-      </form>
-    </Form>
+    <PluginDrawer open={open} onOpenChange={onOpenChange}>
+      <Form {...form}>
+        <form onSubmit={form.handleSubmit(ok)}>
+          {input.map((item) => {
+            return (
+              <FormField
+                key={item.name}
+                control={form.control}
+                render={({ field }) => {
+                  return (
+                    <FormItem>
+                      <FormLabel>{item.name}</FormLabel>
+                      <FormControl>
+                        <Input type={getInputType(item.type)} {...field} />
+                      </FormControl>
+                    </FormItem>
+                  );
+                }}
+                name={item.name}
+              />
+            );
+          })}
+          <Button
+            className="mt-16"
+            onClick={() => {}}
+            btnType="submit"
+            type={ButtonType.PRIMARY}
+          >
+            Ok
+          </Button>
+        </form>
+      </Form>
+    </PluginDrawer>
   );
 };

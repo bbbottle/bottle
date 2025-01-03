@@ -33,10 +33,7 @@ export const PluginsMenuItem = () => {
               setPlugins(PluginManager.instance.listAvailable());
             }}
             onRun={async (plugin: PluginConfig) => {
-              await PluginManager.instance.run<string, string>(
-                plugin.id,
-                "hello"
-              );
+              await PluginManager.instance.run(plugin.id);
               setPlugins(PluginManager.instance.listAvailable());
             }}
             onStop={(plugin: PluginConfig) => {}}
