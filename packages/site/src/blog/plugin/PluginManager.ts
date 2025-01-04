@@ -67,14 +67,14 @@ export class PluginManager {
     );
   }
 
-  public async run(id: number) {
+  public async run(id: number, method?: string) {
     const plugin = this.plugins.get(id);
     if (!plugin) {
       this.dependencies.toast("Plugin not found");
       return;
     }
 
-    return plugin.run();
+    return plugin.run(method);
   }
 
   private pluginConfigMap: Map<number, PluginConfig> = new Map();

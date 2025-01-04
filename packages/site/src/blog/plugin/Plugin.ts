@@ -72,7 +72,7 @@ export class Plugin {
     return userInput;
   }
 
-  async run() {
+  async run(method?: string) {
     this.config.status = PluginStatus.Running;
     let userInput = await this.getUserInput();
     if (!userInput && this.config.inputs && this.config.inputs.length > 0) {
@@ -81,8 +81,10 @@ export class Plugin {
       return;
     }
 
+    const target = method || this.config.name;
+
     console.log("userInput", userInput);
-    let out = await this.plugin.call(this.config.name, userInput);
+    let out = await this.plugin.call(target, userInput);
     try {
       this.config.status = PluginStatus.Stopped;
       return JSON.parse(out.text());

@@ -6,4 +6,5 @@ export interface Dependencies {
   showForm: (input: PluginInput) => Promise<string>;
   addRoute: (name: string, to: string) => void;
   removeRoute: (name: string) => void;
+  callPlugin: (id: number, method: string) => Promise<any>;
 }

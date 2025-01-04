@@ -17,6 +17,12 @@ export const hostFuncAdapter = (dep: Dependencies): HostFunctions => {
         const content = cp.read(offs).text();
         dep.toast(content);
       },
+
+      callPlugin: (cp: CurrentPlugin, name: bigint, args: bigint) => {
+        const id = cp.read(name).number();
+        const method = cp.read(args).text();
+        return dep.callPlugin(id, method);
+      },
     },
   };
 };

@@ -4,6 +4,7 @@ import { GlobalLoadingContext } from "@/context/global_loading_state_provider";
 import { PluginInput } from "@/plugin/Plugin";
 import { toast } from "sonner";
 import { GlobalRoutesContext } from "@/context/global_routes_provider";
+import { PluginManager } from "@/plugin/PluginManager";
 
 type inputResolve = (value: string | PromiseLike<string>) => void;
 
@@ -25,6 +26,13 @@ export const useDependencies = (): depHooksRes => {
   const globalRouteCtx = useContext(GlobalRoutesContext);
 
   return {
+    callPlugin: (id, method) => {
+      if (!PluginManager.instance) {
+        return Promise.reject("Plugin manager not initialized");
+      }
+
+      return PluginManager.instance.run(id, method);
+    },
     addRoute: (name, to) => {
       globalRouteCtx.addGlobalRoute({
         name,
