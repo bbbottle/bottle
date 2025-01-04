@@ -37,6 +37,25 @@ const getPluginInputSchema = (input: PluginInput) => {
   return z.object(obj);
 };
 
+const getInputDefaultValue = (type: PluginInputFieldType) => {
+  switch (type) {
+    case PluginInputFieldType.String:
+      return "";
+    case PluginInputFieldType.Number:
+      return 0;
+    case PluginInputFieldType.Boolean:
+      return false;
+  }
+};
+
+const getPluginDefaultInput = (input: PluginInput) => {
+  const obj: any = {};
+  input.forEach((item) => {
+    obj[item.name] = getInputDefaultValue(item.type);
+  });
+  return obj;
+};
+
 const getInputType = (type: PluginInputFieldType) => {
   switch (type) {
     case PluginInputFieldType.String:
@@ -53,6 +72,7 @@ export const PluginInputForm = (props: PluginInputFormProps) => {
   const schema = getPluginInputSchema(input);
   const form = useForm<z.infer<typeof schema>>({
     resolver: zodResolver(schema),
+    values: getPluginDefaultInput(input),
   });
 
   const ok = (data: z.infer<typeof schema>) => {
