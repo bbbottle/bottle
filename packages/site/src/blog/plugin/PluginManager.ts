@@ -1,11 +1,45 @@
 import { Plugin, PluginConfig, PluginInputFieldType } from "./Plugin";
 import { Dependencies } from "@/plugin/Dependencies";
+import { PluginManagerPayload } from "@/plugin/PluginManagerPayload";
 
 export class PluginManager {
   private readonly dependencies: Dependencies;
 
   constructor(dependencies: Dependencies) {
     this.dependencies = dependencies;
+    this.loadInfo();
+  }
+
+  private _info: PluginManagerPayload = {
+    installedIdList: [],
+  };
+  private static payloadKey = "pluginManagerPayload_v1.0";
+
+  private saveInfo() {
+    if (!this._info) {
+      return;
+    }
+
+    this._info.installedIdList = this.listInstalled().map((p) => p.config.id);
+    localStorage.setItem(PluginManager.payloadKey, JSON.stringify(this._info));
+  }
+
+  private loadInfo() {
+    const info = localStorage.getItem(PluginManager.payloadKey);
+    if (info) {
+      this._info = JSON.parse(info);
+      console.log(this._info);
+    }
+  }
+
+  private async restoreInstalledPlugins() {
+    if (!this._info) {
+      return Promise.resolve();
+    }
+
+    return Promise.all(
+      this._info.installedIdList.map((id) => this.install(id))
+    );
   }
 
   static instance: PluginManager;
@@ -16,9 +50,9 @@ export class PluginManager {
     }
 
     PluginManager.instance = new PluginManager(dependencies);
-
     dependencies.loading(true);
     await PluginManager.instance.fetchPluginConfig();
+    await PluginManager.instance.restoreInstalledPlugins();
     dependencies.loading(false);
     dependencies.toast("Plugin manager initialized");
   }
@@ -34,6 +68,8 @@ export class PluginManager {
     await plugin.install();
     this.plugins.set(id, plugin);
     this.dependencies.toast("Plugin installed");
+
+    this.saveInfo();
   }
 
   public async uninstall(plugin: PluginConfig) {
@@ -47,6 +83,8 @@ export class PluginManager {
     await installed.uninstall();
     this.plugins.delete(id);
     this.dependencies.toast("Plugin uninstalled");
+
+    this.saveInfo();
   }
 
   public listInstalled() {
