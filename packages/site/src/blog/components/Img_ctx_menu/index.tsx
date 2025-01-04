@@ -13,7 +13,7 @@ import { confirm } from "@/utils";
 import { ContextMenuSeparator } from "@bbki.ng/components";
 import { useDelImg } from "@/hooks/use_del_img";
 import { toast } from "sonner";
-import { GlobalLoadingContext } from "@/global_loading_state_provider";
+import { GlobalLoadingContext } from "@/context/global_loading_state_provider";
 
 export const ImgCtxMenu = (props: {
   children: ReactElement;

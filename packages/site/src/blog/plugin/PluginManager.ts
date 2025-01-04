@@ -49,12 +49,22 @@ export class PluginManager {
     this.dependencies.toast("Plugin uninstalled");
   }
 
-  public getInstalled() {
-    return this.plugins;
+  public listInstalled() {
+    return Array.from(this.plugins.values());
   }
 
   public listAvailable(): PluginConfig[] {
     return Array.from(this.pluginConfigMap.values());
+  }
+
+  public getPlugin(id: number) {
+    return this.plugins.get(id);
+  }
+
+  public getPluginByRoute(route: string) {
+    return Array.from(this.plugins.values()).find(
+      (plugin) => plugin.config.route === route
+    );
   }
 
   public async run(id: number) {
@@ -83,6 +93,7 @@ export class PluginManager {
       description: "A greet plugin",
       url: "http://localhost:5173/demo.wasm",
       status: 0,
+      route: "greet",
       inputs: [
         {
           name: "content",

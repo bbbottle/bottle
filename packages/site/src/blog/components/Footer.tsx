@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import { Link, Tag } from "@bbki.ng/components";
 import { useLocation } from "react-router-dom";
 import { usePaths } from "@/hooks";
-import { GlobalLoadingContext } from "@/global_loading_state_provider";
+import { GlobalLoadingContext } from "@/context/global_loading_state_provider";
 
 export const Footer = () => {
   const location = useLocation();

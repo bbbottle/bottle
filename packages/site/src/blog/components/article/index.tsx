@@ -4,7 +4,7 @@ import { ROUTES } from "@/constants";
 import { DelayFadeIn } from "@/components/DelayFadeIn/DelayFadeIn";
 import classNames from "classnames";
 
-type ArticlePageProps = {
+export type ArticlePageProps = {
   tags?: string[];
   title: string;
   description?: any;

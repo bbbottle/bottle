@@ -1,8 +1,9 @@
 import { Dependencies } from "@/plugin/Dependencies";
 import React, { useContext, useRef } from "react";
-import { GlobalLoadingContext } from "@/global_loading_state_provider";
+import { GlobalLoadingContext } from "@/context/global_loading_state_provider";
 import { PluginInput } from "@/plugin/Plugin";
 import { toast } from "sonner";
+import { GlobalRoutesContext } from "@/context/global_routes_provider";
 
 type inputResolve = (value: string | PromiseLike<string>) => void;
 
@@ -21,7 +22,18 @@ export const useDependencies = (): depHooksRes => {
 
   const resolveRef = useRef<inputResolve>();
 
+  const globalRouteCtx = useContext(GlobalRoutesContext);
+
   return {
+    addRoute: (name, to) => {
+      globalRouteCtx.addGlobalRoute({
+        name,
+        to: "/plugins/" + to,
+      });
+    },
+    removeRoute: (name) => {
+      globalRouteCtx.removeGlobalRoute(name);
+    },
     loading: setIsLoading,
     toast: (content: string) => {
       toast.success(content, {

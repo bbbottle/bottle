@@ -1,7 +1,7 @@
 import { API } from "@/constants/routes";
 import useSWR from "swr";
 import { useContext, useEffect } from "react";
-import { GlobalLoadingContext } from "@/global_loading_state_provider";
+import { GlobalLoadingContext } from "@/context/global_loading_state_provider";
 
 export const usePosts = (name: string = "", suspense?: boolean) => {
   const { data, error } = useSWR(API.POSTS, {

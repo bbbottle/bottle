@@ -17,6 +17,7 @@ export type PluginConfig = {
   url: string;
   status: PluginStatus;
   inputs?: PluginInput;
+  route?: string;
 };
 
 export enum PluginInputFieldType {
@@ -48,6 +49,10 @@ export class Plugin {
       useWasi: true,
       functions: hostFuncAdapter(this.dependencies),
     });
+
+    if (this.config.route) {
+      this.dependencies.addRoute(this.config.route, this.config.route);
+    }
 
     this.config.status = PluginStatus.Installed;
   }
@@ -89,5 +94,8 @@ export class Plugin {
 
   async uninstall() {
     this.config.status = PluginStatus.Available;
+    if (this.config.route) {
+      this.dependencies.removeRoute(this.config.route);
+    }
   }
 }

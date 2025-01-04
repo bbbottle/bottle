@@ -1,7 +1,7 @@
 import React, { useCallback, useEffect } from "react";
 import { ReactNode } from "react";
 import { PluginInputForm } from "@/components/plugin/PluginInputForm";
-import { useDependencies } from "@/components/plugin/useDependencies";
+import { useDependencies } from "@/components/plugin/hooks/useDependencies";
 import { PluginManager } from "@/plugin/PluginManager";
 
 export const PluginInit = (props: { children: ReactNode }) => {

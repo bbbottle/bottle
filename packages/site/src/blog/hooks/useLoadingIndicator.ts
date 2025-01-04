@@ -1,4 +1,4 @@
-import { GlobalLoadingContext } from "@/global_loading_state_provider";
+import { GlobalLoadingContext } from "@/context/global_loading_state_provider";
 import { useContext } from "react";
 
 export const useLoadingIndicator = () => {

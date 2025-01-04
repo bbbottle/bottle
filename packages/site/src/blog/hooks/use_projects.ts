@@ -2,7 +2,7 @@ import useSWR, { useSWRConfig } from "swr";
 import { API } from "@/constants/routes";
 import { useCallback, useContext, useEffect } from "react";
 import { Photo } from "@/types/photo";
-import { GlobalLoadingContext } from "@/global_loading_state_provider";
+import { GlobalLoadingContext } from "@/context/global_loading_state_provider";
 
 export const useProjects = (name: string = "", suspense?: boolean) => {
   const URL = `${API.PROJECTS}${name ? "/" : ""}${name}`;
