@@ -102,9 +102,15 @@ export class Plugin {
     }
 
     const target = method || this.config.name;
-    let out = await this.plugin.call(target, userInput);
-    this.config.status = PluginStatus.Stopped;
-    return out.text();
+    try {
+      let out = await this.plugin.call(target, userInput);
+      this.config.status = PluginStatus.Stopped;
+      return out.text();
+    } catch (e) {
+      this.config.status = PluginStatus.Stopped;
+      this.dependencies.loading(false);
+      return e;
+    }
   }
 
   async uninstall() {
