@@ -45,7 +45,7 @@ export const useDependencies = (): depHooksRes => {
     loading: setIsLoading,
     toast: (content: string) => {
       toast.success(content, {
-        position: "top-center",
+        position: "bottom-right",
       });
     },
     showForm: async (input) => {

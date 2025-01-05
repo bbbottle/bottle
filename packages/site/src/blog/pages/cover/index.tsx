@@ -21,10 +21,6 @@ export const Cover = (props: { className: string }) => {
             to: "/blog",
             name: "cd ./blog",
           },
-          {
-            to: "/now",
-            name: "cd ./now",
-          },
           ...pluginEntry,
         ]}
         title=""

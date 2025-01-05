@@ -145,7 +145,7 @@ export class PluginManager {
       description: "A now page plugin",
       url: "http://localhost:5173/now.wasm",
       status: 0,
-      route: "now",
+      route: "近况",
     });
 
     return this.pluginConfigMap;

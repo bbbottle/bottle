@@ -16,3 +16,9 @@ body {
   font-weight: 400;
   font-style: normal;
 }
+
+tr > td,
+tr > th {
+  max-width: 100px;
+  width: 100px;
+}

@@ -51,15 +51,16 @@ export const PluginMenuItem = (props: PluginMenuItemProps) => {
           </ContextMenuItem>
         )}
         {(plugin.status === PluginStatus.Installed ||
-          plugin.status === PluginStatus.Stopped) && (
-          <ContextMenuItem
-            onClick={() => {
-              onRun(plugin);
-            }}
-          >
-            run
-          </ContextMenuItem>
-        )}
+          plugin.status === PluginStatus.Stopped) &&
+          !plugin.route && (
+            <ContextMenuItem
+              onClick={() => {
+                onRun(plugin);
+              }}
+            >
+              run
+            </ContextMenuItem>
+          )}
       </ContextMenuSubContent>
     </ContextMenuSub>
   );

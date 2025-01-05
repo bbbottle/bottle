@@ -21,7 +21,7 @@ const ContentPage = (props: PluginContentPageProps) => {
 
   const content = usePluginOutput(plugin.config.id);
   return (
-    <ArticlePage {...props} title={plugin?.config.name || ""}>
+    <ArticlePage {...props} title={plugin?.config.route || ""}>
       <div dangerouslySetInnerHTML={{ __html: content }} />
     </ArticlePage>
   );
