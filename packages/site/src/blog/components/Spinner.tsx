@@ -1,5 +1,5 @@
 import React, { useContext, useEffect } from "react";
-import { GlobalLoadingContext } from "@/global_loading_state_provider";
+import { GlobalLoadingContext } from "@/context/global_loading_state_provider";
 
 export const Spinner = (props: { disableDotIndicator?: boolean }) => {
   const { disableDotIndicator } = props;

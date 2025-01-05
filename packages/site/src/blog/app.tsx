@@ -16,16 +16,16 @@ import Txt from "@/pages/extensions/txt";
 import { usePaths } from "@/hooks";
 import { Login } from "@/pages/login";
 import { SWR } from "@/swr";
-import {
-  GlobalLoadingContext,
-  GlobalLoadingStateProvider,
-} from "@/global_loading_state_provider";
+import { GlobalLoadingContext } from "@/context/global_loading_state_provider";
 import { UploadPage } from "@/pages/upload";
 import { AppCtxMenu } from "@/components/app_ctx_menu";
 import { Pochacco, PochaccoPose } from "@/components/Pochacco/Pochacco";
 import { Role, useRole } from "@/hooks/use_role";
-import { EffectContextProvider } from "@/components/effect-layer/EffectContextProvider";
 import { BotRedirect } from "@/pages/bot";
+import { PluginInit } from "@/components/plugin/PluginInit";
+import { BBContext } from "@/context/bbcontext";
+import { PluginContentPage } from "@/components/plugin/PluginContentPage";
+import { PluginRoutes } from "@/components/plugin/PluginRoutes";
 
 const Layout = () => {
   const { isLoading, isFontLoading } = useContext(GlobalLoadingContext);
@@ -65,9 +65,10 @@ const CoverInMidCol = threeColWrapper(Cover);
 export const App = () => {
   return (
     <SWR>
-      <EffectContextProvider>
-        <HotKeyNav>
-          <GlobalLoadingStateProvider>
+      {/*<EffectContextProvider>*/}
+      <HotKeyNav>
+        <BBContext>
+          <PluginInit>
             <Routes>
               <Route path="/" element={<Layout />}>
                 <Route index element={<CoverInMidCol />} />
@@ -85,12 +86,18 @@ export const App = () => {
                 <Route path="now" element={<NowInMidCol />} />
                 <Route path="login" element={<LoginInMidCol />} />
                 <Route path="upload" element={<UploadPage />} />
+                <Route path="/plugins" element={<PluginRoutes />} />
+                <Route
+                  path="/plugins/:pluginRoute"
+                  element={<PluginContentPage />}
+                />
               </Route>
               <Route path="*" element={<NotFound />} />
             </Routes>
-          </GlobalLoadingStateProvider>
-        </HotKeyNav>
-      </EffectContextProvider>
+          </PluginInit>
+        </BBContext>
+      </HotKeyNav>
+      {/*</EffectContextProvider>*/}
     </SWR>
   );
 };

@@ -13,6 +13,7 @@ export interface ButtonProps {
   children: React.ReactNode;
   type?: ButtonType;
   onClick: EventHandler<React.MouseEvent<HTMLButtonElement>>;
+  btnType?: "submit" | "reset" | "button";
 }
 
 export function Button(props: ButtonProps) {
@@ -23,7 +24,7 @@ export function Button(props: ButtonProps) {
     [ButtonType.NORMAL]: "text-black",
   };
 
-  const { type = ButtonType.NORMAL, className = "", onClick } = props;
+  const { type = ButtonType.NORMAL, className = "", onClick, btnType } = props;
   const shadowTransCls =
     type === ButtonType.DISABLED
       ? ""
@@ -32,6 +33,7 @@ export function Button(props: ButtonProps) {
     <button
       className={`${typeClsMap[type]} ${className} ${shadowTransCls} py-8 px-16 transition-all duration-200 ease-in-out`}
       onClick={onClick}
+      type={btnType}
     >
       {props.children}
     </button>

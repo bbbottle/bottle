@@ -1,7 +1,7 @@
 import { useTextPlainFile } from "@/hooks/use_text_plain_file";
 import { useContext, useEffect } from "react";
 import { usePost } from "@/hooks/use_post";
-import { GlobalLoadingContext } from "@/global_loading_state_provider";
+import { GlobalLoadingContext } from "@/context/global_loading_state_provider";
 import { useAuthedFetcher } from "@/hooks/use_authed_fetcher";
 import { preload, useSWRConfig } from "swr";
 import { API } from "@/constants/routes";

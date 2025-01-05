@@ -5,7 +5,7 @@ import { supabase } from "@/constants";
 import { ArticlePage } from "@/components/article";
 import { useSupabaseSession } from "@/hooks/use_supa_session";
 import { Navigate } from "react-router-dom";
-import { GlobalLoadingContext } from "@/global_loading_state_provider";
+import { GlobalLoadingContext } from "@/context/global_loading_state_provider";
 
 export const Login = () => {
   const { isLoading, setIsLoading } = useContext(GlobalLoadingContext);

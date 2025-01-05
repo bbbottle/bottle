@@ -10,6 +10,7 @@ import {
 import { LoginMenuItem } from "@/components/app_ctx_menu/LoginMenuItem";
 import { VersionMenuItem } from "@/components/app_ctx_menu/VersionMenuItem";
 import { ViewSourceMenuItem } from "@/components/app_ctx_menu/ViewSourceMenuItem";
+import { PluginsMenuItem } from "@/components/plugin/PluginsMenuItem";
 
 export const AppCtxMenu = (props: { children: ReactElement }) => {
   return (
@@ -17,9 +18,10 @@ export const AppCtxMenu = (props: { children: ReactElement }) => {
       <ContextMenuTrigger>{props.children}</ContextMenuTrigger>
       <ContextMenuContent className="w-256">
         <LoginMenuItem />
-        <ContextMenuSeparator />
         <VersionMenuItem />
         <ViewSourceMenuItem />
+        <ContextMenuSeparator />
+        <PluginsMenuItem />
       </ContextMenuContent>
     </ContextMenu>
   );

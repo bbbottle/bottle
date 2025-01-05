@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import { DropImage } from "@bbki.ng/components";
 import { useUploader } from "@/hooks/use_uploader";
 import { ImageUploaderProps } from "@/types/upload";
-import { GlobalLoadingContext } from "@/global_loading_state_provider";
+import { GlobalLoadingContext } from "@/context/global_loading_state_provider";
 import { Auth } from "@/components/Auth";
 import { Role } from "@/hooks/use_role";
 import { useParams } from "react-router-dom";

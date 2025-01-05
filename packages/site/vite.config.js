@@ -5,13 +5,14 @@ import mdx from "@mdx-js/rollup";
 import remarkGfm from "remark-gfm";
 import remarkParse from "remark-parse";
 import remarkToc from "remark-toc";
+import crossOriginIsolation from "vite-plugin-cross-origin-isolation";
 import remarkFrontMatter from "remark-frontmatter";
 import { remarkMdxFrontmatter } from "remark-mdx-frontmatter";
 import rehypeSlug from "rehype-slug";
 import rehypeHighlight from "rehype-highlight";
 import rehypeAutolinkHeadings from "rehype-autolink-headings";
 import react from "@vitejs/plugin-react";
-import glsl from 'vite-plugin-glsl';
+import glsl from "vite-plugin-glsl";
 
 const options = {
   remarkPlugins: [
@@ -43,6 +44,7 @@ export default defineConfig({
       },
     },
   },
+  server: {},
   define: {
     GLOBAL_BBKING_VERSION: JSON.stringify(process.env.npm_package_version),
   },
@@ -122,5 +124,6 @@ export default defineConfig({
         ],
       },
     }),
+    crossOriginIsolation(),
   ],
 });
