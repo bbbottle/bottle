@@ -143,7 +143,7 @@ export class PluginManager {
       id: 1,
       version: "1.0.0",
       description: "A now page plugin",
-      url: "http://localhost:5173/now.wasm",
+      url: "https://zjh-im-res.oss-cn-shenzhen.aliyuncs.com/plugins/now.wasm",
       status: 0,
       route: "近况",
     });
