@@ -298,6 +298,9 @@ importers:
       vite:
         specifier: 5.0.0
         version: 5.0.0(@types/node@16.11.45)(sass@1.54.0)
+      vite-plugin-cross-origin-isolation:
+        specifier: 0.1.6
+        version: 0.1.6
       vite-plugin-glsl:
         specifier: 1.2.1
         version: 1.2.1(rollup@4.9.6)(vite@5.0.0)
@@ -25635,6 +25638,13 @@ packages:
       "@types/unist": 3.0.2
       unist-util-stringify-position: 4.0.0
       vfile-message: 4.0.2
+    dev: true
+
+  /vite-plugin-cross-origin-isolation@0.1.6:
+    resolution:
+      {
+        integrity: sha512-OY0naW9nPUDrKTffYnY7FRYXOgZdHoNwMGpPxUmj/n32mGZi01fcq+J536jkmwGWX7DLT95XBQVHHbrAJzTvrw==,
+      }
     dev: true
 
   /vite-plugin-glsl@1.2.1(rollup@4.9.6)(vite@5.0.0):

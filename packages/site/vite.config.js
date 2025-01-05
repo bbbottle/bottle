@@ -5,6 +5,7 @@ import mdx from "@mdx-js/rollup";
 import remarkGfm from "remark-gfm";
 import remarkParse from "remark-parse";
 import remarkToc from "remark-toc";
+import crossOriginIsolation from "vite-plugin-cross-origin-isolation";
 import remarkFrontMatter from "remark-frontmatter";
 import { remarkMdxFrontmatter } from "remark-mdx-frontmatter";
 import rehypeSlug from "rehype-slug";
@@ -123,5 +124,6 @@ export default defineConfig({
         ],
       },
     }),
+    crossOriginIsolation(),
   ],
 });

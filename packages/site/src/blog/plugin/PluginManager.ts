@@ -55,6 +55,10 @@ export class PluginManager {
     await PluginManager.instance.restoreInstalledPlugins();
     dependencies.loading(false);
     dependencies.toast("Plugin manager initialized");
+
+    // @ts-ignore
+    // expose plugin manager to window for debugging
+    window.pm = PluginManager.instance;
   }
 
   public async install(id: number) {
@@ -115,6 +119,16 @@ export class PluginManager {
     return plugin.run(method);
   }
 
+  public async runWithParam(id: number, method: string, userInput: string) {
+    const plugin = this.plugins.get(id);
+    if (!plugin) {
+      this.dependencies.toast("Plugin not found");
+      return;
+    }
+
+    return plugin.runWithParam(method, userInput);
+  }
+
   private pluginConfigMap: Map<number, PluginConfig> = new Map();
 
   private plugins: Map<number, Plugin> = new Map();
@@ -125,19 +139,13 @@ export class PluginManager {
     }
 
     this.pluginConfigMap.set(1, {
-      name: "greet",
+      name: "now",
       id: 1,
       version: "1.0.0",
-      description: "A greet plugin",
-      url: "http://localhost:5173/demo.wasm",
+      description: "A now page plugin",
+      url: "http://localhost:5173/now.wasm",
       status: 0,
-      route: "greet",
-      inputs: [
-        {
-          name: "content",
-          type: PluginInputFieldType.String,
-        },
-      ],
+      route: "now",
     });
 
     return this.pluginConfigMap;

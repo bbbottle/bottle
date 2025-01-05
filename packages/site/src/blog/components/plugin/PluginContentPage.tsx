@@ -1,5 +1,5 @@
 import { ArticlePage, ArticlePageProps } from "@/components/article";
-import React from "react";
+import React, { memo } from "react";
 import { threeColWrapper } from "@/components/with_wrapper";
 import { useParams } from "react-router-dom";
 import { usePluginOutput } from "@/components/plugin/hooks/usePluginOutput";

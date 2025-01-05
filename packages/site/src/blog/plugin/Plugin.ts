@@ -47,6 +47,8 @@ export class Plugin {
   async install() {
     this.plugin = await createPlugin(this.config.url, {
       useWasi: true,
+      runInWorker: true,
+      allowedHosts: ["*.bbki.ng", "api.bbki.ng"],
       functions: hostFuncAdapter(this.dependencies),
     });
 
@@ -72,7 +74,25 @@ export class Plugin {
     return userInput;
   }
 
+  async runWithParam(method: string, userInput?: string) {
+    this.config.status = PluginStatus.Running;
+    const target = method || this.config.name;
+    let out = await this.plugin.call(target, userInput);
+    try {
+      this.config.status = PluginStatus.Stopped;
+      return JSON.parse(out.text());
+    } catch (e) {
+      this.config.status = PluginStatus.Stopped;
+      return out.text();
+    }
+  }
+
   async run(method?: string) {
+    if (this.config.status == PluginStatus.Running) {
+      console.log("Plugin is already running");
+      return "";
+    }
+
     this.config.status = PluginStatus.Running;
     let userInput = await this.getUserInput();
     if (!userInput && this.config.inputs && this.config.inputs.length > 0) {
@@ -82,16 +102,9 @@ export class Plugin {
     }
 
     const target = method || this.config.name;
-
-    console.log("userInput", userInput);
     let out = await this.plugin.call(target, userInput);
-    try {
-      this.config.status = PluginStatus.Stopped;
-      return JSON.parse(out.text());
-    } catch (e) {
-      this.config.status = PluginStatus.Stopped;
-      return out.text();
-    }
+    this.config.status = PluginStatus.Stopped;
+    return out.text();
   }
 
   async uninstall() {
