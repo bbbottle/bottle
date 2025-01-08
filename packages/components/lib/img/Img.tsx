@@ -90,6 +90,7 @@ export const Img = (props: ImgProps) => {
         src={addOssWebpProcessStyle(src, processType || ossProcessType.WEBP)}
         decoding="async"
         loading="lazy"
+        crossorigin="anonymous"
         style={{
           contentVisibility: "auto",
         }}
@@ -104,6 +105,7 @@ export const Img = (props: ImgProps) => {
       />
       <img
         src={emptyDataURL}
+        crossorigin="anonymous"
         className={classnames(
           "lqip-blur",
           "absolute",
