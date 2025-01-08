@@ -19,8 +19,11 @@ export const PluginMenuItem = (props: PluginMenuItemProps) => {
   const { plugin, onUninstall, onStop, onRun, onInstall } = props;
   return (
     <ContextMenuSub>
-      <ContextMenuSubTrigger inset>
-        {plugin.name} v{plugin.version}
+      <ContextMenuSubTrigger>
+        <div className="flex justify-between w-full mr-16">
+          <span>{plugin.name}</span>
+          <span>v{plugin.version}</span>
+        </div>
       </ContextMenuSubTrigger>
       <ContextMenuSubContent className="w-48">
         {plugin.status !== PluginStatus.Available && (

@@ -33,6 +33,8 @@ export class PluginManager {
   }
 
   private async restoreInstalledPlugins() {
+    await Promise.all(this.listBuiltIn().map((p) => this.install(p.id)));
+
     if (!this._info) {
       return Promise.resolve();
     }
@@ -61,7 +63,7 @@ export class PluginManager {
     window.pm = PluginManager.instance;
   }
 
-  public async install(id: number) {
+  public async install(id: number, showToast?: boolean) {
     const config = this.pluginConfigMap.get(id);
     if (!config) {
       this.dependencies.toast("Plugin not found");
@@ -71,7 +73,10 @@ export class PluginManager {
     const plugin = new Plugin(config, this.dependencies);
     await plugin.install();
     this.plugins.set(id, plugin);
-    this.dependencies.toast("Plugin installed");
+
+    if (showToast) {
+      this.dependencies.toast("Plugin installed");
+    }
 
     this.saveInfo();
   }
@@ -96,7 +101,11 @@ export class PluginManager {
   }
 
   public listAvailable(): PluginConfig[] {
-    return Array.from(this.pluginConfigMap.values());
+    return Array.from(this.pluginConfigMap.values()).filter((p) => !p.builtIn);
+  }
+
+  public listBuiltIn(): PluginConfig[] {
+    return Array.from(this.pluginConfigMap.values()).filter((p) => p.builtIn);
   }
 
   public getPlugin(id: number) {
@@ -147,6 +156,16 @@ export class PluginManager {
       status: 0,
       route: "近况",
     });
+
+    // this.pluginConfigMap.set(2, {
+    //   name: "core",
+    //   id: 2,
+    //   version: "1.0.0",
+    //   description: "core",
+    //   url: "https://zjh-im-res.oss-cn-shenzhen.aliyuncs.com/plugins/reactable.core.wasm",
+    //   status: 0,
+    //   builtIn: true,
+    // })
 
     return this.pluginConfigMap;
   }
