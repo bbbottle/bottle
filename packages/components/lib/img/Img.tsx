@@ -85,6 +85,7 @@ export const Img = (props: ImgProps) => {
 
           handleImgLoad(input);
         }}
+        crossOrigin="anonymous"
         width={width}
         height={height}
         src={addOssWebpProcessStyle(src, processType || ossProcessType.WEBP)}
@@ -116,6 +117,7 @@ export const Img = (props: ImgProps) => {
             "opacity-0": decoded,
           }
         )}
+        crossOrigin="anonymous"
         style={{ top: 0, left: 0 }}
       />
     </span>
