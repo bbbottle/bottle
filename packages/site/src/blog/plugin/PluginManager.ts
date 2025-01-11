@@ -1,6 +1,7 @@
-import { Plugin, PluginConfig, PluginInputFieldType } from "./Plugin";
+import { Plugin, PluginConfig } from "./Plugin";
 import { Dependencies } from "@/plugin/Dependencies";
 import { PluginManagerPayload } from "@/plugin/PluginManagerPayload";
+import { PluginEvent } from "@/plugin/PluginEvent";
 
 export class PluginManager {
   private readonly dependencies: Dependencies;
@@ -46,6 +47,22 @@ export class PluginManager {
 
   static instance: PluginManager;
 
+  static dispatchEvent<T>(evt: PluginEvent, data: T) {
+    window.dispatchEvent(new CustomEvent(evt, { detail: data }));
+  }
+
+  static addEventListener<T>(evt: PluginEvent, cb: (data: T) => void) {
+    window.addEventListener(evt, (e) => {
+      cb((e as CustomEvent<T>).detail);
+    });
+  }
+
+  static removeEventListener<T>(evt: PluginEvent, cb: (data: T) => void) {
+    window.removeEventListener(evt, (e) => {
+      cb((e as CustomEvent<T>).detail);
+    });
+  }
+
   static async init(dependencies: Dependencies) {
     if (PluginManager.instance) {
       return;
@@ -56,7 +73,8 @@ export class PluginManager {
     await PluginManager.instance.fetchPluginConfig();
     await PluginManager.instance.restoreInstalledPlugins();
     dependencies.loading(false);
-    dependencies.toast("Plugin manager initialized");
+    // dependencies.toast("Plugin manager initialized");
+    PluginManager.dispatchEvent<null>(PluginEvent.INIT, null);
 
     // @ts-ignore
     // expose plugin manager to window for debugging
@@ -78,6 +96,9 @@ export class PluginManager {
       this.dependencies.toast("Plugin installed");
     }
 
+    // dispatch event
+    PluginManager.dispatchEvent<PluginConfig>(PluginEvent.INSTALL, config);
+
     this.saveInfo();
   }
 
@@ -92,6 +113,9 @@ export class PluginManager {
     await installed.uninstall();
     this.plugins.delete(id);
     this.dependencies.toast("Plugin uninstalled");
+
+    // dispatch event
+    PluginManager.dispatchEvent<PluginConfig>(PluginEvent.UNINSTALL, plugin);
 
     this.saveInfo();
   }
