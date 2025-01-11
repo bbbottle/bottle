@@ -46,9 +46,17 @@ const Layout = () => {
             />
           </AppCtxMenu>
         }
-        main={<Outlet />}
+        main={
+          <>
+            <Outlet />
+            {isFontLoading && (
+              <div className="fixed top-64 w-full h-full">
+                <BlurCover status={isFontLoading ? "show" : "silent"} />
+              </div>
+            )}
+          </>
+        }
       />
-      <BlurCover status={isFontLoading ? "show" : "silent"} />
     </>
   );
 };
