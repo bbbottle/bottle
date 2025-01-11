@@ -3,7 +3,7 @@ import { changeFont } from "@/utils";
 import { FontType } from "@/types/font";
 
 export const useFontLoading = () => {
-  const [isFontLoading, setIsFontLoading] = useState(false);
+  const [isFontLoading, setIsFontLoading] = useState(true);
 
   const handleFontLoading = () => {
     setIsFontLoading(true);
