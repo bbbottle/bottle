@@ -3,6 +3,7 @@ import { ReactNode } from "react";
 import { PluginInputForm } from "@/components/plugin/PluginInputForm";
 import { useDependencies } from "@/components/plugin/hooks/useDependencies";
 import { PluginManager } from "@/plugin/PluginManager";
+import PluginUI from "./pluginUI/PluginUI";
 
 export const PluginInit = (props: { children: ReactNode }) => {
   const {
@@ -10,6 +11,8 @@ export const PluginInit = (props: { children: ReactNode }) => {
     setPluginFormInputOpen,
     pluginInputFormConf,
     formDataResolver,
+
+    pluginUIRef,
 
     ...dep
   } = useDependencies();
@@ -45,6 +48,9 @@ export const PluginInit = (props: { children: ReactNode }) => {
         input={pluginInputFormConf}
         onSubmit={onSubmit}
       />
+      <PluginUI
+        ref={pluginUIRef}
+      /> 
     </>
   );
 };

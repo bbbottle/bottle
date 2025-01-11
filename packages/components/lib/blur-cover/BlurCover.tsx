@@ -4,13 +4,14 @@ import cls from "classnames";
 export type BlurCoverProps = {
   status: "silent" | "show";
   className?: string;
+  size?: number;
 };
 
 export const BlurCover = (props: BlurCoverProps) => {
   const { status } = props;
 
   const coverCls = cls(
-    "fixed",
+    "absolute",
     "block",
     "text-blur",
     "transition-all",

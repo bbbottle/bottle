@@ -85,7 +85,6 @@ export const Img = (props: ImgProps) => {
 
           handleImgLoad(input);
         }}
-        crossOrigin="anonymous"
         width={width}
         height={height}
         src={addOssWebpProcessStyle(src, processType || ossProcessType.WEBP)}
@@ -106,7 +105,6 @@ export const Img = (props: ImgProps) => {
       />
       <img
         src={emptyDataURL}
-        crossOrigin="anonymous"
         className={classnames(
           "lqip-blur",
           "absolute",

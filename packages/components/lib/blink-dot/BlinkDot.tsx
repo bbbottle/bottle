@@ -21,7 +21,7 @@ export const BlinkDot = (props: BLinkDotProps) => {
       className={classNames("inline-flex justify-center items-center relative")}
     >
       <span
-        className={`absolute inline-flex h-full w-full rounded-full text-red-600  -top-[28px] -left-[3px] ${statusCls}`}
+        className={`absolute inline-flex h-full w-full rounded-full text-red-600  -top-[28px] -left-[3px] ${statusCls} ${className}`}
       >
         .
       </span>

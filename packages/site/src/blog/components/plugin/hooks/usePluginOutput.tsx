@@ -9,7 +9,7 @@ export const usePluginOutput = (pluginId: number): string => {
       return;
     }
     PluginManager.instance.run(pluginId).then((result) => {
-      setOutput(result);
+      setOutput(result as string);
     });
   }, [pluginId]);
 

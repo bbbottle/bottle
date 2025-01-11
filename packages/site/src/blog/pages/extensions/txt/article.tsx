@@ -41,7 +41,6 @@ export default () => {
   }
 
   if (ArticleMap[title]) {
-    setIsLoading(false);
     return ArticleMap[title];
   }
 
