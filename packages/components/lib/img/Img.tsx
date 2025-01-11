@@ -85,12 +85,12 @@ export const Img = (props: ImgProps) => {
 
           handleImgLoad(input);
         }}
-        crossOrigin="anonymous"
         width={width}
         height={height}
         src={addOssWebpProcessStyle(src, processType || ossProcessType.WEBP)}
         decoding="async"
         loading="lazy"
+        crossOrigin="anonymous"
         style={{
           contentVisibility: "auto",
         }}

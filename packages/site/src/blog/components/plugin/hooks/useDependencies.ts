@@ -13,6 +13,10 @@ interface depHooksRes extends Dependencies {
   isPluginFormInputOpen: boolean;
   pluginInputFormConf: PluginInput;
   formDataResolver: inputResolve;
+  pluginUIRef: React.MutableRefObject<{
+    open: boolean;
+    setHtml: (html: string) => void;
+  } | null>
 }
 
 export const useDependencies = (): depHooksRes => {
@@ -24,6 +28,8 @@ export const useDependencies = (): depHooksRes => {
   const resolveRef = useRef<inputResolve>();
 
   const globalRouteCtx = useContext(GlobalRoutesContext);
+
+  const pluginUIRef = useRef<{ open: boolean; setHtml: (html: string) => void } | null>(null);
 
   return {
     callPlugin: (id, method) => {
@@ -48,6 +54,12 @@ export const useDependencies = (): depHooksRes => {
         position: "bottom-right",
       });
     },
+    showUI: (html: string) => {
+      if (!pluginUIRef.current) {
+        return;
+      }
+      pluginUIRef.current.setHtml(html);
+    },
     showForm: async (input) => {
       setOpen(true);
       setInput(input);
@@ -55,6 +67,7 @@ export const useDependencies = (): depHooksRes => {
         resolveRef.current = resolve;
       });
     },
+    pluginUIRef,
     setPluginFormInputOpen: setOpen,
     isPluginFormInputOpen: open,
     pluginInputFormConf: input,

@@ -16,8 +16,10 @@ export type PluginConfig = {
   description: string;
   url: string;
   status: PluginStatus;
+
   inputs?: PluginInput;
   route?: string;
+  builtIn?: boolean;
 };
 
 export enum PluginInputFieldType {
@@ -83,7 +85,8 @@ export class Plugin {
       return JSON.parse(out.text());
     } catch (e) {
       this.config.status = PluginStatus.Stopped;
-      return out.text();
+      this.dependencies.loading(false);
+      return out?.text();
     }
   }
 
