@@ -3,6 +3,7 @@ import { Tags, Article } from "@bbki.ng/components";
 import { ROUTES } from "@/constants";
 import classNames from "classnames";
 import { GlobalLoadingContext } from "@/context/global_loading_state_provider";
+import { useSafeArticleLoading } from "@/hooks/use_safe_loading";
 
 export type ArticlePageProps = {
   tags?: string[];
@@ -13,26 +14,9 @@ export type ArticlePageProps = {
   children: ReactElement;
 };
 
-const useSafeArticleLoading = (safeSec: number) => {
-  const { isLoading, isFontLoading } = useContext(GlobalLoadingContext);
-  const [isArticleLoading, setIsArticleLoading] = React.useState(true);
-
-  useEffect(() => {
-    const id = setTimeout(() => {
-      setIsArticleLoading(false);
-    }, safeSec * 1000);
-
-    return () => {
-      clearTimeout(id);
-    };
-  }, []);
-
-  return isLoading || isFontLoading || isArticleLoading;
-};
-
 export const ArticlePage = (props: ArticlePageProps) => {
   const { tags: tagNames, title, description, headless } = props;
-  const loading = useSafeArticleLoading(0.2);
+  const loading = useSafeArticleLoading(0.2, 5);
   const tags = tagNames
     ? tagNames.map((t) => ({ children: t, to: `${ROUTES.TAGS}/${t}` }))
     : [];

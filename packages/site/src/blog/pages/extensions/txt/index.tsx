@@ -6,6 +6,7 @@ import { CenterLinkList } from "@/components";
 import { useAuthed } from "@/hooks/use_authed";
 import { useFile2Post } from "@/hooks/use_file_to_post";
 import { DelayFadeIn } from "@/components/DelayFadeIn/DelayFadeIn";
+import { useSafeArticleLoading } from "@/hooks/use_safe_loading";
 
 type TxtProps = {
   title?: string;
@@ -14,6 +15,8 @@ type TxtProps = {
 
 const Posts = (props: TxtProps) => {
   const { titleList, isLoading, isError } = usePosts();
+
+  const isGlobalLoading = useSafeArticleLoading(0.2, 5);
 
   if (isLoading) {
     return null;
@@ -25,7 +28,12 @@ const Posts = (props: TxtProps) => {
 
   const links = [...titleList, ...ArticleList];
 
-  return <CenterLinkList links={props.articleList || links} />;
+  return (
+    <CenterLinkList
+      links={props.articleList || links}
+      loading={isGlobalLoading}
+    />
+  );
 };
 
 export default (props: TxtProps) => {
