@@ -27,6 +27,10 @@ export const useFontLoading = () => {
     document.fonts.onloadingerror = handleFontLoadingError;
     document.fonts.onloading = handleFontLoading;
 
+    document.fonts.ready.then(() => {
+      handleFontLoadingDone();
+    });
+
     return () => {
       document.fonts.onloadingerror = null;
       document.fonts.onloading = null;
