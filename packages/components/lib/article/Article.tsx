@@ -19,7 +19,7 @@ export const Article: FunctionComponent<ArticleProps> = (props) => {
     <div className={classNames("article", className)}>
       <div className="mb-128 leading-none">
         <span className="text-[2.25rem] p-16">{title}</span>
-        {props.loading && (
+        {props.loading && title && (
           <BlinkDot status="blink" className="!-top-[42px] !-left-16" />
         )}
       </div>
