@@ -9,7 +9,7 @@ const plugin = await createPlugin("http://localhost:5173/demo.wasm", {
       toast: (cp: CurrentPlugin, offs: bigint) => {
         const content = cp.read(offs).text();
         toast.success(content, {
-          position: "top-center",
+          position: "bottom-right",
         });
       },
     },

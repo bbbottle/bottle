@@ -15,6 +15,7 @@ export const BlurCover = (props: BlurCoverProps) => {
     "block",
     "text-blur",
     "transition-all",
+    "duration-200",
     "top-0",
     "left-0",
     "h-full",
