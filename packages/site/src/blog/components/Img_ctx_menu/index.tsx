@@ -52,7 +52,7 @@ export const ImgCtxMenu = (props: {
                 await delImg(props.id);
                 await props.onRemoved?.();
                 toast.success("删除成功", {
-                  position: "top-center",
+                  position: "bottom-right",
                 });
                 setIsLoading(false);
               });

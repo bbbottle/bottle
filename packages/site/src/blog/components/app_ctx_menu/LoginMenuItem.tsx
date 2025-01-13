@@ -24,7 +24,7 @@ export const LoginMenuItem = () => {
           onClick={() => {
             supabase.auth.signOut().then(() => {
               toast.success("已退出登录", {
-                position: "top-center",
+                position: "bottom-right",
               });
             });
           }}

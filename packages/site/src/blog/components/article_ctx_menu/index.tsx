@@ -33,7 +33,7 @@ export const ArticleCtxMenu = (props: { children: ReactElement }) => {
     del(title)
       .then(() => {
         toast.success("删除成功", {
-          position: "top-center",
+          position: "bottom-right",
         });
         dot.setVisibility(false);
         nav("/blog");
