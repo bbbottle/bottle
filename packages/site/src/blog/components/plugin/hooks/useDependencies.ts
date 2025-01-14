@@ -5,6 +5,7 @@ import { PluginInput } from "@/plugin/Plugin";
 import { toast } from "sonner";
 import { GlobalRoutesContext } from "@/context/global_routes_provider";
 import { PluginManager } from "@/plugin/PluginManager";
+import { apiFetcher } from "@/utils";
 
 type inputResolve = (value: string | PromiseLike<string>) => void;
 
@@ -61,16 +62,7 @@ export const useDependencies = (): depHooksRes => {
       pluginUIRef.current.setHtml(html);
     },
     fetchPlugins: async () => {
-      // todo fetch plugins
-      return [{
-        name: "now",
-        id: 1,
-        version: "1.0.0",
-        description: "A now page plugin",
-        url: "https://zjh-im-res.oss-cn-shenzhen.aliyuncs.com/plugins/now.wasm",
-        status: 0,
-        route: "近况",
-      }];
+      return apiFetcher("plugin");
     },
     showForm: async (input) => {
       setOpen(true);
