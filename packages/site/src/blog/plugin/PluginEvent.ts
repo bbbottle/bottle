@@ -43,6 +43,8 @@ export class PluginEventMgr {
       return;
     }
 
+    listeners.splice(listeners.indexOf(targetPair), 1);
+
     window.removeEventListener(evt, targetPair.listener);
   }
 }
