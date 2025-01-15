@@ -4,8 +4,15 @@ export enum PluginEvent {
   UNINSTALL = "uninstalled",
 }
 
+type EventHandler<T> = (data: T) => void;
+
+type HandlerListenerPair = {
+  handler: EventHandler<any>;
+  listener: EventListener;
+}
+
 export class PluginEventMgr {
-  private static listeners: Map<PluginEvent, EventListener[]> = new Map();
+  private static listeners: Map<PluginEvent, HandlerListenerPair[]> = new Map();
 
   public static dispatchEvent<T>(evt: PluginEvent, data: T) {
     window.dispatchEvent(new CustomEvent(evt, { detail: data }));
@@ -20,7 +27,7 @@ export class PluginEventMgr {
       PluginEventMgr.listeners.set(evt, []);
     }
 
-    PluginEventMgr.listeners.get(evt)?.push(listener);
+    PluginEventMgr.listeners.get(evt)?.push({ handler: cb, listener });
 
     window.addEventListener(evt, listener);
   }
@@ -31,11 +38,11 @@ export class PluginEventMgr {
       return;
     }
 
-    const targetListener = listeners.find((l) => l === cb);
-    if (!targetListener) {
+    const targetPair = listeners.find((l) => l.handler === cb);
+    if (!targetPair) {
       return;
     }
 
-    window.removeEventListener(evt, targetListener);
+    window.removeEventListener(evt, targetPair.listener);
   }
 }
