@@ -18,7 +18,9 @@ export const LoginMenuItem = () => {
   if (sess?.user != null) {
     return (
       <>
-        <ContextMenuLabel inset>{sess?.user?.email ?? ""}</ContextMenuLabel>
+        <ContextMenuLabel inset>
+          {sess?.user?.email ?? ""}
+        </ContextMenuLabel>
         <ContextMenuItem
           inset
           onClick={() => {
@@ -29,6 +31,15 @@ export const LoginMenuItem = () => {
             });
           }}
         >
+          {sess?.user?.user_metadata && (
+            <img
+              src={sess?.user?.user_metadata.avatar_url}
+              alt="avatar"
+              style={{ width: 16, height: 16 }}
+              className="rounded-full absolute left-2.5"
+              crossOrigin="anonymous"
+            />
+          )}
           logout
         </ContextMenuItem>
       </>
