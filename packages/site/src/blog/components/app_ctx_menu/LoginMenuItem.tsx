@@ -17,10 +17,6 @@ export const LoginMenuItem = () => {
 
   if (sess?.user != null) {
     return (
-      <>
-        <ContextMenuLabel inset>
-          {sess?.user?.email ?? ""}
-        </ContextMenuLabel>
         <ContextMenuItem
           inset
           onClick={() => {
@@ -40,9 +36,8 @@ export const LoginMenuItem = () => {
               crossOrigin="anonymous"
             />
           )}
-          logout
+          {sess?.user?.email ?? ""}
         </ContextMenuItem>
-      </>
     );
   }
 
