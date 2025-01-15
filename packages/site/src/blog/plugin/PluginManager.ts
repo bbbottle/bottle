@@ -1,7 +1,7 @@
 import { Plugin, PluginConfig } from "./Plugin";
 import { Dependencies } from "@/plugin/Dependencies";
 import { PluginManagerPayload } from "@/plugin/PluginManagerPayload";
-import { PluginEvent } from "@/plugin/PluginEvent";
+import { PluginEvent, PluginEventMgr } from "@/plugin/PluginEvent";
 
 export class PluginManager {
   private readonly dependencies: Dependencies;
@@ -48,19 +48,15 @@ export class PluginManager {
   static instance: PluginManager;
 
   static dispatchEvent<T>(evt: PluginEvent, data: T) {
-    window.dispatchEvent(new CustomEvent(evt, { detail: data }));
+    PluginEventMgr.dispatchEvent(evt, data);
   }
 
   static addEventListener<T>(evt: PluginEvent, cb: (data: T) => void) {
-    window.addEventListener(evt, (e) => {
-      cb((e as CustomEvent<T>).detail);
-    });
+    PluginEventMgr.addEventListener(evt, cb);
   }
 
   static removeEventListener<T>(evt: PluginEvent, cb: (data: T) => void) {
-    window.removeEventListener(evt, (e) => {
-      cb((e as CustomEvent<T>).detail);
-    });
+    PluginEventMgr.removeEventListener(evt, cb);
   }
 
   static async init(dependencies: Dependencies) {
