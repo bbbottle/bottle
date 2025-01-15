@@ -10,6 +10,7 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 import { supabase } from "@/constants";
 import { toast } from "sonner";
+import { confirm } from "@/utils";
 
 export const LoginMenuItem = () => {
   const sess = useSupabaseSession();
@@ -20,11 +21,13 @@ export const LoginMenuItem = () => {
         <ContextMenuItem
           inset
           onClick={() => {
-            supabase.auth.signOut().then(() => {
-              toast.success("已退出登录", {
-                position: "bottom-right",
+            confirm("确定退出登录吗？", () => {
+              supabase.auth.signOut().then(() => {
+                toast.success("已退出登录", {
+                  position: "bottom-right",
+                });
               });
-            });
+            })
           }}
         >
           {sess?.user?.user_metadata && (
