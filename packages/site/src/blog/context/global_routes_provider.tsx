@@ -18,15 +18,21 @@ export const GlobalRoutesContext = createContext<GlobalRoutesContextType>({
 });
 
 export const GlobalRoutesProvider = (props: { children: ReactNode }) => {
-  const [globalRoutes, setGlobalRoutes] = useState<routeInfo[]>([]);
+  const [routesMap, setRoutesMap] = useState<{[key: string]: routeInfo}>({});
 
   const addGlobalRoute = (r: routeInfo) => {
-    setGlobalRoutes([...globalRoutes, r]);
+    setRoutesMap((prev) => ({ ...prev, [r.name]: r }));
   };
 
   const removeGlobalRoute = (routeName: string) => {
-    setGlobalRoutes(globalRoutes.filter((r) => r.name !== routeName));
+    setRoutesMap((prev) => {
+      const copy = { ...prev };
+      delete copy[routeName];
+      return copy;
+    });
   };
+
+  const globalRoutes = Object.values(routesMap);
 
   return (
     <GlobalRoutesContext.Provider

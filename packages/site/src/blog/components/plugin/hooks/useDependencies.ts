@@ -5,6 +5,7 @@ import { PluginInput } from "@/plugin/Plugin";
 import { toast } from "sonner";
 import { GlobalRoutesContext } from "@/context/global_routes_provider";
 import { PluginManager } from "@/plugin/PluginManager";
+import { apiFetcher } from "@/utils";
 
 type inputResolve = (value: string | PromiseLike<string>) => void;
 
@@ -59,6 +60,9 @@ export const useDependencies = (): depHooksRes => {
         return;
       }
       pluginUIRef.current.setHtml(html);
+    },
+    fetchPlugins: async () => {
+      return apiFetcher("plugin");
     },
     showForm: async (input) => {
       setOpen(true);

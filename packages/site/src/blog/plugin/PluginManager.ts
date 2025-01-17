@@ -1,7 +1,7 @@
 import { Plugin, PluginConfig } from "./Plugin";
 import { Dependencies } from "@/plugin/Dependencies";
 import { PluginManagerPayload } from "@/plugin/PluginManagerPayload";
-import { PluginEvent } from "@/plugin/PluginEvent";
+import { PluginEvent, PluginEventMgr } from "@/plugin/PluginEvent";
 
 export class PluginManager {
   private readonly dependencies: Dependencies;
@@ -48,19 +48,15 @@ export class PluginManager {
   static instance: PluginManager;
 
   static dispatchEvent<T>(evt: PluginEvent, data: T) {
-    window.dispatchEvent(new CustomEvent(evt, { detail: data }));
+    PluginEventMgr.dispatchEvent(evt, data);
   }
 
   static addEventListener<T>(evt: PluginEvent, cb: (data: T) => void) {
-    window.addEventListener(evt, (e) => {
-      cb((e as CustomEvent<T>).detail);
-    });
+    PluginEventMgr.addEventListener(evt, cb);
   }
 
   static removeEventListener<T>(evt: PluginEvent, cb: (data: T) => void) {
-    window.removeEventListener(evt, (e) => {
-      cb((e as CustomEvent<T>).detail);
-    });
+    PluginEventMgr.removeEventListener(evt, cb);
   }
 
   static async init(dependencies: Dependencies) {
@@ -70,10 +66,12 @@ export class PluginManager {
 
     PluginManager.instance = new PluginManager(dependencies);
     dependencies.loading(true);
-    await PluginManager.instance.fetchPluginConfig();
+    const remotePlugins = await dependencies.fetchPlugins();
+    remotePlugins.forEach((p: PluginConfig) => PluginManager.instance.pluginConfigMap.set(p.id, p));
+
     await PluginManager.instance.restoreInstalledPlugins();
     dependencies.loading(false);
-    // dependencies.toast("Plugin manager initialized");
+    // dependencies.toast("Plugins initialized");
     PluginManager.dispatchEvent<null>(PluginEvent.INIT, null);
 
     // @ts-ignore
@@ -165,32 +163,4 @@ export class PluginManager {
   private pluginConfigMap: Map<number, PluginConfig> = new Map();
 
   private plugins: Map<number, Plugin> = new Map();
-
-  async fetchPluginConfig(): Promise<Map<number, PluginConfig>> {
-    if (this.pluginConfigMap.size > 0) {
-      return this.pluginConfigMap;
-    }
-
-    this.pluginConfigMap.set(1, {
-      name: "now",
-      id: 1,
-      version: "1.0.0",
-      description: "A now page plugin",
-      url: "https://zjh-im-res.oss-cn-shenzhen.aliyuncs.com/plugins/now.wasm",
-      status: 0,
-      route: "近况",
-    });
-
-    // this.pluginConfigMap.set(2, {
-    //   name: "core",
-    //   id: 2,
-    //   version: "1.0.0",
-    //   description: "core",
-    //   url: "https://zjh-im-res.oss-cn-shenzhen.aliyuncs.com/plugins/reactable.core.wasm",
-    //   status: 0,
-    //   builtIn: true,
-    // })
-
-    return this.pluginConfigMap;
-  }
 }

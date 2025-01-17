@@ -10,6 +10,7 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 import { supabase } from "@/constants";
 import { toast } from "sonner";
+import { confirm } from "@/utils";
 
 export const LoginMenuItem = () => {
   const sess = useSupabaseSession();
@@ -17,21 +18,29 @@ export const LoginMenuItem = () => {
 
   if (sess?.user != null) {
     return (
-      <>
-        <ContextMenuLabel inset>{sess?.user?.email ?? ""}</ContextMenuLabel>
         <ContextMenuItem
           inset
           onClick={() => {
-            supabase.auth.signOut().then(() => {
-              toast.success("已退出登录", {
-                position: "bottom-right",
+            confirm("确定退出登录吗？", () => {
+              supabase.auth.signOut().then(() => {
+                toast.success("已退出登录", {
+                  position: "bottom-right",
+                });
               });
-            });
+            })
           }}
         >
-          logout
+          {sess?.user?.user_metadata && (
+            <img
+              src={sess?.user?.user_metadata.avatar_url}
+              alt="avatar"
+              style={{ width: 16, height: 16 }}
+              className="rounded-full absolute left-2.5"
+              crossOrigin="anonymous"
+            />
+          )}
+          {sess?.user?.email ?? ""}
         </ContextMenuItem>
-      </>
     );
   }
 
