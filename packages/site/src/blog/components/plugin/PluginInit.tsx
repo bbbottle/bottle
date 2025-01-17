@@ -18,7 +18,12 @@ export const PluginInit = (props: { children: ReactNode }) => {
   } = useDependencies();
 
   useEffect(() => {
-    PluginManager.init(dep).then();
+    PluginManager.init(dep)
+      .then()
+      .catch((e: any) => {
+        dep.toast("Failed to initialize plugin manager: " + e?.message);
+        dep.loading(false);
+      });
   }, []);
 
   const onSubmit = useCallback(
@@ -48,9 +53,7 @@ export const PluginInit = (props: { children: ReactNode }) => {
         input={pluginInputFormConf}
         onSubmit={onSubmit}
       />
-      <PluginUI
-        ref={pluginUIRef}
-      /> 
+      <PluginUI ref={pluginUIRef} />
     </>
   );
 };
