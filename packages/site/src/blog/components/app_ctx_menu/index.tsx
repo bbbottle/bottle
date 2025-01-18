@@ -19,15 +19,15 @@ export const AppCtxMenu = (props: { children: ReactElement }) => {
 
   const showEntry = () => {
     setShowPluginEntry(true);
-  }
+  };
 
   useEffect(() => {
     PluginManager.addEventListener(PluginEvent.INIT, showEntry);
 
     return () => {
       PluginManager.removeEventListener(PluginEvent.INIT, showEntry);
-    }
-  }, [])
+    };
+  }, []);
 
   return (
     <ContextMenu>
@@ -35,12 +35,7 @@ export const AppCtxMenu = (props: { children: ReactElement }) => {
       <ContextMenuContent className="w-256">
         <LoginMenuItem />
         <ViewSourceMenuItem />
-        {showPluginEntry && (
-          <>
-            <ContextMenuSeparator />
-            <PluginsMenuItem />
-          </>
-        )}
+        {showPluginEntry && <PluginsMenuItem />}
       </ContextMenuContent>
     </ContextMenu>
   );
