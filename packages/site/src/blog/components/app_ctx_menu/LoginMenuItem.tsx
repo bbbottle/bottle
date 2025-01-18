@@ -19,7 +19,6 @@ export const LoginMenuItem = () => {
   if (sess?.user != null) {
     return (
       <ContextMenuItem
-        inset
         onClick={() => {
           confirm("确定退出登录吗？", () => {
             supabase.auth.signOut().then(() => {
@@ -35,7 +34,7 @@ export const LoginMenuItem = () => {
             src={sess?.user?.user_metadata.avatar_url}
             alt="avatar"
             style={{ width: 16, height: 16 }}
-            className="rounded-full mr-8"
+            className="mr-8"
             crossOrigin="anonymous"
           />
         )}
