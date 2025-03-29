@@ -67,13 +67,10 @@ export const App = () => {
       {/*<EffectContextProvider>*/}
       <HotKeyNav>
         <BBContext>
-          <PluginInit>
+          {/*<PluginInit>*/}
             <Routes>
               <Route path="/" element={<Layout />}>
                 <Route index element={<CoverInMidCol />} />
-
-                <Route path="/projects" element={<ProjectsInMidCol />} />
-                <Route path="/projects/:id" element={<PhotoProjects />} />
 
                 <Route path="blog" element={<ContentInMidCol />} />
                 <Route path="blog/:title" element={<ArticleInMidCol />} />
@@ -93,7 +90,7 @@ export const App = () => {
               </Route>
               <Route path="*" element={<NotFound />} />
             </Routes>
-          </PluginInit>
+          {/*</PluginInit>*/}
         </BBContext>
       </HotKeyNav>
       {/*</EffectContextProvider>*/}
