@@ -35,7 +35,7 @@ export const AppCtxMenu = (props: { children: ReactElement }) => {
       <ContextMenuContent className="w-256">
         <LoginMenuItem />
         <ViewSourceMenuItem />
-        {showPluginEntry && <PluginsMenuItem />}
+        {/*{showPluginEntry && <PluginsMenuItem />}*/}
       </ContextMenuContent>
     </ContextMenu>
   );

@@ -13,10 +13,10 @@ export const Cover = (props: { className: string }) => {
       <CenterLinkList
         className="select-none"
         links={[
-          {
-            to: "/projects",
-            name: "cd ./projects",
-          },
+          // {
+          //   to: "/projects",
+          //   name: "cd ./projects",
+          // },
           {
             to: "/blog",
             name: "cd ./blog",
