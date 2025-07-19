@@ -4,6 +4,7 @@ import {useContext, useEffect} from "react";
 import {GlobalLoadingContext} from "@/context/global_loading_state_provider";
 import {usePost} from "@/hooks/use_post";
 import {API} from "@/constants/routes";
+import {useAuthed} from "@/hooks/use_authed";
 
 export const useClipboardToPost = () => {
     const clipboardContent = useClipboardContent();
@@ -19,9 +20,10 @@ export const useClipboardToPost = () => {
 
     const restContent = clipboardContent ? clipboardContent.slice(title.length).trim() : "";
 
+    const isKing = useAuthed();
 
     useEffect(() => {
-        if (!restContent || !title) {
+        if (!isKing || !restContent || !title) {
             return;
         }
 
