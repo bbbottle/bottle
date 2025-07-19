@@ -47,7 +47,10 @@ export default (props: TxtProps) => {
     <DropZone onDrop={reader} disabled={!isKing}>
       <Posts {...props} />
       {isKing && (
-          <div contentEditable={true} className="caret-white p-2 outline-0 border-0" />
+          <div
+              contentEditable={true}
+              className="fixed bottom-0 right-0 opacity-0 w-1/3 h-12 outline-0 p-2 focus-visible:outline-0 block"
+          />
       )}
     </DropZone>
   );
