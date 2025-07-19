@@ -7,6 +7,7 @@ import { useAuthed } from "@/hooks/use_authed";
 import { useFile2Post } from "@/hooks/use_file_to_post";
 import { DelayFadeIn } from "@/components/DelayFadeIn/DelayFadeIn";
 import { useSafeArticleLoading } from "@/hooks/use_safe_loading";
+import {useClipboardToPost} from "@/hooks/use_clipboard_to_post";
 
 type TxtProps = {
   title?: string;
@@ -39,6 +40,8 @@ const Posts = (props: TxtProps) => {
 export default (props: TxtProps) => {
   const reader = useFile2Post();
   const isKing = useAuthed();
+
+  useClipboardToPost();
 
   return (
     <DropZone onDrop={reader} disabled={!isKing}>
