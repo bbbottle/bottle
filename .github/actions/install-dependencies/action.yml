@@ -12,6 +12,7 @@ runs:
     # Optional, the default pnpm store is .pnpm-store if the step below is omitted
     - name: Setup pnpm config
       run: pnpm config set store-dir "$PNPM_CACHE_FOLDER"
+      shell: bash
     # Makes sure the pnpm store path exists (which is exactly what setup-node cares about)
     - name: Verify PNPM Cache Directory
       run: |
@@ -22,6 +23,7 @@ runs:
         else
           echo "PNPM store directory exists."
         fi
+      shell: bash
     - name: Setup Node.js 18.12.x
       uses: actions/setup-node@v4
       with:
