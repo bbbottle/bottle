@@ -52,3 +52,13 @@ jobs:
           msg: |
             Site Deployed to server successfully.
             See changes: https://bbki.ng
+
+      - name: Cache node modules
+        uses: actions/cache@v4
+        with:
+          path: |
+            **/node_modules
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+
+      - name: Ensure dist folder exists
+        run: mkdir -p packages/site/dist/
