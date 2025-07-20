@@ -117,7 +117,7 @@ export default defineConfig({
         name: "bbki.ng",
         description: "A personal blog.",
         theme_color: "#ffffff",
-        "share_target": {
+        share_target: {
           "action": "/new-content-handler/",
           "method": "GET",
           "params": {
