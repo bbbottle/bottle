@@ -26,6 +26,7 @@ import { PluginInit } from "@/components/plugin/PluginInit";
 import { BBContext } from "@/context/bbcontext";
 import { PluginContentPage } from "@/components/plugin/PluginContentPage";
 import { PluginRoutes } from "@/components/plugin/PluginRoutes";
+import {useClipboardToPost} from "@/hooks/use_clipboard_to_post";
 
 const Layout = () => {
   const { isLoading, isFontLoading } = useContext(GlobalLoadingContext);
@@ -62,7 +63,10 @@ const TagsResultInMidCol = threeColWrapper(TagsResult);
 const CoverInMidCol = threeColWrapper(Cover);
 
 export const App = () => {
-  return (
+
+    useClipboardToPost();
+
+    return (
     <SWR>
       {/*<EffectContextProvider>*/}
       <HotKeyNav>

@@ -173,6 +173,18 @@ export const confirm = (message: string, exec: () => void) => {
   });
 };
 
+export const splitPost= (wholeString: string ) => {
+  const firstLine = wholeString ? wholeString .split("\n")[0] : "";
+  const title = firstLine ? firstLine.trim() : "";
+
+  const restContent = wholeString ? wholeString.slice(title.length).trim() : "";
+
+    return {
+        title,
+        content: restContent,
+    };
+}
+
 export const changeFont = (type: FontType) => {
   const rootDiv = document.getElementById("root");
   if (rootDiv == null) {
