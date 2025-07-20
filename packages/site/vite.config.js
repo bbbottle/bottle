@@ -89,7 +89,7 @@ export default defineConfig({
             method: "GET",
             handler: ({ event, data }) => {
               const url = new URL(event.request.url);
-              const sharedContent = url.searchParams.get("content");
+              const sharedContent = url.searchParams.get("text");
 
               // post the shared content to the main thread
                 if (sharedContent) {
@@ -121,7 +121,9 @@ export default defineConfig({
           "action": "/new-content-handler/",
           "method": "GET",
           "params": {
-            "text": "content",
+            "title": "title",
+            "text": "text",
+            "url": "url"
           }
         },
         icons: [
