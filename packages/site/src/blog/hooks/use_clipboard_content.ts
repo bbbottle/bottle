@@ -5,6 +5,7 @@ export const useClipboardContent = () => {
 
     React.useEffect(() => {
         const handlePaste = (event: ClipboardEvent) => {
+
             if (event.clipboardData) {
                 setClipboardContent(event.clipboardData.getData("text/plain"));
             }
@@ -16,6 +17,8 @@ export const useClipboardContent = () => {
             document.removeEventListener("paste", handlePaste);
         };
     }, []);
+
+    console.log(clipboardContent);
 
     return clipboardContent;
 }

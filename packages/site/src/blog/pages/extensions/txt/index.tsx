@@ -5,7 +5,6 @@ import { usePosts } from "@/hooks/use_posts";
 import { CenterLinkList } from "@/components";
 import { useAuthed } from "@/hooks/use_authed";
 import { useFile2Post } from "@/hooks/use_file_to_post";
-import { DelayFadeIn } from "@/components/DelayFadeIn/DelayFadeIn";
 import { useSafeArticleLoading } from "@/hooks/use_safe_loading";
 import {useClipboardToPost} from "@/hooks/use_clipboard_to_post";
 
@@ -41,13 +40,8 @@ export default (props: TxtProps) => {
   const reader = useFile2Post();
   const isKing = useAuthed();
 
-  useClipboardToPost();
-
   return (
     <DropZone onDrop={reader} disabled={!isKing}>
-      {isKing && (
-          <div contentEditable={true} className="p-2 focus-visible:outline-0" />
-      )}
       <Posts {...props} />
     </DropZone>
   );

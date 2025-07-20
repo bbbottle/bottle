@@ -13,6 +13,7 @@ import { ViewSourceMenuItem } from "@/components/app_ctx_menu/ViewSourceMenuItem
 import { PluginsMenuItem } from "@/components/plugin/PluginsMenuItem";
 import { PluginManager } from "@/plugin/PluginManager";
 import { PluginEvent } from "@/plugin/PluginEvent";
+import {PostMenuItem} from "@/components/app_ctx_menu/PostMenuItem";
 
 export const AppCtxMenu = (props: { children: ReactElement }) => {
   const [showPluginEntry, setShowPluginEntry] = React.useState(false);
@@ -35,6 +36,7 @@ export const AppCtxMenu = (props: { children: ReactElement }) => {
       <ContextMenuContent className="w-256">
         <LoginMenuItem />
         <ViewSourceMenuItem />
+        <PostMenuItem />
         {/*{showPluginEntry && <PluginsMenuItem />}*/}
       </ContextMenuContent>
     </ContextMenu>
