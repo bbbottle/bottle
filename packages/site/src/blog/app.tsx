@@ -27,6 +27,7 @@ import { BBContext } from "@/context/bbcontext";
 import { PluginContentPage } from "@/components/plugin/PluginContentPage";
 import { PluginRoutes } from "@/components/plugin/PluginRoutes";
 import {useClipboardToPost} from "@/hooks/use_clipboard_to_post";
+import {useSharedStringToPost} from "@/hooks/use_shared_string_to_post";
 
 const Layout = () => {
   const { isLoading, isFontLoading } = useContext(GlobalLoadingContext);
@@ -55,7 +56,6 @@ const Layout = () => {
 
 const NowInMidCol = threeColWrapper(NowPage);
 const ContentInMidCol = threeColWrapper(Txt);
-const ProjectsInMidCol = threeColWrapper(Png);
 const ArticleInMidCol = threeColWrapper(ArticlePage);
 const TagsInMidCol = threeColWrapper(Tags);
 const LoginInMidCol = threeColWrapper(Login);
@@ -65,6 +65,8 @@ const CoverInMidCol = threeColWrapper(Cover);
 export const App = () => {
 
     useClipboardToPost();
+
+    useSharedStringToPost();
 
     return (
     <SWR>
