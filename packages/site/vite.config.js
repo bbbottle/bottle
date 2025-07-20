@@ -85,6 +85,19 @@ export default defineConfig({
             },
           },
           {
+            urlPattern: /new-content-handler/,
+            method: "GET",
+            handler: ({ event, data }) => {
+              const url = new URL(event.request.url);
+              const sharedContent = url.searchParams.get("content");
+
+              // post the shared content to the main thread
+                if (sharedContent) {
+                  window.postMessage(sharedContent, {})
+                }
+            },
+          },
+          {
             urlPattern: /^https:\/\/fonts\.gstatic.com\.com\/.*/i,
             handler: "CacheFirst",
             options: {
@@ -102,8 +115,15 @@ export default defineConfig({
       },
       manifest: {
         name: "bbki.ng",
-        description: "words, pictures.",
+        description: "A personal blog.",
         theme_color: "#ffffff",
+        "share_target": {
+          "action": "/new-content-handler/",
+          "method": "GET",
+          "params": {
+            "text": "content",
+          }
+        },
         icons: [
           {
             src: "pwa-192x192.png",
