@@ -5,6 +5,7 @@ import {GlobalLoadingContext} from "@/context/global_loading_state_provider";
 import {usePost} from "@/hooks/use_post";
 import {API} from "@/constants/routes";
 import {useAuthed} from "@/hooks/use_authed";
+import {toast} from "sonner";
 
 export const useClipboardToPost = () => {
     const clipboardContent = useClipboardContent();
@@ -31,7 +32,12 @@ export const useClipboardToPost = () => {
 
         post(title, restContent)
             .then((r) => {
-                mutate(API.POSTS).then();
+                mutate(API.POSTS).then(() => {
+                    toast("", {
+                        description: `已更新`,
+                        position: "bottom-right",
+                    });
+                });
             })
             .finally(() => {
                 setIsLoading(false);
