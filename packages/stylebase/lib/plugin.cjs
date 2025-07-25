@@ -108,6 +108,10 @@ module.exports = {
         "background-color": "rgba(255, 255, 255, 0.5)",
         "backdrop-filter": "blur(7px)",
       },
+      ".gradient-blur-cover": {
+        "backdrop-filter": "blur(7px)",
+         "background-image": "linear-gradient(#ffffff, #ffffff80)"
+      },
       ".lqip-blur": {
         backdropFilter: "blur(20px)",
       },

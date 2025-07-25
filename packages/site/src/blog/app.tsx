@@ -40,7 +40,7 @@ const Layout = () => {
           <AppCtxMenu>
             <Nav
               paths={usePaths()}
-              className="blur-cover select-none"
+              className="gradient-blur-cover select-none"
               loading={isLoading}
               customLogo={
                 isQueen ? <Pochacco pose={PochaccoPose.Watching} /> : null
