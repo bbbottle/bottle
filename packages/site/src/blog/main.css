@@ -9,6 +9,11 @@
 
 body {
   pointer-events: auto !important;
+  overflow: hidden !important;
+}
+
+#blog {
+  overflow: auto;
 }
 
 .noto-serif {
