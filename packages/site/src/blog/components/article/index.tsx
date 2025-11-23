@@ -17,9 +17,12 @@ export type ArticlePageProps = {
 export const ArticlePage = (props: ArticlePageProps) => {
   const { tags: tagNames, title, description, headless } = props;
   const loading = useSafeArticleLoading(0.2, 5);
+  const defaultTag = { children: "目录", to: "/blog" };
   const tags = tagNames
     ? tagNames.map((t) => ({ children: t, to: `${ROUTES.TAGS}/${t}` }))
     : [];
+
+  const allTags = [defaultTag, ...tags];
 
   if (headless) {
     return props.children;
@@ -39,7 +42,7 @@ export const ArticlePage = (props: ArticlePageProps) => {
       >
         <article className={articleCls}>{props.children}</article>
       </Article>
-      <span className="p-16">{tagNames && <Tags tags={tags} />}</span>
+      <span className="p-16">{<Tags tags={allTags} />}</span>
     </>
   );
 };
