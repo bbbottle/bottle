@@ -5,7 +5,6 @@ import { HotKeyNav } from "./components";
 import { threeColWrapper } from "@/components/with_wrapper";
 import { Cover } from "./pages";
 
-import Png from "@/pages/extensions/png";
 import ArticlePage from "@/pages/extensions/txt/article";
 import NowPage from "@/pages/now";
 import PhotoProjects from "@/pages/extensions/png/png_projects";
@@ -22,35 +21,32 @@ import { AppCtxMenu } from "@/components/app_ctx_menu";
 import { Pochacco, PochaccoPose } from "@/components/Pochacco/Pochacco";
 import { Role, useRole } from "@/hooks/use_role";
 import { BotRedirect } from "@/pages/bot";
-import { PluginInit } from "@/components/plugin/PluginInit";
 import { BBContext } from "@/context/bbcontext";
 import { PluginContentPage } from "@/components/plugin/PluginContentPage";
 import { PluginRoutes } from "@/components/plugin/PluginRoutes";
-import {useClipboardToPost} from "@/hooks/use_clipboard_to_post";
-import {useSharedStringToPost} from "@/hooks/use_shared_string_to_post";
+import { useClipboardToPost } from "@/hooks/use_clipboard_to_post";
+import { useSharedStringToPost } from "@/hooks/use_shared_string_to_post";
 
 const Layout = () => {
   const { isLoading, isFontLoading } = useContext(GlobalLoadingContext);
   const role = useRole();
   const isQueen = role === Role.QUEEN;
   return (
-    <>
-      <Page
-        nav={
-          <AppCtxMenu>
-            <Nav
-              paths={usePaths()}
-              className="gradient-blur-cover select-none"
-              loading={isLoading}
-              customLogo={
-                isQueen ? <Pochacco pose={PochaccoPose.Watching} /> : null
-              }
-            />
-          </AppCtxMenu>
-        }
-        main={<Outlet />}
-      />
-    </>
+    <Page
+      nav={
+        <AppCtxMenu>
+          <Nav
+            paths={usePaths()}
+            className="gradient-blur-cover select-none"
+            loading={isLoading}
+            customLogo={
+              isQueen ? <Pochacco pose={PochaccoPose.Watching} /> : null
+            }
+          />
+        </AppCtxMenu>
+      }
+      main={<Outlet />}
+    />
   );
 };
 
@@ -63,43 +59,40 @@ const TagsResultInMidCol = threeColWrapper(TagsResult);
 const CoverInMidCol = threeColWrapper(Cover);
 
 export const App = () => {
+  useClipboardToPost();
 
-    useClipboardToPost();
+  useSharedStringToPost();
 
-    useSharedStringToPost();
-
-    return (
+  return (
     <SWR>
-      {/*<EffectContextProvider>*/}
       <HotKeyNav>
         <BBContext>
-          {/*<PluginInit>*/}
-            <Routes>
-              <Route path="/" element={<Layout />}>
-                <Route index element={<CoverInMidCol />} />
+          <Routes>
+            <Route path="/" element={<Layout />}>
+              <Route index element={<CoverInMidCol />} />
 
-                <Route path="blog" element={<ContentInMidCol />} />
-                <Route path="blog/:title" element={<ArticleInMidCol />} />
-                <Route path="blog/:title/:id" element={<PhotoProjects />} />
-                <Route path="tags" element={<TagsInMidCol />} />
-                <Route path="tags/:tag" element={<TagsResultInMidCol />} />
-
-                <Route path="bot" element={<BotRedirect />} />
-                <Route path="now" element={<NowInMidCol />} />
-                <Route path="login" element={<LoginInMidCol />} />
-                <Route path="upload" element={<UploadPage />} />
-                <Route path="/plugins" element={<PluginRoutes />} />
-                <Route
-                  path="/plugins/:pluginRoute"
-                  element={<PluginContentPage />}
-                />
+              <Route path="blog" element={<Outlet />}>
+                <Route path="" element={<ContentInMidCol />} index />
+                <Route path=":title" element={<ArticleInMidCol />} />
               </Route>
-              <Route path="*" element={<NotFound />} />
-            </Routes>
-          {/*</PluginInit>*/}
+              <Route path="blog/:title/:id" element={<PhotoProjects />} />
+              <Route path="tags" element={<TagsInMidCol />} />
+              <Route path="tags/:tag" element={<TagsResultInMidCol />} />
+
+              <Route path="bot" element={<BotRedirect />} />
+              <Route path="now" element={<NowInMidCol />} />
+              <Route path="login" element={<LoginInMidCol />} />
+              <Route path="upload" element={<UploadPage />} />
+              <Route path="/plugins" element={<PluginRoutes />} />
+              <Route
+                path="/plugins/:pluginRoute"
+                element={<PluginContentPage />}
+              />
+            </Route>
+            <Route path="*" element={<NotFound />} />
+          </Routes>
         </BBContext>
       </HotKeyNav>
-      {/*</EffectContextProvider>*/}
     </SWR>
   );
 };
