@@ -72,7 +72,7 @@ export const App = () => {
               <Route index element={<CoverInMidCol />} />
 
               <Route path="blog" element={<Outlet />}>
-                <Route path="" element={<ContentInMidCol />} index />
+                <Route path="" element={<ContentInMidCol />} />
                 <Route path=":title" element={<ArticleInMidCol />} />
               </Route>
               <Route path="blog/:title/:id" element={<PhotoProjects />} />
