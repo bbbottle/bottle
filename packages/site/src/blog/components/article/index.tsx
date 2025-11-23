@@ -30,7 +30,7 @@ export const ArticlePage = (props: ArticlePageProps) => {
   }
 
   const articleCls = classNames("prose", {
-    "mb-20": tagNames,
+    "mb-20": true,
   });
 
   return (

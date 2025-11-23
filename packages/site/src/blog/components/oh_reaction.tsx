@@ -33,7 +33,7 @@ const heart = (
     width={HEART_SIZE}
     stroke-linejoin="round"
     // style={{ color: "#fecaca" }}
-    className="text-red-200 hover:text-red-400 transition-colors"
+    className="text-gray-400 hover:text-red-400 transition-colors ease-in duration-200"
     viewBox="0 0 16 16"
   >
     <path
@@ -102,7 +102,11 @@ export const OpenHeartReaction = (props: { title: string }) => {
 
   return (
     <open-heart
-      style={{ display: "flex", padding: 4, marginTop: "1rem" }}
+      style={{
+        display: "flex",
+        padding: 4,
+        marginTop: "1rem",
+      }}
       ref={ohRef}
       href={`https://oh.bbking.workers.dev/?id=${title}`}
       emoji="❤️"
