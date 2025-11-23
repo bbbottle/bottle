@@ -4,6 +4,7 @@ import { ROUTES } from "@/constants";
 import classNames from "classnames";
 import { GlobalLoadingContext } from "@/context/global_loading_state_provider";
 import { useSafeArticleLoading } from "@/hooks/use_safe_loading";
+import { OpenHeartReaction } from "../oh_reaction";
 
 export type ArticlePageProps = {
   tags?: string[];
@@ -42,7 +43,10 @@ export const ArticlePage = (props: ArticlePageProps) => {
       >
         <article className={articleCls}>{props.children}</article>
       </Article>
-      <span className="p-16">{<Tags tags={allTags} />}</span>
+      <div className="p-16">
+        <span>{<Tags tags={allTags} />}</span>
+        <OpenHeartReaction title={title} />
+      </div>
     </>
   );
 };

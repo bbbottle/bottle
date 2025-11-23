@@ -25,5 +25,5 @@ export const useSafeArticleLoading = (safeSec: number, timeOutSec: number) => {
     return false;
   }
 
-  return isLoading || isFontLoading || isArticleLoading;
+  return isFontLoading || isArticleLoading;
 };
