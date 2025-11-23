@@ -36,4 +36,4 @@ const Upload = () => {
   );
 };
 
-export const UploadPage = threeColWrapper(Upload);
+export const UploadPage = Upload;
