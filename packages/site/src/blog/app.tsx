@@ -26,6 +26,7 @@ import { PluginContentPage } from "@/components/plugin/PluginContentPage";
 import { PluginRoutes } from "@/components/plugin/PluginRoutes";
 import { useClipboardToPost } from "@/hooks/use_clipboard_to_post";
 import { useSharedStringToPost } from "@/hooks/use_shared_string_to_post";
+import { ThreeColLayout, ErrorBoundary } from "@bbki.ng/components";
 
 const Layout = () => {
   const { isLoading, isFontLoading } = useContext(GlobalLoadingContext);
@@ -45,18 +46,20 @@ const Layout = () => {
           />
         </AppCtxMenu>
       }
-      main={<Outlet />}
+      main={
+        <ThreeColLayout
+          middleRenderer={() => {
+            return (
+              <ErrorBoundary>
+                <Outlet />
+              </ErrorBoundary>
+            );
+          }}
+        />
+      }
     />
   );
 };
-
-const NowInMidCol = threeColWrapper(NowPage);
-const ContentInMidCol = threeColWrapper(Txt);
-const ArticleInMidCol = threeColWrapper(ArticlePage);
-const TagsInMidCol = threeColWrapper(Tags);
-const LoginInMidCol = threeColWrapper(Login);
-const TagsResultInMidCol = threeColWrapper(TagsResult);
-const CoverInMidCol = threeColWrapper(Cover);
 
 export const App = () => {
   useClipboardToPost();
@@ -69,25 +72,18 @@ export const App = () => {
         <BBContext>
           <Routes>
             <Route path="/" element={<Layout />}>
-              <Route index element={<CoverInMidCol />} />
+              <Route index element={<Cover />} />
 
               <Route path="blog" element={<Outlet />}>
-                <Route path="" element={<ContentInMidCol />} />
-                <Route path=":title" element={<ArticleInMidCol />} />
+                <Route path="" element={<Txt />} />
+                <Route path=":title" element={<ArticlePage />} />
               </Route>
-              <Route path="blog/:title/:id" element={<PhotoProjects />} />
-              <Route path="tags" element={<TagsInMidCol />} />
-              <Route path="tags/:tag" element={<TagsResultInMidCol />} />
+
+              <Route path="tags" element={<Tags />} />
+              <Route path="tags/:tag" element={<TagsResult />} />
 
               <Route path="bot" element={<BotRedirect />} />
-              <Route path="now" element={<NowInMidCol />} />
-              <Route path="login" element={<LoginInMidCol />} />
-              <Route path="upload" element={<UploadPage />} />
-              <Route path="/plugins" element={<PluginRoutes />} />
-              <Route
-                path="/plugins/:pluginRoute"
-                element={<PluginContentPage />}
-              />
+              <Route path="login" element={<Login />} />
             </Route>
             <Route path="*" element={<NotFound />} />
           </Routes>

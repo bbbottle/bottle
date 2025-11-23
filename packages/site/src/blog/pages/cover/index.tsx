@@ -3,7 +3,7 @@ import { CenterLinkList } from "@/components";
 import { EffectLayer } from "@/components/effect-layer/EffectLayer";
 import { GlobalRoutesContext } from "@/context/global_routes_provider";
 
-export const Cover = (props: { className: string }) => {
+export const Cover = (props: { className?: string }) => {
   const globalRouteCtx = useContext(GlobalRoutesContext);
   const routes = globalRouteCtx.globalRoutes;
   const pluginEntry =

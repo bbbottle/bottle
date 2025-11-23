@@ -49,4 +49,4 @@ const ContentPage = (props: PluginContentPageProps) => {
   );
 };
 
-export const PluginContentPage = threeColWrapper(ContentPage);
+export const PluginContentPage = ContentPage;

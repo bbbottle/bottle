@@ -20,4 +20,4 @@ const PluginRoutesContent = () => {
   );
 };
 
-export const PluginRoutes = threeColWrapper(PluginRoutesContent);
+export const PluginRoutes = PluginRoutesContent;
