@@ -37,9 +37,9 @@ const HOVER_COLOR_MAPPING = {
 };
 
 const FOCUS_BG_COLOR_MAPPING = {
-  [LinkColor.BLUE]: "focus:bg-blue-600",
-  [LinkColor.RED]: "focus:bg-red-500",
-  [LinkColor.GRAY]: "focus:bg-gray-400",
+  [LinkColor.BLUE]: "focus:bg-blue-100",
+  [LinkColor.RED]: "focus:bg-red-100",
+  [LinkColor.GRAY]: "focus:bg-gray-100",
 };
 
 export const Link = (props: LinkProps) => {
@@ -58,10 +58,10 @@ export const Link = (props: LinkProps) => {
     "rounded",
     "!no-underline",
     "transition-colors",
-    "focus:text-white",
+    // "focus:text-white",
     COLOR_MAPPING[color],
     HOVER_COLOR_MAPPING[color],
-    FOCUS_BG_COLOR_MAPPING[color]
+    FOCUS_BG_COLOR_MAPPING[color],
   );
 
   if (external) {
