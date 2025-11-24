@@ -73,7 +73,7 @@ export const OpenHeartReaction = (props: {
       style={{
         display: "inline-flex",
         padding: 4,
-        marginTop: "1rem",
+        marginRight: "4px",
         position: "relative",
       }}
       ref={ohRef}
