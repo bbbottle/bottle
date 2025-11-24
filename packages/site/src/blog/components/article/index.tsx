@@ -29,22 +29,22 @@ export const ArticlePage = (props: ArticlePageProps) => {
     return props.children;
   }
 
-  const articleCls = classNames("prose", {
-    "mb-20": true,
-  });
+  const articleCls = classNames("prose");
 
   return (
     <>
       <Article
         title={title}
         description={description}
-        className={props.className}
+        className={`${props.className} mb-128`}
         loading={loading}
       >
         <article className={articleCls}>{props.children}</article>
+        <div className="mt-[1.25em] relative left-[-4px]">
+          {<Tags tags={allTags} />}
+        </div>
       </Article>
-      <div className="p-16">
-        <span>{<Tags tags={allTags} />}</span>
+      <div className="px-16">
         <Reaction title={title} />
       </div>
     </>
