@@ -34,7 +34,6 @@ export const MdxArticleList = [
   立秋,
   照片,
   小乌鸦,
-  我要看雪,
   做饭,
   堂兄,
   红色的枪,
