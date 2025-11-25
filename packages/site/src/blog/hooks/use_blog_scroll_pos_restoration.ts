@@ -28,7 +28,12 @@ export function useBlogScroll() {
 
   const gotoTop = useCallback(() => {
     if (!element) return;
-    element.scrollTop = 0;
+
+    const id = setTimeout(() => {
+      element.scrollTo({ top: 0, behavior: "smooth" });
+    }, 150);
+
+    return () => clearTimeout(id);
   }, [element]);
 
   return {
