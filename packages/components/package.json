@@ -1,6 +1,6 @@
 {
   "name": "@bbki.ng/components",
-  "version": "2.6.10",
+  "version": "2.6.11",
   "type": "module",
   "scripts": {
     "build": "tsup",
