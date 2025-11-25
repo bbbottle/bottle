@@ -1,4 +1,4 @@
-import { useEffect, useRef } from "react";
+import { useCallback, useEffect, useRef } from "react";
 import { useLocation } from "react-router-dom";
 
 const SCROLL_STORAGE_KEY = "div-scroll-positions";
@@ -21,6 +21,19 @@ export function useBlogScrollReset() {
 
     element.scrollTop = 0;
   }, []);
+}
+
+export function useBlogScroll() {
+  const element = document.getElementById("blog");
+
+  const gotoTop = useCallback(() => {
+    if (!element) return;
+    element.scrollTop = 0;
+  }, [element]);
+
+  return {
+    gotoTop,
+  };
 }
 
 export function useBlogScrollRestoration(debounceMs: number = 100) {
