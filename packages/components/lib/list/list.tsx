@@ -1,6 +1,6 @@
 // @ts-ignore
 import cls from "classnames";
-import React, { ReactElement, FunctionComponent } from "react";
+import React, { ReactElement, FunctionComponent, ReactNode } from "react";
 import { Link, LinkProps } from "../link/Link";
 import { Article } from "../article/Article";
 
@@ -10,10 +10,11 @@ export interface listProps {
   items: any[];
   itemRenderer: (itemProps: any, index: number) => ReactElement;
   horizontal?: boolean;
+  footer?: ReactNode;
 }
 
 export const List: FunctionComponent<listProps> = (props) => {
-  const { items, itemRenderer, className, horizontal, compact } = props;
+  const { items, itemRenderer, className, horizontal, compact, footer } = props;
 
   const spaceCls = compact ? "" : horizontal ? "mr-3" : "mb-16";
   return (
@@ -33,6 +34,14 @@ export const List: FunctionComponent<listProps> = (props) => {
           </li>
         );
       })}
+      {footer && (
+        <li
+          key={"footer"}
+          className={cls(spaceCls, "flex-shrink-0", { "!my-0": horizontal })}
+        >
+          {footer}
+        </li>
+      )}
     </ul>
   );
 };
@@ -40,6 +49,7 @@ export const List: FunctionComponent<listProps> = (props) => {
 export interface TitledListProps extends listProps {
   title?: any;
   description?: any;
+  footer?: ReactNode;
 }
 
 export const TitledList: FunctionComponent<TitledListProps> = (props) => {
