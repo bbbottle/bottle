@@ -77,7 +77,7 @@ export const OpenHeartReaction = (props: {
         position: "relative",
       }}
       ref={ohRef}
-      href={`https://oh.bbking.workers.dev/?id=${title}`}
+      href={`https://oh.bbki.ng/?id=${title}`}
       emoji={emojiPair.val}
       onClick={handleHeartClick}
     >
