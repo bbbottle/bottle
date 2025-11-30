@@ -20,12 +20,12 @@ export const ArticlePage = (props: ArticlePageProps) => {
   const { tags: tagNames, title, description, headless } = props;
   const navgation = useNavigate();
   const loading = useSafeArticleLoading(0.2, 5);
-  const defaultTag = { children: "目录", to: "/blog" };
-  const tags = tagNames
+  // const defaultTag = { children: "目录", to: "/blog" };
+  const allTags = tagNames
     ? tagNames.map((t) => ({ children: t, to: `${ROUTES.TAGS}/${t}` }))
     : [];
 
-  const allTags = [defaultTag, ...tags];
+  // const allTags = [defaultTag, ...tags];
 
   if (headless) {
     return props.children;
@@ -43,13 +43,13 @@ export const ArticlePage = (props: ArticlePageProps) => {
       >
         <article className={articleCls}>{props.children}</article>
         <div className="mt-[1.25em] relative left-[-4px]">
-          {<Tags tags={allTags} />}
+          {allTags.length ? <Tags tags={allTags} /> : null}
+          <Reaction title={title} />
         </div>
       </Article>
       <div className="px-16">
-        <Reaction title={title} />
         <Button
-          className="mt-128"
+          className=""
           btnType="button"
           onClick={() => {
             navgation(-1);
