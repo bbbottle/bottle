@@ -1,5 +1,6 @@
 import React from "react";
 import { EventHandler } from "react";
+import classNames from "classnames";
 
 export enum ButtonType {
   DANGER = "danger",
@@ -24,15 +25,37 @@ export function Button(props: ButtonProps) {
     [ButtonType.NORMAL]: "text-black",
   };
 
+  const [pressed, setPressed] = React.useState(false);
+
   const { type = ButtonType.NORMAL, className = "", onClick, btnType } = props;
   const shadowTransCls =
     type === ButtonType.DISABLED
       ? ""
-      : "transition-all duration-200 ease-in-out shadow-button hover:shadow-button-hover active:shadow-empty";
+      : classNames(
+          "transition-all duration-200 ease-in-out shadow-button active:shadow-empty",
+          {
+            "shadow-empty": pressed,
+            "hover:shadow-button-hover": !pressed,
+          },
+        );
+
+  const handleClick = (e: React.MouseEvent<HTMLButtonElement>) => {
+    if (type === ButtonType.DISABLED) {
+      return;
+    }
+
+    setPressed(true);
+
+    setTimeout(() => {
+      setPressed(false);
+      onClick(e);
+    }, 280);
+  };
+
   return (
     <button
       className={`${typeClsMap[type]} ${className} ${shadowTransCls} py-8 px-16 transition-all duration-200 ease-in-out`}
-      onClick={onClick}
+      onClick={handleClick}
       type={btnType}
     >
       {props.children}
