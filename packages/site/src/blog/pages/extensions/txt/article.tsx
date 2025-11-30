@@ -50,9 +50,13 @@ export default () => {
     return null;
   }
 
+  const date = posts.created_at ? posts.created_at.split("T")[0] : "";
+
+  console.log("posts", posts);
+
   return (
     <DropZone onDrop={reader} disabled={!isKing}>
-      <ArticlePage title={title}>
+      <ArticlePage title={title} date={date}>
         <ArticleCtxMenu>
           <div dangerouslySetInnerHTML={{ __html: posts.content }} />
         </ArticleCtxMenu>
