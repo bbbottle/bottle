@@ -4,7 +4,17 @@
 
 * {
   -webkit-user-drag: none;
+  -webkit-font-smoothing: "antialiased";
   font-weight: 400 !important;
+}
+
+html {
+  touch-action: manipulation;
+}
+
+a,
+button {
+  -webkit-tap-highlight-color: transparent;
 }
 
 body {
