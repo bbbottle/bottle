@@ -10,6 +10,7 @@ import { useNavigate } from "react-router-dom";
 export type ArticlePageProps = {
   tags?: string[];
   title: string;
+  date?: string;
   description?: any;
   headless?: boolean;
   className?: string;
@@ -37,6 +38,7 @@ export const ArticlePage = (props: ArticlePageProps) => {
     <>
       <Article
         title={title}
+        date={props.date}
         description={description}
         className={`${props.className} mb-128`}
         loading={loading}
