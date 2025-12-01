@@ -30,7 +30,7 @@
     "vaul": "1.1.2"
   },
   "devDependencies": {
-    "@bbki.ng/stylebase": "workspace:0.4.10",
+    "@bbki.ng/stylebase": "workspace:*",
     "@mdx-js/mdx": "2.0.0-next.9",
     "@mdx-js/react": "^1.6.22",
     "@mdx-js/rollup": "3.0.0",
