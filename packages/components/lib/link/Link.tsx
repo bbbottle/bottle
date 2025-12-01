@@ -58,6 +58,7 @@ export const Link = (props: LinkProps) => {
     "rounded",
     "!no-underline",
     "transition-colors",
+    "active:scale-[0.97]",
     // "focus:text-white",
     COLOR_MAPPING[color],
     HOVER_COLOR_MAPPING[color],
