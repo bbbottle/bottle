@@ -110,10 +110,12 @@ importers:
         specifier: ^4.6.4
         version: 4.7.4
 
+  packages/config: {}
+
   packages/site:
     dependencies:
       '@bbki.ng/components':
-        specifier: workspace:2.6.8
+        specifier: workspace:2.6.16
         version: link:../components
       '@extism/extism':
         specifier: 2.0.0-rc11
@@ -150,7 +152,7 @@ importers:
         version: 1.1.2(@types/react-dom@18.0.6)(@types/react@18.0.15)(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
     devDependencies:
       '@bbki.ng/stylebase':
-        specifier: workspace:0.4.10
+        specifier: workspace:*
         version: link:../stylebase
       '@mdx-js/mdx':
         specifier: 2.0.0-next.9
@@ -9013,9 +9015,9 @@ snapshots:
       acorn: 7.4.1
       acorn-walk: 7.2.0
 
-  acorn-import-assertions@1.8.0(acorn@8.8.0):
+  acorn-import-assertions@1.8.0(acorn@8.14.0):
     dependencies:
-      acorn: 8.8.0
+      acorn: 8.14.0
 
   acorn-jsx@5.3.2(acorn@8.8.0):
     dependencies:
@@ -13096,7 +13098,7 @@ snapshots:
   terser@5.14.2:
     dependencies:
       '@jridgewell/source-map': 0.3.2
-      acorn: 8.8.0
+      acorn: 8.14.0
       commander: 2.20.3
       source-map-support: 0.5.21
 
@@ -13667,8 +13669,8 @@ snapshots:
       '@webassemblyjs/ast': 1.11.1
       '@webassemblyjs/wasm-edit': 1.11.1
       '@webassemblyjs/wasm-parser': 1.11.1
-      acorn: 8.8.0
-      acorn-import-assertions: 1.8.0(acorn@8.8.0)
+      acorn: 8.14.0
+      acorn-import-assertions: 1.8.0(acorn@8.14.0)
       browserslist: 4.21.2
       chrome-trace-event: 1.0.3
       enhanced-resolve: 5.10.0
