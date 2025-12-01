@@ -57,6 +57,7 @@ export const Link = (props: LinkProps) => {
     className,
     "rounded",
     "!no-underline",
+    "inline-block",
     "transition-colors",
     "active:scale-[0.97]",
     // "focus:text-white",
