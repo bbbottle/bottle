@@ -1,9 +1,32 @@
-import { Hono } from 'hono'
+import { Hono } from "hono";
+import type { D1Database } from "@cloudflare/workers-types";
 
-const app = new Hono()
+type Bindings = {
+  DB: D1Database;
+};
 
-app.get('/', (c) => {
-  return c.text('Hello Hono!')
-})
+const app = new Hono<{ Bindings: Bindings }>();
 
-export default app
+app.get("/", (c) => {
+  return c.text("Hello Hono!");
+});
+
+app.post("/comment/add", async (c) => {
+  const { articleId, author, content } = await c.req.json();
+
+  try {
+    let { results } = await c.env.DB.prepare(
+      `INSERT INTO comment (article_id, author, content) VALUES (${articleId}, ${author}, ${content})`,
+    ).run();
+
+    return c.json({
+      status: "success",
+      message: "Comment added successfully",
+      results,
+    });
+  } catch (error) {
+    return c.json({ status: "error", message: "Failed to add comment", error });
+  }
+});
+
+export default app;
