@@ -103,8 +103,11 @@ importers:
   packages/site:
     dependencies:
       '@bbki.ng/components':
-        specifier: workspace:2.6.8
+        specifier: workspace:*
         version: link:../components
+      '@bbki.ng/stylebase':
+        specifier: workspace:*
+        version: link:../stylebase
       '@extism/extism':
         specifier: 2.0.0-rc11
         version: 2.0.0-rc11
@@ -139,9 +142,6 @@ importers:
         specifier: 1.1.2
         version: 1.1.2(@types/react-dom@18.0.6)(@types/react@18.0.15)(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
     devDependencies:
-      '@bbki.ng/stylebase':
-        specifier: workspace:0.4.10
-        version: link:../stylebase
       '@mdx-js/mdx':
         specifier: 2.0.0-next.9
         version: 2.0.0-next.9
@@ -256,9 +256,6 @@ importers:
       tailwindcss-animate:
         specifier: 1.0.7
         version: 1.0.7(tailwindcss@3.1.6(postcss@8.5.6))
-      vite:
-        specifier: ^3.0.0
-        version: 3.0.2(sass@1.54.0)(terser@5.14.2)
     devDependencies:
       tailwindcss:
         specifier: 3.1.6
@@ -5804,25 +5801,6 @@ packages:
       workbox-window: ^7.0.0
     peerDependenciesMeta:
       '@vite-pwa/assets-generator':
-        optional: true
-
-  vite@3.0.2:
-    resolution: {integrity: sha512-TAqydxW/w0U5AoL5AsD9DApTvGb2iNbGs3sN4u2VdT1GFkQVUfgUldt+t08TZgi23uIauh1TUOQJALduo9GXqw==}
-    engines: {node: ^14.18.0 || >=16.0.0}
-    hasBin: true
-    peerDependencies:
-      less: '*'
-      sass: '*'
-      stylus: '*'
-      terser: ^5.4.0
-    peerDependenciesMeta:
-      less:
-        optional: true
-      sass:
-        optional: true
-      stylus:
-        optional: true
-      terser:
         optional: true
 
   vite@5.0.0:
@@ -12808,17 +12786,6 @@ snapshots:
       workbox-window: 6.5.3
     transitivePeerDependencies:
       - supports-color
-
-  vite@3.0.2(sass@1.54.0)(terser@5.14.2):
-    dependencies:
-      esbuild: 0.14.50
-      postcss: 8.4.14
-      resolve: 1.22.1
-      rollup: 2.77.0
-    optionalDependencies:
-      fsevents: 2.3.3
-      sass: 1.54.0
-      terser: 5.14.2
 
   vite@5.0.0(@types/node@16.11.45)(sass@1.54.0)(terser@5.14.2):
     dependencies:
