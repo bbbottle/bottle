@@ -21,7 +21,7 @@ export const Article: FunctionComponent<ArticleProps> = (props) => {
       <div className="mb-16 leading-none">
         <span className="text-[2.25rem] p-16">{title}</span>
         {props.loading && title && (
-          <BlinkDot status="blink" className="!-top-[42px] !-left-16" />
+          <BlinkDot status="blink" className="-top-[42px]! -left-16!" />
         )}
         {date ? (
           <div className="py-16 px-18 pb-0  text-gray-400">

@@ -21,7 +21,7 @@ export const BlurCover = (props: BlurCoverProps) => {
     "h-full",
     "w-full",
     {
-      "z-[49]": status === "show",
+      "z-49": status === "show",
       "opacity-0": status === "silent",
       "opacity-100": status === "show",
       "pointer-events-none": status === "silent",

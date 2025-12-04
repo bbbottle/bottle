@@ -11,7 +11,7 @@ export const Page = (props: PageProps) => {
   return (
     <main className="flex flex-col h-full">
       <div className={`flx-grow-0 w-full fixed top-0 z-50`}>{nav}</div>
-      <section className="flex-grow flex-shrink-0 px-6">{main}</section>
+      <section className="grow shrink-0 px-6">{main}</section>
     </main>
   );
 };

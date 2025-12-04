@@ -37,7 +37,7 @@ export const PopConfirm = (props: PopConfirmProps) => {
             type={loading ? ButtonType.DISABLED : ButtonType.PRIMARY}
           >
             OK
-            {loading && <BlinkDot className="!absolute top-2 right-2" />}
+            {loading && <BlinkDot className="absolute! top-2 right-2" />}
           </Button>
         )}
       </div>

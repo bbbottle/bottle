@@ -48,7 +48,7 @@ export const Skeleton = (props: SkeletonProps) => {
       className={classNames(
         COLOR_MAPPING[bgColor],
         "animate-pulse",
-        "rounded",
+        "rounded-sm",
         className
       )}
       style={{ width, height }}

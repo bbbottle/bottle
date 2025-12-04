@@ -49,15 +49,15 @@ const ImagePreviewer = (props: ImagePreviewerProps) => {
     <img
       className={cls(
         className,
-        "max-w-[100%]",
-        "h-[auto]",
+        "max-w-full",
+        "h-auto",
         "duration-300",
         "transition-opacity",
         "opacity-100",
         {
           "opacity-0": !showImagePreviewer,
-          "!m-0": !showImagePreviewer,
-          "!p-0": !showImagePreviewer,
+          "m-0!": !showImagePreviewer,
+          "p-0!": !showImagePreviewer,
         }
       )}
       ref={imageRef}
@@ -119,7 +119,7 @@ const GhostDropImage: FunctionComponent<ImageDropProps<any>> = (props) => {
 
   const coverCls = cls("fixed", "top-0", "left-0", "h-full", "w-full", {
     "lqip-blur": coverVisible,
-    "z-[999]": coverVisible,
+    "z-999": coverVisible,
     block: coverVisible,
     hidden: !coverVisible,
   });

@@ -28,7 +28,7 @@ export const List: FunctionComponent<listProps> = (props) => {
         return (
           <li
             key={item.id || index}
-            className={cls(spaceCls, "flex-shrink-0", { "!my-0": horizontal })}
+            className={cls(spaceCls, "shrink-0", { "my-0!": horizontal })}
           >
             {itemRenderer(item, index)}
           </li>
@@ -37,7 +37,7 @@ export const List: FunctionComponent<listProps> = (props) => {
       {footer && (
         <li
           key={"footer"}
-          className={cls(spaceCls, "flex-shrink-0", { "!my-0": horizontal })}
+          className={cls(spaceCls, "shrink-0", { "my-0!": horizontal })}
         >
           {footer}
         </li>
