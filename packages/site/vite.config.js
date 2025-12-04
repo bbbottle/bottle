@@ -6,6 +6,7 @@ import remarkGfm from "remark-gfm";
 import remarkParse from "remark-parse";
 import remarkToc from "remark-toc";
 import crossOriginIsolation from "vite-plugin-cross-origin-isolation";
+import tailwindcss from "@tailwindcss/vite";
 import remarkFrontMatter from "remark-frontmatter";
 import { remarkMdxFrontmatter } from "remark-mdx-frontmatter";
 import rehypeSlug from "rehype-slug";
@@ -31,6 +32,7 @@ export default defineConfig({
     alias: {
       "@": path.resolve(__dirname, "./src/blog"),
     },
+    // preserveSymlinks: true,
   },
   // build.rollupOptions.output.manualChunks
   build: {
@@ -44,7 +46,6 @@ export default defineConfig({
       },
     },
   },
-  server: {},
   define: {
     GLOBAL_BBKING_VERSION: JSON.stringify(process.env.npm_package_version),
   },
@@ -55,6 +56,7 @@ export default defineConfig({
     react(),
     mdx(options),
     glsl(),
+    tailwindcss(),
     VitePWA({
       injectRegister: "auto",
       includeAssets: [
@@ -92,9 +94,9 @@ export default defineConfig({
               const sharedContent = url.searchParams.get("text");
 
               // post the shared content to the main thread
-                if (sharedContent) {
-                  window.postMessage(sharedContent, {})
-                }
+              if (sharedContent) {
+                window.postMessage(sharedContent, {});
+              }
             },
           },
           {
@@ -120,13 +122,13 @@ export default defineConfig({
         display: "fullscreen",
         start_url: "/",
         share_target: {
-          "action": "/new-content-handler/",
-          "method": "GET",
-          "params": {
-            "title": "title",
-            "text": "text",
-            "url": "url"
-          }
+          action: "/new-content-handler/",
+          method: "GET",
+          params: {
+            title: "title",
+            text: "text",
+            url: "url",
+          },
         },
         icons: [
           {

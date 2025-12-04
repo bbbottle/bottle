@@ -20,7 +20,7 @@ export const useTransitionCls = (options: TransOption = defaultOpt) => {
   const { originCls, opacity, offset, blur } = options;
 
   const cls = classnames(originCls, "transition-all", "duration-500", {
-    "blur-sm": !visible && blur,
+    "blur-xs": !visible && blur,
     "blur-none": visible && blur,
     "translate-y-0": visible && offset,
     "translate-y-8": !visible && offset,

@@ -19,7 +19,7 @@ export function ContextMenuDemo() {
   return (
     <ContextMenu>
       <ContextMenuTrigger>Right click here</ContextMenuTrigger>
-      <ContextMenuContent className="w-256">
+      <ContextMenuContent className="w-5xl">
         <ContextMenuItem inset>
           Back
           <ContextMenuShortcut>⌘[</ContextMenuShortcut>

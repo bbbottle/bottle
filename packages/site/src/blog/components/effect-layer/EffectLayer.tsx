@@ -14,7 +14,7 @@ export const EffectLayer = () => {
     "h-full",
     "pointer-events-none",
     "w-full",
-    "z-[999]"
+    "z-999"
   );
 
   const { onRender } = useRender();
