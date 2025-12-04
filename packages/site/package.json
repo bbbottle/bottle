@@ -6,7 +6,7 @@
   "scripts": {
     "test": "jest",
     "test:cov": "jest --coverage",
-    "dev": "vite --host",
+    "dev": "NODE_ENV=development && vite --host",
     "build": "tsc && vite build",
     "serve": "vite preview"
   },

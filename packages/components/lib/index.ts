@@ -1,5 +1,3 @@
-import "./index.css";
-
 export * from "./article/Article";
 export * from "./button/Button";
 export * from "./logo/Logo";
