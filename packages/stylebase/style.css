@@ -90,6 +90,28 @@
     animation: blink 0.1s infinite;
 }
 
+@layer utilities {
+    .prose {
+        a,
+        &:where(a):not(:where([class~="not-prose"] *)) {
+            color: rgb(37, 99, 235);
+            text-decoration: none;
+            padding: 4px;
+            border-radius: 0.25rem;
+            word-break: break-all;
+            &:hover {
+                background-color: rgb(219, 234, 254);
+            }
+
+            &:active {
+                line-height: 1;
+                display: inline-block;
+                transform: scale(0.97);
+            }
+        }
+    }
+}
+
 @utility text-blur {
     backdrop-filter: blur(7px);
 }
@@ -133,17 +155,6 @@
     img {
         margin-top: 0;
         margin-bottom: 0;
-    }
-
-    a {
-        color: rgb(37, 99, 235);
-        text-decoration: none;
-        padding: 4px;
-        border-radius: 0.25rem;
-        word-break: break-all;
-        &:hover {
-            background-color: rgb(219, 234, 254);
-        }
     }
 
     .hidden {
