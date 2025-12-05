@@ -1,4 +1,16 @@
 @plugin "@tailwindcss/typography";
+@plugin "tailwindcss-animate";
+@plugin "@tailwindcss/aspect-ratio";
+
+@keyframes blink {
+    0%,
+    100% {
+        opacity: 1;
+    }
+    75% {
+        opacity: 0;
+    }
+}
 
 @theme {
     --spacing: 0.125rem;
@@ -11,6 +23,45 @@
     --spacing-64: 4rem;
     --spacing-128: 8rem;
     --spacing-256: 16rem;
+
+    --color-gray-50: #f9fafb;
+    --color-gray-100: #f3f4f6;
+    --color-gray-200: #e5e7eb;
+    --color-gray-300: #d1d5db;
+    --color-gray-400: #9ca3af;
+    --color-gray-500: #6b7280;
+    --color-gray-600: #4b5563;
+    --color-gray-700: #374151;
+    --color-gray-800: #1f2937;
+    --color-gray-900: #111827;
+
+    --color-blue-50: #f9fafb;
+    --color-blue-100: #f3f4f6;
+    --color-blue-200: #e5e7eb;
+    --color-blue-300: #d1d5db;
+    --color-blue-400: #9ca3af;
+    --color-blue-500: #6b7280;
+    --color-blue-600: #000000;
+    --color-blue-700: #000000;
+    --color-blue-800: #000000;
+    --color-blue-900: #000000;
+
+    --color-red-50: #fef2f2;
+    --color-red-100: #fee2e2;
+    --color-red-200: #fecaca;
+    --color-red-300: #fca5a5;
+    --color-red-400: #f87171;
+    --color-red-500: #ef4444;
+    --color-red-600: #dc2626;
+
+    --tw-prose-body: "#000";
+
+    --font-sans:
+        "PT Sans", ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
+        "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif,
+        "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol",
+        "Noto Color Emoji";
+    --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco;
 }
 
 @utility no-scrollbar {
@@ -35,14 +86,68 @@
     backdrop-filter: blur(20px);
 }
 
+@utility animate-ping-fast {
+    animation: blink 0.1s infinite;
+}
+
 @utility text-blur {
     backdropfilter: blur(7px);
+}
+
+@utility shadow-empty {
+    box-shadow:
+        0px 0px 0px 0px rgba(0, 0, 0, 0),
+        0px 0px 0px 0px rgba(0, 0, 0, 0);
+}
+
+@utility shadow-panel {
+    box-shadow:
+        0px 20px 25px -5px rgba(0, 0, 0, 0.1),
+        0px 10px 10px -5px rgba(0, 0, 0, 0.04);
+}
+
+@utility shadow-button {
+    box-shadow:
+        0px 15px 15px rgba(0, 0, 0, 0.1),
+        0px 5px 5px -2px rgba(0, 0, 0, 0.04);
+}
+
+@utility shadow-button-hover {
+    box-shadow:
+        0px 10px 15px -3px rgba(0, 0, 0, 0.1),
+        0px 5px 5px -2px rgba(0, 0, 0, 0.04);
+}
+
+@utility shadow-input {
+    box-shadow:
+        inset 0px 10px 25px -15px rgba(0, 0, 0, 0.25),
+        inset 0px 5px 10px -5px rgba(17, 24, 39, 0.2);
 }
 
 @layer base {
     a:focus {
         outline: none;
         text-decoration: none;
+    }
+
+    img {
+        margin-top: 0;
+        margin-bottom: 0;
+    }
+
+    a {
+        color: rgb(37, 99, 235);
+        text-decoration: "none";
+        padding: 4px;
+        border-radius: 0.25rem;
+        word-break: break-all;
+        &:hover {
+            background-color: rgb(219, 234, 254);
+        }
+    }
+
+    .hidden {
+        visibility: hidden;
     }
 
     h1 {
