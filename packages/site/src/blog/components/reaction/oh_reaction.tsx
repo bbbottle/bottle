@@ -88,7 +88,7 @@ export const OpenHeartReaction = (props: {
 
 export const Reaction = (props: { title: string }) => {
   return (
-    <div className="pt-32">
+    <div>
       <OpenHeartReaction title={props.title} emojiPair={hearts} />
       <OpenHeartReaction title={props.title} emojiPair={faces} />
       <OpenHeartReaction title={props.title} emojiPair={sadFaces} />

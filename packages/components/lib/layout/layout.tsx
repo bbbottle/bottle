@@ -17,7 +17,7 @@ export const ThreeColLayout = (props: threeColLayoutProps) => {
         {leftRenderer && leftRenderer()}
       </div>
       <div
-        className={cls(colCls, "sm:px-128 xl:px-0 no-scrollbar", "relative", {
+        className={cls(colCls, "no-scrollbar p-16", "relative", {
           hidden: !middleRenderer,
         })}
       >

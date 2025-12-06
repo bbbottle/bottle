@@ -20,8 +20,12 @@ const ArticleMap: TArticleMap = {};
 
 MdxArticleList.forEach((article: unknown) => {
   const { meta, default: component } = article as MdxArticle;
+  console.log(meta);
+  const dateStr = meta.created_at
+    ? meta.created_at.toISOString().split("T")[0]
+    : "";
   const Article = withArticleWrapper(component);
-  ArticleMap[meta.title] = <Article {...meta} />;
+  ArticleMap[meta.title] = <Article {...meta} date={dateStr} />;
 });
 
 export default () => {
