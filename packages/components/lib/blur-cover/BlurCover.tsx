@@ -16,17 +16,25 @@ export const BlurCover = (props: BlurCoverProps) => {
     "text-blur",
     "transition-all",
     "duration-200",
-    "top-0",
-    "left-0",
-    "h-full",
-    "w-full",
     {
       "z-49": status === "show",
       "opacity-0": status === "silent",
       "opacity-100": status === "show",
       "pointer-events-none": status === "silent",
     },
-    props.className
+    props.className,
   );
-  return <div className={coverCls} />;
+  return (
+    <div
+      className={coverCls}
+      style={{
+        top: -16,
+        right: -16,
+        left: -16,
+        bottom: -16,
+        width: "calc(100% + 32px)",
+        height: "calc(100% + 32px)",
+      }}
+    />
+  );
 };
