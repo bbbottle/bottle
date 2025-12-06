@@ -113,7 +113,11 @@
 }
 
 @utility text-blur {
-    backdrop-filter: blur(7px);
+    backdrop-filter: blur(8px);
+}
+
+@utility text-blur-tiny {
+    backdrop-filter: blur(2px);
 }
 
 @utility shadow-empty {

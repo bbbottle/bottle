@@ -13,12 +13,13 @@ export const BlurCover = (props: BlurCoverProps) => {
   const coverCls = cls(
     "absolute",
     "block",
-    "text-blur",
     "transition-all",
     "duration-200",
     {
       "z-49": status === "show",
       "opacity-0": status === "silent",
+      "text-blur": status === "show",
+      "text-blur-tiny": status === "silent",
       "opacity-100": status === "show",
       "pointer-events-none": status === "silent",
     },
