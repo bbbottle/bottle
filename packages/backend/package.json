@@ -1,5 +1,5 @@
 {
-  "name": "backend",
+  "name": "@bbki.ng/backend",
   "version": "0.0.1",
   "type": "module",
   "scripts": {
