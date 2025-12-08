@@ -14,6 +14,7 @@ import rehypeHighlight from "rehype-highlight";
 import rehypeAutolinkHeadings from "rehype-autolink-headings";
 import react from "@vitejs/plugin-react";
 import glsl from "vite-plugin-glsl";
+import { visualizer } from "rollup-plugin-visualizer";
 
 const options = {
   remarkPlugins: [
@@ -153,5 +154,6 @@ export default defineConfig({
       },
     }),
     crossOriginIsolation(),
+    visualizer({ open: true, gzipSize: true }),
   ],
 });

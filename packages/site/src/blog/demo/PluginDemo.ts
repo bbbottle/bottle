@@ -1,5 +1,3 @@
-import createPlugin from "@extism/extism";
-import { CurrentPlugin } from "@extism/extism";
 import { toast } from "sonner";
 
 const plugin = await createPlugin("http://localhost:5173/demo.wasm", {

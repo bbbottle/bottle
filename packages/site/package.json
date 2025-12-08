@@ -18,7 +18,6 @@
   "dependencies": {
     "@bbki.ng/components": "workspace:*",
     "@bbki.ng/stylebase": "workspace:*",
-    "@extism/extism": "2.0.0-rc11",
     "@supabase/supabase-js": "^1.35.4",
     "@tailwindcss/vite": "4.1.17",
     "classnames": "2.3.1",
@@ -56,6 +55,7 @@
     "remark-mdx-frontmatter": "^1.0.1",
     "remark-parse": "^10.0.0",
     "remark-toc": "^8.0.1",
+    "rollup-plugin-visualizer": "6.0.5",
     "sass": "^1.42.1",
     "tailwindcss": "^4.1.17",
     "ts-jest": "^27.1.1",
