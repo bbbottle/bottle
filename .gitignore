@@ -69,4 +69,4 @@ common/autoinstallers/*/.npmrc
 # Heft
 .heft
 
-stat.html
+stats.html

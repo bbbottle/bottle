@@ -32,7 +32,7 @@ export default defineConfig({
   resolve: {
     alias: {
       "@": path.resolve(__dirname, "./src/blog"),
-      "@bbki.ng/commponents": path.resolve(__dirname, "../components/lib"),
+      // "@bbki.ng/commponents": path.resolve(__dirname, "../components/lib"),
     },
     // preserveSymlinks: true,
   },
@@ -41,9 +41,14 @@ export default defineConfig({
     sourcemap: true,
     rollupOptions: {
       output: {
-        manualChunks: (id) => {
+        manualChunks: (id, meta) => {
+          console.log(id);
           if (id.includes("node_modules")) {
             return "vendor";
+          }
+
+          if (id.includes("packages/components")) {
+            return "components";
           }
         },
       },
