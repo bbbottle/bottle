@@ -44,7 +44,7 @@ export const ArticleCtxMenu = (props: { children: ReactElement }) => {
   return (
     <ContextMenu>
       <ContextMenuTrigger>{props.children}</ContextMenuTrigger>
-      <ContextMenuContent className="w-128">
+      <ContextMenuContent className="w-lg">
         <ContextMenuItem
           onClick={() => {
             confirm("确认删除？", doDel);

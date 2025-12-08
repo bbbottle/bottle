@@ -62,7 +62,7 @@ export const Gallery = (props: GalleryProps) => {
   return (
     <div className={classnames("w-full flex justify-center", className)}>
       <RandomRowsLayout
-        classNames="mx-32 mt-128 max-w-screen-xl"
+        classNames="mx-32 mt-128 max-w-(--breakpoint-xl)"
         cellsCount={images.length}
         cellRenderer={renderImage}
         {...rest}

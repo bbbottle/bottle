@@ -13,6 +13,8 @@ export type NavProps = {
 };
 
 export const Nav = (props: NavProps) => {
+  const nav = useNavigate();
+
   if (props.mini) {
     return (
       <div className={`p-8 w-full flex items-center ${props.className}`}>
@@ -20,8 +22,6 @@ export const Nav = (props: NavProps) => {
       </div>
     );
   }
-
-  const nav = useNavigate();
 
   return (
     <div className={`p-8 w-full flex items-center ${props.className}`}>

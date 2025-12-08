@@ -45,7 +45,7 @@ export const DropZone = (props: DropZoneProps) => {
 
   const coverCls = cls("fixed", "top-0", "left-0", "h-full", "w-full", {
     "text-blur": coverVisible,
-    "z-[999]": coverVisible,
+    "z-999": coverVisible,
     block: coverVisible,
     hidden: !coverVisible,
   });

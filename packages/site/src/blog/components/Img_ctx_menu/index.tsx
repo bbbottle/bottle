@@ -38,7 +38,7 @@ export const ImgCtxMenu = (props: {
         {props.children}
       </ContextMenuTrigger>
       <Auth role={role}>
-        <ContextMenuContent className="w-256">
+        <ContextMenuContent className="w-5xl">
           <ContextMenuLabel>{props.name}</ContextMenuLabel>
           <ContextMenuItem disabled>
             {props.width} * {props.height}

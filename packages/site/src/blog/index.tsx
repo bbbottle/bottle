@@ -3,7 +3,7 @@ import { createRoot } from "react-dom/client";
 import { Toaster } from "sonner";
 import { BrowserRouter as Router } from "react-router-dom";
 import { ReloadPrompt } from "@/components";
-import "@bbki.ng/components/style";
+// import "@bbki.ng/components/style";
 import App from "./app";
 import "./main.css";
 import Logger from "@/components/Logger";

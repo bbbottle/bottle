@@ -9,7 +9,7 @@ import * as 入夏 from "./web-burnning.mdx";
 import * as 六月 from "./black-river.mdx";
 import * as 立秋 from "./liqiu.mdx";
 import * as 照片 from "./photos.mdx";
-import * as 小乌鸦 from "./xwy.mdx";
+// import * as 小乌鸦 from "./xwy.mdx";
 import * as 我要看雪 from "./xwy-and-snowing.mdx";
 import * as 做饭 from "./cooking.mdx";
 import * as 堂兄 from "./cousin.mdx";
@@ -33,7 +33,7 @@ export const MdxArticleList = [
   六月,
   立秋,
   照片,
-  小乌鸦,
+  // 小乌鸦,
   做饭,
   堂兄,
   红色的枪,

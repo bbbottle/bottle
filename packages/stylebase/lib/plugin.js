@@ -1,3 +1,4 @@
+import hljsConst from "./hljsConst.js";
 const {
   redKey,
   purpleKey,
@@ -10,9 +11,9 @@ const {
   boldKey,
   brownKey,
   bgWhiteKey,
-} = require("./hljsConst");
+} = hljsConst;
 
-module.exports = {
+export default {
   handler: function ({ addBase, addUtilities, theme, addVariant }) {
     addBase({
       ":root": {
@@ -110,7 +111,7 @@ module.exports = {
       },
       ".gradient-blur-cover": {
         "backdrop-filter": "blur(7px)",
-         "background-image": "linear-gradient(#ffffff, #ffffff80)"
+        "background-image": "linear-gradient(#ffffff, #ffffff80)",
       },
       ".lqip-blur": {
         backdropFilter: "blur(20px)",

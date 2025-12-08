@@ -2,16 +2,14 @@
   "name": "@bbki.ng/stylebase",
   "version": "0.4.11",
   "description": "",
-  "main": "dist/index.js",
+  "main": "style.css",
   "files": [
-    "dist"
+    "style.css"
   ],
-  "scripts": {
-    "build": "vite build",
-    "dev": "vite dev",
-    "prepare": "vite build"
+  "type": "module",
+  "exports": {
+    ".": "./style.css"
   },
-  "type": "commonjs",
   "keywords": [],
   "author": "",
   "license": "ISC",
@@ -21,8 +19,10 @@
   "dependencies": {
     "@tailwindcss/aspect-ratio": "0.4.0",
     "@tailwindcss/typography": "0.5.4",
-    "tailwindcss-animate": "1.0.7",
-    "vite": "^3.0.0"
+    "tailwindcss-animate": "1.0.7"
+  },
+  "peerDependencies": {
+    "tailwindcss": "^4.0.0"
   },
   "devDependencies": {
     "tailwindcss": "3.1.6"

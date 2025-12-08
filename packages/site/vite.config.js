@@ -6,6 +6,7 @@ import remarkGfm from "remark-gfm";
 import remarkParse from "remark-parse";
 import remarkToc from "remark-toc";
 import crossOriginIsolation from "vite-plugin-cross-origin-isolation";
+import tailwindcss from "@tailwindcss/vite";
 import remarkFrontMatter from "remark-frontmatter";
 import { remarkMdxFrontmatter } from "remark-mdx-frontmatter";
 import rehypeSlug from "rehype-slug";
@@ -13,6 +14,7 @@ import rehypeHighlight from "rehype-highlight";
 import rehypeAutolinkHeadings from "rehype-autolink-headings";
 import react from "@vitejs/plugin-react";
 import glsl from "vite-plugin-glsl";
+import { visualizer } from "rollup-plugin-visualizer";
 
 const options = {
   remarkPlugins: [
@@ -30,13 +32,17 @@ export default defineConfig({
   resolve: {
     alias: {
       "@": path.resolve(__dirname, "./src/blog"),
+      // "@bbki.ng/commponents": path.resolve(__dirname, "../components/lib"),
     },
+    // preserveSymlinks: true,
   },
   // build.rollupOptions.output.manualChunks
   build: {
+    sourcemap: true,
     rollupOptions: {
       output: {
-        manualChunks: (id) => {
+        manualChunks: (id, meta) => {
+          console.log(id);
           if (id.includes("node_modules")) {
             return "vendor";
           }
@@ -44,7 +50,6 @@ export default defineConfig({
       },
     },
   },
-  server: {},
   define: {
     GLOBAL_BBKING_VERSION: JSON.stringify(process.env.npm_package_version),
   },
@@ -55,6 +60,7 @@ export default defineConfig({
     react(),
     mdx(options),
     glsl(),
+    tailwindcss(),
     VitePWA({
       injectRegister: "auto",
       includeAssets: [
@@ -92,9 +98,9 @@ export default defineConfig({
               const sharedContent = url.searchParams.get("text");
 
               // post the shared content to the main thread
-                if (sharedContent) {
-                  window.postMessage(sharedContent, {})
-                }
+              if (sharedContent) {
+                window.postMessage(sharedContent, {});
+              }
             },
           },
           {
@@ -120,13 +126,13 @@ export default defineConfig({
         display: "fullscreen",
         start_url: "/",
         share_target: {
-          "action": "/new-content-handler/",
-          "method": "GET",
-          "params": {
-            "title": "title",
-            "text": "text",
-            "url": "url"
-          }
+          action: "/new-content-handler/",
+          method: "GET",
+          params: {
+            title: "title",
+            text: "text",
+            url: "url",
+          },
         },
         icons: [
           {
@@ -149,5 +155,6 @@ export default defineConfig({
       },
     }),
     crossOriginIsolation(),
+    visualizer({ open: true, gzipSize: true }),
   ],
 });

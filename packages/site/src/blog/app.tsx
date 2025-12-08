@@ -22,8 +22,6 @@ import { Pochacco, PochaccoPose } from "@/components/Pochacco/Pochacco";
 import { Role, useRole } from "@/hooks/use_role";
 import { BotRedirect } from "@/pages/bot";
 import { BBContext } from "@/context/bbcontext";
-import { PluginContentPage } from "@/components/plugin/PluginContentPage";
-import { PluginRoutes } from "@/components/plugin/PluginRoutes";
 import { useClipboardToPost } from "@/hooks/use_clipboard_to_post";
 import { useSharedStringToPost } from "@/hooks/use_shared_string_to_post";
 import { ThreeColLayout, ErrorBoundary } from "@bbki.ng/components";

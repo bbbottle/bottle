@@ -32,7 +32,7 @@ export const ArticlePage = (props: ArticlePageProps) => {
     return props.children;
   }
 
-  const articleCls = classNames("prose");
+  const articleCls = classNames("prose", "mb-32");
 
   return (
     <>
@@ -44,12 +44,12 @@ export const ArticlePage = (props: ArticlePageProps) => {
         loading={loading}
       >
         <article className={articleCls}>{props.children}</article>
-        <div className="mt-[1.25em] relative left-[-4px]">
-          {allTags.length ? <Tags tags={allTags} /> : null}
+        <div className="relative left-[-4px]">
+          {allTags.length ? <Tags tags={allTags} className="mb-32" /> : null}
           <Reaction title={title} />
         </div>
       </Article>
-      <div className="px-16">
+      <div className="">
         <Button
           className=""
           btnType="button"

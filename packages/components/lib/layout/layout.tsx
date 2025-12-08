@@ -10,14 +10,14 @@ export type threeColLayoutProps = {
 
 export const ThreeColLayout = (props: threeColLayoutProps) => {
   const { leftRenderer, middleRenderer, rightRenderer } = props;
-  const colCls = cls("max-h-full overflow-auto xl:!block py-128");
+  const colCls = cls("max-h-full overflow-auto xl:block! py-128");
   return (
     <div className="grid grid-cols-1 xl:grid-cols-3 gap-4 h-full w-full">
       <div className={cls("hidden", colCls)}>
         {leftRenderer && leftRenderer()}
       </div>
       <div
-        className={cls(colCls, "sm:px-128 xl:px-0 no-scrollbar", "relative", {
+        className={cls(colCls, "no-scrollbar p-16", "relative", {
           hidden: !middleRenderer,
         })}
       >

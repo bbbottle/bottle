@@ -87,7 +87,7 @@ export const RandomRowsLayout = React.memo(
                 const currentIdx = sumColNumByIdx(colNums, row) + col;
 
                 const cls = classnames(
-                  "flex items-center justify-center flex-shrink-0 flex-grow-0",
+                  "flex items-center justify-center shrink-0 grow-0",
                   "basis-full",
                   generatedCls
                 );
