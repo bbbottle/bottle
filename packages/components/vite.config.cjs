@@ -30,7 +30,7 @@ export default defineConfig({
     // 分包配置（按需加载）
     rollupOptions: {
       // 外部化 React 相关依赖（避免打包进组件库）
-      external: ["react", "react-dom"],
+      external: ["react", "react-dom", "react-router-dom"],
       output: {
         // 全局变量映射（UMD 模式下使用）
         globals: {
