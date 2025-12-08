@@ -2,7 +2,6 @@ import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
 import dts from "vite-plugin-dts";
 import path from "path";
-import tscAlias from "tsc-alias";
 
 export default defineConfig({
   plugins: [
@@ -40,7 +39,7 @@ export default defineConfig({
         },
         // 组件单独打包（支持按需引入）
         preserveModules: true,
-        preserveModulesRoot: "src/components",
+        preserveModulesRoot: "lib",
       },
     },
     // 输出目录
@@ -50,7 +49,7 @@ export default defineConfig({
   },
   resolve: {
     alias: {
-      "@": path.resolve(__dirname, "src"),
+      "@": path.resolve(__dirname, "lib"),
     },
   },
   // 构建后处理路径别名
@@ -65,14 +64,3 @@ export default defineConfig({
     open: true,
   },
 });
-
-// 构建完成后处理 TypeScript 路径别名
-afterBuild();
-
-function afterBuild() {
-  tscAlias({
-    configFile: path.resolve(__dirname, "tsconfig.build.json"),
-    outDir: path.resolve(__dirname, "dist"),
-    watch: false,
-  });
-}

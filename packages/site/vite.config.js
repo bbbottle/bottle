@@ -37,6 +37,7 @@ export default defineConfig({
   },
   // build.rollupOptions.output.manualChunks
   build: {
+    sourcemap: true,
     rollupOptions: {
       output: {
         manualChunks: (id) => {
