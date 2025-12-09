@@ -16,7 +16,7 @@ export const RenderBlogInto = (ele: Element) => {
         <App />
         <Toaster />
         <Logger />
-        <ReloadPrompt />
+        {/*<ReloadPrompt />*/}
       </Router>
     </React.StrictMode>
   );
