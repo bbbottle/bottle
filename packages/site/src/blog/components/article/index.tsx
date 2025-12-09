@@ -20,7 +20,6 @@ export type ArticlePageProps = {
 export const ArticlePage = (props: ArticlePageProps) => {
   const { tags: tagNames, title, description, headless } = props;
   const navgation = useNavigate();
-  const loading = useSafeArticleLoading(0.2, 5);
   // const defaultTag = { children: "目录", to: "/blog" };
   const allTags = tagNames
     ? tagNames.map((t) => ({ children: t, to: `${ROUTES.TAGS}/${t}` }))
@@ -41,7 +40,7 @@ export const ArticlePage = (props: ArticlePageProps) => {
         date={props.date}
         description={description}
         className={`${props.className} mb-128`}
-        loading={loading}
+        loading={false}
       >
         <article className={articleCls}>{props.children}</article>
         <div className="relative left-[-4px]">
