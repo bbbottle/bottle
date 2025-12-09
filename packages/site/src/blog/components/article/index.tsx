@@ -1,10 +1,8 @@
-import React, { ReactElement, useContext, useEffect } from "react";
+import React, { ReactElement } from "react";
 import { Tags, Article, Button } from "@bbki.ng/components";
 import { ROUTES } from "@/constants";
 import classNames from "classnames";
-import { GlobalLoadingContext } from "@/context/global_loading_state_provider";
-import { useSafeArticleLoading } from "@/hooks/use_safe_loading";
-import { OpenHeartReaction, Reaction } from "../reaction/oh_reaction";
+import { Reaction } from "../reaction/oh_reaction";
 import { useNavigate } from "react-router-dom";
 
 export type ArticlePageProps = {
