@@ -24,7 +24,7 @@ export const AppCtxMenu = (props: { children: ReactElement }) => {
   return (
     <ContextMenu>
       <ContextMenuTrigger>{props.children}</ContextMenuTrigger>
-      <ContextMenuContent className="w-5xl">
+      <ContextMenuContent className="">
         <LoginMenuItem />
         <ViewSourceMenuItem />
         {isKing && <PostMenuItem />}
