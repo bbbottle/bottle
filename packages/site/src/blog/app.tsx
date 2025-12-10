@@ -25,6 +25,7 @@ import { BBContext } from "@/context/bbcontext";
 import { useClipboardToPost } from "@/hooks/use_clipboard_to_post";
 import { useSharedStringToPost } from "@/hooks/use_shared_string_to_post";
 import { ThreeColLayout, ErrorBoundary } from "@bbki.ng/components";
+import { Version } from "./components/version";
 
 const Layout = () => {
   const { isLoading, isFontLoading } = useContext(GlobalLoadingContext);

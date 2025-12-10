@@ -11,10 +11,19 @@ export interface listProps {
   itemRenderer: (itemProps: any, index: number) => ReactElement;
   horizontal?: boolean;
   footer?: ReactNode;
+  spaceBetween?: boolean;
 }
 
 export const List: FunctionComponent<listProps> = (props) => {
-  const { items, itemRenderer, className, horizontal, compact, footer } = props;
+  const {
+    items,
+    itemRenderer,
+    className,
+    horizontal,
+    compact,
+    footer,
+    spaceBetween,
+  } = props;
 
   const spaceCls = compact ? "" : horizontal ? "mr-3" : "mb-16";
   return (
@@ -22,6 +31,7 @@ export const List: FunctionComponent<listProps> = (props) => {
       className={cls(className, "list-style-none", {
         flex: horizontal,
         "items-center": horizontal,
+        "flex flex-col justify-between": !horizontal && footer && spaceBetween,
       })}
     >
       {items.map((item, index) => {
@@ -35,10 +45,7 @@ export const List: FunctionComponent<listProps> = (props) => {
         );
       })}
       {footer && (
-        <li
-          key={"footer"}
-          className={cls(spaceCls, "shrink-0", { "my-0!": horizontal })}
-        >
+        <li key={"footer"} className={cls("shrink-0", { "my-0!": horizontal })}>
           {footer}
         </li>
       )}

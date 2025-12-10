@@ -20,7 +20,6 @@ const ArticleMap: TArticleMap = {};
 
 MdxArticleList.forEach((article: unknown) => {
   const { meta, default: component } = article as MdxArticle;
-  console.log(meta);
   const dateStr = meta.created_at
     ? meta.created_at.toISOString().split("T")[0]
     : "";
@@ -55,8 +54,6 @@ export default () => {
   }
 
   const date = posts.created_at ? posts.created_at.split("T")[0] : "";
-
-  console.log("posts", posts);
 
   return (
     <DropZone onDrop={reader} disabled={!isKing}>
