@@ -17,7 +17,7 @@ runs:
       id: changesets
       uses: changesets/action@v1
       with:
-        publish: pnpm release
+        # Skip publishing - only create version PRs until NPM_TOKEN is renewed
+        version: pnpm changeset version
       env:
         GITHUB_TOKEN: ${{ env.GITHUB_TOKEN }}
-        NPM_TOKEN: ${{ env.NPM_TOKEN }}
