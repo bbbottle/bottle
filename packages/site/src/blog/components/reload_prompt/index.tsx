@@ -53,12 +53,7 @@ export const ReloadPrompt = () => {
         },
       });
     }
-    
-    // Reset the flag when needRefresh becomes false
-    if (!needRefresh && toastShown.current) {
-      toastShown.current = false;
-    }
-  }, [needRefresh, setNeedRefresh, updateServiceWorker]);
+  }, [needRefresh]);
 
   return null;
 };
