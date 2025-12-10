@@ -45,6 +45,8 @@ When you have a new valid NPM_TOKEN:
 3. **Verify your npm account has permissions**:
    - Make sure your npm account has publish access to `@bbki.ng/components` and `@bbki.ng/stylebase`
    - The packages are scoped (`@bbki.ng`) so you need organization access
+   - Check your access with: `npm access ls-packages @bbki.ng`
+   - If you don't have access, contact the organization owner to grant permissions
 
 ## Manual Publishing
 
@@ -54,13 +56,16 @@ If you need to publish manually without CI:
 # Login to npm
 npm login
 
-# Run the release script (versions and publishes)
+# Run the full release script (versions AND publishes in one command)
+# Note: This will version packages AND publish them immediately
 pnpm release
 
-# Or do it step by step:
-pnpm changeset version  # Update versions
-pnpm changeset publish  # Publish to npm
+# Or do it step by step (recommended for more control):
+pnpm changeset version  # Update versions based on changesets
+pnpm changeset publish  # Publish packages with updated versions to npm
 ```
+
+**Important**: When CI is configured to only version (as it currently is), manual publishing with `pnpm changeset publish` will publish the already-versioned packages without creating new versions.
 
 ## Notes
 
