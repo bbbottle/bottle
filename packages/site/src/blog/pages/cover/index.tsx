@@ -2,6 +2,7 @@ import React, { useContext } from "react";
 import { CenterLinkList } from "@/components";
 import { EffectLayer } from "@/components/effect-layer/EffectLayer";
 import { GlobalRoutesContext } from "@/context/global_routes_provider";
+import { Version } from "@/components/version";
 
 export const Cover = (props: { className?: string }) => {
   const globalRouteCtx = useContext(GlobalRoutesContext);
@@ -11,6 +12,7 @@ export const Cover = (props: { className?: string }) => {
   return (
     <>
       <CenterLinkList
+        spaceBetween
         className="select-none"
         links={[
           // {
@@ -24,6 +26,7 @@ export const Cover = (props: { className?: string }) => {
           ...pluginEntry,
         ]}
         title=""
+        footer={<Version className="" />}
       />
     </>
   );

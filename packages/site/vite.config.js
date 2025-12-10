@@ -70,7 +70,7 @@ export default defineConfig({
         "Logo.svg",
       ],
       devOptions: {
-        enabled: false,
+        enabled: true,
       },
       workbox: {
         cleanupOutdatedCaches: true,
