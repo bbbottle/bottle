@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { toast } from "sonner";
 
 // @ts-ignore
@@ -19,32 +20,32 @@ export const ReloadPrompt = () => {
     },
   });
 
-  if (!needRefresh) {
-    return null;
-  }
-
-  toast("", {
-    description: "发现新版本，是否更新？",
-    duration: 10000,
-    position: "bottom-right",
-    actionButtonStyle: {
-      backgroundColor: "#fff",
-      color: "rgb(37,99,235)",
-    },
-    action: {
-      label: "是",
-      onClick: () => {
-        updateServiceWorker(false).then(() => {
-          // @ts-ignore
-          toast("", {
-            description: `已更新`,
-            position: "bottom-right",
-          });
-          setNeedRefresh(false);
-        });
-      },
-    },
-  });
+  useEffect(() => {
+    if (needRefresh) {
+      toast("", {
+        description: "发现新版本，是否更新？",
+        duration: 10000,
+        position: "bottom-right",
+        actionButtonStyle: {
+          backgroundColor: "#fff",
+          color: "rgb(37,99,235)",
+        },
+        action: {
+          label: "是",
+          onClick: () => {
+            updateServiceWorker(false).then(() => {
+              // @ts-ignore
+              toast("", {
+                description: `已更新`,
+                position: "bottom-right",
+              });
+              setNeedRefresh(false);
+            });
+          },
+        },
+      });
+    }
+  }, [needRefresh, setNeedRefresh, updateServiceWorker]);
 
   return null;
 };
