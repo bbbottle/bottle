@@ -45,7 +45,6 @@ export const ReloadPrompt = () => {
         },
       });
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [needRefresh]);
 
   return null;
