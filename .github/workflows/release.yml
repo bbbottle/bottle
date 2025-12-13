@@ -8,7 +8,8 @@ on:
 
 permissions:
   id-token: write # Required for OIDC
-  contents: read
+  contents: write
+  pull-requests: write
 
 env:
   SERVER_SSH_KEY: ${{ secrets.SERVER_SSH_KEY }}
