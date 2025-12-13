@@ -6,6 +6,10 @@ on:
     branches:
       - main
 
+permissions:
+  id-token: write # Required for OIDC
+  contents: read
+
 env:
   SERVER_SSH_KEY: ${{ secrets.SERVER_SSH_KEY }}
   TELEGRAM_CHANNEL_ID: ${{ secrets.TELEGRAM_CHANNEL_ID }}
