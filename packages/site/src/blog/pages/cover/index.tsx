@@ -1,8 +1,7 @@
 import React, { useContext } from "react";
 import { CenterLinkList } from "@/components";
-import { EffectLayer } from "@/components/effect-layer/EffectLayer";
 import { GlobalRoutesContext } from "@/context/global_routes_provider";
-import { Version } from "@/components/version";
+import { Version } from "@/components/Version";
 
 export const Cover = (props: { className?: string }) => {
   const globalRouteCtx = useContext(GlobalRoutesContext);
