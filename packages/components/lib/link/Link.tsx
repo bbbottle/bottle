@@ -23,7 +23,7 @@ export interface LinkProps extends BaseLinkProps {
 
 const COLOR_MAPPING = {
   [LinkColor.BLUE]: "text-blue-600",
-  [LinkColor.RED]: "text-red-500",
+  [LinkColor.RED]: "text-yy-pink-150",
   [LinkColor.GRAY]: "text-gray-400",
 };
 
@@ -31,20 +31,20 @@ const HOVER_COLOR_MAPPING = {
   [LinkColor.BLUE]:
     "md:not-focus:hover:bg-blue-100 md:not-focus:hover:text-blue-600",
   [LinkColor.RED]:
-    "md:not-focus:hover:bg-red-100 md:not-focus:hover:text-red-500",
+    "md:not-focus:hover:bg-yy-pink-50 md:not-focus:hover:text-yy-pink-150",
   [LinkColor.GRAY]:
     "md:not-focus:hover:bg-gray-100 md:not-focus:hover:text-gray-400",
 };
 
 const FOCUS_BG_COLOR_MAPPING = {
   [LinkColor.BLUE]: "focus:bg-blue-100",
-  [LinkColor.RED]: "focus:bg-red-100",
+  [LinkColor.RED]: "focus:bg-yy-pink-50",
   [LinkColor.GRAY]: "focus:bg-gray-100",
 };
 
 export const Link = (props: LinkProps) => {
   const {
-    color = LinkColor.BLUE,
+    color: originColor = LinkColor.BLUE,
     external,
     className,
     children,
@@ -52,6 +52,12 @@ export const Link = (props: LinkProps) => {
     readonly,
     ...rest
   } = props;
+
+  let color = originColor;
+
+  if (typeof children === "string" && children.includes("小乌鸦")) {
+    color = LinkColor.RED;
+  }
 
   const linkCls = classNames(
     className,
