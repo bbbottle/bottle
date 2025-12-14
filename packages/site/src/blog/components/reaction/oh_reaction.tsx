@@ -8,6 +8,7 @@ import React, {
 import { GlobalLoadingContext } from "@/context/global_loading_state_provider";
 import { BlinkDot } from "@bbki.ng/components";
 import { faces, hearts, ReactionEmojiPair, sadFaces } from "./emojis";
+import { ShareBtn } from "../share/share-btn";
 
 declare global {
   namespace JSX {
@@ -86,12 +87,19 @@ export const OpenHeartReaction = (props: {
   );
 };
 
-export const Reaction = (props: { title: string }) => {
+export const Reaction = (props: { title: string; url: string }) => {
   return (
     <div>
       <OpenHeartReaction title={props.title} emojiPair={hearts} />
       <OpenHeartReaction title={props.title} emojiPair={faces} />
       <OpenHeartReaction title={props.title} emojiPair={sadFaces} />
+
+      <ShareBtn
+        shareInfo={{
+          title: props.title,
+          url: props.url,
+        }}
+      />
     </div>
   );
 };
