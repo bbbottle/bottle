@@ -1,10 +1,12 @@
 import React from "react";
 import { Watch } from "@/components/Pochacco/watch";
 import { Idle } from "@/components/Pochacco/idle";
+import { Crows } from "./xwy";
 
 export enum PochaccoPose {
   Idle = "idle",
   Watching = "watching",
+  Crows = "crows",
 }
 
 export type PochaccoProps = {
@@ -17,6 +19,10 @@ export const Pochacco = (props: PochaccoProps) => {
 
   if (pose === PochaccoPose.Watching) {
     return <Watch {...props} />;
+  }
+
+  if (pose === PochaccoPose.Crows) {
+    return <Crows />;
   }
 
   return <Idle {...props} />;

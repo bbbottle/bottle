@@ -21,11 +21,11 @@ import { BBContext } from "@/context/bbcontext";
 import { useClipboardToPost } from "@/hooks/use_clipboard_to_post";
 import { useSharedStringToPost } from "@/hooks/use_shared_string_to_post";
 import { ThreeColLayout, ErrorBoundary } from "@bbki.ng/components";
+import { useDynamicLogo } from "./hooks/use_dynamic_logo";
 
 const Layout = () => {
-  const { isLoading, isFontLoading } = useContext(GlobalLoadingContext);
-  const role = useRole();
-  const isQueen = role === Role.QUEEN;
+  const { isLoading } = useContext(GlobalLoadingContext);
+  const logo = useDynamicLogo();
   return (
     <Page
       nav={
@@ -34,9 +34,7 @@ const Layout = () => {
             paths={usePaths()}
             className="gradient-blur-cover select-none"
             loading={isLoading}
-            customLogo={
-              isQueen ? <Pochacco pose={PochaccoPose.Watching} /> : null
-            }
+            customLogo={logo}
           />
         </AppCtxMenu>
       }
