@@ -4,6 +4,7 @@ import { ROUTES } from "@/constants";
 import classNames from "classnames";
 import { Reaction } from "../reaction/oh_reaction";
 import { useNavigate } from "react-router-dom";
+import { ShareBtn } from "../share/share-btn";
 
 export type ArticlePageProps = {
   tags?: string[];
@@ -43,7 +44,7 @@ export const ArticlePage = (props: ArticlePageProps) => {
         <article className={articleCls}>{props.children}</article>
         <div className="relative left-[-4px]">
           {allTags.length ? <Tags tags={allTags} className="mb-32" /> : null}
-          <Reaction title={title} />
+          <Reaction title={title} url={window.location.href} />
         </div>
       </Article>
       <div className="">

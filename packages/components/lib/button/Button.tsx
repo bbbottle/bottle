@@ -7,6 +7,7 @@ export enum ButtonType {
   PRIMARY = "primary",
   NORMAL = "normal",
   DISABLED = "disabled",
+  GHOST = "ghost",
 }
 
 export interface ButtonProps {
@@ -18,18 +19,19 @@ export interface ButtonProps {
 }
 
 export function Button(props: ButtonProps) {
-  const typeClsMap = {
+  const typeClsMap: Record<ButtonType, string> = {
     [ButtonType.DANGER]: "text-red-500",
     [ButtonType.PRIMARY]: "text-blue-600",
     [ButtonType.DISABLED]: "text-gray-400 cursor-not-allowed",
     [ButtonType.NORMAL]: "text-black",
+    [ButtonType.GHOST]: "text-black bg-transparent",
   };
 
   const [pressed, setPressed] = React.useState(false);
 
   const { type = ButtonType.NORMAL, className = "", onClick, btnType } = props;
   const shadowTransCls =
-    type === ButtonType.DISABLED
+    type === ButtonType.DISABLED || type === ButtonType.GHOST
       ? ""
       : classNames(
           "transition-all duration-200 ease-in-out shadow-button active:shadow-empty",
