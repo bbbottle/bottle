@@ -42,7 +42,7 @@ export const ArticlePage = (props: ArticlePageProps) => {
         loading={false}
       >
         <article className={articleCls}>{props.children}</article>
-        <div className="relative left-[-4px]">
+        <div className="relative -left-8">
           {allTags.length ? <Tags tags={allTags} className="mb-32" /> : null}
           <Reaction title={title} url={window.location.href} />
         </div>

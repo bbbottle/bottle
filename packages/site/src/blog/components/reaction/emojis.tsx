@@ -15,7 +15,6 @@ const heart = (
     height={HEART_SIZE}
     width={HEART_SIZE}
     stroke-linejoin="round"
-    className="text-gray-400 hover:text-red-400 transition-colors ease-in duration-200"
     viewBox="0 0 16 16"
   >
     <path
@@ -49,7 +48,6 @@ const happyFace = (
     stroke-linejoin="round"
     height={HEART_SIZE}
     width={HEART_SIZE}
-    className="text-gray-400 hover:text-gray-600 transition-colors ease-in duration-200"
     viewBox="0 0 16 16"
   >
     <path
@@ -92,7 +90,6 @@ const unhappyFace = (
     viewBox="0 0 16 16"
     height={HEART_SIZE}
     width={HEART_SIZE}
-    className="text-gray-400 hover:text-gray-600 transition-colors ease-in duration-200"
   >
     <path
       fill-rule="evenodd"

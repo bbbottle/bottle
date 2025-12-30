@@ -6,9 +6,10 @@ import React, {
   useState,
 } from "react";
 import { GlobalLoadingContext } from "@/context/global_loading_state_provider";
-import { BlinkDot } from "@bbki.ng/components";
+import { BlinkDot, Button, ButtonType } from "@bbki.ng/components";
 import { faces, hearts, ReactionEmojiPair, sadFaces } from "./emojis";
 import { ShareBtn } from "../share/share-btn";
+import { CommentBtn } from "../comment/comment-btn";
 
 declare global {
   namespace JSX {
@@ -71,25 +72,25 @@ export const OpenHeartReaction = (props: {
 
   return (
     <open-heart
-      style={{
-        display: "inline-flex",
-        padding: 4,
-        marginRight: "4px",
-        position: "relative",
-      }}
       ref={ohRef}
       href={`https://oh.bbki.ng/?id=${title}`}
       emoji={emojiPair.val}
-      onClick={handleHeartClick}
     >
-      {sent || pressed() ? emojiPair.on : emojiPair.off}
+      <Button
+        size="small"
+        type={ButtonType.GHOST}
+        className="text-gray-400 hover:text-gray-600 transition-colors ease-in duration-200"
+        onClick={handleHeartClick}
+      >
+        {sent || pressed() ? emojiPair.on : emojiPair.off}
+      </Button>
     </open-heart>
   );
 };
 
 export const Reaction = (props: { title: string; url: string }) => {
   return (
-    <div>
+    <div className="flex items-center">
       <OpenHeartReaction title={props.title} emojiPair={hearts} />
       <OpenHeartReaction title={props.title} emojiPair={faces} />
       <OpenHeartReaction title={props.title} emojiPair={sadFaces} />
@@ -100,6 +101,8 @@ export const Reaction = (props: { title: string; url: string }) => {
           url: props.url,
         }}
       />
+
+      {/*<CommentBtn />*/}
     </div>
   );
 };

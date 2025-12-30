@@ -16,6 +16,7 @@ export interface ButtonProps {
   type?: ButtonType;
   onClick: EventHandler<React.MouseEvent<HTMLButtonElement>>;
   btnType?: "submit" | "reset" | "button";
+  size?: "small" | "medium" | "large";
 }
 
 export function Button(props: ButtonProps) {
@@ -29,7 +30,13 @@ export function Button(props: ButtonProps) {
 
   const [pressed, setPressed] = React.useState(false);
 
-  const { type = ButtonType.NORMAL, className = "", onClick, btnType } = props;
+  const {
+    type = ButtonType.NORMAL,
+    className = "",
+    onClick,
+    btnType,
+    size = "medium",
+  } = props;
   const shadowTransCls =
     type === ButtonType.DISABLED || type === ButtonType.GHOST
       ? ""
@@ -54,9 +61,14 @@ export function Button(props: ButtonProps) {
     }, 280);
   };
 
+  const paddingCls = classNames({
+    "py-8 px-8": size === "small",
+    "py-8 px-16": size === "medium" || size === "large",
+  });
+
   return (
     <button
-      className={`${typeClsMap[type]} ${className} ${shadowTransCls} py-8 px-16 transition-all duration-200 ease-in-out`}
+      className={`${typeClsMap[type]} ${className} ${shadowTransCls} ${paddingCls} transition-all duration-200 ease-in-out`}
       onClick={handleClick}
       type={btnType}
     >
