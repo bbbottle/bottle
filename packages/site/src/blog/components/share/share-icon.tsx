@@ -7,7 +7,6 @@ export const ShareIcon = () => (
     stroke-linejoin="round"
     // style="color:currentColor"
     viewBox="0 0 16 16"
-    className="text-gray-400 hover:text-gray-600 transition-colors ease-in duration-200"
     width="12"
   >
     <path

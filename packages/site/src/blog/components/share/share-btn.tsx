@@ -19,7 +19,12 @@ export const ShareBtn = ({ shareInfo }: { shareInfo: ShareData }) => {
   };
 
   return (
-    <Button type={ButtonType.GHOST} onClick={handleShare}>
+    <Button
+      size="small"
+      className="text-gray-400 hover:text-gray-600 transition-colors ease-in duration-200"
+      type={ButtonType.GHOST}
+      onClick={handleShare}
+    >
       <ShareIcon />
     </Button>
   );

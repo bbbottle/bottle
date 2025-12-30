@@ -25,8 +25,6 @@ export { CornerPromptBox } from "./corner_prompt_box";
 
 export { Tags } from "./tags";
 
-export { Comment } from "./comment";
-
 export { MySuspense } from "./my_suspense";
 
 export const CenterLinkList = (props: any) => {
