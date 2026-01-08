@@ -28,6 +28,17 @@
       "database_id": "e938a347-b3be-4d60-9217-52f209ab7bb4",
     },
   ],
+  // Add this to your wrangler.jsonc
+  "kv_namespaces": [
+    {
+      "binding": "KV",
+      "id": "91dd9f607aae46e5829080d1c2aa3baa",
+
+      // Optional: preview_id used when running `wrangler dev` for local dev
+      "preview_id": "BBKING_KV_NAMESPACE_PREVIEW_ID",
+    },
+  ],
+  "compatibility_flags": ["nodejs_compat"],
   // "ai": {
   //   "binding": "AI"
   // },
