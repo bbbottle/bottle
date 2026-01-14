@@ -42,6 +42,10 @@ jobs:
         with:
           GITHUB_TOKEN: ${{ secrets.GH_PAT }}
 
+      - name: Build site
+        if: ${{ steps.changesets.outputs.createPrOnly != 'true' }}
+        run: pnpm turbo run build --filter @bbki.ng/site
+
       # deploy site
       - name: Deploy to Cloudflare Pages
         if: ${{ steps.changesets.outputs.createPrOnly != 'true' }}
