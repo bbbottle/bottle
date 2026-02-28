@@ -9,7 +9,6 @@ packages/
 ├── site/           # @bbki.ng/site - Main blog website (React + Vite + TypeScript)
 ├── components/     # @bbki.ng/components - React component library
 ├── backend/        # @bbki.ng/backend - Cloudflare Workers API (Hono + WebAuthn)
-├── tiny-garden/    # @bbki.ng/tiny-garden - Phaser.js game
 ├── stylebase/      # @bbki.ng/stylebase - TailwindCSS v4 configuration
 ├── eslint-config/  # @bbki.ng/eslint-config - ESLint configuration
 └── config/         # @bbki.ng/config - Shared configuration placeholder
@@ -24,7 +23,6 @@ packages/
 - **Backend**: Hono framework on Cloudflare Workers
 - **Database**: Cloudflare D1 (SQLite)
 - **Authentication**: WebAuthn/Passkeys via @simplewebauthn/server
-- **Game Engine**: Phaser 3 with bitecs (ECS)
 - **Versioning**: Changesets for automated versioning and publishing
 - **CI/CD**: GitHub Actions
 - **Code Quality**: Prettier, ESLint, Husky pre-commit hooks
@@ -67,10 +65,6 @@ cd packages/components
 pnpm dev      # Start Vite dev server
 pnpm build    # Build library
 
-# Tiny Garden game
-cd packages/tiny-garden
-pnpm dev      # Start dev server
-pnpm build    # Build production bundle
 ```
 
 ## Code Organization
@@ -119,14 +113,6 @@ Features:
 - WebAuthn registration and verification
 - Comment system with D1 database
 - KV storage for challenge tokens
-
-### Tiny Garden Package (@bbki.ng/tiny-garden)
-
-Phaser.js game built with React:
-
-- `src/game/core/` - Phaser scenes and game logic
-- `src/game/ecs/` - Entity Component System using bitecs
-- `src/app/` - React UI layer
 
 ### Stylebase Package (@bbki.ng/stylebase)
 
