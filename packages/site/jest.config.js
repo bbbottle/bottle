@@ -8,7 +8,7 @@ const config = {
     "!**/vendor/**",
   ],
   moduleNameMapper: {
-    "@/(.*)$": "<rootDir>/src/$1",
+    "@/(.*)$": "<rootDir>/src/blog/$1",
   },
 };
 
