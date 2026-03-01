@@ -1,6 +1,6 @@
 {
   "name": "@bbki.ng/eslint-config",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "ESLint configuration for bbki.ng projects",
   "main": "dist/define-config.js",
   "types": "dist/define-config.d.ts",
