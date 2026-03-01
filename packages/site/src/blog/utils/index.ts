@@ -1,6 +1,6 @@
 import { Photo } from "@/types/photo";
 import { ossProcessType } from "@/types/oss";
-import { API_ENDPOINT, OSS_ADDRESS } from "@/constants/routes";
+import { API_CF_ENDPOINT, API_ENDPOINT, OSS_ADDRESS } from "@/constants/routes";
 import { DEFAULT_DELAY } from "@/constants";
 import useSWR from "swr";
 import { toast } from "sonner";
@@ -106,6 +106,8 @@ export const withBBApi =
     fetcher(`${apiEndPoint}/${resource}`, { ...init, mode: "cors" });
 
 export const apiFetcher = withBBApi(baseFetcher)(API_ENDPOINT);
+
+export const cfApiFetcher = withBBApi(baseFetcher)(API_CF_ENDPOINT);
 
 export const getImageFileSize = (
   file: File

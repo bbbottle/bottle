@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import { Outlet, Route, Routes } from "react-router-dom";
 import { Nav, NotFound, Page } from "@bbki.ng/components";
 import { HotKeyNav } from "./components";
-import { Cover } from "./pages";
+import { Cover, Streaming } from "./pages";
 
 import ArticlePage from "@/pages/extensions/txt/article";
 import Tags from "@/pages/tags";
@@ -76,6 +76,7 @@ export const App = () => {
 
               <Route path="bot" element={<BotRedirect />} />
               <Route path="login" element={<Login />} />
+              <Route path="streaming" element={<Streaming />} />
             </Route>
             <Route path="*" element={<NotFound />} />
           </Routes>

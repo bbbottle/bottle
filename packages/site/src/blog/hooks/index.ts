@@ -13,3 +13,6 @@ export {
 
 export const useMovies = buildSimpleApiHooks(API.MOVIES, "movies");
 export const useBooks = buildSimpleApiHooks(API.BOOKS, "books");
+
+export { useStreaming } from "./use_streaming";
+export type { StreamingItem } from "./use_streaming";

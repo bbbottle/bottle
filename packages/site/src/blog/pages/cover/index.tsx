@@ -14,13 +14,13 @@ export const Cover = (props: { className?: string }) => {
         spaceBetween
         className="select-none"
         links={[
-          // {
-          //   to: "/projects",
-          //   name: "cd ./projects",
-          // },
           {
             to: "/blog",
             name: "cd ./blog",
+          },
+          {
+            to: "/streaming",
+            name: "cd ./streaming",
           },
           ...pluginEntry,
         ]}
