@@ -1,6 +1,7 @@
 import React, { useEffect, useRef } from "react";
 import { useStreaming, StreamingItem } from "@/hooks/use_streaming";
 import { formatStreamingData } from "@/utils/streaming";
+import { Article } from "@bbki.ng/components";
 
 // Extend JSX IntrinsicElements for the web component
 declare global {
@@ -43,13 +44,23 @@ const Streaming = () => {
   const formattedData = formatStreamingData(streaming || []);
 
   return (
+
     <div className="h-full w-full p-4">
-      <bb-msg-history
-        ref={bbMsgHistoryRef}
-        style={{ height: "calc(100vh - 200px)", display: "block" }}
+      <Article
+        title=""
+        className="mb-128"
+        loading={false}
       >
-        {formattedData}
-      </bb-msg-history>
+        <article>
+          <bb-msg-history
+            ref={bbMsgHistoryRef}
+            // set maxHeight to 80vh to prevent overflow
+            // style={{ "--bb-max-height": "80vh" } as React.CSSProperties}
+          >
+            {formattedData}
+          </bb-msg-history>
+        </article>
+      </Article>
     </div>
   );
 };

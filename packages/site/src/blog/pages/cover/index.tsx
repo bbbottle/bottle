@@ -11,7 +11,6 @@ export const Cover = (props: { className?: string }) => {
   return (
     <>
       <CenterLinkList
-        spaceBetween
         className="select-none"
         links={[
           {
@@ -25,7 +24,7 @@ export const Cover = (props: { className?: string }) => {
           ...pluginEntry,
         ]}
         title=""
-        footer={<Version className="" />}
+        // footer={<Version className="" />}
       />
     </>
   );
