@@ -11,21 +11,20 @@ export const Cover = (props: { className?: string }) => {
   return (
     <>
       <CenterLinkList
-        spaceBetween
         className="select-none"
         links={[
-          // {
-          //   to: "/projects",
-          //   name: "cd ./projects",
-          // },
           {
             to: "/blog",
             name: "cd ./blog",
           },
+          {
+            to: "/streaming",
+            name: "cd ./streaming",
+          },
           ...pluginEntry,
         ]}
         title=""
-        footer={<Version className="" />}
+        // footer={<Version className="" />}
       />
     </>
   );

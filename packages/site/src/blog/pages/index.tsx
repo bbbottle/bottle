@@ -12,3 +12,4 @@ const NowPage = () => {
 
 export { Cover } from "./cover";
 export { NowPage };
+export { default as Streaming } from "./streaming";
