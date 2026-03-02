@@ -18,8 +18,8 @@ export const Cover = (props: { className?: string }) => {
             name: "cd ./blog",
           },
           {
-            to: "/streaming",
-            name: "cd ./streaming",
+            to: "/stream",
+            name: "cd ./stream",
           },
           ...pluginEntry,
         ]}
