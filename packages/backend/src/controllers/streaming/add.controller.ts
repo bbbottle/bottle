@@ -4,11 +4,11 @@ import { HTTPException } from "hono/http-exception";
 interface AddStreamingRequest {
   author?: string;
   content: string;
-  type?: 'note' | 'article' | 'link' | 'image';
+  type?: 'note' | 'article' | 'link' | 'image' | 'ci';
 }
 
 const MAX_CONTENT_LENGTH = 50000;
-const ALLOWED_TYPES = ['note', 'article', 'link', 'image'] as const;
+const ALLOWED_TYPES = ['note', 'article', 'link', 'image', 'ci'] as const;
 
 const timingSafeEqual = (a: string, b: string): boolean => {
   if (a.length !== b.length) return false;
