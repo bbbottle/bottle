@@ -107,6 +107,20 @@ export async function createStream(
   return response.json() as Promise<{ data: Stream }>;
 }
 
+export async function removeStream(apiKey: string, id: string): Promise<void> {
+  const response = await fetch(`${API_CF_ENDPOINT}/streaming/${id}`, {
+    method: "DELETE",
+    headers: {
+      "x-api-key": apiKey,
+    },
+  });
+
+  if (!response.ok) {
+    const error = await response.text();
+    throw new Error(`Failed to remove stream: ${error}`);
+  }
+}
+
 export async function validateApiKey(apiKey: string): Promise<boolean> {
   try {
     const response = await fetch(`${API_CF_ENDPOINT}/streaming`, {
