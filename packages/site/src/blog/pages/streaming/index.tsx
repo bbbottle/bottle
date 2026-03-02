@@ -10,7 +10,9 @@ declare global {
       "bb-msg-history": React.DetailedHTMLProps<
         React.HTMLAttributes<HTMLElement>,
         HTMLElement
-      >;
+      > & {
+        loading?: boolean;
+      };
     }
   }
 }
@@ -19,11 +21,16 @@ const Streaming = () => {
   const { streaming, isLoading, isError } = useStreaming();
   const bbMsgHistoryRef = useRef<HTMLElement>(null);
 
+
   if (isError) {
     return <div className="p-8 text-center text-gray-500">加载失败</div>;
   }
 
   const formattedData = formatStreamingData(streaming || []);
+
+  if (isLoading) {
+    return null;
+  }
 
   return (
 
