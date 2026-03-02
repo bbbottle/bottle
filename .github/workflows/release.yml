@@ -54,3 +54,17 @@ jobs:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
           command: pages deploy packages/site/dist --project-name=index
+
+      # send stream message
+      - name: Add deployment to stream
+        if: ${{ steps.changesets.outputs.createPrOnly != 'true' }}
+        run: |
+          pnpm --filter @bbki.ng/cli build
+          node packages/cli/dist/cli.js stream add \
+            --content "$(echo '${{ github.sha }}' | cut -c1-7)" \
+            --type ci \
+            --author "GitHub" \
+            --api-key "$STREAM_API_KEY"
+        shell: bash
+        env:
+          STREAM_API_KEY: ${{ env.STREAM_API_KEY }}
