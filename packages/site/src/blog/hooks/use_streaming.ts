@@ -18,7 +18,8 @@ export type StreamingItem = {
 
 export const useStreaming = () => {
   const { data, error } = useSWR("streaming", streamingFetcher, {
-    revalidateOnFocus: false,
+    revalidateOnFocus: true,
+    refreshInterval: 1000,
   });
 
   return {
