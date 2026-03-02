@@ -1,8 +1,6 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { useStreaming, StreamingItem } from "@/hooks/use_streaming";
 import { formatStreamingData } from "@/utils/streaming";
-import { Article } from "@bbki.ng/components";
-import { GitHubAvatar } from "@/constants/stream_avatar";
 
 // Extend JSX IntrinsicElements for the web component
 declare global {
@@ -26,12 +24,6 @@ const Streaming = () => {
   const { streaming, isLoading, isError } = useStreaming();
   const bbMsgHistoryRef = useRef<BbMsgHistoryElement>(null);
 
-  useEffect(() => {
-    if (bbMsgHistoryRef.current) {
-      bbMsgHistoryRef.current.setAuthor('GitHub', { avatar: GitHubAvatar, side: 'left', bubbleColor: '#f5f5f5' });
-    }
-  }, [])
-
   if (isError) {
     return <div className="p-8 text-center text-gray-500">加载失败</div>;
   }
@@ -43,7 +35,6 @@ const Streaming = () => {
   }
 
   return (
-
     <div className="h-full w-full p-4">
       <bb-msg-history
         ref={bbMsgHistoryRef}
