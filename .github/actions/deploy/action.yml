@@ -22,7 +22,7 @@ runs:
       shell: bash
     - name: send files to server
       uses: easingthemes/ssh-deploy@main
-      env:
+      with:
         SSH_PRIVATE_KEY: ${{ env.SERVER_SSH_KEY }}
         SOURCE: ${{ inputs.source }}
         REMOTE_HOST: ${{ env.REMOTE_HOST }}
