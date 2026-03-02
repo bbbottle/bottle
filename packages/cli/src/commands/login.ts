@@ -4,7 +4,7 @@ import inquirer from "inquirer";
 import { saveConfig } from "../config/index.js";
 
 export async function login(): Promise<void> {
-  console.log(chalk.bold("\n🍾 bbking Login\n"));
+  console.log(chalk.bold("\nbbking Login\n"));
 
   console.log(chalk.cyan("To login, you need a Supabase access token.\n"));
   console.log(chalk.gray("Method 1: From browser (easiest)"));

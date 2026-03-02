@@ -23,7 +23,7 @@ export const addStreaming = async (c: Context) => {
   try {
     // 1. 认证（Header 方式）
     const apiKey = c.req.header('x-api-key');
-    if (!apiKey || !timingSafeEqual(apiKey, c.env.API_KEY)) {
+    if (!apiKey || !timingSafeEqual(apiKey, c.env.STREAM_API_KEY)) {
       throw new HTTPException(401, { message: "Invalid API key" });
     }
 
