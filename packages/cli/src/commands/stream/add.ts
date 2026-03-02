@@ -93,7 +93,7 @@ export async function add(options: AddOptions): Promise<void> {
           type: "input",
           name: "author",
           message: "Author name:",
-          default: "bbking",
+          default: "bbki.ng",
         },
       ]);
       author = answer.author;

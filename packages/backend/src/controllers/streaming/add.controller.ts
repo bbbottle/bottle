@@ -21,9 +21,16 @@ const timingSafeEqual = (a: string, b: string): boolean => {
 
 export const addStreaming = async (c: Context) => {
   try {
+    // 0. 环境检查
+    const streamApiKey = c.env?.STREAM_API_KEY;
+    if (!streamApiKey) {
+      console.error('STREAM_API_KEY not configured in environment');
+      throw new HTTPException(500, { message: "Server configuration error" });
+    }
+
     // 1. 认证（Header 方式）
     const apiKey = c.req.header('x-api-key');
-    if (!apiKey || !timingSafeEqual(apiKey, c.env.STREAM_API_KEY)) {
+    if (!apiKey || !timingSafeEqual(apiKey, streamApiKey)) {
       throw new HTTPException(401, { message: "Invalid API key" });
     }
 
