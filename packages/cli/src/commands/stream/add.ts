@@ -8,6 +8,7 @@ interface AddOptions {
   content?: string;
   type?: string;
   author?: string;
+  apiKey?: string;
 }
 
 const VALID_TYPES = ["note", "article", "link", "image"];
@@ -18,8 +19,8 @@ export async function add(options: AddOptions): Promise<void> {
   try {
     let config = await getConfig();
 
-    // Check/prompt for API key
-    let apiKey: string | undefined = config.apiKey;
+    // Check/prompt for API key (priority: CLI option > config > interactive prompt)
+    let apiKey: string | undefined = options.apiKey || config.apiKey;
     if (!apiKey) {
       spinner.stop();
       console.log(chalk.yellow("API key required for streaming API.\n"));
@@ -48,6 +49,18 @@ export async function add(options: AddOptions): Promise<void> {
       // Save the API key
       await saveConfig({ ...config, apiKey });
       spinner.succeed(chalk.green("API key saved."));
+      spinner.start("Creating stream...");
+    } else if (options.apiKey) {
+      // API key provided via CLI option - validate but don't save to config
+      spinner.start("Validating API key...");
+      const isValid = await validateApiKey(apiKey);
+
+      if (!isValid) {
+        spinner.fail(chalk.red("Invalid API key. Please check and try again."));
+        process.exit(1);
+      }
+
+      spinner.succeed(chalk.green("API key validated."));
       spinner.start("Creating stream...");
     }
 

@@ -6,6 +6,7 @@ import { fetchStreams, removeStream } from "../../utils/api.js";
 
 interface RemoveOptions {
   force?: boolean;
+  apiKey?: string;
 }
 
 export async function remove(id: string, options: RemoveOptions): Promise<void> {
@@ -14,10 +15,10 @@ export async function remove(id: string, options: RemoveOptions): Promise<void> 
   try {
     const config = await getConfig();
 
-    // Check for API key
-    const apiKey = config.apiKey;
+    // Check for API key (priority: CLI option > config)
+    const apiKey = options.apiKey || config.apiKey;
     if (!apiKey) {
-      spinner.fail(chalk.red("API key required. Please run 'bbking stream add' first to configure your API key."));
+      spinner.fail(chalk.red("API key required. Provide it with --api-key option or run 'bbking login' to configure your API key."));
       process.exit(1);
     }
 
