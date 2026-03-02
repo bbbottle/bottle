@@ -63,12 +63,14 @@ streamCmd
   .option("--content <content>", "Stream content")
   .option("--type <type>", "Stream type (note/article/link/image)")
   .option("--author <author>", "Author name")
+  .option("--api-key <key>", "API key for authentication")
   .action(addStream);
 
 streamCmd
   .command("rm <id>")
   .description("Remove a stream entry by ID")
   .option("--force", "Skip confirmation")
+  .option("--api-key <key>", "API key for authentication")
   .action(removeStream);
 
 // Help command
