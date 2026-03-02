@@ -11,7 +11,7 @@ interface AddOptions {
   apiKey?: string;
 }
 
-const VALID_TYPES = ["note", "article", "link", "image"];
+const VALID_TYPES = ["note", "article", "link", "image", "ci"];
 
 export async function add(options: AddOptions): Promise<void> {
   const spinner = ora("Checking configuration...").start();
