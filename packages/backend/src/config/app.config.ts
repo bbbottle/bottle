@@ -4,6 +4,7 @@ import { cors } from "hono/cors";
 
 type Bindings = {
   DB: D1Database;
+  API_KEY: string;
 };
 
 const app = new Hono<{ Bindings: Bindings }>();
