@@ -1,7 +1,7 @@
 import useSWR from "swr";
 import { baseFetcher, withBBApi } from "@/utils";
 import { API_CF_ENDPOINT } from "@/constants/routes";
-import { useContext, useEffect } from "react";
+import { useContext, useEffect, useState } from "react";
 import { GlobalLoadingContext } from "@/context/global_loading_state_provider";
 
 // In dev, use /api prefix to leverage Vite proxy to localhost:8787
@@ -25,6 +25,15 @@ export const useStreaming = () => {
   });
 
   const isLoading = !data && !error;
+
+  const [_, forceUpdate] = useState(0);
+
+  // make rerender when customElement defined
+  useEffect(() => {
+    customElements.whenDefined("bb-msg-history").then(() => {
+      forceUpdate((prev) => prev + 1);
+    });
+  }, [])
 
   const { setIsLoading } = useContext(GlobalLoadingContext);
 
