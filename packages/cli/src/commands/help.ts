@@ -6,7 +6,7 @@ export async function help(): Promise<void> {
   const isLoggedIn = isTokenValid(config);
   const hasApiKey = !!config.apiKey;
 
-  console.log(chalk.bold("\n🍾 bbking CLI\n"));
+  console.log(chalk.bold("\nbbking CLI\n"));
   console.log(chalk.gray("A CLI for managing bbki.ng content\n"));
 
   console.log(chalk.bold("AUTHENTICATION:"));
