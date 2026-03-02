@@ -62,7 +62,7 @@ jobs:
           pnpm --filter @bbki.ng/cli build
           node packages/cli/dist/cli.js stream add \
             --content "$(echo '${{ github.sha }}' | cut -c1-7)" \
-            --type ci \
+            --type "ci" \
             --author "GitHub" \
             --api-key "$STREAM_API_KEY"
         shell: bash
