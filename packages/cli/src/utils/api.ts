@@ -89,7 +89,7 @@ export async function createStream(
   content: string,
   type: string,
   author: string
-): Promise<Stream> {
+): Promise<{ data: Stream }> {
   const response = await fetch(`${API_CF_ENDPOINT}/streaming`, {
     method: "POST",
     headers: {
@@ -104,7 +104,7 @@ export async function createStream(
     throw new Error(`Failed to create stream: ${error}`);
   }
 
-  return response.json() as Promise<Stream>;
+  return response.json() as Promise<{ data: Stream }>;
 }
 
 export async function validateApiKey(apiKey: string): Promise<boolean> {

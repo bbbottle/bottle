@@ -100,7 +100,9 @@ export async function add(options: AddOptions): Promise<void> {
       spinner.start("Creating stream...");
     }
 
-    const stream = await createStream(apiKey!, content!, type!, author!);
+    const result = await createStream(apiKey!, content!, type!, author!);
+
+    const stream = result?.data || {}; 
 
     spinner.succeed(chalk.green("Stream created successfully!"));
     console.log(chalk.gray(`ID: ${stream.id}`));
