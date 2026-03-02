@@ -47,6 +47,11 @@ export async function help(): Promise<void> {
   console.log(chalk.gray("      --type <type>        Stream type (note/article/link/image)"));
   console.log(chalk.gray("      --author <author>    Author name"));
 
+  console.log(chalk.cyan("\n  bbking stream rm <id> [options]"));
+  console.log("    Remove a stream entry by ID");
+  console.log(chalk.gray("    Options:"));
+  console.log(chalk.gray("      --force   Skip confirmation"));
+
   console.log(chalk.cyan("\n  bbking help"));
   console.log("    Show this help message\n");
 
@@ -56,5 +61,6 @@ export async function help(): Promise<void> {
   console.log(chalk.gray('  bbking post add --title "Hello" --content "World"'));
   console.log(chalk.gray('  bbking post remove "Hello" --force'));
   console.log(chalk.gray("  bbking stream list --limit 10"));
-  console.log(chalk.gray('  bbking stream add --content "Hello world" --type note\n'));
+  console.log(chalk.gray('  bbking stream add --content "Hello world" --type note'));
+  console.log(chalk.gray("  bbking stream rm abc-123 --force\n"));
 }

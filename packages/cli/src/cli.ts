@@ -7,6 +7,7 @@ import { list as listPosts } from "./commands/post/list.js";
 import { remove as removePost } from "./commands/post/remove.js";
 import { add as addStream } from "./commands/stream/add.js";
 import { list as listStreams } from "./commands/stream/list.js";
+import { remove as removeStream } from "./commands/stream/remove.js";
 import { help } from "./commands/help.js";
 
 program
@@ -63,6 +64,12 @@ streamCmd
   .option("--type <type>", "Stream type (note/article/link/image)")
   .option("--author <author>", "Author name")
   .action(addStream);
+
+streamCmd
+  .command("rm <id>")
+  .description("Remove a stream entry by ID")
+  .option("--force", "Skip confirmation")
+  .action(removeStream);
 
 // Help command
 program
