@@ -37,6 +37,7 @@ const Streaming = () => {
   return (
     <div className="h-full w-full p-4">
       <bb-msg-history
+        hide-scroll-bar
         ref={bbMsgHistoryRef}
         style={{ "height": "100%" }}
       >
