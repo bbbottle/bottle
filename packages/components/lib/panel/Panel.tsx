@@ -17,7 +17,7 @@ export const Panel = (props: PanelProps) => {
     <div
       className={`transition-all ease-in-out duration-900 ${className} ${
         show ? "shadow-panel" : "shadow-empty"
-      } p-32`}
+      } p-8`}
     >
       {children}
     </div>

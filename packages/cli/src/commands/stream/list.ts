@@ -43,6 +43,7 @@ export async function list(options: ListOptions): Promise<void> {
       console.log(`${chalk.cyan(`${index + 1}.`)} ${chalk[typeColor](`[${stream.type}]`)}`);
       console.log(`   ${stream.content}`);
       console.log(`   ${chalk.gray(`By: ${stream.author} | ${date}`)}`);
+      console.log(`   ${chalk.gray(`ID: ${stream.id}`)}`);
       console.log();
     });
   } catch (error) {
