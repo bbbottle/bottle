@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import { useStreaming, StreamingItem } from "@/hooks/use_streaming";
 import { formatStreamingData } from "@/utils/streaming";
+import { Article, Panel } from "@bbki.ng/components";
 
 // Extend JSX IntrinsicElements for the web component
 declare global {
@@ -11,6 +12,7 @@ declare global {
         BbMsgHistoryElement
       > & {
         loading?: boolean;
+        infinite?: boolean;
       };
     }
   }
@@ -29,11 +31,11 @@ const Streaming = () => {
     if (!$blog) return;
 
     // disable scroll
-    $blog.style.overflow = "hidden";
+    // $blog.style.overflow = "hidden";
 
-    return () => {
-      $blog.style.overflow = "auto";
-    }
+    // return () => {
+    //   $blog.style.overflow = "auto";
+    // }
   }, [])
 
   if (isError) {
@@ -47,15 +49,18 @@ const Streaming = () => {
   }
 
   return (
-    <div className="h-full w-full p-4">
-      <bb-msg-history
-        hide-scroll-bar
-        ref={bbMsgHistoryRef}
-        style={{ "height": "100%" }}
-      >
-        {formattedData}
-      </bb-msg-history>
-    </div>
+    <Article title="直播">
+      <Panel className="!p-[10px]">
+        <bb-msg-history
+          // infinite
+          hide-scroll-bar
+          ref={bbMsgHistoryRef}
+          style={{ height: "100%", "--bb-max-height": "200px" } as React.CSSProperties}
+        >
+          {formattedData}
+        </bb-msg-history>
+      </Panel>
+    </Article>
   );
 };
 
