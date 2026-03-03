@@ -24,6 +24,18 @@ const Streaming = () => {
   const { streaming, isLoading, isError } = useStreaming();
   const bbMsgHistoryRef = useRef<BbMsgHistoryElement>(null);
 
+  useEffect(() => {
+    const $blog = document.querySelector("#blog") as HTMLDivElement | null;
+    if (!$blog) return;
+
+    // disable scroll
+    $blog.style.overflow = "hidden";
+
+    return () => {
+      $blog.style.overflow = "auto";
+    }
+  }, [])
+
   if (isError) {
     return <div className="p-8 text-center text-gray-500">加载失败</div>;
   }
