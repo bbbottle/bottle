@@ -1,9 +1,6 @@
 import React from "react";
 import { LinkList } from "@bbki.ng/components";
 import { BlurCover } from "@bbki.ng/components";
-import { DelayFadeIn } from "@/components/DelayFadeIn/DelayFadeIn";
-
-export { DisabledText, SmallDisabledText } from "./disabled_text";
 
 export { ImgList } from "./img_list";
 
@@ -20,8 +17,6 @@ export { BlurCover } from "./blur_cover";
 export { ReloadPrompt } from "./reload_prompt";
 
 export { Stickers } from "./stickers";
-
-export { CornerPromptBox } from "./corner_prompt_box";
 
 export { Tags } from "./tags";
 

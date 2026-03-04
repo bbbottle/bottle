@@ -44,22 +44,24 @@ const Streaming = () => {
 
   const formattedData = formatStreamingData(streaming || []);
 
-  if (isLoading) {
-    return null;
-  }
+  // if (isLoading) {
+  //   return null;
+  // }
 
   return (
-    <Article title="直播">
-      <Panel className="!p-[10px]">
-        <bb-msg-history
-          // infinite
-          hide-scroll-bar
-          ref={bbMsgHistoryRef}
-          style={{ height: "100%", "--bb-max-height": "200px" } as React.CSSProperties}
-        >
-          {formattedData}
-        </bb-msg-history>
-      </Panel>
+    <Article title="直播" loading={isLoading}>
+      {isLoading ? null : (
+        <Panel className="!p-[10px]">
+          <bb-msg-history
+            // infinite
+            hide-scroll-bar
+            ref={bbMsgHistoryRef}
+            style={{ height: "100%", "--bb-max-height": "200px" } as React.CSSProperties}
+          >
+            {formattedData}
+          </bb-msg-history>
+        </Panel>
+      )}
     </Article>
   );
 };

@@ -4,7 +4,8 @@ import { useVideoControls, useVideoEleHeight, useVideoProgress } from "@/hooks";
 import { BlurCover, ProgressBar } from "@/components";
 import { BgColors, TextColors } from "@/types/color";
 import { AspectRatioBox } from "@/components/aspect_ratio_box";
-import { VIDEO_TAG_ASPECT_RATIO } from "@/constants";
+
+const VIDEO_TAG_ASPECT_RATIO = 0.5624910522548318;
 
 type videoPlayProps = {
   src: string;

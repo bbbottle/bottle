@@ -14,8 +14,6 @@ import { Login } from "@/pages/login";
 import { SWR } from "@/swr";
 import { GlobalLoadingContext } from "@/context/global_loading_state_provider";
 import { AppCtxMenu } from "@/components/app_ctx_menu";
-import { Pochacco, PochaccoPose } from "@/components/Pochacco/Pochacco";
-import { Role, useRole } from "@/hooks/use_role";
 import { BotRedirect } from "@/pages/bot";
 import { BBContext } from "@/context/bbcontext";
 import { useClipboardToPost } from "@/hooks/use_clipboard_to_post";
