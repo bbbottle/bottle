@@ -9,7 +9,6 @@ import { GlobalLoadingContext } from "@/context/global_loading_state_provider";
 import { BlinkDot, Button, ButtonType } from "@bbki.ng/components";
 import { faces, hearts, ReactionEmojiPair, sadFaces } from "./emojis";
 import { ShareBtn } from "../share/share-btn";
-import { CommentBtn } from "../comment/comment-btn";
 
 declare global {
   namespace JSX {
@@ -101,8 +100,6 @@ export const Reaction = (props: { title: string; url: string }) => {
           url: props.url,
         }}
       />
-
-      {/*<CommentBtn />*/}
     </div>
   );
 };
