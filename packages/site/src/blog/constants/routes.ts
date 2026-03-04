@@ -25,8 +25,6 @@ export const API = {
   REMOVE_POST: "remove_post",
   REMOVE_IMG: "remove_image",
   MOVIES: "movies",
-  IMAGES: "images",
   BOOKS: "books",
   POSTS: "posts",
-  STREAMING: "streaming",
 };
