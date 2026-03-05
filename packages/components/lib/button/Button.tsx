@@ -17,6 +17,8 @@ export interface ButtonProps {
   onClick: EventHandler<React.MouseEvent<HTMLButtonElement>>;
   btnType?: "submit" | "reset" | "button";
   size?: "small" | "medium" | "large";
+
+  transparent?: boolean;
 }
 
 export function Button(props: ButtonProps) {
@@ -36,6 +38,7 @@ export function Button(props: ButtonProps) {
     onClick,
     btnType,
     size = "medium",
+    transparent = false,
   } = props;
   const shadowTransCls =
     type === ButtonType.DISABLED || type === ButtonType.GHOST
@@ -43,8 +46,9 @@ export function Button(props: ButtonProps) {
       : classNames(
           "transition-all duration-200 ease-in-out shadow-button active:shadow-empty",
           {
-            "shadow-empty": pressed,
+            "shadow-empty": pressed || transparent,
             "hover:shadow-button-hover": !pressed,
+            "pointer-events-none": transparent,
           },
         );
 
