@@ -55,7 +55,7 @@ const Streaming = () => {
               </bb-msg-history>
             </Panel>
             <Button
-              className="mt-32"
+              className="mt-64"
               transparent={!showScrollBtn}
               onClick={() => {
                 bbMsgHistoryRef.current?.scrollToBottom();
@@ -69,7 +69,7 @@ const Streaming = () => {
             style={{
               rotate: '180deg'
             }}
-            className={classNames("transition-opacity duration-300 inline-block", {
+            className={classNames("transition-opacity duration-200 inline-block", {
               "opacity-0": !showScrollBtn,
               "opacity-100": showScrollBtn,
             })}
