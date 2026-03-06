@@ -3,7 +3,9 @@ import ora from "ora";
 import { fetchStreams } from "../../utils/api.js";
 
 interface ListOptions {
-  limit?: string;
+  before?: string;
+  after?: string;
+  offset?: string;
   json?: boolean;
 }
 
@@ -11,8 +13,12 @@ export async function list(options: ListOptions): Promise<void> {
   const spinner = ora("Fetching streams...").start();
 
   try {
-    const limit = options.limit ? parseInt(options.limit, 10) : undefined;
-    const response = await fetchStreams(limit);
+    const offset = options.offset ? parseInt(options.offset, 10) : undefined;
+    const response = await fetchStreams({
+      before: options.before,
+      after: options.after,
+      offset,
+    });
     const streams = response.data;
 
     spinner.stop();
