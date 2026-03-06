@@ -4,6 +4,7 @@ import { formatStreamingData } from "@/utils/streaming";
 import { Article, Button, ButtonType, Panel } from "@bbki.ng/components";
 import { useScrollBtnVisibility } from "./useScrollBtnVisibility";
 import classNames from "classnames";
+import { ArrowDownIcon } from "./arrow-down";
 
 // Extend JSX IntrinsicElements for the web component
 declare global {
@@ -29,15 +30,41 @@ const Streaming = () => {
   const { streaming, isLoading, isError } = useStreaming();
   const bbMsgHistoryRef = useRef<BbMsgHistoryElement>(null);
 
+  const [scrolled, setScrolled] = useState(false);
+
   const showScrollBtn = useScrollBtnVisibility(bbMsgHistoryRef.current!);
+
+  const formattedData = formatStreamingData(streaming || []);
+
+  useEffect(() => {
+    const el = bbMsgHistoryRef.current;
+    let timer: NodeJS.Timeout;
+    if (!isLoading && el) {
+      // 检查自定义元素是否已定义并升级
+      if (el.scrollToBottom) {
+        requestAnimationFrame(() => {
+          el.scrollToBottom();
+        });
+      } else {
+        // 等待 custom element 定义完成
+        customElements.whenDefined('bb-msg-history').then(() => {
+          el.scrollToBottom?.();
+        });
+      }
+
+      // delay to set scrolled state after scrollToBottom
+      timer = setTimeout(() => {
+        setScrolled(true);
+      }, 500);
+    }
+    return () => {
+      clearTimeout(timer);
+    };
+  }, [isLoading, formattedData])
 
   if (isError) {
     return <div className="p-8 text-center text-gray-500">加载失败</div>;
   }
-
-  const formattedData = formatStreamingData(streaming || []);
-
-  console.log("showScrollBtn", showScrollBtn);
 
   return (
     <Article title="直播" loading={isLoading}>
@@ -54,34 +81,18 @@ const Streaming = () => {
                 {formattedData}
               </bb-msg-history>
             </Panel>
-            <Button
-              className="mt-64"
-              transparent={!showScrollBtn}
-              onClick={() => {
-                bbMsgHistoryRef.current?.scrollToBottom();
-              }}>
-          <svg
-            data-testid="geist-icon"
-            height="16"
-            stroke-linejoin="round"
-            viewBox="0 0 16 16"
-            width="16"
-            style={{
-              rotate: '180deg'
-            }}
-            className={classNames("transition-opacity duration-200 inline-block", {
-              "opacity-0": !showScrollBtn,
-              "opacity-100": showScrollBtn,
-            })}
-          >
-            <path
-              fill-rule="evenodd"
-              clip-rule="evenodd"
-              d="M8.70711 1.39644C8.31659 1.00592 7.68342 1.00592 7.2929 1.39644L2.21968 6.46966L1.68935 6.99999L2.75001 8.06065L3.28034 7.53032L7.25001 3.56065V14.25V15H8.75001V14.25V3.56065L12.7197 7.53032L13.25 8.06065L14.3107 6.99999L13.7803 6.46966L8.70711 1.39644Z"
-              fill="currentColor"
-            ></path>
-          </svg>
-            </Button>
+            {
+              scrolled ? (
+                <Button
+                  className="mt-64"
+                  transparent={!showScrollBtn}
+                  onClick={() => {
+                    bbMsgHistoryRef.current?.scrollToBottom();
+                  }}>
+                    <ArrowDownIcon show={showScrollBtn} />
+                </Button>
+              ) : null
+            }
           </>
       )}
     </Article>
