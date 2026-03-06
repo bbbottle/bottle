@@ -55,7 +55,7 @@ const Streaming = () => {
               </bb-msg-history>
             </Panel>
             <Button
-              className="mt-128"
+              className="mt-32"
               transparent={!showScrollBtn}
               onClick={() => {
                 bbMsgHistoryRef.current?.scrollToBottom();
