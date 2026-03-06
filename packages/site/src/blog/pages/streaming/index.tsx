@@ -60,7 +60,6 @@ const Streaming = () => {
               onClick={() => {
                 bbMsgHistoryRef.current?.scrollToBottom();
               }}>
-
           <svg
             data-testid="geist-icon"
             height="16"
