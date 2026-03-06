@@ -66,12 +66,29 @@ interface StreamResponse {
   data: Stream[];
 }
 
+export interface FetchStreamsOptions {
+  /** Fetch records older than this ID (cursor-based pagination) */
+  before?: string;
+  /** Fetch records newer than this ID (for polling new messages) */
+  after?: string;
+  /** Number of records to fetch */
+  offset?: number;
+}
+
 export async function fetchStreams(
-  limit?: number
+  options: FetchStreamsOptions = {}
 ): Promise<StreamResponse> {
+  const { before, after, offset } = options;
   const url = new URL(`${API_CF_ENDPOINT}/streaming`);
-  if (limit) {
-    url.searchParams.set("limit", limit.toString());
+
+  if (before) {
+    url.searchParams.set("before", before);
+  }
+  if (after) {
+    url.searchParams.set("after", after);
+  }
+  if (offset) {
+    url.searchParams.set("offset", offset.toString());
   }
 
   const response = await fetch(url);

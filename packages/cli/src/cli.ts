@@ -53,7 +53,9 @@ const streamCmd = program
 streamCmd
   .command("list")
   .description("List all stream entries")
-  .option("--limit <n>", "Limit number of entries")
+  .option("--before <id>", "Fetch records older than this ID (for pagination)")
+  .option("--after <id>", "Fetch records newer than this ID (for polling new messages)")
+  .option("--offset <n>", "Number of records to fetch (default: 8)")
   .option("--json", "Output as JSON")
   .action(listStreams);
 
