@@ -44,7 +44,7 @@ export function Button(props: ButtonProps) {
     type === ButtonType.DISABLED || type === ButtonType.GHOST
       ? ""
       : classNames(
-          "transition-all duration-200 ease-in-out shadow-button-hover active:scale-[0.95]",
+          "transition-all duration-300 ease-in-out shadow-button-hover active:scale-[0.95] active:shadow-empty",
           {
             "shadow-empty": transparent,
             "pointer-events-none": transparent,
