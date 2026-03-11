@@ -7,11 +7,11 @@ inputs:
     required: true
 
 runs:
-  using: "composite"
+  using: 'composite'
   steps:
     - id: merge-changes
       name: merge changes
-      uses: actions/github-script@v6
+      uses: actions/github-script@v7
       with:
         github-token: ${{ inputs.GITHUB_TOKEN }}
         script: |
