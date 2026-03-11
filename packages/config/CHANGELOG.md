@@ -1,6 +1,6 @@
-# backend
+# @bbki.ng/config
 
-## 0.3.3
+## 1.0.1
 
 ### Patch Changes
 
@@ -9,17 +9,3 @@
 - 04c87c5: update config
 - 74bdf37: update config
 - 9142b64: update mono repo config
-
-## 0.3.2
-
-## 0.3.1
-
-## 0.3.0
-
-## 0.2.1
-
-## 0.2.0
-
-## 0.1.0
-
-## 0.0.2
