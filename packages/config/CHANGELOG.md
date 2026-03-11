@@ -1,5 +1,11 @@
 # @bbki.ng/config
 
+## 1.0.2
+
+### Patch Changes
+
+- 4e8eb9e: upgrade tailwindcss
+
 ## 1.0.1
 
 ### Patch Changes

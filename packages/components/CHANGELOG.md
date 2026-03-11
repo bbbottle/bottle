@@ -1,5 +1,13 @@
 # @bbki.ng/components
 
+## 5.2.10
+
+### Patch Changes
+
+- 4e8eb9e: upgrade tailwindcss
+- Updated dependencies [4e8eb9e]
+  - @bbki.ng/stylebase@3.1.3
+
 ## 5.2.9
 
 ### Patch Changes
