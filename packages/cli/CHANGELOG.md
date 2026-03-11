@@ -1,5 +1,15 @@
 # @bbki.ng/cli
 
+## 0.1.5
+
+### Patch Changes
+
+- f12873e: update config
+- 152ba35: update config
+- 04c87c5: update config
+- 74bdf37: update config
+- 9142b64: update mono repo config
+
 ## 0.1.4
 
 ## 0.1.3

@@ -1,5 +1,22 @@
 # @bbki.ng/site
 
+## 5.4.18
+
+### Patch Changes
+
+- f12873e: update config
+- 152ba35: update config
+- 04c87c5: update config
+- 74bdf37: update config
+- 9142b64: update mono repo config
+- Updated dependencies [f12873e]
+- Updated dependencies [152ba35]
+- Updated dependencies [04c87c5]
+- Updated dependencies [74bdf37]
+- Updated dependencies [9142b64]
+  - @bbki.ng/components@5.2.9
+  - @bbki.ng/stylebase@3.1.2
+
 ## 5.4.17
 
 ## 5.4.16
