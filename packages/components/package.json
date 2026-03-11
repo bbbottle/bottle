@@ -1,6 +1,6 @@
 {
   "name": "@bbki.ng/components",
-  "version": "5.2.1",
+  "version": "5.2.8",
   "type": "module",
   "scripts": {
     "build": "vite build",
