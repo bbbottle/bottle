@@ -1,16 +1,16 @@
-import React, { useEffect, useRef, useState } from "react";
-import { useStreaming, StreamingItem } from "@/hooks/use_streaming";
-import { formatStreamingData } from "@/utils/streaming";
-import { Article, Button, ButtonType, Panel } from "@bbki.ng/components";
-import { useScrollBtnVisibility } from "./useScrollBtnVisibility";
-import classNames from "classnames";
-import { ArrowDownIcon } from "./arrow-down";
+import React, { useEffect, useRef, useState } from 'react';
+import { useStreaming, StreamingItem } from '@/hooks/use_streaming';
+import { formatStreamingData } from '@/utils/streaming';
+import { Article, Button, ButtonType, Panel } from '@bbki.ng/components';
+import { useScrollBtnVisibility } from './useScrollBtnVisibility';
+import classNames from 'classnames';
+import { ArrowDownIcon } from './arrow-down';
 
 // Extend JSX IntrinsicElements for the web component
 declare global {
   namespace JSX {
     interface IntrinsicElements {
-      "bb-msg-history": React.DetailedHTMLProps<
+      'bb-msg-history': React.DetailedHTMLProps<
         React.HTMLAttributes<HTMLElement>,
         BbMsgHistoryElement
       > & {
@@ -60,40 +60,39 @@ const Streaming = () => {
     return () => {
       clearTimeout(timer);
     };
-  }, [isLoading, formattedData])
+  }, [isLoading, formattedData]);
 
   if (isError) {
     return <div className="p-8 text-center text-gray-500">加载失败</div>;
   }
 
   return (
-    <Article title="直播" loading={isLoading}>
+    <Article title="" loading={isLoading}>
       {isLoading ? null : (
-          <>
-            <Panel className="!p-[10px]">
-              <bb-msg-history
-                // infinite
-                hide-scroll-bar
-                hide-scroll-button
-                ref={bbMsgHistoryRef}
-                style={{ height: "100%", "--bb-max-height": "200px" } as React.CSSProperties}
-              >
-                {formattedData}
-              </bb-msg-history>
-            </Panel>
-            {
-              scrolled ? (
-                <Button
-                  className="mt-64"
-                  transparent={!showScrollBtn}
-                  onClick={() => {
-                    bbMsgHistoryRef.current?.scrollToBottom();
-                  }}>
-                    <ArrowDownIcon show={showScrollBtn} />
-                </Button>
-              ) : null
-            }
-          </>
+        <>
+          <Panel className="!p-[10px]">
+            <bb-msg-history
+              // infinite
+              hide-scroll-bar
+              hide-scroll-button
+              ref={bbMsgHistoryRef}
+              style={{ height: '100%', '--bb-max-height': '200px' } as React.CSSProperties}
+            >
+              {formattedData}
+            </bb-msg-history>
+          </Panel>
+          {scrolled ? (
+            <Button
+              className="mt-64"
+              transparent={!showScrollBtn}
+              onClick={() => {
+                bbMsgHistoryRef.current?.scrollToBottom();
+              }}
+            >
+              <ArrowDownIcon show={showScrollBtn} />
+            </Button>
+          ) : null}
+        </>
       )}
     </Article>
   );
