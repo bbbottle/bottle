@@ -1,25 +1,25 @@
-import React, { useContext } from "react";
-import { Outlet, Route, Routes } from "react-router-dom";
-import { Nav, NotFound, Page } from "@bbki.ng/components";
-import { HotKeyNav } from "./components";
-import { Cover, Streaming } from "./pages";
+import React, { useContext } from 'react';
+import { Outlet, Route, Routes } from 'react-router-dom';
+import { Nav, NotFound, Page } from '@bbki.ng/components';
+import { HotKeyNav } from './components';
+import { Cover, Streaming } from './pages';
 
-import ArticlePage from "@/pages/extensions/txt/article";
-import Tags from "@/pages/tags";
-import TagsResult from "@/pages/tags/tag_result";
-import Txt from "@/pages/extensions/txt";
+import ArticlePage from '@/pages/extensions/txt/article';
+import Tags from '@/pages/tags';
+import TagsResult from '@/pages/tags/tag_result';
+import Txt from '@/pages/extensions/txt';
 
-import { usePaths } from "@/hooks";
-import { Login } from "@/pages/login";
-import { SWR } from "@/swr";
-import { GlobalLoadingContext } from "@/context/global_loading_state_provider";
-import { AppCtxMenu } from "@/components/app_ctx_menu";
-import { BotRedirect } from "@/pages/bot";
-import { BBContext } from "@/context/bbcontext";
-import { useClipboardToPost } from "@/hooks/use_clipboard_to_post";
-import { useSharedStringToPost } from "@/hooks/use_shared_string_to_post";
-import { ThreeColLayout, ErrorBoundary } from "@bbki.ng/components";
-import { useDynamicLogo } from "./hooks/use_dynamic_logo";
+import { usePaths } from '@/hooks';
+import { Login } from '@/pages/login';
+import { SWR } from '@/swr';
+import { GlobalLoadingContext } from '@/context/global_loading_state_provider';
+import { AppCtxMenu } from '@/components/app_ctx_menu';
+import { BotRedirect } from '@/pages/bot';
+import { BBContext } from '@/context/bbcontext';
+import { useClipboardToPost } from '@/hooks/use_clipboard_to_post';
+import { useSharedStringToPost } from '@/hooks/use_shared_string_to_post';
+import { ThreeColLayout, ErrorBoundary } from '@bbki.ng/components';
+import { useDynamicLogo } from './hooks/use_dynamic_logo';
 
 const Layout = () => {
   const { isLoading } = useContext(GlobalLoadingContext);
@@ -74,7 +74,7 @@ export const App = () => {
 
               <Route path="bot" element={<BotRedirect />} />
               <Route path="login" element={<Login />} />
-              <Route path="stream" element={<Streaming />} />
+              <Route path="now" element={<Streaming />} />
             </Route>
             <Route path="*" element={<NotFound />} />
           </Routes>

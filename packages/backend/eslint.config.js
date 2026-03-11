@@ -1,0 +1,12 @@
+import cloudflareConfig from '@bbki.ng/config/eslint/cloudflare';
+import { includeIgnoreFile } from '@eslint/compat';
+import path from 'path';
+import { fileURLToPath } from 'url';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
+export default [
+  includeIgnoreFile(path.resolve(__dirname, '.gitignore')),
+  ...cloudflareConfig,
+];

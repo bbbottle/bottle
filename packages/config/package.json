@@ -1,13 +1,40 @@
 {
   "name": "@bbki.ng/config",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+  "description": "Shared configuration for bbki.ng monorepo",
+  "type": "module",
+  "exports": {
+    "./eslint/base": "./eslint/base.js",
+    "./eslint/web": "./eslint/web.js",
+    "./eslint/node": "./eslint/node.js",
+    "./eslint/cloudflare": "./eslint/cloudflare.js",
+    "./prettier": "./prettier/index.json"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "packageManager": "pnpm@10.6.2"
+  "files": [
+    "eslint/",
+    "prettier/"
+  ],
+  "peerDependencies": {
+    "eslint": ">=8.0.0",
+    "prettier": ">=2.0.0",
+    "typescript": ">=4.0.0",
+    "@eslint/js": ">=8.0.0",
+    "@typescript-eslint/parser": ">=7.0.0",
+    "@typescript-eslint/eslint-plugin": ">=7.0.0",
+    "eslint-plugin-import": ">=2.29.0",
+    "eslint-plugin-unicorn": ">=51.0.0",
+    "globals": ">=14.0.0"
+  },
+  "peerDependenciesMeta": {
+    "typescript": {
+      "optional": true
+    },
+    "eslint-plugin-import": {
+      "optional": true
+    },
+    "eslint-plugin-unicorn": {
+      "optional": true
+    }
+  },
+  "license": "MIT"
 }
