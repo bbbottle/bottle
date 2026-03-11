@@ -1,5 +1,11 @@
 # @bbki.ng/cli
 
+## 0.1.6
+
+### Patch Changes
+
+- 4e8eb9e: upgrade tailwindcss
+
 ## 0.1.5
 
 ### Patch Changes

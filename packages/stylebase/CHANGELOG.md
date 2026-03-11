@@ -1,5 +1,11 @@
 # @bbki.ng/stylebase
 
+## 3.1.3
+
+### Patch Changes
+
+- 4e8eb9e: upgrade tailwindcss
+
 ## 3.1.2
 
 ### Patch Changes

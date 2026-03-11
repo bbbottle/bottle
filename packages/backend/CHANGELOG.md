@@ -1,5 +1,11 @@
 # backend
 
+## 0.3.4
+
+### Patch Changes
+
+- 4e8eb9e: upgrade tailwindcss
+
 ## 0.3.3
 
 ### Patch Changes
