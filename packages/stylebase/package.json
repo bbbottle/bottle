@@ -25,6 +25,9 @@
     "tailwindcss": "^3.0.0"
   },
   "devDependencies": {
+    "@bbki.ng/config": "workspace:*",
+    "prettier": "^3.2.0",
     "tailwindcss": "3.1.6"
-  }
+  },
+  "prettier": "@bbki.ng/config/prettier"
 }

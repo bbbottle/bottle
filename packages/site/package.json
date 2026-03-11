@@ -85,5 +85,6 @@
   "bugs": {
     "url": "https://github.com/bbbottle/bbki.ng/issues"
   },
+  "prettier": "@bbki.ng/config/prettier",
   "homepage": "https://github.com/bbbottle/bbki.ng#readme"
 }

@@ -12,6 +12,7 @@
   },
   "keywords": [],
   "author": "",
+  "prettier": "@bbki.ng/config/prettier",
   "license": "ISC",
   "devDependencies": {
     "@bbki.ng/config": "workspace:*",
