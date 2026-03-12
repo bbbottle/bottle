@@ -6,15 +6,9 @@ export { withArticleWrapper } from './with_wrapper';
 
 export { HotKeyNav } from './hotkey_nav';
 
-export { VideoPlayer } from './video_player';
-
-export { ProgressBar } from './progress_bar';
-
 export { BlurCover } from './blur_cover';
 
 export { ReloadPrompt } from './reload_prompt';
-
-export { Tags } from './tags';
 
 export { MySuspense } from './my_suspense';
 
