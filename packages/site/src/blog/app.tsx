@@ -5,8 +5,6 @@ import { HotKeyNav } from './components';
 import { Cover, Streaming } from './pages';
 
 import ArticlePage from '@/pages/extensions/txt/article';
-import Tags from '@/pages/tags';
-import TagsResult from '@/pages/tags/tag_result';
 import Txt from '@/pages/extensions/txt';
 
 import { usePaths } from '@/hooks';
@@ -68,9 +66,6 @@ export const App = () => {
                 <Route path="" element={<Txt />} />
                 <Route path=":title" element={<ArticlePage />} />
               </Route>
-
-              <Route path="tags" element={<Tags />} />
-              <Route path="tags/:tag" element={<TagsResult />} />
 
               <Route path="bot" element={<BotRedirect />} />
               <Route path="login" element={<Login />} />

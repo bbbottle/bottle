@@ -1,16 +1,12 @@
-import React from "react";
-import { ArticleList } from "./consts";
-import { LinkProps, DropZone, Button } from "@bbki.ng/components";
-import { usePosts } from "@/hooks/use_posts";
-import { CenterLinkList } from "@/components";
-import { useAuthed } from "@/hooks/use_authed";
-import { useFile2Post } from "@/hooks/use_file_to_post";
-import { useClipboardToPost } from "@/hooks/use_clipboard_to_post";
-import { useLocation } from "react-router-dom";
-import {
-  useBlogScroll,
-  useBlogScrollRestoration,
-} from "@/hooks/use_blog_scroll_pos_restoration";
+import React from 'react';
+import { LinkProps, DropZone, Button } from '@bbki.ng/components';
+import { usePosts } from '@/hooks/use_posts';
+import { CenterLinkList } from '@/components';
+import { useAuthed } from '@/hooks/use_authed';
+import { useFile2Post } from '@/hooks/use_file_to_post';
+import { useClipboardToPost } from '@/hooks/use_clipboard_to_post';
+import { useLocation } from 'react-router-dom';
+import { useBlogScroll, useBlogScrollRestoration } from '@/hooks/use_blog_scroll_pos_restoration';
 
 type TxtProps = {
   title?: string;
@@ -29,10 +25,10 @@ const Posts = (props: TxtProps) => {
   }
 
   if (isError) {
-    return <CenterLinkList links={props.articleList || ArticleList} />;
+    return <CenterLinkList links={props.articleList} />;
   }
 
-  const links = [...titleList, ...ArticleList];
+  const links = [...titleList];
 
   return (
     <CenterLinkList
