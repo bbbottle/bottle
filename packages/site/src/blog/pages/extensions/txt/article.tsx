@@ -1,31 +1,15 @@
-import React, { ReactElement, useContext, useEffect } from "react";
-import { MdxArticleList } from "@/articles";
-import { withArticleWrapper } from "@/components";
-import { MdxArticle } from "@/types/articles";
-import { NotFound, DropZone } from "@bbki.ng/components";
-import { useLocation, useParams } from "react-router-dom";
-import { usePosts } from "@/hooks/use_posts";
-import { ArticlePage } from "@/components/article";
-import { GlobalLoadingContext } from "@/context/global_loading_state_provider";
-import { useFile2Post } from "@/hooks/use_file_to_post";
-import { useAuthed } from "@/hooks/use_authed";
-import { ArticleCtxMenu } from "@/components/article_ctx_menu";
-import { useBlogScrollReset } from "@/hooks/use_blog_scroll_pos_restoration";
-
-type TArticleMap = {
-  [key: string]: ReactElement;
-};
-
-const ArticleMap: TArticleMap = {};
-
-MdxArticleList.forEach((article: unknown) => {
-  const { meta, default: component } = article as MdxArticle;
-  const dateStr = meta.created_at
-    ? meta.created_at.toISOString().split("T")[0]
-    : "";
-  const Article = withArticleWrapper(component);
-  ArticleMap[meta.title] = <Article {...meta} date={dateStr} />;
-});
+import React, { ReactElement, useContext, useEffect } from 'react';
+import { withArticleWrapper } from '@/components';
+import { MdxArticle } from '@/types/articles';
+import { NotFound, DropZone } from '@bbki.ng/components';
+import { useLocation, useParams } from 'react-router-dom';
+import { usePosts } from '@/hooks/use_posts';
+import { ArticlePage } from '@/components/article';
+import { GlobalLoadingContext } from '@/context/global_loading_state_provider';
+import { useFile2Post } from '@/hooks/use_file_to_post';
+import { useAuthed } from '@/hooks/use_authed';
+import { ArticleCtxMenu } from '@/components/article_ctx_menu';
+import { useBlogScrollReset } from '@/hooks/use_blog_scroll_pos_restoration';
 
 export default () => {
   const { title } = useParams();
@@ -41,10 +25,6 @@ export default () => {
     return <NotFound />;
   }
 
-  if (ArticleMap[title]) {
-    return ArticleMap[title];
-  }
-
   if (isError) {
     return <NotFound />;
   }
@@ -53,7 +33,7 @@ export default () => {
     return null;
   }
 
-  const date = posts.created_at ? posts.created_at.split("T")[0] : "";
+  const date = posts.created_at ? posts.created_at.split('T')[0] : '';
 
   return (
     <DropZone onDrop={reader} disabled={!isKing}>
