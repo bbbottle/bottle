@@ -1,5 +1,11 @@
 # @bbki.ng/cli
 
+## 0.1.8
+
+### Patch Changes
+
+- 625ea77: remove mdx articles
+
 ## 0.1.7
 
 ### Patch Changes

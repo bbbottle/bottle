@@ -1,5 +1,11 @@
 # @bbki.ng/stylebase
 
+## 3.1.5
+
+### Patch Changes
+
+- 625ea77: remove mdx articles
+
 ## 3.1.4
 
 ### Patch Changes

@@ -1,5 +1,13 @@
 # @bbki.ng/components
 
+## 5.2.12
+
+### Patch Changes
+
+- 625ea77: remove mdx articles
+- Updated dependencies [625ea77]
+  - @bbki.ng/stylebase@3.1.5
+
 ## 5.2.11
 
 ### Patch Changes
