@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useMemo } from 'react';
 import { Outlet, Route, Routes } from 'react-router-dom';
 import { Nav, NotFound, Page } from '@bbki.ng/components';
 import { HotKeyNav } from './components';
@@ -20,31 +20,31 @@ import { ThreeColLayout, ErrorBoundary } from '@bbki.ng/components';
 import { useDynamicLogo } from './hooks/use_dynamic_logo';
 
 const Layout = () => {
+  const paths = usePaths();
   const { isLoading } = useContext(GlobalLoadingContext);
   const logo = useDynamicLogo();
+
+  const middleRenderer = useMemo(() => {
+    return () => (
+      <ErrorBoundary>
+        <Outlet />
+      </ErrorBoundary>
+    );
+  }, []);
+
   return (
     <Page
       nav={
         <AppCtxMenu>
           <Nav
-            paths={usePaths()}
+            paths={paths}
             className="gradient-blur-cover select-none"
             loading={isLoading}
             customLogo={logo}
           />
         </AppCtxMenu>
       }
-      main={
-        <ThreeColLayout
-          middleRenderer={() => {
-            return (
-              <ErrorBoundary>
-                <Outlet />
-              </ErrorBoundary>
-            );
-          }}
-        />
-      }
+      main={<ThreeColLayout middleRenderer={middleRenderer} />}
     />
   );
 };
