@@ -28,11 +28,9 @@ const Posts = (props: TxtProps) => {
     return <CenterLinkList links={props.articleList} />;
   }
 
-  const links = [...titleList];
-
   return (
     <CenterLinkList
-      links={props.articleList || links}
+      links={props.articleList || titleList}
       loading={isLoading}
       footer={
         <Button onClick={gotoTop} className="mt-128">

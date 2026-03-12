@@ -1,13 +1,13 @@
-import useSWR from "swr";
-import useSWRInfinite from "swr/infinite";
-import { baseFetcher, withBBApi } from "@/utils";
-import { API_CF_ENDPOINT } from "@/constants/routes";
-import { useContext, useEffect, useState, useCallback } from "react";
-import { GlobalLoadingContext } from "@/context/global_loading_state_provider";
+import useSWR from 'swr';
+import useSWRInfinite from 'swr/infinite';
+import { baseFetcher, withBBApi } from '@/utils';
+import { API_CF_ENDPOINT } from '@/constants/routes';
+import { useContext, useEffect, useState, useCallback } from 'react';
+import { GlobalLoadingContext } from '@/context/global_loading_state_provider';
 
 // In dev, use /api prefix to leverage Vite proxy to localhost:8787
-const isProd = typeof window !== "undefined" && /^https:\/\/bbki.ng/.test(window.location.href);
-const API_BASE = !isProd ? "/api" : API_CF_ENDPOINT;
+const isProd = typeof window !== 'undefined' && /^https:\/\/bbki.ng/.test(window.location.href);
+const API_BASE = !isProd ? '/api' : API_CF_ENDPOINT;
 
 export type StreamingItem = {
   id: string;
@@ -38,13 +38,13 @@ function buildStreamingUrl(params: StreamingQueryParams = {}): string {
   const url = new URL(`${API_BASE}/streaming`, !isProd ? window.location.origin : undefined);
 
   if (params.before) {
-    url.searchParams.set("before", params.before);
+    url.searchParams.set('before', params.before);
   }
   if (params.after) {
-    url.searchParams.set("after", params.after);
+    url.searchParams.set('after', params.after);
   }
   if (params.offset) {
-    url.searchParams.set("offset", params.offset.toString());
+    url.searchParams.set('offset', params.offset.toString());
   }
 
   return !isProd ? url.pathname + url.search : url.toString();
@@ -61,11 +61,11 @@ async function fetchStreaming(params: StreamingQueryParams = {}): Promise<Stream
 
 // SWR key generator for streaming queries
 const getStreamingKey = (params: StreamingQueryParams) => {
-  const parts = ["streaming"];
+  const parts = ['streaming'];
   if (params.before) parts.push(`before=${params.before}`);
   if (params.after) parts.push(`after=${params.after}`);
   if (params.offset) parts.push(`offset=${params.offset}`);
-  return parts.join("?");
+  return parts.join('?');
 };
 
 interface UseStreamingOptions {
@@ -91,12 +91,12 @@ export function useStreaming(options: UseStreamingOptions = {}) {
 
   const isLoading = !data && !error;
 
-  const [_, forceUpdate] = useState(0);
+  const [, forceUpdate] = useState(0);
 
   // make rerender when customElement defined
   useEffect(() => {
-    customElements.whenDefined("bb-msg-history").then(() => {
-      forceUpdate((prev) => prev + 1);
+    customElements.whenDefined('bb-msg-history').then(() => {
+      forceUpdate(prev => prev + 1);
     });
   }, []);
 
