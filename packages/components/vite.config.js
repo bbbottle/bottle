@@ -23,7 +23,7 @@ export default defineConfig({
   ],
   optimizeDeps: {
     esbuildOptions: {
-      tsconfig: path.resolve(__dirname, 'tsconfig.build.json'),
+      tsconfig: path.resolve(__dirname, 'tsconfig.json'),
     },
   },
 });

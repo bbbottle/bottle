@@ -1,5 +1,5 @@
 // @ts-ignore
-import cls from "classnames";
+import cls from 'classnames';
 import React, {
   FunctionComponent,
   useEffect,
@@ -7,10 +7,10 @@ import React, {
   Ref,
   ReactNode,
   CSSProperties,
-} from "react";
-import { useState } from "react";
-import { wait } from "./utils";
-import { useDropImage } from "./useDropImage";
+} from 'react';
+import { useState } from 'react';
+import { wait } from './utils';
+import { useDropImage } from './useDropImage';
 
 export interface ImagePreviewerProps {
   className?: string;
@@ -38,26 +38,20 @@ export interface ImageDropProps<T> {
 }
 
 const ImagePreviewer = (props: ImagePreviewerProps) => {
-  const {
-    visible: showImagePreviewer,
-    imageRef,
-    imageSize,
-    imageSrc,
-    className,
-  } = props;
+  const { visible: showImagePreviewer, imageRef, imageSize, imageSrc, className } = props;
   return (
     <img
       className={cls(
         className,
-        "max-w-full",
-        "h-auto",
-        "duration-300",
-        "transition-opacity",
-        "opacity-100",
+        'max-w-full',
+        'h-auto',
+        'duration-300',
+        'transition-opacity',
+        'opacity-100',
         {
-          "opacity-0": !showImagePreviewer,
-          "m-0!": !showImagePreviewer,
-          "p-0!": !showImagePreviewer,
+          'opacity-0': !showImagePreviewer,
+          'm-0!': !showImagePreviewer,
+          'p-0!': !showImagePreviewer,
         }
       )}
       ref={imageRef}
@@ -68,13 +62,13 @@ const ImagePreviewer = (props: ImagePreviewerProps) => {
   );
 };
 
-const GhostDropImage: FunctionComponent<ImageDropProps<any>> = (props) => {
+const GhostDropImage: FunctionComponent<ImageDropProps<any>> = props => {
   const {
     onDrop = () => {},
     onUploadFinish = () => {},
     uploader,
     waitTimeAfterFinish = 2000,
-    className = "",
+    className = '',
     children,
     placeholder,
   } = props;
@@ -110,16 +104,16 @@ const GhostDropImage: FunctionComponent<ImageDropProps<any>> = (props) => {
   });
 
   useEffect(() => {
-    document.addEventListener("dragenter", handleDocDragEnter);
+    document.addEventListener('dragenter', handleDocDragEnter);
 
     return () => {
-      document.removeEventListener("dragenter", handleDocDragEnter);
+      document.removeEventListener('dragenter', handleDocDragEnter);
     };
   }, []);
 
-  const coverCls = cls("fixed", "top-0", "left-0", "h-full", "w-full", {
-    "lqip-blur": coverVisible,
-    "z-999": coverVisible,
+  const coverCls = cls('fixed', 'top-0', 'left-0', 'h-full', 'w-full', {
+    'lqip-blur': coverVisible,
+    'z-999': coverVisible,
     block: coverVisible,
     hidden: !coverVisible,
   });
@@ -156,15 +150,15 @@ const GhostDropImage: FunctionComponent<ImageDropProps<any>> = (props) => {
   );
 };
 
-export const DropImage: FunctionComponent<ImageDropProps<any>> = (props) => {
+export const DropImage: FunctionComponent<ImageDropProps<any>> = props => {
   const {
     uploader,
-    defaultBgColor = "#F3F4F6",
+    defaultBgColor = '#F3F4F6',
     onDrop,
-    dragOverBgColor = "#EFF6FF",
+    dragOverBgColor = '#EFF6FF',
     waitTimeAfterFinish = 2000,
-    placeholder = "",
-    className = "",
+    placeholder = '',
+    className = '',
     onUploadFinish = () => {},
     ghost,
     children,
@@ -213,10 +207,10 @@ export const DropImage: FunctionComponent<ImageDropProps<any>> = (props) => {
     <div
       className={cls(
         className,
-        "transition-all items-center justify-center flex duration-200 ease-in-out",
+        'transition-all items-center justify-center flex duration-200 ease-in-out flex-col',
         {
-          "shadow-input": !imageSrc,
-          "shadow-empty": imageSrc,
+          'shadow-input': !imageSrc,
+          'shadow-empty': imageSrc,
         }
       )}
       onDragLeave={handleDragLeave}
