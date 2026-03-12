@@ -6,4 +6,4 @@ export default {
   component: BlinkDot,
 };
 
-export const Default = () => <BlinkDot />;
+export const Default = () => <BlinkDot status="blink" />;
