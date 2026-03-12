@@ -28,5 +28,5 @@ runs:
         node-version: 20.x
         cache: 'pnpm'
     - name: Install Dependencies
-      run: pnpm install --no-frozen-lockfile
+      run: pnpm install --frozen-lockfile
       shell: bash

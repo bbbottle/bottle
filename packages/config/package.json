@@ -8,11 +8,20 @@
     "./eslint/web": "./eslint/web.js",
     "./eslint/node": "./eslint/node.js",
     "./eslint/cloudflare": "./eslint/cloudflare.js",
-    "./prettier": "./prettier/index.json"
+    "./prettier": "./prettier/index.json",
+    "./vite/base": {
+      "types": "./vite/base.d.ts",
+      "default": "./vite/base.js"
+    },
+    "./vite/react-lib": {
+      "types": "./vite/react-lib.d.ts",
+      "default": "./vite/react-lib.js"
+    }
   },
   "files": [
     "eslint/",
-    "prettier/"
+    "prettier/",
+    "vite/"
   ],
   "peerDependencies": {
     "eslint": ">=8.0.0",

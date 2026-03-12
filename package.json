@@ -4,8 +4,12 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build": "pnpm turbo run build",
-    "dev": "pnpm turbo run dev",
+    "build": "turbo run build",
+    "dev": "turbo run dev",
+    "test": "turbo run test",
+    "lint": "turbo run lint",
+    "type-check": "turbo run type-check",
+    "clean": "turbo run clean && rm -rf node_modules",
     "changeset": "changeset",
     "release": "pnpm changeset version && pnpm changeset publish",
     "postinstall": "husky install"
