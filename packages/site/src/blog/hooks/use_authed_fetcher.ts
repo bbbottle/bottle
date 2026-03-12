@@ -1,8 +1,9 @@
-import { useSupabaseSession } from "@/hooks/use_supa_session";
-import { apiFetcher, withToken } from "@/utils";
-import { useCallback } from "react";
+import { useSupabaseSession } from '@/hooks/use_supa_session';
+import { apiFetcher, withToken } from '@/utils';
+import { useCallback, useMemo } from 'react';
 
 export const useAuthedFetcher = () => {
   const { access_token: token } = useSupabaseSession() || {};
-  return useCallback(withToken(apiFetcher)(token), [token]);
+  const fetcherWithToken = useMemo(() => withToken(apiFetcher), []);
+  return useCallback(fetcherWithToken(token), [token, fetcherWithToken]);
 };
