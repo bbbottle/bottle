@@ -15,14 +15,14 @@
   "typings": "./dist/index.d.ts",
   "exports": {
     ".": {
+      "types": "./dist/index.d.ts",
       "development": "./lib/index.ts",
-      "production": "./dist/index.mjs",
-      "types": "./src/index.ts"
+      "production": "./dist/index.mjs"
     },
     "./*": {
+      "types": "./dist/*/index.d.ts",
       "development": "./lib/*/index.ts",
-      "production": "./dist/*.mjs",
-      "types": "./src/components/*/index.ts"
+      "production": "./dist/*.mjs"
     },
     "./style": {
       "development": "./lib/index.css",
