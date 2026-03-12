@@ -1,5 +1,11 @@
 # backend
 
+## 0.3.6
+
+### Patch Changes
+
+- 625ea77: remove mdx articles
+
 ## 0.3.5
 
 ### Patch Changes

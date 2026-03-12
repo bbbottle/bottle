@@ -1,5 +1,11 @@
 # @bbki.ng/config
 
+## 1.0.4
+
+### Patch Changes
+
+- 625ea77: remove mdx articles
+
 ## 1.0.3
 
 ### Patch Changes
