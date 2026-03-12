@@ -1,5 +1,11 @@
 # @bbki.ng/site
 
+## 5.4.22
+
+### Patch Changes
+
+- f40a245: bug fix
+
 ## 5.4.21
 
 ### Patch Changes
