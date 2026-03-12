@@ -1,5 +1,11 @@
 # @bbki.ng/cli
 
+## 0.1.7
+
+### Patch Changes
+
+- c06c91f: bug fix
+
 ## 0.1.6
 
 ### Patch Changes

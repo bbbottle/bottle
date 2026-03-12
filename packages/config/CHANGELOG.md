@@ -1,5 +1,11 @@
 # @bbki.ng/config
 
+## 1.0.3
+
+### Patch Changes
+
+- c06c91f: bug fix
+
 ## 1.0.2
 
 ### Patch Changes

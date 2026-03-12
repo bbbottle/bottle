@@ -1,5 +1,11 @@
 # backend
 
+## 0.3.5
+
+### Patch Changes
+
+- c06c91f: bug fix
+
 ## 0.3.4
 
 ### Patch Changes

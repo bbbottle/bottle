@@ -1,5 +1,11 @@
 # @bbki.ng/stylebase
 
+## 3.1.4
+
+### Patch Changes
+
+- c06c91f: bug fix
+
 ## 3.1.3
 
 ### Patch Changes

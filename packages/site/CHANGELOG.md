@@ -1,5 +1,13 @@
 # @bbki.ng/site
 
+## 5.4.20
+
+### Patch Changes
+
+- c06c91f: bug fix
+- Updated dependencies [c06c91f]
+  - @bbki.ng/components@5.2.11
+
 ## 5.4.19
 
 ### Patch Changes
