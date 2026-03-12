@@ -1,5 +1,13 @@
 # @bbki.ng/components
 
+## 5.2.11
+
+### Patch Changes
+
+- c06c91f: bug fix
+- Updated dependencies [c06c91f]
+  - @bbki.ng/stylebase@3.1.4
+
 ## 5.2.10
 
 ### Patch Changes
