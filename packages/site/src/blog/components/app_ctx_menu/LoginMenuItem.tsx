@@ -1,52 +1,19 @@
-import { useAuthed } from "@/hooks/use_authed";
-import { useSupabaseSession } from "@/hooks/use_supa_session";
-import {
-  ContextMenuItem,
-  ContextMenuLabel,
-  ContextMenuShortcut,
-  Link,
-} from "@bbki.ng/components";
-import React from "react";
-import { useNavigate } from "react-router-dom";
-import { supabase } from "@/constants";
-import { toast } from "sonner";
-import { confirm } from "@/utils";
+import { ContextMenuItem, ContextMenuShortcut } from '@bbki.ng/components';
+import React from 'react';
+import { useNavigate } from 'react-router-dom';
 
+/**
+ * Login menu item
+ * Note: Authentication is now handled via API keys in CLI.
+ * Frontend login is disabled until re-implemented.
+ */
 export const LoginMenuItem = () => {
-  const sess = useSupabaseSession();
   const nav = useNavigate();
-
-  if (sess?.user != null) {
-    return (
-      <ContextMenuItem
-        onClick={() => {
-          confirm("确定退出登录吗？", () => {
-            supabase.auth.signOut().then(() => {
-              toast.success("已退出登录", {
-                position: "bottom-right",
-              });
-            });
-          });
-        }}
-      >
-        {sess?.user?.user_metadata && (
-          <img
-            src={sess?.user?.user_metadata.avatar_url}
-            alt="avatar"
-            style={{ width: 16, height: 16 }}
-            className="mr-8"
-            crossOrigin="anonymous"
-          />
-        )}
-        {sess?.user?.email ?? ""}
-      </ContextMenuItem>
-    );
-  }
 
   return (
     <ContextMenuItem
       onClick={() => {
-        nav("/login");
+        nav('/login');
       }}
     >
       <svg
