@@ -4,8 +4,6 @@ import { BlurCover } from '@bbki.ng/components';
 
 export { withArticleWrapper } from './with_wrapper';
 
-export { HotKeyNav } from './hotkey_nav';
-
 export { BlurCover } from './blur_cover';
 
 export { MySuspense } from './my_suspense';

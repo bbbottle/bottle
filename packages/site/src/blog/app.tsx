@@ -1,7 +1,6 @@
 import React, { useContext, useMemo } from 'react';
 import { Outlet, Route, Routes } from 'react-router-dom';
 import { Nav, NotFound, Page } from '@bbki.ng/components';
-import { HotKeyNav } from './components';
 import { Cover, Streaming } from './pages';
 
 import ArticlePage from '@/pages/extensions/txt/article';
@@ -47,25 +46,23 @@ const Layout = () => {
 export const App = () => {
   return (
     <SWR>
-      <HotKeyNav>
-        <BBContext>
-          <Routes>
-            <Route path="/" element={<Layout />}>
-              <Route index element={<Cover />} />
+      <BBContext>
+        <Routes>
+          <Route path="/" element={<Layout />}>
+            <Route index element={<Cover />} />
 
-              <Route path="blog" element={<Outlet />}>
-                <Route path="" element={<Txt />} />
-                <Route path=":title" element={<ArticlePage />} />
-              </Route>
-
-              <Route path="bot" element={<BotRedirect />} />
-              <Route path="login" element={<Login />} />
-              <Route path="now" element={<Streaming />} />
+            <Route path="blog" element={<Outlet />}>
+              <Route path="" element={<Txt />} />
+              <Route path=":title" element={<ArticlePage />} />
             </Route>
-            <Route path="*" element={<NotFound />} />
-          </Routes>
-        </BBContext>
-      </HotKeyNav>
+
+            <Route path="bot" element={<BotRedirect />} />
+            <Route path="login" element={<Login />} />
+            <Route path="now" element={<Streaming />} />
+          </Route>
+          <Route path="*" element={<NotFound />} />
+        </Routes>
+      </BBContext>
     </SWR>
   );
 };
