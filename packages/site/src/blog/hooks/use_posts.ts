@@ -1,13 +1,18 @@
-import { API_CF_ENDPOINT } from '@/constants/routes';
 import useSWR from 'swr';
 import { useContext, useEffect } from 'react';
 import { GlobalLoadingContext } from '@/context/global_loading_state_provider';
-import { cfApiFetcher } from '@/utils';
+import { baseFetcher } from '@/utils';
+import { API_CF_ENDPOINT } from '@/constants/routes';
 
-const POSTS_API = `${API_CF_ENDPOINT}/posts`;
+// In dev, use /api prefix to leverage Vite proxy to localhost:8787
+const isProd = typeof window !== 'undefined' && /^https:\/\/bbki\.ng/.test(window.location.href);
+const POSTS_API = !isProd ? '/api/posts' : `${API_CF_ENDPOINT}/posts`;
+
+// Use baseFetcher for full URLs, cfApiFetcher is for relative paths
+const postsFetcher = (resource: string) => baseFetcher(resource);
 
 export const usePosts = (name: string = '', suspense?: boolean) => {
-  const { data: response, error } = useSWR(POSTS_API, cfApiFetcher, {
+  const { data: response, error } = useSWR(POSTS_API, postsFetcher, {
     revalidateOnFocus: false,
     suspense,
   });

@@ -1,10 +1,10 @@
-import { Photo } from "@/types/photo";
-import { ossProcessType } from "@/types/oss";
-import { API_CF_ENDPOINT, API_ENDPOINT, OSS_ADDRESS } from "@/constants/routes";
-import { DEFAULT_DELAY } from "@/constants";
-import useSWR from "swr";
-import { toast } from "sonner";
-import { FontType } from "@/types/font";
+import { Photo } from '@/types/photo';
+import { ossProcessType } from '@/types/oss';
+import { API_CF_ENDPOINT, OSS_ADDRESS } from '@/constants/routes';
+import { DEFAULT_DELAY } from '@/constants';
+import useSWR from 'swr';
+import { toast } from 'sonner';
+import { FontType } from '@/types/font';
 
 type Fetcher = (resource: string, init?: any) => Promise<any>;
 
@@ -13,7 +13,7 @@ export const floatNumberToPercentageString = (num: number): string => {
 };
 
 export const delay = (time: number) => {
-  return new Promise((resolve) => {
+  return new Promise(resolve => {
     setTimeout(resolve, time);
   });
 };
@@ -27,10 +27,7 @@ export const minDelay = async (
   return promise;
 };
 
-export const addOssWebpProcessStyle = (
-  originUrl: string,
-  style: ossProcessType
-): string => {
+export const addOssWebpProcessStyle = (originUrl: string, style: ossProcessType): string => {
   const isInvalidOSSImgUrl = !originUrl.startsWith(OSS_ADDRESS);
   const isProcessedOssImg = /x-oss-process=style\/\w+/.test(originUrl);
   const isWebpImg = /webp$/.test(originUrl);
@@ -55,8 +52,7 @@ export const calcDefaultImgSize = (
   const whRatio = width / height;
   const isHorizontal = width > height;
 
-  const finalWidth =
-    (defaultWidth || (isHorizontal ? 576 : 384)) * (scale || 1);
+  const finalWidth = (defaultWidth || (isHorizontal ? 576 : 384)) * (scale || 1);
 
   return {
     width: finalWidth,
@@ -65,56 +61,30 @@ export const calcDefaultImgSize = (
 };
 
 export const getEnv = () => {
-  return /^http:\/\/localhost/.test(location.href)
-    ? "development"
-    : "production";
+  return /^http:\/\/localhost/.test(location.href) ? 'development' : 'production';
 };
 
 export const baseFetcher = (resource: string, init: RequestInit = {}) =>
-  fetch(resource, init).then((res) => {
+  fetch(resource, init).then(res => {
     if (!res.ok) {
-      throw new Error("An error occurred while fetching the data.");
+      throw new Error('An error occurred while fetching the data.');
     }
 
     return res.json();
   });
 
-export const withToken =
-  (fetcher: Fetcher) =>
-  (token?: string) =>
-  (resource: string, init: RequestInit = {}) => {
-    const { headers = {} } = init;
-    const tokenHeaders = token
-      ? {
-          "X-Supabase-Auth": token,
-        }
-      : {};
-    const finalHeaders = {
-      ...headers,
-      ...tokenHeaders,
-    };
-    return fetcher(resource, {
-      ...init,
-      headers: finalHeaders,
-    });
-  };
-
 export const withBBApi =
   (fetcher: Fetcher) =>
-  (apiEndPoint = API_ENDPOINT): Fetcher =>
+  (apiEndPoint: string): Fetcher =>
   async (resource: string, init: RequestInit = {}) =>
-    fetcher(`${apiEndPoint}/${resource}`, { ...init, mode: "cors" });
-
-export const apiFetcher = withBBApi(baseFetcher)(API_ENDPOINT);
+    fetcher(`${apiEndPoint}/${resource}`, { ...init, mode: 'cors' });
 
 export const cfApiFetcher = withBBApi(baseFetcher)(API_CF_ENDPOINT);
 
-export const getImageFileSize = (
-  file: File
-): Promise<{ width: number; height: number }> => {
+export const getImageFileSize = (file: File): Promise<{ width: number; height: number }> => {
   const url = URL.createObjectURL(file);
   const img = new Image();
-  return new Promise((resolve) => {
+  return new Promise(resolve => {
     img.src = url;
     img.onload = function (e) {
       resolve({
@@ -137,8 +107,7 @@ export const buildSimpleApiHooks = (api: string, payloadKey: string) => {
 };
 
 export const imageFormatter = (image: any) => {
-  const { rendered_width, thumbnail_src, avg_color, process_type, ...rest } =
-    image;
+  const { rendered_width, thumbnail_src, avg_color, process_type, ...rest } = image;
   return {
     renderedWidth: rendered_width,
     thumbnailSrc: thumbnail_src,
@@ -159,15 +128,15 @@ export const copyToClipboard = async (value: string) => {
 };
 
 export const confirm = (message: string, exec: () => void) => {
-  toast("", {
+  toast('', {
     description: message,
     actionButtonStyle: {
-      backgroundColor: "#fff",
-      color: "rgb(37,99,235)",
+      backgroundColor: '#fff',
+      color: 'rgb(37,99,235)',
     },
-    position: "bottom-right",
+    position: 'bottom-right',
     action: {
-      label: "是",
+      label: '是',
       onClick: () => {
         exec();
       },
@@ -175,20 +144,20 @@ export const confirm = (message: string, exec: () => void) => {
   });
 };
 
-export const splitPost= (wholeString: string ) => {
-  const firstLine = wholeString ? wholeString .split("\n")[0] : "";
-  const title = firstLine ? firstLine.trim() : "";
+export const splitPost = (wholeString: string) => {
+  const firstLine = wholeString ? wholeString.split('\n')[0] : '';
+  const title = firstLine ? firstLine.trim() : '';
 
-  const restContent = wholeString ? wholeString.slice(title.length).trim() : "";
+  const restContent = wholeString ? wholeString.slice(title.length).trim() : '';
 
-    return {
-        title,
-        content: restContent,
-    };
-}
+  return {
+    title,
+    content: restContent,
+  };
+};
 
 export const changeFont = (type: FontType) => {
-  const rootDiv = document.getElementById("root");
+  const rootDiv = document.getElementById('root');
   if (rootDiv == null) {
     return;
   }
@@ -205,5 +174,5 @@ export const changeFont = (type: FontType) => {
   rootDiv.classList.add(type);
 
   // save font type to local storage
-  localStorage.setItem("font", type);
+  localStorage.setItem('font', type);
 };

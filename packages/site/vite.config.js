@@ -31,7 +31,7 @@ const options = {
 export default defineConfig({
   server: {
     proxy: {
-      '/api/streaming': {
+      '/api': {
         target: 'http://localhost:8787',
         rewrite: path => path.replace(/^\/api/, ''),
       },
