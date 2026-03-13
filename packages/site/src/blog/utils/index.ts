@@ -1,4 +1,4 @@
-import { API_CF_ENDPOINT } from '@/constants/routes';
+import { API_ENDPOINT } from '@/constants/routes';
 import { FontType } from '@/types/font';
 
 type Fetcher = (resource: string, init?: any) => Promise<any>;
@@ -22,7 +22,7 @@ export const withBBApi =
   async (resource: string, init: RequestInit = {}) =>
     fetcher(`${apiEndPoint}/${resource}`, { ...init, mode: 'cors' });
 
-export const cfApiFetcher = withBBApi(baseFetcher)(API_CF_ENDPOINT);
+export const cfApiFetcher = withBBApi(baseFetcher)(API_ENDPOINT);
 
 export const changeFont = (type: FontType) => {
   const rootDiv = document.getElementById('root');
