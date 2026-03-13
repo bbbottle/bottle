@@ -1,10 +1,10 @@
-import React, { ReactElement } from "react";
-import { Tags, Article, Button } from "@bbki.ng/components";
-import { ROUTES } from "@/constants";
-import classNames from "classnames";
-import { Reaction } from "../reaction/oh_reaction";
-import { useNavigate } from "react-router-dom";
-import { ShareBtn } from "../share/share-btn";
+import React, { ReactElement } from 'react';
+import { Tags, Article, Button } from '@bbki.ng/components';
+import { ROUTES } from '@/constants';
+import classNames from 'classnames';
+import { Reaction } from '../reaction/oh_reaction';
+import { useNavigate } from 'react-router-dom';
+import { ShareBtn } from '../share/share-btn';
 
 export type ArticlePageProps = {
   tags?: string[];
@@ -20,9 +20,7 @@ export const ArticlePage = (props: ArticlePageProps) => {
   const { tags: tagNames, title, description, headless } = props;
   const navgation = useNavigate();
   // const defaultTag = { children: "目录", to: "/blog" };
-  const allTags = tagNames
-    ? tagNames.map((t) => ({ children: t, to: `${ROUTES.TAGS}/${t}` }))
-    : [];
+  const allTags = tagNames ? tagNames.map(t => ({ children: t, to: `${ROUTES.TAGS}/${t}` })) : [];
 
   // const allTags = [defaultTag, ...tags];
 
@@ -30,7 +28,7 @@ export const ArticlePage = (props: ArticlePageProps) => {
     return props.children;
   }
 
-  const articleCls = classNames("prose", "mb-32");
+  const articleCls = classNames('prose', 'mb-32');
 
   return (
     <>
@@ -42,10 +40,10 @@ export const ArticlePage = (props: ArticlePageProps) => {
         loading={false}
       >
         <article className={articleCls}>{props.children}</article>
-        <div className="relative -left-8">
+        {/*<div className="relative -left-8">
           {allTags.length ? <Tags tags={allTags} className="mb-32" /> : null}
           <Reaction title={title} url={window.location.href} />
-        </div>
+        </div>*/}
       </Article>
       <div className="">
         <Button
