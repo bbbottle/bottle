@@ -71,6 +71,7 @@ export default defineConfig({
     tailwindcss(),
     VitePWA({
       injectRegister: 'auto',
+      registerType: 'autoUpdate',
       includeAssets: ['favicon.svg', 'robots.txt', 'apple-touch-icon.png', 'Logo.svg'],
       devOptions: {
         enabled: true,
