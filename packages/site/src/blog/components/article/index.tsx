@@ -19,10 +19,6 @@ export type ArticlePageProps = {
 export const ArticlePage = (props: ArticlePageProps) => {
   const { tags: tagNames, title, description, headless } = props;
   const navgation = useNavigate();
-  // const defaultTag = { children: "目录", to: "/blog" };
-  const allTags = tagNames ? tagNames.map(t => ({ children: t, to: `${ROUTES.TAGS}/${t}` })) : [];
-
-  // const allTags = [defaultTag, ...tags];
 
   if (headless) {
     return props.children;
@@ -41,7 +37,6 @@ export const ArticlePage = (props: ArticlePageProps) => {
       >
         <article className={articleCls}>{props.children}</article>
         {/*<div className="relative -left-8">
-          {allTags.length ? <Tags tags={allTags} className="mb-32" /> : null}
           <Reaction title={title} url={window.location.href} />
         </div>*/}
       </Article>

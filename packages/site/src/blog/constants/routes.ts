@@ -12,7 +12,7 @@ export const ROUTE_NAME = {
 };
 
 export const GITHUB_REPO_ADDRESS = 'https://github.com/bbbottle/bottle/tree/main/packages/site';
-export const API_CF_ENDPOINT = 'https://cf.bbki.ng';
+export const API_ENDPOINT = 'https://cf.bbki.ng';
 export const API = {
   POSTS: 'posts',
 };

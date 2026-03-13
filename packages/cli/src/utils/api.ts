@@ -1,6 +1,6 @@
 import type { Post, Stream } from '../config/types.js';
 
-const API_ENDPOINT = 'https://cf.bbki.ng';
+export const API_ENDPOINT = 'https://cf.bbki.ng';
 
 interface ApiResponse<T> {
   status: string;
