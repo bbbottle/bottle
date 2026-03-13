@@ -2,6 +2,11 @@ import type { Post, Stream } from '../config/types.js';
 
 const API_CF_ENDPOINT = 'https://cf.bbki.ng';
 
+interface ApiResponse<T> {
+  status: string;
+  data: T;
+}
+
 // Post API
 export async function fetchPosts(): Promise<Post[]> {
   const response = await fetch(`${API_CF_ENDPOINT}/posts`);
@@ -11,8 +16,8 @@ export async function fetchPosts(): Promise<Post[]> {
     throw new Error(`Failed to fetch posts: ${error}`);
   }
 
-  const result = await response.json();
-  return result.data as Post[];
+  const result = (await response.json()) as ApiResponse<Post[]>;
+  return result.data;
 }
 
 export async function createPost(apiKey: string, title: string, content: string): Promise<Post> {
@@ -30,8 +35,8 @@ export async function createPost(apiKey: string, title: string, content: string)
     throw new Error(`Failed to create post: ${error}`);
   }
 
-  const result = await response.json();
-  return result.data as Post;
+  const result = (await response.json()) as ApiResponse<Post>;
+  return result.data;
 }
 
 export async function removePost(apiKey: string, id: string): Promise<void> {

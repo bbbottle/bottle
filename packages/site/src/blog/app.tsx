@@ -14,8 +14,6 @@ import { GlobalLoadingContext } from '@/context/global_loading_state_provider';
 import { AppCtxMenu } from '@/components/app_ctx_menu';
 import { BotRedirect } from '@/pages/bot';
 import { BBContext } from '@/context/bbcontext';
-import { useClipboardToPost } from '@/hooks/use_clipboard_to_post';
-import { useSharedStringToPost } from '@/hooks/use_shared_string_to_post';
 import { ThreeColLayout, ErrorBoundary } from '@bbki.ng/components';
 import { useDynamicLogo } from './hooks/use_dynamic_logo';
 
@@ -50,10 +48,6 @@ const Layout = () => {
 };
 
 export const App = () => {
-  useClipboardToPost();
-
-  useSharedStringToPost();
-
   return (
     <SWR>
       <HotKeyNav>

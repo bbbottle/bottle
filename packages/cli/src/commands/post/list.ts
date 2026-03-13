@@ -27,7 +27,7 @@ export async function list(options: ListOptions): Promise<void> {
     console.log(chalk.bold(`\nFound ${posts.length} post(s):\n`));
 
     posts.forEach((post, index) => {
-      const date = new Date(post.created_at).toLocaleDateString();
+      const date = new Date(post.createdAt).toLocaleDateString();
       console.log(`${chalk.cyan(`${index + 1}.`)} ${chalk.bold(post.title)}`);
       console.log(`   ${chalk.gray(`ID: ${post.id}`)}`);
       console.log(`   ${chalk.gray(`Created: ${date}`)}`);
