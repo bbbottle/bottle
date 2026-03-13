@@ -11,7 +11,6 @@ import { usePaths } from '@/hooks';
 import { Login } from '@/pages/login';
 import { SWR } from '@/swr';
 import { GlobalLoadingContext } from '@/context/global_loading_state_provider';
-import { AppCtxMenu } from '@/components/app_ctx_menu';
 import { BotRedirect } from '@/pages/bot';
 import { BBContext } from '@/context/bbcontext';
 import { ThreeColLayout, ErrorBoundary } from '@bbki.ng/components';
@@ -33,14 +32,12 @@ const Layout = () => {
   return (
     <Page
       nav={
-        <AppCtxMenu>
-          <Nav
-            paths={paths}
-            className="gradient-blur-cover select-none"
-            loading={isLoading}
-            customLogo={logo}
-          />
-        </AppCtxMenu>
+        <Nav
+          paths={paths}
+          className="gradient-blur-cover select-none"
+          loading={isLoading}
+          customLogo={logo}
+        />
       }
       main={<ThreeColLayout middleRenderer={middleRenderer} />}
     />
