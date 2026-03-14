@@ -57,7 +57,6 @@ export const App = () => {
             </Route>
 
             <Route path="bot" element={<BotRedirect />} />
-            <Route path="login" element={<Login />} />
             <Route path="now" element={<Streaming />} />
           </Route>
           <Route path="*" element={<NotFound />} />
