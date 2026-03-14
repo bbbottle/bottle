@@ -2,9 +2,7 @@ import React, { ReactElement } from 'react';
 import { Tags, Article, Button } from '@bbki.ng/components';
 import { ROUTES } from '@/constants';
 import classNames from 'classnames';
-import { Reaction } from '../reaction/oh_reaction';
 import { useNavigate } from 'react-router-dom';
-import { ShareBtn } from '../share/share-btn';
 
 export type ArticlePageProps = {
   tags?: string[];

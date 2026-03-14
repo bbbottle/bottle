@@ -14,6 +14,7 @@ import { BotRedirect } from '@/pages/bot';
 import { BBContext } from '@/context/bbcontext';
 import { ThreeColLayout, ErrorBoundary } from '@bbki.ng/components';
 import { useDynamicLogo } from './hooks/use_dynamic_logo';
+import { EffectContextProvider } from './components/effect-layer/EffectContextProvider';
 
 const Layout = () => {
   const paths = usePaths();

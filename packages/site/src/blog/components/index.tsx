@@ -4,8 +4,6 @@ import { BlurCover } from '@bbki.ng/components';
 
 export { withArticleWrapper } from './with_wrapper';
 
-export { BlurCover } from './blur_cover';
-
 export { MySuspense } from './my_suspense';
 
 export const CenterLinkList = (props: any) => {
