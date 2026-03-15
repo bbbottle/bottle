@@ -1,5 +1,11 @@
 # backend
 
+## 0.3.7
+
+### Patch Changes
+
+- 796a37a: remove unused code
+
 ## 0.3.6
 
 ### Patch Changes

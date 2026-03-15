@@ -1,5 +1,11 @@
 # @bbki.ng/cli
 
+## 0.1.9
+
+### Patch Changes
+
+- 796a37a: remove unused code
+
 ## 0.1.8
 
 ### Patch Changes

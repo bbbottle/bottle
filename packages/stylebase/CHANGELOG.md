@@ -1,5 +1,11 @@
 # @bbki.ng/stylebase
 
+## 3.1.6
+
+### Patch Changes
+
+- 796a37a: remove unused code
+
 ## 3.1.5
 
 ### Patch Changes
