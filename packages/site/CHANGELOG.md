@@ -1,5 +1,13 @@
 # @bbki.ng/site
 
+## 5.4.24
+
+### Patch Changes
+
+- 21296f0: update backend
+- Updated dependencies [21296f0]
+  - @bbki.ng/components@5.2.14
+
 ## 5.4.23
 
 ### Patch Changes

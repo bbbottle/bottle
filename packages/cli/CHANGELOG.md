@@ -1,5 +1,11 @@
 # @bbki.ng/cli
 
+## 0.1.10
+
+### Patch Changes
+
+- 21296f0: update backend
+
 ## 0.1.9
 
 ### Patch Changes

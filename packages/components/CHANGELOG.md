@@ -1,5 +1,13 @@
 # @bbki.ng/components
 
+## 5.2.14
+
+### Patch Changes
+
+- 21296f0: update backend
+- Updated dependencies [21296f0]
+  - @bbki.ng/stylebase@3.1.7
+
 ## 5.2.13
 
 ### Patch Changes

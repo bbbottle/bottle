@@ -1,5 +1,11 @@
 # @bbki.ng/config
 
+## 1.0.6
+
+### Patch Changes
+
+- 21296f0: update backend
+
 ## 1.0.5
 
 ### Patch Changes
