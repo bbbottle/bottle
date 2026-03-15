@@ -1,5 +1,11 @@
 # @bbki.ng/stylebase
 
+## 3.1.7
+
+### Patch Changes
+
+- 21296f0: update backend
+
 ## 3.1.6
 
 ### Patch Changes
