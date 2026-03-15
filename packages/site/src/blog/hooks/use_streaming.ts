@@ -1,13 +1,13 @@
 import useSWR from 'swr';
 import useSWRInfinite from 'swr/infinite';
 import { baseFetcher, withBBApi } from '@/utils';
-import { API_CF_ENDPOINT } from '@/constants/routes';
+import { API_ENDPOINT } from '@/constants/routes';
 import { useContext, useEffect, useState, useCallback } from 'react';
 import { GlobalLoadingContext } from '@/context/global_loading_state_provider';
 
 // In dev, use /api prefix to leverage Vite proxy to localhost:8787
 const isProd = typeof window !== 'undefined' && /^https:\/\/bbki.ng/.test(window.location.href);
-const API_BASE = !isProd ? '/api' : API_CF_ENDPOINT;
+const API_BASE = !isProd ? '/api' : API_ENDPOINT;
 
 export type StreamingItem = {
   id: string;

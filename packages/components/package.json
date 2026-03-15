@@ -34,7 +34,6 @@
   },
   "dependencies": {
     "@bbki.ng/stylebase": "workspace:*",
-    "@radix-ui/react-context-menu": "2.1.5",
     "@radix-ui/react-icons": "1.3.0",
     "@radix-ui/react-label": "2.1.1",
     "class-variance-authority": "0.7.1",

@@ -1,30 +1,32 @@
-import chalk from "chalk";
-import ora from "ora";
-import inquirer from "inquirer";
-import { getConfig, isTokenValid } from "../../config/index.js";
-import { fetchPosts, removePost } from "../../utils/api.js";
+import chalk from 'chalk';
+import ora from 'ora';
+import inquirer from 'inquirer';
+import { getConfig } from '../../config/index.js';
+import { fetchPosts, removePost } from '../../utils/api.js';
 
 interface RemoveOptions {
   force?: boolean;
+  apiKey?: string;
 }
 
 export async function remove(title: string, options: RemoveOptions): Promise<void> {
-  const spinner = ora("Checking authentication...").start();
+  const spinner = ora('Checking API key...').start();
 
   try {
     const config = await getConfig();
 
-    if (!isTokenValid(config)) {
-      spinner.fail(chalk.red("Not authenticated. Please run 'bbking login' first."));
+    // Use provided API key or fall back to config
+    const apiKey = options.apiKey || config.apiKey;
+
+    if (!apiKey) {
+      spinner.fail(chalk.red('API key is required. Provide it via --api-key or set it in config.'));
       process.exit(1);
     }
 
-    const token = config.supabaseToken!;
-
     // Verify post exists
-    spinner.text = "Fetching posts...";
-    const posts = await fetchPosts(token);
-    const post = posts.find((p) => p.title === title);
+    spinner.text = 'Fetching posts...';
+    const posts = await fetchPosts();
+    const post = posts.find(p => p.title === title);
 
     if (!post) {
       spinner.fail(chalk.red(`Post with title "${title}" not found.`));
@@ -36,21 +38,21 @@ export async function remove(title: string, options: RemoveOptions): Promise<voi
       spinner.stop();
       const answer = await inquirer.prompt([
         {
-          type: "confirm",
-          name: "confirm",
+          type: 'confirm',
+          name: 'confirm',
           message: `Are you sure you want to remove "${title}"?`,
           default: false,
         },
       ]);
 
       if (!answer.confirm) {
-        console.log(chalk.yellow("Cancelled."));
+        console.log(chalk.yellow('Cancelled.'));
         process.exit(0);
       }
-      spinner.start("Removing post...");
+      spinner.start('Removing post...');
     }
 
-    await removePost(token, title);
+    await removePost(apiKey, post.id);
 
     spinner.succeed(chalk.green(`Post "${title}" removed successfully.`));
   } catch (error) {

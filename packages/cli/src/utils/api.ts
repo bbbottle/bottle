@@ -1,34 +1,31 @@
-import type { Post, Stream } from "../config/types.js";
+import type { Post, Stream } from '../config/types.js';
 
-const API_ENDPOINT = "https://api.bbki.ng";
-const API_CF_ENDPOINT = "https://cf.bbki.ng";
+export const API_ENDPOINT = 'https://cf.bbki.ng';
+
+interface ApiResponse<T> {
+  status: string;
+  data: T;
+}
 
 // Post API
-export async function fetchPosts(token: string): Promise<Post[]> {
-  const response = await fetch(`${API_ENDPOINT}/posts`, {
-    headers: {
-      "X-Supabase-Auth": token,
-    },
-  });
+export async function fetchPosts(): Promise<Post[]> {
+  const response = await fetch(`${API_ENDPOINT}/posts`);
 
   if (!response.ok) {
     const error = await response.text();
     throw new Error(`Failed to fetch posts: ${error}`);
   }
 
-  return response.json() as Promise<Post[]>;
+  const result = (await response.json()) as ApiResponse<Post[]>;
+  return result.data;
 }
 
-export async function createPost(
-  token: string,
-  title: string,
-  content: string
-): Promise<Post> {
-  const response = await fetch(`${API_ENDPOINT}/post`, {
-    method: "POST",
+export async function createPost(apiKey: string, title: string, content: string): Promise<Post> {
+  const response = await fetch(`${API_ENDPOINT}/posts`, {
+    method: 'POST',
     headers: {
-      "Content-Type": "application/json",
-      "X-Supabase-Auth": token,
+      'Content-Type': 'application/json',
+      'x-api-key': apiKey,
     },
     body: JSON.stringify({ title, content }),
   });
@@ -38,20 +35,16 @@ export async function createPost(
     throw new Error(`Failed to create post: ${error}`);
   }
 
-  return response.json() as Promise<Post>;
+  const result = (await response.json()) as ApiResponse<Post>;
+  return result.data;
 }
 
-export async function removePost(
-  token: string,
-  title: string
-): Promise<void> {
-  const response = await fetch(`${API_ENDPOINT}/remove_post`, {
-    method: "POST",
+export async function removePost(apiKey: string, id: string): Promise<void> {
+  const response = await fetch(`${API_ENDPOINT}/posts/${id}`, {
+    method: 'DELETE',
     headers: {
-      "Content-Type": "application/json",
-      "X-Supabase-Auth": token,
+      'x-api-key': apiKey,
     },
-    body: JSON.stringify({ title }),
   });
 
   if (!response.ok) {
@@ -75,20 +68,18 @@ export interface FetchStreamsOptions {
   offset?: number;
 }
 
-export async function fetchStreams(
-  options: FetchStreamsOptions = {}
-): Promise<StreamResponse> {
+export async function fetchStreams(options: FetchStreamsOptions = {}): Promise<StreamResponse> {
   const { before, after, offset } = options;
-  const url = new URL(`${API_CF_ENDPOINT}/streaming`);
+  const url = new URL(`${API_ENDPOINT}/streaming`);
 
   if (before) {
-    url.searchParams.set("before", before);
+    url.searchParams.set('before', before);
   }
   if (after) {
-    url.searchParams.set("after", after);
+    url.searchParams.set('after', after);
   }
   if (offset) {
-    url.searchParams.set("offset", offset.toString());
+    url.searchParams.set('offset', offset.toString());
   }
 
   const response = await fetch(url);
@@ -107,11 +98,11 @@ export async function createStream(
   type: string,
   author: string
 ): Promise<{ data: Stream }> {
-  const response = await fetch(`${API_CF_ENDPOINT}/streaming`, {
-    method: "POST",
+  const response = await fetch(`${API_ENDPOINT}/streaming`, {
+    method: 'POST',
     headers: {
-      "Content-Type": "application/json",
-      "x-api-key": apiKey,
+      'Content-Type': 'application/json',
+      'x-api-key': apiKey,
     },
     body: JSON.stringify({ content, type, author }),
   });
@@ -125,10 +116,10 @@ export async function createStream(
 }
 
 export async function removeStream(apiKey: string, id: string): Promise<void> {
-  const response = await fetch(`${API_CF_ENDPOINT}/streaming/${id}`, {
-    method: "DELETE",
+  const response = await fetch(`${API_ENDPOINT}/streaming/${id}`, {
+    method: 'DELETE',
     headers: {
-      "x-api-key": apiKey,
+      'x-api-key': apiKey,
     },
   });
 
@@ -140,9 +131,9 @@ export async function removeStream(apiKey: string, id: string): Promise<void> {
 
 export async function validateApiKey(apiKey: string): Promise<boolean> {
   try {
-    const response = await fetch(`${API_CF_ENDPOINT}/streaming`, {
+    const response = await fetch(`${API_ENDPOINT}/streaming`, {
       headers: {
-        "x-api-key": apiKey,
+        'x-api-key': apiKey,
       },
     });
     return response.ok;

@@ -1,25 +1,16 @@
-import chalk from "chalk";
-import ora from "ora";
-import { getConfig, isTokenValid } from "../../config/index.js";
-import { fetchPosts } from "../../utils/api.js";
+import chalk from 'chalk';
+import ora from 'ora';
+import { fetchPosts } from '../../utils/api.js';
 
 interface ListOptions {
   json?: boolean;
 }
 
 export async function list(options: ListOptions): Promise<void> {
-  const spinner = ora("Fetching posts...").start();
+  const spinner = ora('Fetching posts...').start();
 
   try {
-    const config = await getConfig();
-
-    if (!isTokenValid(config)) {
-      spinner.fail(chalk.red("Not authenticated. Please run 'bbking login' first."));
-      process.exit(1);
-    }
-
-    const token = config.supabaseToken!;
-    const posts = await fetchPosts(token);
+    const posts = await fetchPosts();
 
     spinner.stop();
 
@@ -29,14 +20,14 @@ export async function list(options: ListOptions): Promise<void> {
     }
 
     if (posts.length === 0) {
-      console.log(chalk.yellow("No posts found."));
+      console.log(chalk.yellow('No posts found.'));
       return;
     }
 
     console.log(chalk.bold(`\nFound ${posts.length} post(s):\n`));
 
     posts.forEach((post, index) => {
-      const date = new Date(post.created_at).toLocaleDateString();
+      const date = new Date(post.createdAt).toLocaleDateString();
       console.log(`${chalk.cyan(`${index + 1}.`)} ${chalk.bold(post.title)}`);
       console.log(`   ${chalk.gray(`ID: ${post.id}`)}`);
       console.log(`   ${chalk.gray(`Created: ${date}`)}`);

@@ -31,7 +31,7 @@ const options = {
 export default defineConfig({
   server: {
     proxy: {
-      '/api/streaming': {
+      '/api': {
         target: 'http://localhost:8787',
         rewrite: path => path.replace(/^\/api/, ''),
       },
@@ -71,6 +71,7 @@ export default defineConfig({
     tailwindcss(),
     VitePWA({
       injectRegister: 'auto',
+      registerType: 'autoUpdate',
       includeAssets: ['favicon.svg', 'robots.txt', 'apple-touch-icon.png', 'Logo.svg'],
       devOptions: {
         enabled: true,

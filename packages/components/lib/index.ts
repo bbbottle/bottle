@@ -14,7 +14,6 @@ export * from './layout/layout';
 export * from './list/list';
 export * from './loading-spiral/LoadingSpiral';
 export * from './drop-zone/DropZone';
-export * from './context-menu';
 export * from './label';
 export * from './input';
 export * from './blur-cover/BlurCover';

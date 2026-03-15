@@ -1,11 +1,8 @@
-import React from "react";
-import { createRoot } from "react-dom/client";
-import { Toaster } from "sonner";
-import { BrowserRouter as Router } from "react-router-dom";
-import { ReloadPrompt } from "@/components";
-import App from "./app";
-import "./main.css";
-import Logger from "@/components/Logger";
+import React from 'react';
+import { createRoot } from 'react-dom/client';
+import { BrowserRouter as Router } from 'react-router-dom';
+import App from './app';
+import './main.css';
 
 export const RenderBlogInto = (ele: Element) => {
   const root = createRoot(ele);
@@ -13,9 +10,6 @@ export const RenderBlogInto = (ele: Element) => {
     <React.StrictMode>
       <Router>
         <App />
-        <Toaster />
-        <Logger />
-        <ReloadPrompt />
       </Router>
     </React.StrictMode>
   );
