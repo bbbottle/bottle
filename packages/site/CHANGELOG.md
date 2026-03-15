@@ -1,5 +1,13 @@
 # @bbki.ng/site
 
+## 5.4.23
+
+### Patch Changes
+
+- 796a37a: remove unused code
+- Updated dependencies [796a37a]
+  - @bbki.ng/components@5.2.13
+
 ## 5.4.22
 
 ### Patch Changes
