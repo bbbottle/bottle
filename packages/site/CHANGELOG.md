@@ -1,5 +1,11 @@
 # @bbki.ng/site
 
+## 5.4.25
+
+### Patch Changes
+
+- 17a06a6: streaming page jsx
+
 ## 5.4.24
 
 ### Patch Changes
