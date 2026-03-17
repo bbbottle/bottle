@@ -18,3 +18,4 @@ export * from './label';
 export * from './input';
 export * from './blur-cover/BlurCover';
 export * from './canvas/Canvas';
+export * from './main-layout';
