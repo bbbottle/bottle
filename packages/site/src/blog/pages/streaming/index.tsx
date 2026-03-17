@@ -66,35 +66,35 @@ const Streaming = () => {
     return <div className="p-8 text-center text-gray-500">加载失败</div>;
   }
 
+  if (isLoading) {
+    return null;
+  }
+
   return (
-    <Article title="" loading={isLoading}>
-      {isLoading ? null : (
-        <>
-          <Panel className="!p-[10px]">
-            <bb-msg-history
-              // infinite
-              hide-scroll-bar
-              hide-scroll-button
-              ref={bbMsgHistoryRef}
-              style={{ height: '100%', '--bb-max-height': '200px' } as React.CSSProperties}
-            >
-              {formattedData}
-            </bb-msg-history>
-          </Panel>
-          {scrolled ? (
-            <Button
-              className="mt-64"
-              transparent={!showScrollBtn}
-              onClick={() => {
-                bbMsgHistoryRef.current?.scrollToBottom();
-              }}
-            >
-              <ArrowDownIcon show={showScrollBtn} />
-            </Button>
-          ) : null}
-        </>
-      )}
-    </Article>
+    <>
+      <Panel className="!p-[10px]">
+        <bb-msg-history
+          // infinite
+          hide-scroll-bar
+          hide-scroll-button
+          ref={bbMsgHistoryRef}
+          style={{ height: '100%', '--bb-max-height': '300px' } as React.CSSProperties}
+        >
+          {formattedData}
+        </bb-msg-history>
+      </Panel>
+      {scrolled ? (
+        <Button
+          className="mt-64"
+          transparent={!showScrollBtn}
+          onClick={() => {
+            bbMsgHistoryRef.current?.scrollToBottom();
+          }}
+        >
+          <ArrowDownIcon show={showScrollBtn} />
+        </Button>
+      ) : null}
+    </>
   );
 };
 
