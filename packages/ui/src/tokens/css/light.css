@@ -1,0 +1,93 @@
+:root {
+  --color-gray-50: #f9fafb;
+  --color-gray-100: #f3f4f6;
+  --color-gray-200: #e5e7eb;
+  --color-gray-300: #d1d5db;
+  --color-gray-400: #9ca3af;
+  --color-gray-500: #6b7280;
+  --color-gray-600: #4b5563;
+  --color-gray-700: #374151;
+  --color-gray-800: #1f2937;
+  --color-gray-900: #111827;
+  --color-gray-950: #030712;
+  --color-pink-50: #fdf4f4;
+  --color-pink-100: #fbd1d2;
+  --color-pink-150: #f8babc;
+  --color-red-50: #fef2f2;
+  --color-red-100: #fee2e2;
+  --color-red-200: #fecaca;
+  --color-red-300: #fca5a5;
+  --color-red-400: #f87171;
+  --color-red-500: #ef4444;
+  --color-red-600: #dc2626;
+  --color-blue-50: #eff6ff;
+  --color-blue-100: #dbeafe;
+  --color-blue-500: #3b82f6;
+  --color-blue-600: #2563eb;
+  --color-white: #ffffff;
+  --color-black: #000000;
+  --shadow-none: none;
+  --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+  --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+  --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+  --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+  --shadow-button: 0px 15px 15px rgba(0, 0, 0, 0.1), 0px 5px 5px -2px rgba(0, 0, 0, 0.04);
+  --shadow-button-hover:
+    0px 10px 15px -3px rgba(0, 0, 0, 0.1), 0px 5px 5px -2px rgba(0, 0, 0, 0.04);
+  --shadow-input:
+    inset 0px 10px 25px -15px rgba(0, 0, 0, 0.25), inset 0px 5px 10px -5px rgba(17, 24, 39, 0.2);
+  --spacing-0: 0;
+  --spacing-1: 0.125rem;
+  --spacing-2: 0.25rem;
+  --spacing-3: 0.375rem;
+  --spacing-4: 0.5rem;
+  --spacing-5: 0.625rem;
+  --spacing-6: 0.75rem;
+  --spacing-8: 1rem;
+  --spacing-10: 1.25rem;
+  --spacing-12: 1.5rem;
+  --spacing-16: 2rem;
+  --spacing-20: 2.5rem;
+  --spacing-24: 3rem;
+  --spacing-32: 4rem;
+  --spacing-40: 5rem;
+  --spacing-48: 6rem;
+  --spacing-64: 8rem;
+  --font-sans:
+    'PT Sans', ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
+    'Helvetica Neue', Arial, 'Noto Sans', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
+    'Segoe UI Symbol', 'Noto Color Emoji';
+  --font-mono:
+    ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New',
+    monospace;
+  --font-size-xs: 0.75rem;
+  --font-size-sm: 0.875rem;
+  --font-size-base: 1rem;
+  --font-size-lg: 1.125rem;
+  --font-size-xl: 1.25rem;
+  --font-size-2xl: 1.5rem;
+  --font-size-3xl: 1.875rem;
+  --font-size-4xl: 2.25rem;
+  --line-height-none: 1;
+  --line-height-tight: 1.25;
+  --line-height-snug: 1.375;
+  --line-height-normal: 1.5;
+  --line-height-relaxed: 1.625;
+  --font-weight-normal: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+  --semantic-color-background: #ffffff;
+  --semantic-color-foreground: #111827;
+  --semantic-color-muted: #f3f4f6;
+  --semantic-color-muted-foreground: #6b7280;
+  --semantic-color-border: #e5e7eb;
+  --semantic-color-primary: #2563eb;
+  --semantic-color-primary-foreground: #ffffff;
+  --semantic-color-secondary: #f3f4f6;
+  --semantic-color-secondary-foreground: #111827;
+  --semantic-color-accent: #fbd1d2;
+  --semantic-color-accent-foreground: #111827;
+  --semantic-color-destructive: #dc2626;
+  --semantic-color-destructive-foreground: #ffffff;
+}

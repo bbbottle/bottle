@@ -1,0 +1,35 @@
+{
+  "font": {
+    "sans": {
+      "value": "'PT Sans', ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji'",
+      "type": "fontFamilies"
+    },
+    "mono": {
+      "value": "ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace",
+      "type": "fontFamilies"
+    }
+  },
+  "fontSize": {
+    "xs": { "value": "0.75rem", "type": "fontSizes" },
+    "sm": { "value": "0.875rem", "type": "fontSizes" },
+    "base": { "value": "1rem", "type": "fontSizes" },
+    "lg": { "value": "1.125rem", "type": "fontSizes" },
+    "xl": { "value": "1.25rem", "type": "fontSizes" },
+    "2xl": { "value": "1.5rem", "type": "fontSizes" },
+    "3xl": { "value": "1.875rem", "type": "fontSizes" },
+    "4xl": { "value": "2.25rem", "type": "fontSizes" }
+  },
+  "lineHeight": {
+    "none": { "value": "1", "type": "lineHeights" },
+    "tight": { "value": "1.25", "type": "lineHeights" },
+    "snug": { "value": "1.375", "type": "lineHeights" },
+    "normal": { "value": "1.5", "type": "lineHeights" },
+    "relaxed": { "value": "1.625", "type": "lineHeights" }
+  },
+  "fontWeight": {
+    "normal": { "value": "400", "type": "fontWeights" },
+    "medium": { "value": "500", "type": "fontWeights" },
+    "semibold": { "value": "600", "type": "fontWeights" },
+    "bold": { "value": "700", "type": "fontWeights" }
+  }
+}

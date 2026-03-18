@@ -1,0 +1,19 @@
+{
+  "semantic": {
+    "color": {
+      "background": { "value": "{color.white}", "type": "color" },
+      "foreground": { "value": "{color.gray.900}", "type": "color" },
+      "muted": { "value": "{color.gray.100}", "type": "color" },
+      "mutedForeground": { "value": "{color.gray.500}", "type": "color" },
+      "border": { "value": "{color.gray.200}", "type": "color" },
+      "primary": { "value": "{color.blue.600}", "type": "color" },
+      "primaryForeground": { "value": "{color.white}", "type": "color" },
+      "secondary": { "value": "{color.gray.100}", "type": "color" },
+      "secondaryForeground": { "value": "{color.gray.900}", "type": "color" },
+      "accent": { "value": "{color.pink.100}", "type": "color" },
+      "accentForeground": { "value": "{color.gray.900}", "type": "color" },
+      "destructive": { "value": "{color.red.600}", "type": "color" },
+      "destructiveForeground": { "value": "{color.white}", "type": "color" }
+    }
+  }
+}

@@ -1,0 +1,56 @@
+@import 'tailwindcss';
+
+/* Token CSS 变量 - 由 build-tokens 脚本生成 */
+@import './tokens/css/light.css' layer(theme);
+
+/* 深色主题 - 通过类名切换 */
+.dark {
+  @import './tokens/css/dark.css' layer(theme);
+}
+
+/* 系统偏好 */
+@media (prefers-color-scheme: dark) {
+  :root:not(.light) {
+    @import './tokens/css/dark.css' layer(theme);
+  }
+}
+
+/* Tailwind 主题配置 - 引用 CSS 变量 */
+@theme inline {
+  /* Colors - Semantic */
+  --color-background: var(--semantic-color-background);
+  --color-foreground: var(--semantic-color-foreground);
+  --color-muted: var(--semantic-color-muted);
+  --color-muted-foreground: var(--semantic-color-muted-foreground);
+  --color-border: var(--semantic-color-border);
+  --color-primary: var(--semantic-color-primary);
+  --color-primary-foreground: var(--semantic-color-primary-foreground);
+  --color-secondary: var(--semantic-color-secondary);
+  --color-secondary-foreground: var(--semantic-color-secondary-foreground);
+  --color-accent: var(--semantic-color-accent);
+  --color-accent-foreground: var(--semantic-color-accent-foreground);
+  --color-destructive: var(--semantic-color-destructive);
+  --color-destructive-foreground: var(--semantic-color-destructive-foreground);
+
+  /* Typography */
+  --font-sans: var(--font-sans);
+  --font-mono: var(--font-mono);
+
+  /* Shadows */
+  --shadow-button: var(--shadow-button);
+  --shadow-button-hover: var(--shadow-button-hover);
+  --shadow-input: var(--shadow-input);
+}
+
+/* 基础层样式 */
+@layer base {
+  * {
+    border-color: var(--semantic-color-border);
+  }
+
+  body {
+    background-color: var(--semantic-color-background);
+    color: var(--semantic-color-foreground);
+    font-family: var(--font-sans);
+  }
+}
