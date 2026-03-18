@@ -39,7 +39,7 @@ export const Link: React.FC<LinkProps> = ({
     return (
       <>
         <span className={twMerge('text-content-secondary', offsetCls)}>{children}</span>
-        <BlinkDot status={status} xOffset={-3} />
+        <BlinkDot status={status} />
       </>
     );
   }

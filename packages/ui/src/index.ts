@@ -16,5 +16,9 @@ export type { ContainerProps } from './layout/container';
 export { Grid } from './layout/grid';
 export type { GridProps } from './layout/grid';
 
+// Molecules
+export { Breadcrumb } from './molecules/breadcrumb';
+export type { BreadcrumbProps, PathObj } from './molecules/breadcrumb';
+
 // Styles (side effect import)
 import './styles.css';

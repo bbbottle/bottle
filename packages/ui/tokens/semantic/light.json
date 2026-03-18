@@ -22,7 +22,7 @@
         "description": "主要内容文字颜色"
       },
       "special": {
-        "value": "{color.xwy.50}",
+        "value": "{color.xwy.150}",
         "type": "color",
         "description": "特殊内容文字颜色（例如包含“小乌鸦”的内容）"
       },
