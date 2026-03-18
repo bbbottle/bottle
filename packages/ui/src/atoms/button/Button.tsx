@@ -1,13 +1,10 @@
-import React, { forwardRef, useState, useCallback } from 'react';
+import React, { forwardRef, useCallback } from 'react';
 import { buttonVariants } from './Button.variants';
 import { ButtonProps } from './Button.types';
 import { twMerge } from 'tailwind-merge';
 
 /**
  * Button 组件
- *
- * 设计系统基础原子组件，全部样式来自 CSS 变量。
- * 参考旧 Button 实现，保留点击动画效果。
  */
 export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
   (

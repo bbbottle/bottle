@@ -46,3 +46,18 @@
     font-family: var(--font-sans);
   }
 }
+
+/* Custom animations */
+@keyframes blink {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  75% {
+    opacity: 0;
+  }
+}
+
+@utility animate-ping-fast {
+  animation: blink 0.1s infinite;
+}
