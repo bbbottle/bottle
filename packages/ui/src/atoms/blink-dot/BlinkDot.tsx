@@ -26,7 +26,7 @@ export const BlinkDot: React.FC<BlinkDotProps> = ({
       <span
         className={twMerge(
           'absolute inline-flex h-full w-full rounded-full',
-          'text-[var(--color-red-600)]',
+          'text-status-error',
           status === 'blink' && 'animate-ping-fast',
           status === 'hidden' && 'hidden',
           className

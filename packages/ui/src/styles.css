@@ -15,21 +15,30 @@
   }
 }
 
-/* Tailwind 主题配置 - 仅映射语义颜色 */
 @theme inline {
-  --color-background: var(--semantic-color-background);
-  --color-foreground: var(--semantic-color-foreground);
-  --color-muted: var(--semantic-color-muted);
-  --color-muted-foreground: var(--semantic-color-muted-foreground);
-  --color-border: var(--semantic-color-border);
-  --color-primary: var(--semantic-color-primary);
-  --color-primary-foreground: var(--semantic-color-primary-foreground);
-  --color-secondary: var(--semantic-color-secondary);
-  --color-secondary-foreground: var(--semantic-color-secondary-foreground);
-  --color-accent: var(--semantic-color-accent);
-  --color-accent-foreground: var(--semantic-color-accent-foreground);
-  --color-destructive: var(--semantic-color-destructive);
-  --color-destructive-foreground: var(--semantic-color-destructive-foreground);
+  /* Colors - 映射到生成的 CSS 变量 */
+  --color-background: var(--color-background);
+  --color-foreground: var(--color-foreground);
+  --color-muted: var(--color-muted);
+  --color-muted-foreground: var(--color-muted-foreground);
+  --color-border: var(--color-border);
+  --color-primary: var(--color-primary);
+  --color-primary-foreground: var(--color-primary-foreground);
+  --color-secondary: var(--color-secondary);
+  --color-secondary-foreground: var(--color-secondary-foreground);
+  --color-accent: var(--color-accent);
+  --color-accent-foreground: var(--color-accent-foreground);
+  --color-destructive: var(--color-destructive);
+  --color-destructive-foreground: var(--color-destructive-foreground);
+  --color-content-primary: var(--color-content-primary);
+  --color-content-secondary: var(--color-content-secondary);
+  --color-content-disabled: var(--color-content-disabled);
+  --color-content-action: var(--color-content-action);
+  --color-content-danger: var(--color-content-danger);
+  --color-status-error: var(--color-status-error);
+  --color-status-warning: var(--color-status-warning);
+  --color-status-success: var(--color-status-success);
+  --color-status-info: var(--color-status-info);
 
   --font-sans: var(--font-sans);
   --font-mono: var(--font-mono);
@@ -37,12 +46,12 @@
 
 @layer base {
   * {
-    border-color: var(--semantic-color-border);
+    border-color: var(--color-border);
   }
 
   body {
-    background-color: var(--semantic-color-background);
-    color: var(--semantic-color-foreground);
+    background-color: var(--color-background);
+    color: var(--color-foreground);
     font-family: var(--font-sans);
   }
 }
