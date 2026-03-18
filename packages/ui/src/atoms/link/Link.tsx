@@ -38,7 +38,9 @@ export const Link: React.FC<LinkProps> = ({
     const offsetCls = isNonEnName ? 'relative top-[2px]' : '';
     return (
       <>
-        <span className={twMerge('text-content-secondary', offsetCls)}>{children}</span>
+        <span className={twMerge('text-content-secondary', 'inline-block', offsetCls, 'p-1')}>
+          {children}
+        </span>
         <BlinkDot status={status} />
       </>
     );

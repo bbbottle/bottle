@@ -19,7 +19,7 @@ const preview: Preview = {
   decorators: [
     Story => (
       <ThemeProvider>
-        <div className="p-8">
+        <div className="p-8 noto-serif">
           <Story />
         </div>
       </ThemeProvider>
