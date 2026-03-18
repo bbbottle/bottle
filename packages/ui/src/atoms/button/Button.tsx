@@ -2,6 +2,7 @@ import React, { forwardRef, useCallback } from 'react';
 import { buttonVariants } from './Button.variants';
 import { ButtonProps } from './Button.types';
 import { twMerge } from 'tailwind-merge';
+import { BlinkDot } from '../blink-dot';
 
 /**
  * Button 组件
@@ -48,13 +49,8 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
         onClick={handleClick}
         {...props}
       >
-        {loading && (
-          <span
-            className="mr-2 inline-block h-4 w-4 animate-spin rounded-full border-2 border-current border-t-transparent"
-            aria-hidden="true"
-          />
-        )}
         {children}
+        {loading && <BlinkDot status="blink" xOffset={2} />}
       </button>
     );
   }
