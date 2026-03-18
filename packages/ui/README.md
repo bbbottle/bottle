@@ -60,10 +60,13 @@ function ThemeToggle() {
 
 Props:
 
-- `variant`: 'default' | 'secondary' | 'ghost' | 'destructive' | 'outline'
+- `variant`: 'default' | 'primary' | 'danger' | 'ghost' | 'disabled'
 - `size`: 'sm' | 'md' | 'lg'
+- `transparent`: boolean
 - `loading`: boolean
 - `disabled`: boolean
+
+**注意**: 点击时有 280ms 的延迟动画效果，与旧版 Button 行为一致。
 
 ### Container
 

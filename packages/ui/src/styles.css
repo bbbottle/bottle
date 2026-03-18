@@ -1,23 +1,22 @@
 @import 'tailwindcss';
 
 /* Token CSS 变量 - 由 build-tokens 脚本生成 */
-@import './tokens/css/light.css' layer(theme);
+@import './tokens/css/light.css';
 
 /* 深色主题 - 通过类名切换 */
 .dark {
-  @import './tokens/css/dark.css' layer(theme);
+  @import './tokens/css/dark.css';
 }
 
 /* 系统偏好 */
 @media (prefers-color-scheme: dark) {
   :root:not(.light) {
-    @import './tokens/css/dark.css' layer(theme);
+    @import './tokens/css/dark.css';
   }
 }
 
-/* Tailwind 主题配置 - 引用 CSS 变量 */
+/* Tailwind 主题配置 - 仅映射语义颜色 */
 @theme inline {
-  /* Colors - Semantic */
   --color-background: var(--semantic-color-background);
   --color-foreground: var(--semantic-color-foreground);
   --color-muted: var(--semantic-color-muted);
@@ -32,17 +31,10 @@
   --color-destructive: var(--semantic-color-destructive);
   --color-destructive-foreground: var(--semantic-color-destructive-foreground);
 
-  /* Typography */
   --font-sans: var(--font-sans);
   --font-mono: var(--font-mono);
-
-  /* Shadows */
-  --shadow-button: var(--shadow-button);
-  --shadow-button-hover: var(--shadow-button-hover);
-  --shadow-input: var(--shadow-input);
 }
 
-/* 基础层样式 */
 @layer base {
   * {
     border-color: var(--semantic-color-border);

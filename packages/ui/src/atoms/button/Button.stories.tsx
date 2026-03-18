@@ -11,11 +11,14 @@ const meta: Meta<typeof Button> = {
   argTypes: {
     variant: {
       control: 'select',
-      options: ['default', 'secondary', 'ghost', 'destructive', 'outline'],
+      options: ['default', 'primary', 'danger', 'ghost', 'disabled'],
     },
     size: {
       control: 'select',
       options: ['sm', 'md', 'lg'],
+    },
+    transparent: {
+      control: 'boolean',
     },
     loading: {
       control: 'boolean',
@@ -40,11 +43,11 @@ export const Default: Story = {
 export const Variants: Story = {
   render: () => (
     <div className="flex gap-4">
-      <Button variant="default">Default</Button>
-      <Button variant="secondary">Secondary</Button>
-      <Button variant="outline">Outline</Button>
+      <Button variant="default">Default (Normal)</Button>
+      <Button variant="primary">Primary</Button>
+      <Button variant="danger">Danger</Button>
       <Button variant="ghost">Ghost</Button>
-      <Button variant="destructive">Destructive</Button>
+      <Button variant="disabled">Disabled</Button>
     </div>
   ),
 };
@@ -57,6 +60,13 @@ export const Sizes: Story = {
       <Button size="lg">Large</Button>
     </div>
   ),
+};
+
+export const Transparent: Story = {
+  args: {
+    children: 'Transparent',
+    transparent: true,
+  },
 };
 
 export const Loading: Story = {
