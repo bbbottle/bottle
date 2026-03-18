@@ -7,10 +7,10 @@ import path from 'path';
 export default defineConfig({
   plugins: [
     react(),
-    tailwindcss(),
+    tailwindcss() as any,
     dts({
       entryRoot: path.resolve(__dirname, 'src'),
-      outputDir: path.resolve(__dirname, 'dist/types'),
+      outDir: path.resolve(__dirname, 'dist/types'),
       exclude: ['**/*.test.tsx', '**/*.stories.tsx', '**/tokens/css/**'],
       insertTypesEntry: true,
     }),
@@ -23,7 +23,7 @@ export default defineConfig({
       fileName: (format, entryName) => `${entryName}.mjs`,
     },
     rollupOptions: {
-      external: ['react', 'react-dom', 'react/jsx-runtime'],
+      external: ['react', 'react-dom', 'react-router-dom', 'react/jsx-runtime'],
       output: {
         preserveModules: true,
         preserveModulesRoot: 'src',

@@ -13,6 +13,9 @@
   --color-pink-50: #fdf4f4;
   --color-pink-100: #fbd1d2;
   --color-pink-150: #f8babc;
+  --color-xwy-50: #fdf4f4;
+  --color-xwy-100: #fbd1d2;
+  --color-xwy-150: #f8babc;
   --color-red-50: #fef2f2;
   --color-red-100: #fee2e2;
   --color-red-200: #fecaca;
@@ -39,10 +42,13 @@
   --color-accent-foreground: #030712;
   --color-destructive: #ef4444;
   --color-destructive-foreground: #ffffff;
+  --color-special: #fdf4f4;
+  --color-special-foreground: #f8babc;
   --color-content-primary: #f9fafb;
   --color-content-secondary: #9ca3af;
   --color-content-disabled: #6b7280;
   --color-content-action: #3b82f6;
+  --color-content-special: #f8babc;
   --color-content-danger: #f87171;
   --color-status-error: #ef4444;
   --color-status-warning: #f87171;

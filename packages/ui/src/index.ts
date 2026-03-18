@@ -7,6 +7,8 @@ export { Button, buttonVariants } from './atoms/button';
 export type { ButtonProps } from './atoms/button';
 export { BlinkDot } from './atoms/blink-dot';
 export type { BlinkDotProps, BlinkDotStatus } from './atoms/blink-dot';
+export { Link, linkVariants } from './atoms/link';
+export type { LinkProps, LinkStatus } from './atoms/link';
 
 // Layout
 export { Container } from './layout/container';
