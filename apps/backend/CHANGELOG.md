@@ -1,5 +1,11 @@
 # backend
 
+## 0.3.10
+
+### Patch Changes
+
+- 1ab4d7c: update animation
+
 ## 0.3.9
 
 ### Patch Changes

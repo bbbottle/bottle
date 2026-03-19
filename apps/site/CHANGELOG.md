@@ -1,5 +1,13 @@
 # @bbki.ng/site
 
+## 5.4.27
+
+### Patch Changes
+
+- 1ab4d7c: update animation
+- Updated dependencies [1ab4d7c]
+  - @bbki.ng/ui@0.1.2
+
 ## 5.4.26
 
 ### Patch Changes
