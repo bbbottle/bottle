@@ -1,5 +1,13 @@
 # @bbki.ng/site
 
+## 5.4.32
+
+### Patch Changes
+
+- 3308d28: fix layout
+- Updated dependencies [3308d28]
+  - @bbki.ng/ui@0.1.6
+
 ## 5.4.31
 
 ### Patch Changes

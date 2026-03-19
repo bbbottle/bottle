@@ -1,5 +1,11 @@
 # @bbki.ng/ui
 
+## 0.1.6
+
+### Patch Changes
+
+- 3308d28: fix layout
+
 ## 0.1.5
 
 ### Patch Changes
