@@ -346,6 +346,9 @@ importers:
       class-variance-authority:
         specifier: ^0.7.0
         version: 0.7.1
+      phenomenon:
+        specifier: ^1.6.0
+        version: 1.6.0
       tailwind-merge:
         specifier: ^2.5.0
         version: 2.6.1
@@ -7953,6 +7956,12 @@ packages:
     resolution:
       {
         integrity: sha512-vKiQ8RRtkl9P+r/+oefh25C3fhybptkHKCZSPlcXiJux2tJF55GnEj3BVn4A5gKfq9NWWXXrxkHBwVPUfH0opw==,
+      }
+
+  phenomenon@1.6.0:
+    resolution:
+      {
+        integrity: sha512-7h9/fjPD3qNlgggzm88cY58l9sudZ6Ey+UmZsizfhtawO6E3srZQXywaNm2lBwT72TbpHYRPy7ytIHeBUD/G0A==,
       }
 
   picocolors@1.1.1:
@@ -15620,6 +15629,8 @@ snapshots:
       '@types/estree': 1.0.8
       estree-walker: 3.0.3
       is-reference: 3.0.2
+
+  phenomenon@1.6.0: {}
 
   picocolors@1.1.1: {}
 

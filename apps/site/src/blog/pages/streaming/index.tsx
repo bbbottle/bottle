@@ -62,11 +62,7 @@ const Streaming = () => {
     };
   }, [isLoading, formattedData]);
 
-  if (isError) {
-    return <div className="p-8 text-center text-gray-500">加载失败</div>;
-  }
-
-  if (isLoading) {
+  if (isLoading || isError) {
     return null;
   }
 

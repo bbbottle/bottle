@@ -1,5 +1,6 @@
 uniform float uLoading;
 uniform float uSpiralProgress;
+uniform float uSpiralOpacity;
 
 const float PI2 = 3.141592653589793 * 2.0;
 
@@ -44,23 +45,49 @@ void drawSpiral(vec2 uv) {
   float scale = 4.0;
   p *= scale;
 
+  // early exit: spiral fits within radius ~0.35 in curve space
+  if (length(p) > 0.5) {
+    return;
+  }
+
   float minDist = 1.0;
 
-  const int SAMPLES = 200;
+  const int SAMPLES = 80;
+  vec2 prevProjected;
   for (int i = 0; i < SAMPLES; i++) {
     float pct = float(i) / float(SAMPLES);
     vec3 pos3d = spiralCurve(pct);
     vec3 rotated = rotateXVec3(pos3d, uSpiralProgress);
     vec2 projected = rotated.xy;
 
-    float d = distance(p, projected);
-    minDist = min(minDist, d);
+    if (i > 0) {
+      // distance from point to line segment
+      vec2 ab = projected - prevProjected;
+      vec2 ap = p - prevProjected;
+      float t = clamp(dot(ap, ab) / dot(ab, ab), 0.0, 1.0);
+      vec2 closest = prevProjected + t * ab;
+      float d = distance(p, closest);
+      minDist = min(minDist, d);
+    }
+
+    prevProjected = projected;
   }
 
-  float lineWidth = 0.003;
+  // close the loop: connect last sample back to first
+  vec3 firstPos = spiralCurve(0.0);
+  vec3 firstRotated = rotateXVec3(firstPos, uSpiralProgress);
+  vec2 firstProjected = firstRotated.xy;
+  vec2 ab = firstProjected - prevProjected;
+  vec2 ap = p - prevProjected;
+  float tc = clamp(dot(ap, ab) / dot(ab, ab), 0.0, 1.0);
+  vec2 closest = prevProjected + tc * ab;
+  float dc = distance(p, closest);
+  minDist = min(minDist, dc);
+
+  float lineWidth = 0.002;
   float alpha = 1.0 - smoothstep(0.0, lineWidth, minDist);
 
-  float spiralAlpha = alpha * 0.8;
+  float spiralAlpha = alpha * 0.8 * uSpiralOpacity;
   gl_FragColor.rgb = mix(gl_FragColor.rgb, vec3(0.0), spiralAlpha);
   gl_FragColor.a = max(gl_FragColor.a, spiralAlpha);
 }

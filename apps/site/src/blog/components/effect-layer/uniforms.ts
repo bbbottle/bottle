@@ -23,4 +23,8 @@ export default {
     type: 'float',
     value: [0.0],
   },
+  uSpiralOpacity: {
+    type: 'float',
+    value: [0.0],
+  },
 };
