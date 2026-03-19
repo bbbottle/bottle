@@ -15,4 +15,16 @@ export default {
     type: 'vec2',
     value: [0, 0],
   },
+  uLoading: {
+    type: 'float',
+    value: [0.0],
+  },
+  uSpiralProgress: {
+    type: 'float',
+    value: [0.0],
+  },
+  uSpiralOpacity: {
+    type: 'float',
+    value: [0.0],
+  },
 };

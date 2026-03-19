@@ -7,6 +7,7 @@ uniform float uDevicePixelRatio;
 #define DefaultColor vec4(0.0, 0.0, 0.0, 0.0)
 
 #include "effects/grain.frag"
+#include "effects/spiral.frag"
 //#include "shapes/circle.frag"
 
 
@@ -21,4 +22,7 @@ void main() {
 
   // draw grain on nav
   drawGrainOnNav(uv);
+
+  // draw loading spiral
+  drawSpiral(uv);
 }
