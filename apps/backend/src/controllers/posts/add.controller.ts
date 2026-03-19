@@ -60,9 +60,9 @@ export const addPost = async (c: Context) => {
     const now = new Date().toISOString();
 
     // Check if post with same title already exists (upsert)
-    const existingPost = await c.env.DB.prepare('SELECT id FROM posts WHERE title = ?')
+    const existingPost = (await c.env.DB.prepare('SELECT id FROM posts WHERE title = ?')
       .bind(title)
-      .first<{ id: string }>();
+      .first()) as { id: string } | null;
 
     if (existingPost) {
       await c.env.DB.prepare(
