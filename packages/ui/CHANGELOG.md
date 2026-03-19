@@ -1,5 +1,11 @@
 # @bbki.ng/ui
 
+## 0.1.5
+
+### Patch Changes
+
+- 25738cb: fix: cors error
+
 ## 0.1.4
 
 ### Patch Changes
