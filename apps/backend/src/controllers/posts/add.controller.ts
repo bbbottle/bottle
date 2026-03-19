@@ -1,5 +1,9 @@
 import { Context } from 'hono';
 import { HTTPException } from 'hono/http-exception';
+import showdown from 'showdown';
+
+const converter = new showdown.Converter();
+converter.setFlavor('github');
 
 interface AddPostRequest {
   title: string;
@@ -13,7 +17,7 @@ const MAX_CONTENT_LENGTH = 100000;
 export const addPost = async (c: Context) => {
   try {
     // Parse and validate request body
-    const body = await c.req.json<AddPostRequest>();
+    const body = (await c.req.json()) as AddPostRequest;
 
     if (!body.title || typeof body.title !== 'string') {
       throw new HTTPException(400, { message: 'Title is required' });
@@ -44,32 +48,48 @@ export const addPost = async (c: Context) => {
 
     const author = (body.author ?? 'bbki.ng').trim();
 
+    // Convert markdown to HTML
+    const html = converter.makeHtml(content);
+    const wrappedHtml = html.includes('<p>') ? html : `<p>${html}</p>`;
+
     // Check database availability
     if (!c.env?.DB) {
       throw new HTTPException(503, { message: 'Database unavailable' });
     }
 
-    // Insert post
-    const id = crypto.randomUUID();
     const now = new Date().toISOString();
 
-    try {
+    // Check if post with same title already exists (upsert)
+    const existingPost = (await c.env.DB.prepare('SELECT id FROM posts WHERE title = ?')
+      .bind(title)
+      .first()) as { id: string } | null;
+
+    if (existingPost) {
       await c.env.DB.prepare(
-        'INSERT INTO posts (id, title, content, author, created_at, updated_at) VALUES (?, ?, ?, ?, ?, ?)'
+        'UPDATE posts SET content = ?, author = ?, updated_at = ? WHERE id = ?'
       )
-        .bind(id, title, content, author, now, now)
+        .bind(wrappedHtml, author, now, existingPost.id)
         .run();
-    } catch (dbError: any) {
-      if (dbError.message?.includes('UNIQUE')) {
-        throw new HTTPException(409, { message: 'Post with this title already exists' });
-      }
-      throw dbError;
+
+      return c.json({
+        status: 'success',
+        data: { id: existingPost.id, title, content: wrappedHtml, author, updatedAt: now },
+      });
     }
+
+    // Insert new post
+    const id = crypto.randomUUID();
+
+    await c.env.DB.prepare(
+      'INSERT INTO posts (id, title, content, author, created_at, updated_at) VALUES (?, ?, ?, ?, ?, ?)'
+    )
+      .bind(id, title, wrappedHtml, author, now, now)
+      .run();
 
     return c.json(
       {
         status: 'success',
-        data: { id, title, content, author, createdAt: now, updatedAt: now },
+        data: { id, title, content: wrappedHtml, author, createdAt: now, updatedAt: now },
       },
       201
     );
