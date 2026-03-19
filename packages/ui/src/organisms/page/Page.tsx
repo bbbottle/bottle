@@ -7,14 +7,13 @@ import {
   ErrorBoundaryProps,
   ErrorBoundaryState,
 } from './Page.types';
-import { Container } from '../../layout';
 
 export const Page = (props: PageProps) => {
   const { nav, main } = props;
 
   return (
     <main className="flex flex-col h-full">
-      <div className="flex-grow-0 w-full fixed top-0 z-50">{nav}</div>
+      <div className="grow-0 w-full fixed top-0 z-50">{nav}</div>
       {/* secctio padding top 192px */}
       <section className="grow shrink-0">{main}</section>
     </main>
