@@ -40,7 +40,6 @@ export default defineConfig({
   resolve: {
     alias: {
       '@': path.resolve(__dirname, './src/blog'),
-      // "@bbki.ng/commponents": path.resolve(__dirname, "../components/lib"),
     },
     // preserveSymlinks: true,
   },
