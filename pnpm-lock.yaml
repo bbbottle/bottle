@@ -67,6 +67,9 @@ importers:
       hono:
         specifier: ^4.10.7
         version: 4.10.7
+      showdown:
+        specifier: ^2.1.0
+        version: 2.1.0
     devDependencies:
       '@bbki.ng/config':
         specifier: workspace:*
@@ -83,6 +86,9 @@ importers:
       '@types/node':
         specifier: ^20.0.0
         version: 20.19.35
+      '@types/showdown':
+        specifier: ^2.0.6
+        version: 2.0.6
       '@typescript-eslint/eslint-plugin':
         specifier: ^7.0.0
         version: 7.18.0(@typescript-eslint/parser@7.18.0(eslint@8.57.1)(typescript@5.8.2))(eslint@8.57.1)(typescript@5.8.2)
@@ -3583,6 +3589,12 @@ packages:
         integrity: sha512-hppQEBDmlwhFAXKJX2KnWLYu5yMfi91yazPb2l+lbJiwW+wdo1gNeRA+3RgNSO39WYX2euey41KEwnqesU2Jew==,
       }
 
+  '@types/showdown@2.0.6':
+    resolution:
+      {
+        integrity: sha512-pTvD/0CIeqe4x23+YJWlX2gArHa8G0J0Oh6GKaVXV7TAeickpkkZiNOgFcFcmLQ5lB/K0qBJL1FtRYltBfbGCQ==,
+      }
+
   '@types/through@0.0.33':
     resolution:
       {
@@ -4510,6 +4522,13 @@ packages:
       {
         integrity: sha512-GpVkmM8vF2vQUkj2LvZmD35JxeJOLCwJ9cUkugyk2nuhbv3+mJvpLYYt+0+USMxE+oj+ey/lJEnhZw75x/OMcQ==,
       }
+
+  commander@9.5.0:
+    resolution:
+      {
+        integrity: sha512-KRs7WVDKg86PWiuAqhDrAQnTXZKraVcCc6vFdL14qrZ/DcWwuRo7VoiYXalXO7S5GKpqYiVEwCbgFDfxNHKJBQ==,
+      }
+    engines: { node: ^12.20.0 || >=14 }
 
   common-tags@1.8.2:
     resolution:
@@ -8701,6 +8720,13 @@ packages:
       }
     engines: { node: '>=8' }
 
+  showdown@2.1.0:
+    resolution:
+      {
+        integrity: sha512-/6NVYu4U819R2pUIk79n67SYgJHWCce0a5xTP979WbNp0FL9MN1I1QK662IDU1b6JzKTvmhgI7T7JYIxBi3kMQ==,
+      }
+    hasBin: true
+
   side-channel-list@1.0.0:
     resolution:
       {
@@ -12389,6 +12415,8 @@ snapshots:
 
   '@types/scheduler@0.16.2': {}
 
+  '@types/showdown@2.0.6': {}
+
   '@types/through@0.0.33':
     dependencies:
       '@types/node': 20.19.35
@@ -13051,6 +13079,8 @@ snapshots:
   commander@12.1.0: {}
 
   commander@2.20.3: {}
+
+  commander@9.5.0: {}
 
   common-tags@1.8.2: {}
 
@@ -16177,6 +16207,10 @@ snapshots:
       shebang-regex: 3.0.0
 
   shebang-regex@3.0.0: {}
+
+  showdown@2.1.0:
+    dependencies:
+      commander: 9.5.0
 
   side-channel-list@1.0.0:
     dependencies:
