@@ -1,5 +1,11 @@
 # backend
 
+## 0.3.12
+
+### Patch Changes
+
+- 25738cb: fix: cors error
+
 ## 0.3.11
 
 ### Patch Changes

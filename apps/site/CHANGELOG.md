@@ -1,5 +1,13 @@
 # @bbki.ng/site
 
+## 5.4.31
+
+### Patch Changes
+
+- 25738cb: fix: cors error
+- Updated dependencies [25738cb]
+  - @bbki.ng/ui@0.1.5
+
 ## 5.4.30
 
 ### Patch Changes
