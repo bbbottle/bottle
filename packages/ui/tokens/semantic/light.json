@@ -14,6 +14,7 @@
     "destructive": { "value": "{color.red.600}", "type": "color" },
     "destructiveForeground": { "value": "{color.white}", "type": "color" },
     "special": { "value": "{color.xwy.50}", "type": "color" },
+    "logo": { "value": "{color.gray.150}", "type": "color" },
     "specialForeground": { "value": "{color.gray.900}", "type": "color" },
     "content": {
       "primary": {
@@ -37,7 +38,7 @@
         "description": "禁用状态文字颜色"
       },
       "action": {
-        "value": "{color.blue.600}",
+        "value": "{color.black}",
         "type": "color",
         "description": "可操作/链接文字颜色"
       },

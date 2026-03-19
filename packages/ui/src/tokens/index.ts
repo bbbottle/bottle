@@ -8,6 +8,7 @@ export const tokens = {
     color: {
       'gray-50': 'var(--color-gray-50)',
       'gray-100': 'var(--color-gray-100)',
+      'gray-150': 'var(--color-gray-150)',
       'gray-200': 'var(--color-gray-200)',
       'gray-300': 'var(--color-gray-300)',
       'gray-400': 'var(--color-gray-400)',
@@ -50,6 +51,7 @@ export const tokens = {
       destructive: 'var(--color-destructive)',
       destructiveForeground: 'var(--color-destructive-foreground)',
       special: 'var(--color-special)',
+      logo: 'var(--color-logo)',
       specialForeground: 'var(--color-special-foreground)',
       'content-primary': 'var(--color-content-primary)',
       'content-special': 'var(--color-content-special)',

@@ -10,7 +10,7 @@ interface ThemeProviderProps {
 
 export const ThemeProvider: React.FC<ThemeProviderProps> = ({
   children,
-  defaultTheme = 'system',
+  defaultTheme = 'light',
   storageKey = 'bb-ui-theme',
   enableSystem = true,
 }) => {

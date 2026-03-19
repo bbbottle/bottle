@@ -37,6 +37,7 @@
   --color-content-danger: var(--color-content-danger);
   --color-content-special: var(--color-content-special);
   --color-special: var(--color-special);
+  --color-logo: var(--color-logo);
   --color-status-error: var(--color-status-error);
   --color-status-warning: var(--color-status-warning);
   --color-status-success: var(--color-status-success);

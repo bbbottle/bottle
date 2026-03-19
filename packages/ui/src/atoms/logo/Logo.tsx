@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { LogoProps } from './Logo.types';
+import { twMerge } from 'tailwind-merge';
 
 export const Logo = React.memo(
   (props: LogoProps) => (
@@ -8,9 +9,9 @@ export const Logo = React.memo(
       width="48"
       height="48"
       viewBox="0 0 48 48"
-      fill="none"
+      fill="currentColor"
       onClick={props.onClick}
-      className={props.className}
+      className={twMerge(props.className, 'text-logo')}
     >
       <path
         d="M29.1152 21.3106C32.0605 21.3106 34.4481 18.9101 34.4481 15.9489V24.6457C34.4481 25.7585 33.5508 26.6607 32.444 26.6607H15.1207C14.0138 26.6607 13.1166 25.7585 13.1166 24.6457V15.9489C13.1166 18.9101 15.5042 21.3106 18.4494 21.3106C21.3947 21.3106 23.7823 18.9101 23.7823 15.9489C23.7823 18.9101 26.17 21.3106 29.1152 21.3106Z"

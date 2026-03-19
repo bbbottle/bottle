@@ -9,12 +9,6 @@ export { BlinkDot } from './atoms/blink-dot';
 export type { BlinkDotProps, BlinkDotStatus } from './atoms/blink-dot';
 export { Link, linkVariants } from './atoms/link';
 export type { LinkProps, LinkStatus } from './atoms/link';
-export { Input, inputVariants } from './atoms/input';
-export type { InputProps } from './atoms/input';
-export { Label, labelVariants } from './atoms/label';
-export type { LabelProps } from './atoms/label';
-export { Tag, Tags } from './atoms/tag';
-export type { TagProps, TagsProps } from './atoms/tag';
 export { Logo } from './atoms/logo';
 export type { LogoProps } from './atoms/logo';
 

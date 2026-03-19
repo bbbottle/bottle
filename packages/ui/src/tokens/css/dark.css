@@ -1,6 +1,7 @@
 :root {
   --color-gray-50: #f9fafb;
   --color-gray-100: #f3f4f6;
+  --color-gray-150: #9ca3af;
   --color-gray-200: #e5e7eb;
   --color-gray-300: #d1d5db;
   --color-gray-400: #9ca3af;
@@ -41,13 +42,14 @@
   --color-accent: #f8babc;
   --color-accent-foreground: #030712;
   --color-destructive: #ef4444;
+  --color-logo: #9ca3af;
   --color-destructive-foreground: #ffffff;
   --color-special: #fdf4f4;
   --color-special-foreground: #f8babc;
   --color-content-primary: #f9fafb;
   --color-content-secondary: #9ca3af;
   --color-content-disabled: #6b7280;
-  --color-content-action: #3b82f6;
+  --color-content-action: #000000;
   --color-content-special: #f8babc;
   --color-content-danger: #f87171;
   --color-status-error: #ef4444;

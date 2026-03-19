@@ -19,9 +19,9 @@ export const linkVariants = cva(
         default: [
           // 默认链接样式 - 使用 action 颜色（蓝色系）
           'text-content-action',
-          'md:not-focus:hover:bg-primary/10',
+          'md:not-focus:hover:bg-secondary',
           'md:not-focus:hover:text-content-action',
-          'focus:bg-primary/10',
+          'focus:bg-secondary',
         ],
         danger: [
           // 危险/强调样式 - 使用 danger 颜色（粉色/红色系）

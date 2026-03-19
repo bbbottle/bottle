@@ -108,6 +108,7 @@ async function build() {
 
   // Light theme config - 解析所有引用
   const lightConfig: Config = {
+    log: { verbosity: 'verbose' },
     source: ['tokens/base/**/*.json', 'tokens/semantic/light.json'],
     platforms: {
       css: {
@@ -137,6 +138,7 @@ async function build() {
 
   // Dark theme config - 解析所有引用
   const darkConfig: Config = {
+    log: { verbosity: 'verbose' },
     source: ['tokens/base/**/*.json', 'tokens/semantic/dark.json'],
     platforms: {
       css: {
