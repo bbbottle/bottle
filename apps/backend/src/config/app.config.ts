@@ -12,10 +12,7 @@ const app = new Hono<{ Bindings: Bindings }>();
 app.use(
   '*',
   cors({
-    origin: origin => {
-      // Allow bbki.ng and any localhost port
-      return /^https:\/\/bbki\.ng$|^http:\/\/localhost(:\d+)?$/.test(origin) ? origin : null;
-    },
+    origin: '*',
   })
 );
 
