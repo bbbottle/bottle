@@ -9,13 +9,12 @@ This is a pnpm monorepo for [bbki.ng](https://bbki.ng), a personal blog and rela
 ## Package Structure
 
 ```
-packages/
+apps/
 ├── site/           # @bbki.ng/site - Main blog (React 18 + Vite 5 + TailwindCSS v4)
-├── components/     # @bbki.ng/components - React component library
-├── backend/        # @bbki.ng/backend - Cloudflare Workers API (Hono + WebAuthn)
+└── backend/        # @bbki.ng/backend - Cloudflare Workers API (Hono + WebAuthn)
+packages/
+├── ui/             # @bbki.ng/ui - React component library
 ├── cli/            # @bbki.ng/cli - CLI tool for managing content
-├── stylebase/      # @bbki.ng/stylebase - TailwindCSS v4 configuration
-├── eslint-config/  # @bbki.ng/eslint-config - ESLint configuration
 └── config/         # @bbki.ng/config - Shared configuration placeholder
 ```
 
@@ -33,7 +32,7 @@ pnpm release      # Version packages and publish to npm
 
 ### Package-Specific Commands
 
-**Site package (`packages/site/`):**
+**Site package (`apps/site/`):**
 
 ```bash
 pnpm dev          # Start Vite dev server with --host
@@ -43,7 +42,7 @@ pnpm test         # Run Jest tests
 pnpm test:cov     # Run tests with coverage
 ```
 
-**Backend package (`packages/backend/`):**
+**Backend package (`apps/backend/`):**
 
 ```bash
 pnpm dev          # Start Wrangler dev server
@@ -200,17 +199,16 @@ Changesets configuration in `.changeset/config.json`:
 
 ## Important File Locations
 
-| Purpose             | Path                                                |
-| ------------------- | --------------------------------------------------- |
-| Site entry          | `packages/site/src/blog/app.tsx`                    |
-| Site routes         | `packages/site/src/blog/app.tsx` (Routes component) |
-| Site pages          | `packages/site/src/blog/pages/`                     |
-| Site components     | `packages/site/src/blog/components/`                |
-| Site hooks          | `packages/site/src/blog/hooks/`                     |
-| MDX articles        | `packages/site/src/blog/articles/`                  |
-| Component library   | `packages/components/lib/`                          |
-| Backend routes      | `packages/backend/src/routes/`                      |
-| Backend controllers | `packages/backend/src/controllers/`                 |
-| TailwindCSS config  | `packages/stylebase/style.css` (v4 format)          |
-| Turborepo config    | `turbo.json`                                        |
-| Changeset config    | `.changeset/config.json`                            |
+| Purpose             | Path                                            |
+| ------------------- | ----------------------------------------------- |
+| Site entry          | `apps/site/src/blog/app.tsx`                    |
+| Site routes         | `apps/site/src/blog/app.tsx` (Routes component) |
+| Site pages          | `apps/site/src/blog/pages/`                     |
+| Site components     | `apps/site/src/blog/components/`                |
+| Site hooks          | `apps/site/src/blog/hooks/`                     |
+| MDX articles        | `apps/site/src/blog/articles/`                  |
+| Component library   | `packages/ui/src/`                              |
+| Backend routes      | `apps/backend/src/routes/`                      |
+| Backend controllers | `apps/backend/src/controllers/`                 |
+| Turborepo config    | `turbo.json`                                    |
+| Changeset config    | `.changeset/config.json`                        |
