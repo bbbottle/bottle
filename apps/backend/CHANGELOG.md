@@ -1,5 +1,11 @@
 # backend
 
+## 0.3.11
+
+### Patch Changes
+
+- 5dc41cd: fix style
+
 ## 0.3.10
 
 ### Patch Changes
