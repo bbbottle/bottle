@@ -30,7 +30,7 @@ export const ArticlePage = (props: ArticlePageProps) => {
         title={title}
         date={props.date}
         description={description}
-        className={`${props.className || ''} mt-16`}
+        className={`${props.className || ''}`}
         loading={false}
       >
         <article className={articleCls}>{props.children}</article>
@@ -38,7 +38,7 @@ export const ArticlePage = (props: ArticlePageProps) => {
           <Reaction title={title} url={window.location.href} />
         </div>*/}
       </Article>
-      <div className="mb-64">
+      <div className="">
         <Button
           className=""
           type="button"
