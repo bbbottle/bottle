@@ -8,7 +8,11 @@ export const floatNumberToPercentageString = (num: number): string => {
 };
 
 export const baseFetcher = (resource: string, init: RequestInit = {}) =>
-  fetch(resource, init).then(res => {
+  // enable cors
+  fetch(resource, {
+    ...init,
+    mode: 'cors',
+  }).then(res => {
     if (!res.ok) {
       throw new Error('An error occurred while fetching the data.');
     }

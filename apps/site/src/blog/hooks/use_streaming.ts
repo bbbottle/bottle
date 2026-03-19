@@ -6,7 +6,8 @@ import { useContext, useEffect, useState, useCallback } from 'react';
 import { GlobalLoadingContext } from '@/context/global_loading_state_provider';
 
 // In dev, use /api prefix to leverage Vite proxy to localhost:8787
-const isProd = typeof window !== 'undefined' && /^https:\/\/bbki.ng/.test(window.location.href);
+// const isProd = typeof window !== 'undefined' && /^https:\/\/bbki.ng/.test(window.location.href);
+const isProd = true;
 const API_BASE = !isProd ? '/api' : API_ENDPOINT;
 
 export type StreamingItem = {
