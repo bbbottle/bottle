@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import { Outlet, Route, Routes } from 'react-router-dom';
 import { Cover, Streaming } from './pages';
-import { Nav, NotFound, Page, Grid, ErrorBoundary } from '@bbki.ng/ui';
+import { Nav, NotFound, Page, Grid, ErrorBoundary, Container } from '@bbki.ng/ui';
 
 import ArticlePage from '@/pages/extensions/txt/article';
 import Txt from '@/pages/extensions/txt';
@@ -30,9 +30,11 @@ const Layout = () => {
       }
       main={
         <Grid leftAside={<div />} rightAside={<div />}>
-          <ErrorBoundary>
-            <Outlet />
-          </ErrorBoundary>
+          <Container className="py-32">
+            <ErrorBoundary>
+              <Outlet />
+            </ErrorBoundary>
+          </Container>
         </Grid>
       }
     />
