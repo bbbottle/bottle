@@ -1,5 +1,17 @@
 # @bbki.ng/site
 
+## 5.4.33
+
+### Patch Changes
+
+- aaee63e: fix style
+- eada3c3: fix style
+- 7b07af6: fix style
+- Updated dependencies [aaee63e]
+- Updated dependencies [eada3c3]
+- Updated dependencies [7b07af6]
+  - @bbki.ng/ui@0.1.7
+
 ## 5.4.32
 
 ### Patch Changes

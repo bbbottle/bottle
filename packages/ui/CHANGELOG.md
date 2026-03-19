@@ -1,5 +1,13 @@
 # @bbki.ng/ui
 
+## 0.1.7
+
+### Patch Changes
+
+- aaee63e: fix style
+- eada3c3: fix style
+- 7b07af6: fix style
+
 ## 0.1.6
 
 ### Patch Changes
