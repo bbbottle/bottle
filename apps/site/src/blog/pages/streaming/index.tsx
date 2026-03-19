@@ -74,7 +74,7 @@ const Streaming = () => {
           hide-scroll-bar
           hide-scroll-button
           ref={bbMsgHistoryRef}
-          style={{ height: '100%', '--bb-max-height': '300px' } as React.CSSProperties}
+          style={{ height: '100%', '--bb-max-height': '260px' } as React.CSSProperties}
         >
           {formattedData}
         </bb-msg-history>
