@@ -5,7 +5,8 @@ import { baseFetcher } from '@/utils';
 import { API_ENDPOINT } from '@/constants/routes';
 
 // In dev, use /api prefix to leverage Vite proxy to localhost:8787
-const isProd = typeof window !== 'undefined' && /^https:\/\/bbki\.ng/.test(window.location.href);
+const isProd = true;
+// const isProd = typeof window !== 'undefined' && /^https:\/\/bbki\.ng/.test(window.location.href);
 const POSTS_API = !isProd ? '/api/posts' : `${API_ENDPOINT}/posts`;
 
 // Use baseFetcher for full URLs, cfApiFetcher is for relative paths

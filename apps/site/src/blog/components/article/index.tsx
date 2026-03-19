@@ -22,7 +22,7 @@ export const ArticlePage = (props: ArticlePageProps) => {
     return props.children;
   }
 
-  const articleCls = classNames('prose', 'mb-32');
+  const articleCls = classNames('prose', 'mb-16');
 
   return (
     <>
