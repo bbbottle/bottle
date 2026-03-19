@@ -13,7 +13,8 @@
       "import": "./dist/index.mjs"
     },
     "./styles": {
-      "import": "./dist/styles.css"
+      "import": "./dist/styles.css",
+      "default": "./dist/styles.css"
     },
     "./tokens/*": {
       "import": "./src/tokens/css/*"

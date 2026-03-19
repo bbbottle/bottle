@@ -1,5 +1,6 @@
 import React, { ReactElement } from 'react';
-import { Tags, Article, Button } from '@bbki.ng/components';
+import { Tags, Article } from '@bbki.ng/components';
+import { Button } from '@bbki.ng/ui';
 import { ROUTES } from '@/constants';
 import classNames from 'classnames';
 import { useNavigate } from 'react-router-dom';
@@ -41,7 +42,7 @@ export const ArticlePage = (props: ArticlePageProps) => {
       <div className="">
         <Button
           className=""
-          btnType="button"
+          type="button"
           onClick={() => {
             navgation(-1);
           }}

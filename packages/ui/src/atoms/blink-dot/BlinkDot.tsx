@@ -28,7 +28,7 @@ export const BlinkDot: React.FC<BlinkDotProps> = ({
           'absolute inline-flex h-full w-full rounded-full',
           'text-status-error',
           status === 'blink' && 'animate-ping-fast',
-          status === 'hidden' && 'hidden',
+          status === 'hidden' && 'invisible',
           className
         )}
         style={{

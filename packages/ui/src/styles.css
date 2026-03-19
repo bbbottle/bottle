@@ -93,3 +93,7 @@
 @utility animate-ping-fast {
   animation: blink 0.1s infinite;
 }
+
+@utility hidden {
+  visibility: hidden;
+}
