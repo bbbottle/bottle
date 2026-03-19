@@ -1,5 +1,15 @@
 # @bbki.ng/site
 
+## 5.4.26
+
+### Patch Changes
+
+- 282af74: update ui components
+- 558e40b: update compoennts
+- Updated dependencies [282af74]
+- Updated dependencies [558e40b]
+  - @bbki.ng/ui@0.1.1
+
 ## 5.4.25
 
 ### Patch Changes
