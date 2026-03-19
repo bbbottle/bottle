@@ -1,0 +1,151 @@
+@import 'tailwindcss';
+
+/* Token CSS 变量 - 由 build-tokens 脚本生成 */
+@import './tokens/css/light.css';
+
+/* 深色主题 - 通过类名切换 */
+.dark {
+  @import './tokens/css/dark.css';
+}
+
+/* 系统偏好 */
+@media (prefers-color-scheme: dark) {
+  :root:not(.light) {
+    @import './tokens/css/dark.css';
+  }
+}
+
+@theme inline {
+  /* Colors - 映射到生成的 CSS 变量 */
+  --color-background: var(--color-background);
+  --color-foreground: var(--color-foreground);
+  --color-muted: var(--color-muted);
+  --color-muted-foreground: var(--color-muted-foreground);
+  --color-border: var(--color-border);
+  --color-primary: var(--color-primary);
+  --color-primary-foreground: var(--color-primary-foreground);
+  --color-secondary: var(--color-secondary);
+  --color-secondary-foreground: var(--color-secondary-foreground);
+  --color-accent: var(--color-accent);
+  --color-accent-foreground: var(--color-accent-foreground);
+  --color-destructive: var(--color-destructive);
+  --color-destructive-foreground: var(--color-destructive-foreground);
+  --color-content-primary: var(--color-content-primary);
+  --color-content-secondary: var(--color-content-secondary);
+  --color-content-disabled: var(--color-content-disabled);
+  --color-content-action: var(--color-content-action);
+  --color-content-danger: var(--color-content-danger);
+  --color-content-special: var(--color-content-special);
+  --color-special: var(--color-special);
+  --color-logo: var(--color-logo);
+  --color-status-error: var(--color-status-error);
+  --color-status-warning: var(--color-status-warning);
+  --color-status-success: var(--color-status-success);
+  --color-status-info: var(--color-status-info);
+
+  --font-sans: var(--font-sans);
+  --font-mono: var(--font-mono);
+
+  /* Spacing - required for p-*, m-* utilities */
+  --spacing: var(--spacing-4);
+  --spacing-0: var(--spacing-0);
+  --spacing-1: var(--spacing-1);
+  --spacing-2: var(--spacing-2);
+  --spacing-3: var(--spacing-3);
+  --spacing-4: var(--spacing-4);
+  --spacing-5: var(--spacing-5);
+  --spacing-6: var(--spacing-6);
+  --spacing-8: var(--spacing-8);
+  --spacing-10: var(--spacing-10);
+  --spacing-12: var(--spacing-12);
+  --spacing-16: var(--spacing-16);
+  --spacing-20: var(--spacing-20);
+  --spacing-24: var(--spacing-24);
+  --spacing-32: var(--spacing-32);
+  --spacing-40: var(--spacing-40);
+  --spacing-48: var(--spacing-48);
+  --spacing-64: var(--spacing-64);
+}
+
+@layer base {
+  * {
+    border-color: var(--color-border);
+  }
+
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    font-family: var(--font-sans);
+  }
+}
+
+/* Custom animations */
+@keyframes blink {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  75% {
+    opacity: 0;
+  }
+}
+
+@utility animate-ping-fast {
+  animation: blink 0.1s infinite;
+}
+
+@utility no-scrollbar {
+  &::-webkit-scrollbar {
+    display: none;
+  }
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+
+@utility blur-cover {
+  background-color: rgba(255, 255, 255, 0.5);
+  backdrop-filter: blur(7px);
+}
+
+@utility gradient-blur-cover {
+  backdrop-filter: blur(7px);
+  background-image: linear-gradient(#ffffff, #ffffff80);
+}
+
+@utility lqip-blur {
+  backdrop-filter: blur(20px);
+}
+
+@utility animate-ping-fast {
+  animation: blink 0.1s infinite;
+}
+
+@layer utilities {
+  .prose {
+    a,
+    &:where(a):not(:where([class~='not-prose'] *)) {
+      color: rgb(37, 99, 235);
+      text-decoration: none;
+      padding: 4px;
+      border-radius: 0.25rem;
+      word-break: break-all;
+      &:hover {
+        background-color: rgb(219, 234, 254);
+      }
+
+      &:active {
+        line-height: 1;
+        display: inline-block;
+        transform: scale(0.97);
+      }
+    }
+  }
+}
+
+@utility text-blur {
+  backdrop-filter: blur(8px);
+}
+
+@utility text-blur-tiny {
+  backdrop-filter: blur(2px);
+}

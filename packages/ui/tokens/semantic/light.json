@@ -1,0 +1,54 @@
+{
+  "color": {
+    "background": { "value": "{color.white}", "type": "color" },
+    "foreground": { "value": "{color.gray.900}", "type": "color" },
+    "muted": { "value": "{color.gray.100}", "type": "color" },
+    "mutedForeground": { "value": "{color.gray.500}", "type": "color" },
+    "border": { "value": "{color.gray.200}", "type": "color" },
+    "primary": { "value": "{color.blue.600}", "type": "color" },
+    "primaryForeground": { "value": "{color.white}", "type": "color" },
+    "secondary": { "value": "{color.gray.100}", "type": "color" },
+    "secondaryForeground": { "value": "{color.gray.900}", "type": "color" },
+    "accent": { "value": "{color.pink.100}", "type": "color" },
+    "accentForeground": { "value": "{color.gray.900}", "type": "color" },
+    "destructive": { "value": "{color.red.600}", "type": "color" },
+    "destructiveForeground": { "value": "{color.white}", "type": "color" },
+    "special": { "value": "{color.xwy.50}", "type": "color" },
+    "logo": { "value": "{color.gray.150}", "type": "color" },
+    "specialForeground": { "value": "{color.gray.900}", "type": "color" },
+    "content": {
+      "primary": {
+        "value": "{color.gray.900}",
+        "type": "color",
+        "description": "主要内容文字颜色"
+      },
+      "special": {
+        "value": "{color.xwy.150}",
+        "type": "color",
+        "description": "特殊内容文字颜色（例如包含“小乌鸦”的内容）"
+      },
+      "secondary": {
+        "value": "{color.gray.600}",
+        "type": "color",
+        "description": "次要/辅助文字颜色"
+      },
+      "disabled": {
+        "value": "{color.gray.400}",
+        "type": "color",
+        "description": "禁用状态文字颜色"
+      },
+      "action": {
+        "value": "{color.black}",
+        "type": "color",
+        "description": "可操作/链接文字颜色"
+      },
+      "danger": { "value": "{color.red.500}", "type": "color", "description": "危险/警告文字颜色" }
+    },
+    "status": {
+      "error": { "value": "{color.red.600}", "type": "color", "description": "错误状态指示颜色" },
+      "warning": { "value": "{color.red.500}", "type": "color", "description": "警告状态指示颜色" },
+      "success": { "value": "#22c55e", "type": "color", "description": "成功状态指示颜色" },
+      "info": { "value": "{color.blue.600}", "type": "color", "description": "信息提示指示颜色" }
+    }
+  }
+}

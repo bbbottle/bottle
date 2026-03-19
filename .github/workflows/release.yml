@@ -61,7 +61,7 @@ jobs:
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-          command: pages deploy packages/site/dist --project-name=index
+          command: pages deploy apps/site/dist --project-name=index
 
       # send stream message
       - name: Add deployment to stream
