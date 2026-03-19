@@ -1,5 +1,30 @@
 # backend
 
+## 0.3.12
+
+### Patch Changes
+
+- 25738cb: fix: cors error
+
+## 0.3.11
+
+### Patch Changes
+
+- 5dc41cd: fix style
+
+## 0.3.10
+
+### Patch Changes
+
+- 1ab4d7c: update animation
+
+## 0.3.9
+
+### Patch Changes
+
+- 282af74: update ui components
+- 558e40b: update compoennts
+
 ## 0.3.8
 
 ### Patch Changes

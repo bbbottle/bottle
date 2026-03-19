@@ -1,5 +1,61 @@
 # @bbki.ng/site
 
+## 5.4.32
+
+### Patch Changes
+
+- 3308d28: fix layout
+- Updated dependencies [3308d28]
+  - @bbki.ng/ui@0.1.6
+
+## 5.4.31
+
+### Patch Changes
+
+- 25738cb: fix: cors error
+- Updated dependencies [25738cb]
+  - @bbki.ng/ui@0.1.5
+
+## 5.4.30
+
+### Patch Changes
+
+- 5dc41cd: fix style
+- Updated dependencies [5dc41cd]
+  - @bbki.ng/ui@0.1.4
+
+## 5.4.29
+
+### Patch Changes
+
+- 84669de: fix padding error
+
+## 5.4.28
+
+### Patch Changes
+
+- f7b2647: fix style
+- Updated dependencies [f7b2647]
+  - @bbki.ng/ui@0.1.3
+
+## 5.4.27
+
+### Patch Changes
+
+- 1ab4d7c: update animation
+- Updated dependencies [1ab4d7c]
+  - @bbki.ng/ui@0.1.2
+
+## 5.4.26
+
+### Patch Changes
+
+- 282af74: update ui components
+- 558e40b: update compoennts
+- Updated dependencies [282af74]
+- Updated dependencies [558e40b]
+  - @bbki.ng/ui@0.1.1
+
 ## 5.4.25
 
 ### Patch Changes
