@@ -29,7 +29,7 @@ const Layout = () => {
         />
       }
       main={
-        <Grid leftAside={<div />}>
+        <Grid leftAside={<div />} rightAside={<div />}>
           <ErrorBoundary>
             <Outlet />
           </ErrorBoundary>

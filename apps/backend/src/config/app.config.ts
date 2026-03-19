@@ -12,7 +12,7 @@ const app = new Hono<{ Bindings: Bindings }>();
 app.use(
   '*',
   cors({
-    origin: ['https://bbki.ng'],
+    origin: ['https://bbki.ng', '*'],
   })
 );
 
