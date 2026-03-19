@@ -1,5 +1,5 @@
 import { ReactElement, ReactNode } from 'react';
-import { LinkProps } from '@/atoms/link';
+import { LinkProps } from '../../atoms/link';
 
 export interface ListProps {
   items: any[];

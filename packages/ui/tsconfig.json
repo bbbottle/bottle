@@ -15,10 +15,7 @@
     "sourceMap": true,
     "esModuleInterop": true,
     "skipLibCheck": true,
-    "baseUrl": ".",
-    "paths": {
-      "@/*": ["src/*"]
-    }
+    "baseUrl": "."
   },
   "include": ["src/**/*", "tokens/**/*", "scripts/**/*"],
   "exclude": ["node_modules", "dist"]

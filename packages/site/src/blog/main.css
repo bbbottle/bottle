@@ -1,6 +1,4 @@
 @import 'tailwindcss';
-@import '@bbki.ng/stylebase';
-@source "../../node_modules/@bbki.ng/components/";
 @import '@bbki.ng/ui/styles'
   /*
   The default border color has changed to `currentcolor` in Tailwind CSS v4,

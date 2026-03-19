@@ -73,6 +73,7 @@ export const tokens = {
       button: 'var(--shadow-button)',
       buttonHover: 'var(--shadow-button-hover)',
       input: 'var(--shadow-input)',
+      panel: 'var(--shadow-panel)',
     },
     spacing: {
       '0': 'var(--spacing-0)',

@@ -1,6 +1,6 @@
 import { twMerge } from 'tailwind-merge';
-import { Link, LinkProps } from '@/atoms/link';
-import { Article } from '@/molecules/article';
+import { Link, LinkProps } from '../../atoms/link';
+import { Article } from '../article';
 import { ListProps, TitledListProps, LinkListProps } from './List.types';
 
 export const List = (props: ListProps) => {

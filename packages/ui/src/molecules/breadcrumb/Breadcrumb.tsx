@@ -1,6 +1,6 @@
 import React from 'react';
 import classNames from 'classnames';
-import { Link } from '@/atoms/link';
+import { Link } from '../../atoms/link';
 import { BreadcrumbProps } from './Breadcrumb.types';
 
 /**

@@ -1,7 +1,8 @@
 import React, { useContext, useMemo } from 'react';
 import { Outlet, Route, Routes } from 'react-router-dom';
-import { Nav, NotFound, Page } from '@bbki.ng/components';
+import { NotFound, Page } from '@bbki.ng/components';
 import { Cover, Streaming } from './pages';
+import { Nav } from '@bbki.ng/ui';
 
 import ArticlePage from '@/pages/extensions/txt/article';
 import Txt from '@/pages/extensions/txt';

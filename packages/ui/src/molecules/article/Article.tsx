@@ -1,5 +1,5 @@
 import { twMerge } from 'tailwind-merge';
-import { BlinkDot } from '@/atoms/blink-dot';
+import { BlinkDot } from '../../atoms/blink-dot';
 import { ArticleProps } from './Article.types';
 
 export const Article = (props: ArticleProps) => {

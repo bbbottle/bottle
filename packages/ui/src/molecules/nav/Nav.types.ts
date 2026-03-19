@@ -1,5 +1,5 @@
 import { ReactNode } from 'react';
-import { PathObj } from '@/molecules/breadcrumb';
+import { PathObj } from '../breadcrumb';
 
 export interface NavProps {
   paths: PathObj[];

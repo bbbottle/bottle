@@ -94,6 +94,58 @@
   animation: blink 0.1s infinite;
 }
 
-@utility hidden {
-  visibility: hidden;
+@utility no-scrollbar {
+  &::-webkit-scrollbar {
+    display: none;
+  }
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+
+@utility blur-cover {
+  background-color: rgba(255, 255, 255, 0.5);
+  backdrop-filter: blur(7px);
+}
+
+@utility gradient-blur-cover {
+  backdrop-filter: blur(7px);
+  background-image: linear-gradient(#ffffff, #ffffff80);
+}
+
+@utility lqip-blur {
+  backdrop-filter: blur(20px);
+}
+
+@utility animate-ping-fast {
+  animation: blink 0.1s infinite;
+}
+
+@layer utilities {
+  .prose {
+    a,
+    &:where(a):not(:where([class~='not-prose'] *)) {
+      color: rgb(37, 99, 235);
+      text-decoration: none;
+      padding: 4px;
+      border-radius: 0.25rem;
+      word-break: break-all;
+      &:hover {
+        background-color: rgb(219, 234, 254);
+      }
+
+      &:active {
+        line-height: 1;
+        display: inline-block;
+        transform: scale(0.97);
+      }
+    }
+  }
+}
+
+@utility text-blur {
+  backdrop-filter: blur(8px);
+}
+
+@utility text-blur-tiny {
+  backdrop-filter: blur(2px);
 }

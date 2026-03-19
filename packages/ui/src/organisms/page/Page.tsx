@@ -1,5 +1,5 @@
 import React, { ReactElement } from 'react';
-import { Article } from '@/molecules/article';
+import { Article } from '../../molecules/article';
 import {
   PageProps,
   ErrorProps,

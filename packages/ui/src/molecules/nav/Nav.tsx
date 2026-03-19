@@ -1,7 +1,7 @@
 import { twMerge } from 'tailwind-merge';
 import { useNavigate } from 'react-router-dom';
-import { Breadcrumb } from '@/molecules/breadcrumb';
-import { Logo } from '@/atoms/logo';
+import { Breadcrumb } from '../breadcrumb';
+import { Logo } from '../../atoms/logo';
 import { NavProps } from './Nav.types';
 
 export const Nav = (props: NavProps) => {
