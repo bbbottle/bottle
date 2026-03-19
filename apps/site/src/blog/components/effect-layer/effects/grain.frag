@@ -28,7 +28,7 @@ vec4 randGrain(vec2 uv) {
 
     vec4 result = grain(color, uv) * 0.4;
 
-    result.a *= 0.2;
+    result.a *= 0.8;
 
     return result;
 }
@@ -40,4 +40,3 @@ void drawGrainOnNav(vec2 uv) {
         gl_FragColor = randGrain(uv);
 //    }
 }
-

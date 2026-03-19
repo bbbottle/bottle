@@ -42,7 +42,11 @@ void drawSpiral(vec2 uv) {
   vec2 p = uv - center;
   p.x *= aspect;
 
-  float scale = 4.0;
+  // Clamp scale so the spiral never grows beyond ~480px equivalent
+  float maxSpiralPx = 480.0;
+  float baseScale = 4.0;
+  float minDim = min(uResolution.x, uResolution.y) / uDevicePixelRatio;
+  float scale = max(baseScale, minDim / maxSpiralPx * baseScale);
   p *= scale;
 
   // early exit: spiral fits within radius ~0.35 in curve space
@@ -84,7 +88,7 @@ void drawSpiral(vec2 uv) {
   float dc = distance(p, closest);
   minDist = min(minDist, dc);
 
-  float lineWidth = 0.002;
+  float lineWidth = 0.005;
   float alpha = 1.0 - smoothstep(0.0, lineWidth, minDist);
 
   float spiralAlpha = alpha * 0.8 * uSpiralOpacity;
