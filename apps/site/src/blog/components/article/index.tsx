@@ -30,7 +30,7 @@ export const ArticlePage = (props: ArticlePageProps) => {
         title={title}
         date={props.date}
         description={description}
-        className={`${props.className} mt-32`}
+        className={`${props.className || ''} mt-16`}
         loading={false}
       >
         <article className={articleCls}>{props.children}</article>

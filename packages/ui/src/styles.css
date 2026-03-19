@@ -1,4 +1,5 @@
 @import 'tailwindcss';
+@plugin "@tailwindcss/typography";
 
 /* Token CSS 变量 - 由 build-tokens 脚本生成 */
 @import './tokens/css/light.css';
