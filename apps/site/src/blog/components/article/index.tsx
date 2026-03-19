@@ -38,7 +38,7 @@ export const ArticlePage = (props: ArticlePageProps) => {
           <Reaction title={title} url={window.location.href} />
         </div>*/}
       </Article>
-      <div className="">
+      <div className="mb-64">
         <Button
           className=""
           type="button"
