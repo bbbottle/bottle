@@ -28,7 +28,7 @@ vec4 randGrain(vec2 uv) {
 
     vec4 result = grain(color, uv) * 0.4;
 
-    result.a *= 0.2;
+    result.a *= 1.5;
 
     return result;
 }

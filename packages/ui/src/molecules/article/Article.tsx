@@ -17,7 +17,7 @@ export const Article = (props: ArticleProps) => {
         )}
       </div>
       {description && <div className="mb-8 text-content-secondary">{description}</div>}
-      <div className="text-content-primary relative">{children || content}</div>
+      <div className="text-content-primary! relative">{children || content}</div>
     </div>
   );
 };

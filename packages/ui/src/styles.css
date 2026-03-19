@@ -113,6 +113,10 @@
   background-image: linear-gradient(#ffffff, #ffffff80);
 }
 
+@utility prose {
+  color: #111;
+}
+
 @utility lqip-blur {
   backdrop-filter: blur(20px);
 }
