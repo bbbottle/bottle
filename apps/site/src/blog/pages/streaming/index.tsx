@@ -72,7 +72,7 @@ const Streaming = () => {
 
   return (
     <>
-      <Panel className="!p-[10px]">
+      <Panel className="p-2.5! mt-32">
         <bb-msg-history
           // infinite
           hide-scroll-bar
@@ -85,7 +85,7 @@ const Streaming = () => {
       </Panel>
       {scrolled ? (
         <Button
-          className="mt-64"
+          className="mt-32"
           transparent={!showScrollBtn}
           onClick={() => {
             bbMsgHistoryRef.current?.scrollToBottom();

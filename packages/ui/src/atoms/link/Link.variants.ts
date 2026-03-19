@@ -11,7 +11,7 @@ export const linkVariants = cva(
     'no-underline!',
     'transition-all duration-200 ease-in-out',
     'active:scale-[0.97]',
-    'px-1',
+    'p-2',
   ],
   {
     variants: {

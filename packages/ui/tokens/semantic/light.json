@@ -28,7 +28,7 @@
         "description": "特殊内容文字颜色（例如包含“小乌鸦”的内容）"
       },
       "secondary": {
-        "value": "{color.gray.500}",
+        "value": "{color.gray.600}",
         "type": "color",
         "description": "次要/辅助文字颜色"
       },

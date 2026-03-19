@@ -59,7 +59,7 @@ export const Grid: React.FC<GridProps> = ({
         )}
       >
         {leftAside && <div className="hidden md:block h-full overflow-auto">{leftAside}</div>}
-        <div className="h-full overflow-auto">{children}</div>
+        <div className="h-full overflow-auto px-4">{children}</div>
         {rightAside && <div className="hidden md:block h-full overflow-auto">{rightAside}</div>}
       </div>
     );

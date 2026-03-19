@@ -38,9 +38,9 @@ export const buttonVariants = cva(
         disabled: ['text-content-disabled', 'bg-transparent', 'cursor-not-allowed', 'shadow-none'],
       },
       size: {
-        sm: 'py-2 px-2',
-        md: 'py-2 px-4',
-        lg: 'py-2 px-4',
+        sm: 'py-4 px-4',
+        md: 'py-4 px-8',
+        lg: 'py-4 px-8',
       },
       transparent: {
         true: 'shadow-none pointer-events-none',

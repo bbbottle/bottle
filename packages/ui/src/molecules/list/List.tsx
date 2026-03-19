@@ -6,7 +6,7 @@ import { ListProps, TitledListProps, LinkListProps } from './List.types';
 export const List = (props: ListProps) => {
   const { items, itemRenderer, className, horizontal, compact, footer, spaceBetween } = props;
 
-  const spaceCls = compact ? '' : horizontal ? 'mr-3' : 'mb-4';
+  const spaceCls = compact ? '' : horizontal ? 'mr-6' : 'mb-8';
 
   return (
     <ul

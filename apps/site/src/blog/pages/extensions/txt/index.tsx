@@ -29,7 +29,7 @@ export default (props: TxtProps) => {
       links={props.articleList || titleList}
       loading={isLoading}
       footer={
-        <Button onClick={gotoTop} className="mt-128">
+        <Button onClick={gotoTop} className="mt-32">
           <svg
             data-testid="geist-icon"
             height="16"
