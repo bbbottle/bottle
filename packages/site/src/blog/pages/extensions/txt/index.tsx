@@ -1,5 +1,5 @@
 import React from 'react';
-import { LinkProps, Button } from '@bbki.ng/components';
+import { LinkProps, Button } from '@bbki.ng/ui';
 import { usePosts } from '@/hooks/use_posts';
 import { CenterLinkList } from '@/components';
 import { useBlogScroll, useBlogScrollRestoration } from '@/hooks/use_blog_scroll_pos_restoration';

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button, ButtonType } from '@bbki.ng/components';
+import { Button } from '@bbki.ng/ui';
 import { ShareIcon } from './share-icon';
 
 export const ShareBtn = ({ shareInfo }: { shareInfo: ShareData }) => {
@@ -17,9 +17,9 @@ export const ShareBtn = ({ shareInfo }: { shareInfo: ShareData }) => {
 
   return (
     <Button
-      size="small"
+      size="sm"
       className="text-gray-400 hover:text-gray-600 transition-colors ease-in duration-200"
-      type={ButtonType.GHOST}
+      variant="ghost"
       onClick={handleShare}
     >
       <ShareIcon />

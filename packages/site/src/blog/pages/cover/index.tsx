@@ -14,10 +14,12 @@ export const Cover = (props: { className?: string }) => {
           {
             to: '/blog',
             name: 'cd ./blog',
+            children: 'cd ./blog',
           },
           {
             to: '/now',
             name: 'cd ./now',
+            children: 'cd ./now',
           },
           ...pluginEntry,
         ]}

@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { useStreaming, StreamingItem } from '@/hooks/use_streaming';
 import { formatStreamingData } from '@/utils/streaming';
-import { Article, Button, ButtonType, Panel } from '@bbki.ng/components';
+import { Button, Panel } from '@bbki.ng/ui';
 import { useScrollBtnVisibility } from './useScrollBtnVisibility';
 import classNames from 'classnames';
 import { ArrowDownIcon } from './arrow-down';

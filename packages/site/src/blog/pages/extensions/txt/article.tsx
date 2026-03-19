@@ -1,5 +1,5 @@
 import React from 'react';
-import { NotFound } from '@bbki.ng/components';
+import { NotFound } from '@bbki.ng/ui';
 import { useParams } from 'react-router-dom';
 import { usePosts } from '@/hooks/use_posts';
 import { ArticlePage } from '@/components/article';

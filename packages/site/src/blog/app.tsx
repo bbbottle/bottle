@@ -1,34 +1,22 @@
-import React, { useContext, useMemo } from 'react';
+import React, { useContext } from 'react';
 import { Outlet, Route, Routes } from 'react-router-dom';
-import { NotFound, Page } from '@bbki.ng/components';
 import { Cover, Streaming } from './pages';
-import { Nav } from '@bbki.ng/ui';
+import { Nav, NotFound, Page, Grid, ErrorBoundary } from '@bbki.ng/ui';
 
 import ArticlePage from '@/pages/extensions/txt/article';
 import Txt from '@/pages/extensions/txt';
 
 import { usePaths } from '@/hooks';
-import { Login } from '@/pages/login';
 import { SWR } from '@/swr';
 import { GlobalLoadingContext } from '@/context/global_loading_state_provider';
 import { BotRedirect } from '@/pages/bot';
 import { BBContext } from '@/context/bbcontext';
-import { ThreeColLayout, ErrorBoundary } from '@bbki.ng/components';
 import { useDynamicLogo } from './hooks/use_dynamic_logo';
-import { EffectContextProvider } from './components/effect-layer/EffectContextProvider';
 
 const Layout = () => {
   const paths = usePaths();
   const { isLoading } = useContext(GlobalLoadingContext);
   const logo = useDynamicLogo();
-
-  const middleRenderer = useMemo(() => {
-    return () => (
-      <ErrorBoundary>
-        <Outlet />
-      </ErrorBoundary>
-    );
-  }, []);
 
   return (
     <Page
@@ -40,7 +28,13 @@ const Layout = () => {
           customLogo={logo}
         />
       }
-      main={<ThreeColLayout middleRenderer={middleRenderer} />}
+      main={
+        <Grid leftAside={<div />}>
+          <ErrorBoundary>
+            <Outlet />
+          </ErrorBoundary>
+        </Grid>
+      }
     />
   );
 };
