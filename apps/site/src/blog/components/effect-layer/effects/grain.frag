@@ -12,10 +12,7 @@ vec4 randGrain(vec2 uv) {
     return vec4(vec3(0.0), abs(intensity) + 0.02);
 }
 
-void drawGrainOnNav(vec2 uv) {
-//    float navHeight = 64. * uDevicePixelRatio / uResolution.y;
-//
-//    if (1. - uv.y < navHeight) {
-        gl_FragColor = randGrain(uv);
-//    }
+void drawGrain(vec2 uv) {
+    vec4 grain = randGrain(uv);
+    gl_FragColor = grain + gl_FragColor * (1.0 - grain.a);
 }

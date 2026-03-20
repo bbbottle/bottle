@@ -22,7 +22,7 @@ void main() {
   drawPaperTexture(uv);
 
   // draw grain on nav
-  drawGrainOnNav(uv);
+  drawGrain(uv);
 
   // draw loading spiral
   drawSpiral(uv);
