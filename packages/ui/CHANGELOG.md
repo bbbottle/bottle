@@ -1,5 +1,11 @@
 # @bbki.ng/ui
 
+## 0.1.12
+
+### Patch Changes
+
+- 22ba590: fix grid layout
+
 ## 0.1.11
 
 ### Patch Changes
