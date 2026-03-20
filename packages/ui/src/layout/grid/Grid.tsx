@@ -53,14 +53,14 @@ export const Grid: React.FC<GridProps> = ({
       <div
         className={twMerge(
           'grid w-full h-full',
-          'grid-cols-1 md:grid-cols-3',
+          'grid-cols-1 xl:grid-cols-3',
           gapMap[gap],
           className
         )}
       >
-        {leftAside && <div className="hidden lg:block h-full overflow-auto">{leftAside}</div>}
+        {leftAside && <div className="hidden xl:block h-full overflow-auto">{leftAside}</div>}
         <div className="h-full overflow-auto px-4">{children}</div>
-        {rightAside && <div className="hidden lg:block h-full overflow-auto">{rightAside}</div>}
+        {rightAside && <div className="hidden xl:block h-full overflow-auto">{rightAside}</div>}
       </div>
     );
   }

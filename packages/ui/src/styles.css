@@ -78,6 +78,10 @@
     color: var(--color-foreground);
     font-family: var(--font-sans);
   }
+
+  *::selection {
+    background-color: var(--color-muted);
+  }
 }
 
 /* Custom animations */
