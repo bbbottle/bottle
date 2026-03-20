@@ -10,5 +10,5 @@
       "@/*": ["src/blog/*"]
     }
   },
-  "include": ["./src", "vite.config.js"]
+  "include": ["./src", "vite.config.js", "index.d.ts"]
 }
