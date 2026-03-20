@@ -2,8 +2,9 @@
 // Rendered at the bottom-left corner; meant to be drawn BEFORE grain
 // so that film-grain noise is composited on top of the text.
 
-uniform vec4 uHashChars;   // hex digit values for chars 0–3 (each 0.0–15.0)
-uniform vec4 uHashChars2;  // hex digit values for chars 4–6 (.w unused)
+uniform vec4 uHashChars;      // hex digit values for chars 0–3 (each 0.0–15.0)
+uniform vec4 uHashChars2;     // hex digit values for chars 4–6 (.w unused)
+uniform float uWatermarkHover; // 0.0 = idle (#f1f1f1), 1.0 = hovered (black)
 
 // Each glyph is a 4-wide × 5-tall bitmap packed into 20 bits of a float.
 // Bit layout (MSB → LSB): row0-col0 … row0-col3, row1-col0 … row4-col3
@@ -102,9 +103,9 @@ void drawWatermark(vec2 uv) {
     float on = sampleChar(charCode, bp);
 
     if (on > 0.5) {
-        // #f1f1f1 ≈ 0.945 with subtle watermark alpha
+        // Idle: #f1f1f1 (0.945) → Hovered: black (0.0)
         float a   = 0.4;
-        vec3  col = vec3(0.945);
+        vec3  col = mix(vec3(0.945), vec3(0.0), uWatermarkHover);
         // Standard alpha-blend (pre-multiplied style)
         gl_FragColor = vec4(col * a, a) + gl_FragColor * (1.0 - a);
     }

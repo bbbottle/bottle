@@ -38,4 +38,8 @@ export default {
     type: 'vec4',
     value: [hc[4] ?? 0, hc[5] ?? 0, hc[6] ?? 0, 0],
   },
+  uWatermarkHover: {
+    type: 'float',
+    value: [0.0],
+  },
 };
