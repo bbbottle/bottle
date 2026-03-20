@@ -1,36 +1,15 @@
-float rand(vec2 co){
-    return fract(
-        sin(
-            dot(
-                co.xy,
-                vec2(12.9898, 78.233) * 2.
-            ) * uProgress
-        ) * 43758.5453
-    );
-}
-
-vec4 grain(vec4 fragColor, vec2 uv){
-    vec4 color = fragColor;
-    float diff = (rand(uv) - 0.0) * 0.09;
-    color.r += diff;
-    color.g += diff;
-    color.b += diff;
-    return color;
+// Integer-based hash, stable on mediump float and immune to precision loss
+float rand(vec2 co) {
+    vec2 seed = co * uResolution + fract(uProgress * vec2(12.453, 78.379));
+    vec3 p = fract(vec3(seed.xyx) * vec3(443.897, 441.423, 437.195));
+    p += dot(p, p.yzx + 19.19);
+    return fract((p.x + p.y) * p.z);
 }
 
 vec4 randGrain(vec2 uv) {
-    vec4 color = vec4(
-        rand(uv) * 0.1,
-        rand(uv) * 0.1,
-        rand(uv) * 0.1,
-        0.1
-    );
-
-    vec4 result = grain(color, uv) * 0.4;
-
-    result.a *= 0.8;
-
-    return result;
+    float n = rand(uv);
+    float intensity = (n - 0.5) * 0.05;
+    return vec4(vec3(0.0), abs(intensity) + 0.02);
 }
 
 void drawGrainOnNav(vec2 uv) {

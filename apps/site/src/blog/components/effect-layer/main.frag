@@ -7,6 +7,7 @@ uniform float uDevicePixelRatio;
 #define DefaultColor vec4(0.0, 0.0, 0.0, 0.0)
 
 #include "effects/grain.frag"
+#include "effects/paper.frag"
 #include "effects/spiral.frag"
 //#include "shapes/circle.frag"
 
@@ -17,8 +18,8 @@ void main() {
   // set default color
   gl_FragColor = DefaultColor;
 
-  // draw circle on mouse
-  // drawCircleUnderMouse(uv, 0.05);
+  // draw paper texture (base layer)
+  drawPaperTexture(uv);
 
   // draw grain on nav
   drawGrainOnNav(uv);
