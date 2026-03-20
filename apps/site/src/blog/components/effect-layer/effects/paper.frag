@@ -1,4 +1,5 @@
-// Fine book paper texture — static, white-only, subtle fiber pattern
+// Fine book paper texture — static, subtle fiber pattern
+// Simulates delicate diffuse micro-fiber scattering on white paper
 
 float paperHash(vec2 p) {
     vec3 p3 = fract(vec3(p.xyx) * vec3(443.897, 441.423, 437.195));
@@ -20,14 +21,14 @@ float paperNoise(vec2 uv) {
     return mix(mix(a, b, u.x), mix(c, d, u.x), u.y);
 }
 
-// fBm with 3 octaves for fine fiber detail
+// fBm with 5 octaves for dense, fine fiber detail
 float paperFBM(vec2 uv) {
     float value = 0.0;
     float amplitude = 0.5;
     for (int i = 0; i < 3; i++) {
         value += amplitude * paperNoise(uv);
-        uv *= 2.2;
-        amplitude *= 0.45;
+        uv *= 2.5;
+        amplitude *= 0.4;
     }
     return value;
 }
@@ -36,17 +37,14 @@ void drawPaperTexture(vec2 uv) {
     // Scale to physical pixels so texture density stays consistent across screens
     vec2 texCoord = uv * uResolution / uDevicePixelRatio;
 
-    // Fine-scale fiber pattern (~1px detail at 1x)
-    float fiber = paperFBM(texCoord * 0.8);
+    // Single high-frequency FBM — fine, uniform, no visible banding
+    float fiber = paperFBM(texCoord * 3.0);
 
-    // Normalize to center around 0 and keep very subtle
-    float tex = (fiber - 0.5) * 0.06;
+    // abs() for full symmetric coverage; low multiplier as quiet base layer
+    float alpha = abs(fiber - 0.5) * 0.05;
 
-    // White-only: positive values add slight white highlights (paper fiber ridges)
-    // Negative values stay transparent
-    float alpha = max(tex, 0.0);
-
-    // Blend paper texture under the grain effect
-    vec4 paper = vec4(1.0, 1.0, 1.0, alpha);
-    gl_FragColor = paper + gl_FragColor * (1.0 - paper.a * 0.3);
+    // Soft neutral gray (premultiplied) instead of pure black — avoids dirty look
+    float tone = 0.55;
+    vec4 paper = vec4(vec3(tone * alpha), alpha);
+    gl_FragColor = paper + gl_FragColor * (1.0 - alpha);
 }
