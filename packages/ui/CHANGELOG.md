@@ -1,5 +1,11 @@
 # @bbki.ng/ui
 
+## 0.1.14
+
+### Patch Changes
+
+- 55e9ad2: add water mark
+
 ## 0.1.13
 
 ### Patch Changes
