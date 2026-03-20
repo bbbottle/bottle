@@ -1,5 +1,13 @@
 # @bbki.ng/ui
 
+## 0.1.10
+
+### Patch Changes
+
+- 39157d1: udpate style
+- 4d47ee1: fix: update style
+- c602715: udpate style
+
 ## 0.1.9
 
 ### Patch Changes

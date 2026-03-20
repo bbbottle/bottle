@@ -1,5 +1,17 @@
 # @bbki.ng/site
 
+## 5.4.36
+
+### Patch Changes
+
+- 39157d1: udpate style
+- 4d47ee1: fix: update style
+- c602715: udpate style
+- Updated dependencies [39157d1]
+- Updated dependencies [4d47ee1]
+- Updated dependencies [c602715]
+  - @bbki.ng/ui@0.1.10
+
 ## 5.4.35
 
 ### Patch Changes
