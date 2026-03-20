@@ -81,7 +81,7 @@ const Streaming = () => {
       </Panel>
       {scrolled ? (
         <Button
-          className="mt-32"
+          className="mt-16"
           transparent={!showScrollBtn}
           onClick={() => {
             bbMsgHistoryRef.current?.scrollToBottom();
