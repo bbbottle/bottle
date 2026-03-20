@@ -1,5 +1,11 @@
 # @bbki.ng/ui
 
+## 0.1.9
+
+### Patch Changes
+
+- 3d9b106: add paper texture
+
 ## 0.1.8
 
 ### Patch Changes

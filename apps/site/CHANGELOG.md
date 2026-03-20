@@ -1,5 +1,13 @@
 # @bbki.ng/site
 
+## 5.4.35
+
+### Patch Changes
+
+- 3d9b106: add paper texture
+- Updated dependencies [3d9b106]
+  - @bbki.ng/ui@0.1.9
+
 ## 5.4.34
 
 ### Patch Changes
