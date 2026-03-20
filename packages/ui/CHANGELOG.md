@@ -1,5 +1,11 @@
 # @bbki.ng/ui
 
+## 0.1.8
+
+### Patch Changes
+
+- 352e08b: fix graident blur utility cls
+
 ## 0.1.7
 
 ### Patch Changes

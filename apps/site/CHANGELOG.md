@@ -1,5 +1,13 @@
 # @bbki.ng/site
 
+## 5.4.34
+
+### Patch Changes
+
+- 352e08b: fix graident blur utility cls
+- Updated dependencies [352e08b]
+  - @bbki.ng/ui@0.1.8
+
 ## 5.4.33
 
 ### Patch Changes
