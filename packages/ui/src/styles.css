@@ -91,42 +91,44 @@
   }
 }
 
-@utility animate-ping-fast {
-  animation: blink 0.1s infinite;
-}
-
-@utility no-scrollbar {
-  &::-webkit-scrollbar {
-    display: none;
-  }
-  -ms-overflow-style: none; /* IE and Edge */
-  scrollbar-width: none; /* Firefox */
-}
-
-@utility blur-cover {
-  background-color: rgba(255, 255, 255, 0.5);
-  backdrop-filter: blur(7px);
-}
-
-@utility gradient-blur-cover {
-  backdrop-filter: blur(7px);
-  background-image: linear-gradient(#ffffff, #ffffff80);
-}
-
-@utility prose {
-  color: #111;
-}
-
-@utility lqip-blur {
-  backdrop-filter: blur(20px);
-}
-
-@utility animate-ping-fast {
-  animation: blink 0.1s infinite;
-}
-
 @layer utilities {
+  .animate-ping-fast {
+    animation: blink 0.1s infinite;
+  }
+
+  .no-scrollbar {
+    &::-webkit-scrollbar {
+      display: none;
+    }
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
+  }
+
+  .blur-cover {
+    background-color: rgba(255, 255, 255, 0.5);
+    backdrop-filter: blur(7px);
+  }
+
+  .gradient-blur-cover {
+    backdrop-filter: blur(7px);
+    background-image: linear-gradient(#ffffff, #ffffff80);
+  }
+
+  .lqip-blur {
+    backdrop-filter: blur(20px);
+  }
+
+  .text-blur {
+    backdrop-filter: blur(8px);
+  }
+
+  .text-blur-tiny {
+    backdrop-filter: blur(2px);
+  }
+
   .prose {
+    color: #111;
+
     a,
     &:where(a):not(:where([class~='not-prose'] *)) {
       color: rgb(37, 99, 235);
@@ -145,12 +147,4 @@
       }
     }
   }
-}
-
-@utility text-blur {
-  backdrop-filter: blur(8px);
-}
-
-@utility text-blur-tiny {
-  backdrop-filter: blur(2px);
 }
