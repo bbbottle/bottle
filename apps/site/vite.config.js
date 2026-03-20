@@ -1,4 +1,5 @@
 import path from 'path';
+import { execSync } from 'child_process';
 import { defineConfig } from 'vite';
 import { VitePWA } from 'vite-plugin-pwa';
 import mdx from '@mdx-js/rollup';
@@ -59,6 +60,9 @@ export default defineConfig({
   },
   define: {
     GLOBAL_BBKING_VERSION: JSON.stringify(process.env.npm_package_version),
+    GLOBAL_COMMIT_HASH: JSON.stringify(
+      (process.env.GITHUB_SHA || execSync('git rev-parse HEAD').toString().trim()).slice(0, 7)
+    ),
   },
   esbuild: {
     logOverride: { 'this-is-undefined-in-esm': 'silent' },
