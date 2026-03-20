@@ -1,5 +1,13 @@
 # @bbki.ng/site
 
+## 5.4.40
+
+### Patch Changes
+
+- 55e9ad2: add water mark
+- Updated dependencies [55e9ad2]
+  - @bbki.ng/ui@0.1.14
+
 ## 5.4.39
 
 ### Patch Changes
