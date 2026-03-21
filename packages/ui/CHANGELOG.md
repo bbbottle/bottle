@@ -1,5 +1,11 @@
 # @bbki.ng/ui
 
+## 0.1.16
+
+### Patch Changes
+
+- c11fa73: fix layout style
+
 ## 0.1.15
 
 ### Patch Changes
