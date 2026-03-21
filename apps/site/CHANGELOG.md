@@ -1,5 +1,13 @@
 # @bbki.ng/site
 
+## 5.4.42
+
+### Patch Changes
+
+- c11fa73: fix layout style
+- Updated dependencies [c11fa73]
+  - @bbki.ng/ui@0.1.16
+
 ## 5.4.41
 
 ### Patch Changes
