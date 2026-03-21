@@ -42,11 +42,12 @@ void drawSpiral(vec2 uv) {
   vec2 p = uv - center;
   p.x *= aspect;
 
-  // Clamp scale so the spiral never grows beyond ~480px equivalent
-  float maxSpiralPx = 480.0;
-  float baseScale = 4.0;
-  float minDim = min(uResolution.x, uResolution.y) / uDevicePixelRatio;
-  float scale = max(baseScale, minDim / maxSpiralPx * baseScale);
+  // Fixed visual size: spiral always appears ~120 CSS px wide, regardless of device.
+  // After aspect correction, 1 curve unit = uResolution.y / scale physical pixels,
+  // so spiral CSS width = 0.6 * cssHeight / scale. Solve for scale:
+  float cssHeight = uResolution.y / uDevicePixelRatio;
+  float targetCss = 80.0;
+  float scale = 0.6 * cssHeight / targetCss;
   p *= scale;
 
   // early exit: spiral fits within radius ~0.35 in curve space
@@ -88,7 +89,8 @@ void drawSpiral(vec2 uv) {
   float dc = distance(p, closest);
   minDist = min(minDist, dc);
 
-  float lineWidth = 0.005;
+  // ~1.2 CSS px line width, device-independent
+  float lineWidth = 1.2 * scale / cssHeight;
   float alpha = 1.0 - smoothstep(0.0, lineWidth, minDist);
 
   float spiralAlpha = alpha * 0.8 * uSpiralOpacity;
