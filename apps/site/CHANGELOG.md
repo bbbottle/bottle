@@ -1,5 +1,13 @@
 # @bbki.ng/site
 
+## 5.4.43
+
+### Patch Changes
+
+- c65909e: fix: style
+- Updated dependencies [c65909e]
+  - @bbki.ng/ui@0.1.17
+
 ## 5.4.42
 
 ### Patch Changes
