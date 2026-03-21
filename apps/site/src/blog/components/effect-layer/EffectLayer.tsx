@@ -28,7 +28,7 @@ export const EffectLayer = () => {
       vertex={vert}
       onRender={onRender}
       style={{
-        height: '100dvh',
+        height: '100lvh',
       }}
     />
   );

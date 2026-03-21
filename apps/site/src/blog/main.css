@@ -57,6 +57,11 @@ body {
   overflow: hidden !important;
 }
 
+body,
+#blog {
+  height: 100lvh;
+}
+
 #blog {
   overflow: auto;
   -ms-overflow-style: none; /* Internet Explorer 10+ */
