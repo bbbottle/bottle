@@ -26,6 +26,9 @@ const Layout = () => {
           className="gradient-blur-cover select-none"
           loading={isLoading}
           customLogo={logo}
+          style={{
+            paddingTop: 'env(safe-area-inset-top, 0px)',
+          }}
         />
       }
       main={
