@@ -7,4 +7,5 @@ export interface NavProps {
   mini?: boolean;
   className?: string;
   customLogo?: ReactNode;
+  style?: React.CSSProperties;
 }

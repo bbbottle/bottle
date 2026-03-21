@@ -5,7 +5,7 @@ import { Logo } from '../../atoms/logo';
 import { NavProps } from './Nav.types';
 
 export const Nav = (props: NavProps) => {
-  const { paths, loading, mini, className, customLogo } = props;
+  const { paths, loading, mini, className, customLogo, style = {} } = props;
   const nav = useNavigate();
 
   if (mini) {
@@ -17,7 +17,7 @@ export const Nav = (props: NavProps) => {
   }
 
   return (
-    <div className={twMerge('p-2 w-full flex items-center', className)}>
+    <div className={twMerge('p-2 w-full flex items-center', className)} style={style}>
       {customLogo || (
         <Logo className="mr-2 cursor-pointer hover:opacity-80" onClick={() => nav('/')} />
       )}
