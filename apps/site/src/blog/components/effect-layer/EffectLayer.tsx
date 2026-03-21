@@ -12,6 +12,7 @@ export const EffectLayer = () => {
     'top-0',
     'left-0',
     'h-full',
+    'h-dvh',
     'pointer-events-none',
     'w-full',
     'z-999'
@@ -26,6 +27,9 @@ export const EffectLayer = () => {
       fragment={frag}
       vertex={vert}
       onRender={onRender}
+      style={{
+        height: '100dvh',
+      }}
     />
   );
 };

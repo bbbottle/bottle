@@ -27,7 +27,7 @@ const Layout = () => {
           loading={isLoading}
           customLogo={logo}
           style={{
-            paddingTop: 'env(safe-area-inset-top, 0px)',
+            paddingTop: 'calc(env(safe-area-inset-top) + 4px)',
           }}
         />
       }

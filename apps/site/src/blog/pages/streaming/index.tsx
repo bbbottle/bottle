@@ -68,7 +68,7 @@ const Streaming = () => {
 
   return (
     <>
-      <Panel className="p-2.5! mt-32">
+      <Panel className="p-2.5! mt-16">
         <bb-msg-history
           // infinite
           hide-scroll-bar
