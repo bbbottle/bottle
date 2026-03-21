@@ -1,5 +1,13 @@
 # @bbki.ng/site
 
+## 5.4.41
+
+### Patch Changes
+
+- 9b6dfe7: fix safaarea style
+- Updated dependencies [9b6dfe7]
+  - @bbki.ng/ui@0.1.15
+
 ## 5.4.40
 
 ### Patch Changes

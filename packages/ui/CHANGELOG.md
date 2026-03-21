@@ -1,5 +1,11 @@
 # @bbki.ng/ui
 
+## 0.1.15
+
+### Patch Changes
+
+- 9b6dfe7: fix safaarea style
+
 ## 0.1.14
 
 ### Patch Changes
