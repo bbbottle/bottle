@@ -1,5 +1,11 @@
 # @bbki.ng/ui
 
+## 0.1.18
+
+### Patch Changes
+
+- b88ab47: update spiral size
+
 ## 0.1.17
 
 ### Patch Changes
