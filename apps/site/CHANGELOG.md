@@ -1,5 +1,13 @@
 # @bbki.ng/site
 
+## 5.4.44
+
+### Patch Changes
+
+- b88ab47: update spiral size
+- Updated dependencies [b88ab47]
+  - @bbki.ng/ui@0.1.18
+
 ## 5.4.43
 
 ### Patch Changes
