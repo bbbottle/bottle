@@ -14,7 +14,7 @@ export const Panel = (props: PanelProps) => {
     <div
       className={twMerge(
         'transition-all ease-in-out duration-500',
-        'p-4 rounded-sm',
+        'p-4',
         show ? 'shadow-[var(--shadow-panel)]' : 'shadow-none',
         className
       )}
