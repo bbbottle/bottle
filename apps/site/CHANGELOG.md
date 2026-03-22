@@ -1,5 +1,13 @@
 # @bbki.ng/site
 
+## 5.4.45
+
+### Patch Changes
+
+- 80724cd: fix scroll
+- Updated dependencies [80724cd]
+  - @bbki.ng/ui@0.1.19
+
 ## 5.4.44
 
 ### Patch Changes
