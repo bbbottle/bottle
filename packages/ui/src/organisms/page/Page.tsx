@@ -15,7 +15,16 @@ export const Page = (props: PageProps) => {
     <main className="flex flex-col h-full">
       <div className="grow-0 w-full fixed top-0 z-50">{nav}</div>
       {/* secctio padding top 192px */}
-      <section className="grow shrink-0">{main}</section>
+      <section
+        className="grow shrink-0"
+        style={{
+          transform: 'translateZ(0)',
+          contain: 'layout style paint',
+          scrollMarginTop: 0,
+        }}
+      >
+        {main}
+      </section>
     </main>
   );
 };
