@@ -69,6 +69,9 @@ export const Canvas = (props: CanvasProps) => {
       style={{
         ...props.style,
         imageRendering: 'pixelated',
+        transform: 'translateZ(0)',
+        isolation: 'isolate',
+        contain: 'strict',
       }}
       ref={canvasRef}
       {...rest}
