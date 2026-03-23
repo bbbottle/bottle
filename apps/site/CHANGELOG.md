@@ -1,5 +1,13 @@
 # @bbki.ng/site
 
+## 5.4.46
+
+### Patch Changes
+
+- 97af08b: hover style
+- Updated dependencies [97af08b]
+  - @bbki.ng/ui@0.1.20
+
 ## 5.4.45
 
 ### Patch Changes
