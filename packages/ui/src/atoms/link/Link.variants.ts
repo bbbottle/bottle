@@ -9,8 +9,9 @@ export const linkVariants = cva(
     'inline-block',
     'rounded-sm',
     'no-underline!',
-    'transition-all duration-200 ease-in-out',
+    'transition-all duration-500 ease-in-out',
     'active:scale-[0.97]',
+    'bg-transparent',
     'p-2',
   ],
   {

@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { CSSProperties, useEffect } from 'react';
 import { useRenderer } from './useRenderer';
 import { CanvasProps, UniformProps } from './Canvas.types';
 
@@ -66,13 +66,19 @@ export const Canvas = (props: CanvasProps) => {
 
   return (
     <canvas
-      style={{
-        ...props.style,
-        imageRendering: 'pixelated',
-        transform: 'translateZ(0)',
-        isolation: 'isolate',
-        contain: 'strict',
-      }}
+      style={
+        {
+          ...props.style,
+          imageRendering: 'pixelated',
+          transform: 'translateZ(0)',
+          isolation: 'isolate',
+          contain: 'strict',
+          backfaceVisibility: 'hidden',
+          '-webkit-backface-visibility': 'hidden',
+          '-webkit-font-smoothing': 'antialiased',
+          'image-rendering': 'crisp-edges',
+        } as CSSProperties
+      }
       ref={canvasRef}
       {...rest}
     />
