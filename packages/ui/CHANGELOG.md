@@ -1,5 +1,11 @@
 # @bbki.ng/ui
 
+## 0.1.20
+
+### Patch Changes
+
+- 97af08b: hover style
+
 ## 0.1.19
 
 ### Patch Changes
