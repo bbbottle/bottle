@@ -1,5 +1,13 @@
 # @bbki.ng/site
 
+## 5.4.48
+
+### Patch Changes
+
+- bb4ca8f: add fingerprint
+- Updated dependencies [bb4ca8f]
+  - @bbki.ng/ui@0.1.22
+
 ## 5.4.47
 
 ### Patch Changes

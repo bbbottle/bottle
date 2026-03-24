@@ -1,5 +1,11 @@
 # @bbki.ng/ui
 
+## 0.1.22
+
+### Patch Changes
+
+- bb4ca8f: add fingerprint
+
 ## 0.1.21
 
 ### Patch Changes
