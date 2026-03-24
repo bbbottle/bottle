@@ -1,5 +1,11 @@
 # @bbki.ng/ui
 
+## 0.1.21
+
+### Patch Changes
+
+- d73ac87: fix ident of article's date
+
 ## 0.1.20
 
 ### Patch Changes
