@@ -1,5 +1,13 @@
 # @bbki.ng/site
 
+## 5.4.47
+
+### Patch Changes
+
+- d73ac87: fix ident of article's date
+- Updated dependencies [d73ac87]
+  - @bbki.ng/ui@0.1.21
+
 ## 5.4.46
 
 ### Patch Changes
