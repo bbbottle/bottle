@@ -2,6 +2,7 @@ import { useCallback, useContext, useRef } from 'react';
 import { useMousePosition } from '@/hooks/use_mouse_position';
 import { useResolution } from '@/components/effect-layer/hooks/useResolution';
 import { useWatermarkHover } from '@/components/effect-layer/hooks/useWatermarkHover';
+import { useFingerprintUniforms } from '@/components/effect-layer/hooks/useFingerprintUniforms';
 import { GlobalLoadingContext } from '@/context/global_loading_state_provider';
 
 const SPIRAL_ACCEL = 0.005;
@@ -22,6 +23,7 @@ export const useRender = () => {
   const wasLoadingRef = useRef(false);
 
   const { updateWatermarkHover } = useWatermarkHover();
+  const { updateFingerprintUniforms } = useFingerprintUniforms();
 
   const onRender = useCallback((inst: any) => {
     if (inst == null) {
@@ -71,6 +73,7 @@ export const useRender = () => {
     inst.uniforms.uSpiralProgress.value[0] += spiralSpeedRef.current;
 
     updateWatermarkHover(inst);
+    updateFingerprintUniforms(inst);
   }, []);
 
   return { onRender };
