@@ -4,6 +4,10 @@
 
 uniform vec4 uHashChars;      // hex digit values for chars 0–3 (each 0.0–15.0)
 uniform vec4 uHashChars2;     // hex digit values for chars 4–6 (.w unused)
+uniform vec4 uFpChars1;       // fingerprint chars 0–3
+uniform vec4 uFpChars2;       // fingerprint chars 4–7
+uniform vec4 uFpChars3;       // fingerprint chars 8–11
+uniform vec4 uFpChars4;       // fingerprint chars 12–15
 uniform float uWatermarkHover; // 0.0 = idle (#f1f1f1), 1.0 = hovered (black)
 
 // Each glyph is a 4-wide × 5-tall bitmap packed into 20 bits of a float.
@@ -67,46 +71,87 @@ float getHashChar(float i) {
     return uHashChars2.z;
 }
 
+float getFpChar(float i) {
+    if (i < 0.5)  return uFpChars1.x;
+    if (i < 1.5)  return uFpChars1.y;
+    if (i < 2.5)  return uFpChars1.z;
+    if (i < 3.5)  return uFpChars1.w;
+    if (i < 4.5)  return uFpChars2.x;
+    if (i < 5.5)  return uFpChars2.y;
+    if (i < 6.5)  return uFpChars2.z;
+    if (i < 7.5)  return uFpChars2.w;
+    if (i < 8.5)  return uFpChars3.x;
+    if (i < 9.5)  return uFpChars3.y;
+    if (i < 10.5) return uFpChars3.z;
+    if (i < 11.5) return uFpChars3.w;
+    if (i < 12.5) return uFpChars4.x;
+    if (i < 13.5) return uFpChars4.y;
+    if (i < 14.5) return uFpChars4.z;
+    return uFpChars4.w;
+}
+
 void drawWatermark(vec2 uv) {
     // Work in CSS (logical) pixels
     vec2 pixel = gl_FragCoord.xy / uDevicePixelRatio;
 
+    // Layout constants
     float scale  = 2.0;              // each bitmap pixel = 2 CSS px
     float charW  = 4.0 * scale;      // 8 px per glyph
     float charH  = 5.0 * scale;      // 10 px per glyph  (≈ 12 px visual)
     float gap    = 3.0;              // 3 px gap between glyphs
     float cellW  = charW + gap;      // 11 px per cell
-    float nChars = 7.0;
 
-    // Padding from the bottom-left corner of the viewport
     float padX = 16.0;
     float padY = 16.0;
+    float lineGap = 6.0;             // 6 px gap between lines
 
-    vec2 pos = pixel - vec2(padX, padY);
+    // ----- Line 1 (bottom): Git hash - 7 chars -----
+    {
+        float nChars = 7.0;
+        vec2 pos = pixel - vec2(padX, padY);
+        float totalW = nChars * cellW - gap;
 
-    // Early-exit bounding box
-    float totalW = nChars * cellW - gap;
-    if (pos.x < 0.0 || pos.x >= totalW || pos.y < 0.0 || pos.y >= charH) return;
+        if (pos.x >= 0.0 && pos.x < totalW && pos.y >= 0.0 && pos.y < charH) {
+            float ci = floor(pos.x / cellW);
+            if (ci < nChars) {
+                float localX = pos.x - ci * cellW;
+                if (localX < charW) {
+                    vec2 bp = vec2(localX, pos.y) / scale;
+                    float charCode = getHashChar(ci);
+                    float on = sampleChar(charCode, bp);
+                    if (on > 0.5) {
+                        float a   = 0.4;
+                        vec3  col = mix(vec3(0.945), vec3(0.0), uWatermarkHover);
+                        gl_FragColor = vec4(col * a, a) + gl_FragColor * (1.0 - a);
+                        return;
+                    }
+                }
+            }
+        }
+    }
 
-    // Which character slot?
-    float ci = floor(pos.x / cellW);
-    if (ci >= nChars) return;
+    // ----- Line 2 (above): Fingerprint - 16 chars -----
+    {
+        float nChars = 16.0;
+        float fpPadY = padY + charH + lineGap;
+        vec2 pos = pixel - vec2(padX, fpPadY);
+        float totalW = nChars * cellW - gap;
 
-    // Local x within character cell; skip the inter-glyph gap
-    float localX = pos.x - ci * cellW;
-    if (localX >= charW) return;
-
-    // Convert to bitmap-pixel coordinates
-    vec2 bp = vec2(localX, pos.y) / scale;
-
-    float charCode = getHashChar(ci);
-    float on = sampleChar(charCode, bp);
-
-    if (on > 0.5) {
-        // Idle: #f1f1f1 (0.945) → Hovered: black (0.0)
-        float a   = 0.4;
-        vec3  col = mix(vec3(0.945), vec3(0.0), uWatermarkHover);
-        // Standard alpha-blend (pre-multiplied style)
-        gl_FragColor = vec4(col * a, a) + gl_FragColor * (1.0 - a);
+        if (pos.x >= 0.0 && pos.x < totalW && pos.y >= 0.0 && pos.y < charH) {
+            float ci = floor(pos.x / cellW);
+            if (ci < nChars) {
+                float localX = pos.x - ci * cellW;
+                if (localX < charW) {
+                    vec2 bp = vec2(localX, pos.y) / scale;
+                    float charCode = getFpChar(ci);
+                    float on = sampleChar(charCode, bp);
+                    if (on > 0.5) {
+                        float a   = 0.4;
+                        vec3  col = mix(vec3(0.945), vec3(0.0), uWatermarkHover);
+                        gl_FragColor = vec4(col * a, a) + gl_FragColor * (1.0 - a);
+                    }
+                }
+            }
+        }
     }
 }
