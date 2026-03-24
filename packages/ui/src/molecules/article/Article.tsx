@@ -11,7 +11,7 @@ export const Article = (props: ArticleProps) => {
         <span className="text-2xl mb-2 inline-block text-content-primary">{title}</span>
         {loading && title && <BlinkDot status="blink" className="ml-2" />}
         {date && (
-          <div className="px-2 pb-0 text-content-secondary">
+          <div className="pb-0 text-content-secondary">
             <small>{date}</small>
           </div>
         )}
