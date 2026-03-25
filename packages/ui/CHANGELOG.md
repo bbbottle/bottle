@@ -1,5 +1,11 @@
 # @bbki.ng/ui
 
+## 0.1.25
+
+### Patch Changes
+
+- af58dbb: css 404
+
 ## 0.1.24
 
 ### Patch Changes

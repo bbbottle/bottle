@@ -1,5 +1,13 @@
 # @bbki.ng/site
 
+## 5.4.51
+
+### Patch Changes
+
+- af58dbb: css 404
+- Updated dependencies [af58dbb]
+  - @bbki.ng/ui@0.1.25
+
 ## 5.4.50
 
 ### Patch Changes
