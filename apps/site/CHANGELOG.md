@@ -1,5 +1,13 @@
 # @bbki.ng/site
 
+## 5.4.52
+
+### Patch Changes
+
+- 4a6bd4f: disable share target
+- Updated dependencies [4a6bd4f]
+  - @bbki.ng/ui@0.1.26
+
 ## 5.4.51
 
 ### Patch Changes

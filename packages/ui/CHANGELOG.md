@@ -1,5 +1,11 @@
 # @bbki.ng/ui
 
+## 0.1.26
+
+### Patch Changes
+
+- 4a6bd4f: disable share target
+
 ## 0.1.25
 
 ### Patch Changes
