@@ -104,15 +104,15 @@ export default defineConfig({
         theme_color: '#ffffff',
         display: 'fullscreen',
         start_url: '/',
-        share_target: {
-          action: '/new-content-handler/',
-          method: 'GET',
-          params: {
-            title: 'title',
-            text: 'text',
-            url: 'url',
-          },
-        },
+        // share_target: {
+        //   action: '/new-content-handler/',
+        //   method: 'GET',
+        //   params: {
+        //     title: 'title',
+        //     text: 'text',
+        //     url: 'url',
+        //   },
+        // },
         icons: [
           {
             src: 'pwa-192x192.png',
