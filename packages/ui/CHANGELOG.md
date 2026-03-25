@@ -1,5 +1,11 @@
 # @bbki.ng/ui
 
+## 0.1.24
+
+### Patch Changes
+
+- e6d433d: css minify
+
 ## 0.1.23
 
 ### Patch Changes
