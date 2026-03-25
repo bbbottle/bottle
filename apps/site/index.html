@@ -16,8 +16,13 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC&display=swap"
+      href="google-font.css"
       rel="stylesheet"
+      media="print"
+      onload="
+        this.media = 'all';
+        this.onload = null;
+      "
     />
     <style>
       bb-img:not(:defined) {
