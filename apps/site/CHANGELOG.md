@@ -1,5 +1,13 @@
 # @bbki.ng/site
 
+## 5.4.49
+
+### Patch Changes
+
+- 146552c: html error
+- Updated dependencies [146552c]
+  - @bbki.ng/ui@0.1.23
+
 ## 5.4.48
 
 ### Patch Changes
