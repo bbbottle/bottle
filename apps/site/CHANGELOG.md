@@ -1,5 +1,13 @@
 # @bbki.ng/site
 
+## 5.4.50
+
+### Patch Changes
+
+- e6d433d: css minify
+- Updated dependencies [e6d433d]
+  - @bbki.ng/ui@0.1.24
+
 ## 5.4.49
 
 ### Patch Changes
