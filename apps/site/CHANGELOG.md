@@ -1,5 +1,13 @@
 # @bbki.ng/site
 
+## 5.4.55
+
+### Patch Changes
+
+- e08565d: update nav
+- Updated dependencies [e08565d]
+  - @bbki.ng/ui@0.1.29
+
 ## 5.4.54
 
 ### Patch Changes
