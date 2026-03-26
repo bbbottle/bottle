@@ -3,8 +3,9 @@ import { useStreaming, StreamingItem } from '@/hooks/use_streaming';
 import { formatStreamingData } from '@/utils/streaming';
 import { Button, Panel } from '@bbki.ng/ui';
 import { useScrollBtnVisibility } from './useScrollBtnVisibility';
-import classNames from 'classnames';
+import { Link } from '@bbki.ng/ui';
 import { ArrowDownIcon } from './arrow-down';
+import classNames from 'classnames';
 
 // Extend JSX IntrinsicElements for the web component
 declare global {
@@ -79,17 +80,17 @@ const Streaming = () => {
           {formattedData}
         </bb-msg-history>
       </Panel>
-      {scrolled ? (
-        <Button
-          className="mt-16"
-          transparent={!showScrollBtn}
-          onClick={() => {
-            bbMsgHistoryRef.current?.scrollToBottom();
-          }}
-        >
-          <ArrowDownIcon show={showScrollBtn} />
-        </Button>
-      ) : null}
+      <Link
+        className={classNames('w-fit relative opacity-0 transition-all duration-300 mt-16', {
+          'opacity-100': scrolled,
+          'opacity-0': showScrollBtn,
+          'pointer-events-none': showScrollBtn || !scrolled,
+        })}
+        to="/"
+        style={{ left: -4 }}
+      >
+        cd ..
+      </Link>
     </>
   );
 };

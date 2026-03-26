@@ -1,6 +1,5 @@
 import React, { ReactElement } from 'react';
-import { Button, Article, Link } from '@bbki.ng/ui';
-import { ROUTES } from '@/constants';
+import { Article, Link } from '@bbki.ng/ui';
 import classNames from 'classnames';
 import { useNavigate } from 'react-router-dom';
 

@@ -26,11 +26,18 @@ export const usePosts = (name: string = '', suspense?: boolean) => {
   const titleList =
     isLoading || error || !data
       ? []
-      : data.map((p: any) => ({
-          name: p.title,
-          to: p.title,
-          children: p.title,
-        }));
+      : [
+          ...data.map((p: any) => ({
+            name: p.title,
+            to: p.title,
+            children: p.title,
+          })),
+          {
+            name: 'cd ~',
+            to: '/',
+            children: 'cd ~',
+          },
+        ];
 
   useEffect(() => {
     setIsLoading(isLoading);
