@@ -1,5 +1,11 @@
 # @bbki.ng/ui
 
+## 0.1.28
+
+### Patch Changes
+
+- 87c85aa: fix link padding
+
 ## 0.1.27
 
 ### Patch Changes
