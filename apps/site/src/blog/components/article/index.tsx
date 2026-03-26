@@ -38,7 +38,7 @@ export const ArticlePage = (props: ArticlePageProps) => {
           <Reaction title={title} url={window.location.href} />
         </div>*/}
       </Article>
-      <div className="flex flex-col gap-4">
+      <div className="flex flex-col gap-4" style={{ position: 'relative', left: -4 }}>
         <Link className="w-fit" to="/blog">
           cd ..
         </Link>
