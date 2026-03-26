@@ -1,5 +1,13 @@
 # @bbki.ng/site
 
+## 5.4.54
+
+### Patch Changes
+
+- 87c85aa: fix link padding
+- Updated dependencies [87c85aa]
+  - @bbki.ng/ui@0.1.28
+
 ## 5.4.53
 
 ### Patch Changes
