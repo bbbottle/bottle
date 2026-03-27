@@ -58,14 +58,13 @@ const Layout = () => {
 };
 
 export const App = () => {
-  useEffect(() => {
-    // load test plugin
-    pluginManager.loadPlugin('test');
+  // useEffect(() => {
+  //   pluginManager.loadPlugin('test');
 
-    return () => {
-      pluginManager.disablePlugin('test');
-    };
-  }, []);
+  //   return () => {
+  //     pluginManager.disablePlugin('test');
+  //   };
+  // }, []);
 
   return (
     <SWR>
