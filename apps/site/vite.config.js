@@ -41,6 +41,7 @@ export default defineConfig({
   resolve: {
     alias: {
       '@': path.resolve(__dirname, './src/blog'),
+      '#': path.resolve(__dirname, './src/'),
     },
     // preserveSymlinks: true,
   },

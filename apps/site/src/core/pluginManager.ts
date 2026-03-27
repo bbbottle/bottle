@@ -1,7 +1,7 @@
-import { IHostApi, IHostContext } from 'src/types/hostApi';
+import { IHostContext } from '#/types/hostApi';
 import { registry } from './registry';
-import type { SlotName, HookPoint } from 'src/types/slots';
-import { IPlugin } from 'src/types/plugin';
+import type { SlotName, HookPoint } from '#/types/slots';
+import { IPlugin } from '#/types/plugin';
 
 class PluginManager {
   private activePlugins: Map<string, IPlugin> = new Map();
@@ -24,15 +24,26 @@ class PluginManager {
     };
   }
 
-  async loadPlugin(plugin: IPlugin) {
-    if (this.activePlugins.has(plugin.name)) {
-      console.warn(`Plugin ${plugin.name} is already loaded.`);
+  private loading = new Set<string>();
+
+  // enable abort ctrl
+  async loadPlugin(pluginId: string) {
+    if (this.activePlugins.has(pluginId)) {
+      console.warn(`Plugin ${pluginId} is already loaded.`);
+      return;
+    }
+
+    if (this.loading.has(pluginId)) {
+      console.warn(`Plugin ${pluginId} is loading...`);
       return;
     }
 
     // try load plugin
+    this.loading.add(pluginId);
+
     try {
-      const module = await import(`../plugins/${plugin.name}`);
+      const module = await import(`../plugins/${pluginId}`);
+
       const p: IPlugin = module.default;
 
       const ctx = this.createHostContext();
@@ -41,16 +52,18 @@ class PluginManager {
         p.onInstall(ctx);
       }
 
-      this.activePlugins.set(plugin.name, p);
+      this.activePlugins.set(pluginId, p);
     } catch (error) {
-      console.error(`Failed to load plugin ${plugin.name}:`, error);
+      console.error(`Failed to load plugin ${pluginId}:`, error);
+    } finally {
+      this.loading.delete(pluginId);
     }
   }
 
-  async disablePlugin(pluginName: string) {
-    const plugin = this.activePlugins.get(pluginName);
+  async disablePlugin(pluginId: string) {
+    const plugin = this.activePlugins.get(pluginId);
     if (!plugin) {
-      console.warn(`Plugin ${pluginName} is not loaded.`);
+      console.warn(`Plugin ${pluginId} is not loaded.`);
       return;
     }
 
@@ -58,7 +71,7 @@ class PluginManager {
       await plugin.onDisable();
     }
 
-    this.activePlugins.delete(pluginName);
+    this.activePlugins.delete(pluginId);
 
     registry.unregisterAllByPluginId(plugin.id);
   }

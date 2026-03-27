@@ -13,7 +13,7 @@ export const Slot: React.FC<ISlotProps> = ({ name, data }) => {
   return (
     <>
       {components.map((Component, index) => (
-        <Component key={index} {...data} />
+        <Component key={index} data={data} />
       ))}
     </>
   );
