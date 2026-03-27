@@ -12,6 +12,7 @@ import { GlobalLoadingContext } from '@/context/global_loading_state_provider';
 import { BotRedirect } from '@/pages/bot';
 import { BBContext } from '@/context/bbcontext';
 import { useDynamicLogo } from './hooks/use_dynamic_logo';
+import { Slot } from '../core/components/SlotComp';
 
 const Layout = () => {
   const paths = usePaths();
@@ -32,7 +33,10 @@ const Layout = () => {
         />
       }
       main={
-        <Grid leftAside={<div />} rightAside={<div />}>
+        <Grid
+          leftAside={<Slot name="leftCol" data={paths} />}
+          rightAside={<Slot name="rightCol" data={paths} />}
+        >
           <Container className="py-32">
             <ErrorBoundary>
               <Outlet />
