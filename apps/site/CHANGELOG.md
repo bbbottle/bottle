@@ -1,5 +1,16 @@
 # @bbki.ng/site
 
+## 5.5.0
+
+### Minor Changes
+
+- 2caf775: add blog plugin
+
+### Patch Changes
+
+- Updated dependencies [2caf775]
+  - @bbki.ng/ui@0.2.0
+
 ## 5.4.55
 
 ### Patch Changes
