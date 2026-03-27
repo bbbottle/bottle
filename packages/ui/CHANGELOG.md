@@ -1,5 +1,11 @@
 # @bbki.ng/ui
 
+## 0.2.0
+
+### Minor Changes
+
+- 2caf775: add blog plugin
+
 ## 0.1.29
 
 ### Patch Changes
