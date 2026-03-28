@@ -263,7 +263,7 @@ async function getAudioFingerprint(): Promise<string | undefined> {
 }
 
 // 主采集函数
-export async function getFingerprint(): Promise<FingerprintData> {
+async function getFingerprint(): Promise<FingerprintData> {
   const components: Partial<FingerprintComponents> = {
     userAgent: navigator.userAgent,
     language: navigator.language,
