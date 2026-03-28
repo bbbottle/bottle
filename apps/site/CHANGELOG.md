@@ -1,5 +1,13 @@
 # @bbki.ng/site
 
+## 5.5.6
+
+### Patch Changes
+
+- 0929759: fix padding
+- Updated dependencies [0929759]
+  - @bbki.ng/ui@0.2.6
+
 ## 5.5.5
 
 ### Patch Changes
