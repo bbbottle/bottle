@@ -1,5 +1,11 @@
 # backend
 
+## 0.3.17
+
+### Patch Changes
+
+- 45f9fae: fix: hash
+
 ## 0.3.16
 
 ### Patch Changes
