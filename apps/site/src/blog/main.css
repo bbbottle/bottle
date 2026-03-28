@@ -91,3 +91,31 @@ tr > th {
   max-width: 100px;
   width: 100px;
 }
+
+:root {
+  --safe-top: 0px; /* 立即确定的初始值 */
+}
+
+@supports (padding-top: env(safe-area-inset-top)) {
+  :root {
+    --safe-top: env(safe-area-inset-top); /* 延迟计算的值 */
+  }
+}
+:root {
+  --safe-top: 0px; /* 立即确定的初始值 */
+}
+
+@supports (padding-top: env(safe-area-inset-top)) {
+  :root {
+    --safe-top: env(safe-area-inset-top); /* 延迟计算的值 */
+  }
+}
+:root {
+  --safe-top: 0px; /* 立即确定的初始值 */
+}
+
+@supports (padding-top: env(safe-area-inset-top)) {
+  :root {
+    --safe-top: calc(env(safe-area-inset-top) + 4px);
+  }
+}

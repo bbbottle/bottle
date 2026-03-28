@@ -29,7 +29,8 @@ const Layout = () => {
           loading={isLoading}
           customLogo={logo}
           style={{
-            paddingTop: 'calc(env(safe-area-inset-top) + 4px)',
+            paddingTop: 'var(--safe-top);',
+            transition: 'all .2s ease-in-out',
           }}
         />
       }
