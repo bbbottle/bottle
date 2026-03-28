@@ -1,6 +1,6 @@
 import { API_ENDPOINT } from '@/constants/routes';
 import { FontType } from '@/types/font';
-import { getFingerprint, getStableDeviceId } from './fingerprints';
+import { getStableDeviceId } from './fingerprints';
 
 type Fetcher = (resource: string, init?: any) => Promise<any>;
 
@@ -10,8 +10,8 @@ export const floatNumberToPercentageString = (num: number): string => {
 
 export const baseFetcher = async (resource: string, init: RequestInit = {}) => {
   const headers = new Headers(init.headers || {});
-  const fp = await getFingerprint();
-  headers.set('X-Device-Fingerprint', fp.hash);
+  const fp = await getStableDeviceId();
+  headers.set('X-Device-Fingerprint', fp.id);
   return fetch(resource, {
     ...init,
     headers,
