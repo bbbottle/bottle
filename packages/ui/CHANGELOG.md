@@ -1,5 +1,11 @@
 # @bbki.ng/ui
 
+## 0.2.3
+
+### Patch Changes
+
+- 71ce23d: hash error
+
 ## 0.2.2
 
 ### Patch Changes

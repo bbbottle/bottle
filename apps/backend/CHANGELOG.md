@@ -1,5 +1,11 @@
 # backend
 
+## 0.3.16
+
+### Patch Changes
+
+- 71ce23d: hash error
+
 ## 0.3.15
 
 ### Patch Changes
