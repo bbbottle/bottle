@@ -1,5 +1,6 @@
 import { API_ENDPOINT } from '@/constants/routes';
 import { FontType } from '@/types/font';
+import { getFingerprint, getStableDeviceId } from './fingerprints';
 
 type Fetcher = (resource: string, init?: any) => Promise<any>;
 
@@ -7,10 +8,13 @@ export const floatNumberToPercentageString = (num: number): string => {
   return `${num * 100}%`;
 };
 
-export const baseFetcher = (resource: string, init: RequestInit = {}) =>
-  // enable cors
-  fetch(resource, {
+export const baseFetcher = async (resource: string, init: RequestInit = {}) => {
+  const headers = new Headers(init.headers || {});
+  const fp = await getFingerprint();
+  headers.set('X-Device-Fingerprint', fp.hash);
+  return fetch(resource, {
     ...init,
+    headers,
     mode: 'cors',
   }).then(res => {
     if (!res.ok) {
@@ -19,6 +23,7 @@ export const baseFetcher = (resource: string, init: RequestInit = {}) =>
 
     return res.json();
   });
+};
 
 export const withBBApi =
   (fetcher: Fetcher) =>
