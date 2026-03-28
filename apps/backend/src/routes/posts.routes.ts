@@ -5,8 +5,11 @@ import { addPost } from '../controllers/posts/add.controller';
 import { updatePost } from '../controllers/posts/update.controller';
 import { removePost } from '../controllers/posts/remove.controller';
 import { requireAuth } from '../utils/auth';
+import { trackDeviceActivity } from '../utils/deviceActivity';
 
 const postsRouter = new Hono();
+
+postsRouter.use('*', trackDeviceActivity);
 
 // Public routes
 postsRouter.get('/', listPosts);

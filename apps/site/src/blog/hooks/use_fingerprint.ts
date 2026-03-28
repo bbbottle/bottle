@@ -1,5 +1,5 @@
 import { useEffect, useState, useCallback } from 'react';
-import { getFingerprint, getStableDeviceId, FingerprintData } from '@/utils/fingerprints';
+import { getStableDeviceId, FingerprintData } from '@/utils/fingerprints';
 
 interface UseFingerprintReturn {
   deviceId: string | null;
