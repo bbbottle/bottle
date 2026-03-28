@@ -1,5 +1,11 @@
 # @bbki.ng/ui
 
+## 0.2.6
+
+### Patch Changes
+
+- 0929759: fix padding
+
 ## 0.2.5
 
 ### Patch Changes
