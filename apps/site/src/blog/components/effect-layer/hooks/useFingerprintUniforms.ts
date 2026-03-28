@@ -2,13 +2,13 @@ import { useRef } from 'react';
 import { useFingerprint } from '@/hooks/use_fingerprint';
 
 export const useFingerprintUniforms = () => {
-  const { fingerprint, loading } = useFingerprint();
+  const { deviceId, loading } = useFingerprint();
 
   const charsRef = useRef<number[] | null>(null);
   const appliedRef = useRef(false);
 
-  if (!loading && fingerprint && !charsRef.current) {
-    const hash = fingerprint.hash.slice(0, 16);
+  if (!loading && deviceId && !charsRef.current) {
+    const hash = deviceId;
     const chars = [...hash].map(c => parseInt(c, 16) || 0);
     while (chars.length < 16) chars.push(0);
     charsRef.current = chars;
@@ -41,13 +41,6 @@ export const useFingerprintUniforms = () => {
     inst.uniforms.uFpChars4.value[1] = chars[13];
     inst.uniforms.uFpChars4.value[2] = chars[14];
     inst.uniforms.uFpChars4.value[3] = chars[15];
-
-    // console.log('[Fingerprint] Uniforms set:', {
-    //   uFpChars1: inst.uniforms.uFpChars1.value,
-    //   uFpChars2: inst.uniforms.uFpChars2.value,
-    //   uFpChars3: inst.uniforms.uFpChars3.value,
-    //   uFpChars4: inst.uniforms.uFpChars4.value,
-    // });
 
     appliedRef.current = true;
   };
