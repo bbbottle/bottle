@@ -1,5 +1,11 @@
 # @bbki.ng/ui
 
+## 0.2.2
+
+### Patch Changes
+
+- 039575f: fix hash str
+
 ## 0.2.1
 
 ### Patch Changes

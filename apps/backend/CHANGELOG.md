@@ -1,5 +1,11 @@
 # backend
 
+## 0.3.15
+
+### Patch Changes
+
+- 039575f: fix hash str
+
 ## 0.3.14
 
 ### Patch Changes
