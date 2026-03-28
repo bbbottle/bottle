@@ -1,5 +1,15 @@
 # @bbki.ng/site
 
+## 5.5.5
+
+### Patch Changes
+
+- 41f402d: fix: icon
+- 1730cbc: padding top shake
+- Updated dependencies [41f402d]
+- Updated dependencies [1730cbc]
+  - @bbki.ng/ui@0.2.5
+
 ## 5.5.4
 
 ### Patch Changes

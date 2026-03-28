@@ -1,5 +1,12 @@
 # @bbki.ng/ui
 
+## 0.2.5
+
+### Patch Changes
+
+- 41f402d: fix: icon
+- 1730cbc: padding top shake
+
 ## 0.2.4
 
 ### Patch Changes
