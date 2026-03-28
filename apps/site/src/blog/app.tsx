@@ -29,7 +29,7 @@ const Layout = () => {
           loading={isLoading}
           customLogo={logo}
           style={{
-            paddingTop: 'var(--safe-top);',
+            paddingTop: 'var(--safe-top)',
             transition: 'all .2s ease-in-out',
           }}
         />
