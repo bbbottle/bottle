@@ -1,5 +1,13 @@
 # @bbki.ng/site
 
+## 5.5.2
+
+### Patch Changes
+
+- 039575f: fix hash str
+- Updated dependencies [039575f]
+  - @bbki.ng/ui@0.2.2
+
 ## 5.5.1
 
 ### Patch Changes
