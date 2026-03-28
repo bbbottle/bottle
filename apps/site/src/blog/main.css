@@ -67,12 +67,22 @@ a {
   backface-visibility: hidden;
 }
 
+:root {
+  --safe-top: 0px; /* 立即确定的初始值 */
+}
+
+@supports (padding-top: env(safe-area-inset-top)) {
+  :root {
+    --safe-top: calc(env(safe-area-inset-top) + 4px);
+  }
+}
+
 #blog {
   overflow: auto;
   -ms-overflow-style: none; /* Internet Explorer 10+ */
   scrollbar-width: none;
-  padding-top: env(safe-area-inset-top);
-  padding-bottom: env(safe-area-inset-bottom);
+  transition: all 0.2s ease-in-out;
+  padding-top: var(--safe-top);
   box-sizing: border-box;
 }
 
@@ -90,32 +100,4 @@ tr > td,
 tr > th {
   max-width: 100px;
   width: 100px;
-}
-
-:root {
-  --safe-top: 0px; /* 立即确定的初始值 */
-}
-
-@supports (padding-top: env(safe-area-inset-top)) {
-  :root {
-    --safe-top: env(safe-area-inset-top); /* 延迟计算的值 */
-  }
-}
-:root {
-  --safe-top: 0px; /* 立即确定的初始值 */
-}
-
-@supports (padding-top: env(safe-area-inset-top)) {
-  :root {
-    --safe-top: env(safe-area-inset-top); /* 延迟计算的值 */
-  }
-}
-:root {
-  --safe-top: 0px; /* 立即确定的初始值 */
-}
-
-@supports (padding-top: env(safe-area-inset-top)) {
-  :root {
-    --safe-top: calc(env(safe-area-inset-top) + 4px);
-  }
 }
