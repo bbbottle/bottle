@@ -330,11 +330,12 @@ export async function getStableDeviceId(): Promise<{ id: string; fp: Fingerprint
 
   // 生成新ID
   const fp = await getFingerprint();
+  const id = fp.hash.slice(0, 16);
 
   localStorage.setItem(
     STORAGE_KEY,
     JSON.stringify({
-      id: fp.hash.slice(0, 16),
+      id,
       ts: Date.now(),
       ua: navigator.userAgent.slice(0, 50),
     })
