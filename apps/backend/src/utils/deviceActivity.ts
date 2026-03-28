@@ -16,7 +16,7 @@ export const trackDeviceActivity = async (c: Context, next: () => Promise<void>)
     const existing = await c.env.KV.get(key);
 
     let activity: DeviceActivity;
-    const now = new Date().toISOString();
+    const now = new Date().toLocaleString('zh-CN', { timeZone: 'Asia/Shanghai' });
     const currentPath = c.req.path;
 
     if (existing) {
