@@ -1,5 +1,11 @@
 # @bbki.ng/ui
 
+## 0.2.1
+
+### Patch Changes
+
+- 3c2834a: track device activity
+
 ## 0.2.0
 
 ### Minor Changes

@@ -1,5 +1,11 @@
 # backend
 
+## 0.3.14
+
+### Patch Changes
+
+- 3c2834a: track device activity
+
 ## 0.3.13
 
 ### Patch Changes

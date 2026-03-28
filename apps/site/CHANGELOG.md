@@ -1,5 +1,13 @@
 # @bbki.ng/site
 
+## 5.5.1
+
+### Patch Changes
+
+- 3c2834a: track device activity
+- Updated dependencies [3c2834a]
+  - @bbki.ng/ui@0.2.1
+
 ## 5.5.0
 
 ### Minor Changes
