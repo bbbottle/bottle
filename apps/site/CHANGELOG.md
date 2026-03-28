@@ -1,5 +1,13 @@
 # @bbki.ng/site
 
+## 5.5.4
+
+### Patch Changes
+
+- 45f9fae: fix: hash
+- Updated dependencies [45f9fae]
+  - @bbki.ng/ui@0.2.4
+
 ## 5.5.3
 
 ### Patch Changes
